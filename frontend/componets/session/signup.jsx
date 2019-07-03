@@ -23,10 +23,23 @@ class Signup extends React.Component {
             .then(() => this.props.history.push('/dashboard'));
     }
 
+    renderErrors() {
+        return (
+            <ul>
+                {this.props.errors.map((error, i) => (
+                    <li key={`error-${i}`}>
+                        {error}
+                    </li>
+                ))}
+            </ul>
+        );
+    }
+
     render() {
         return (
             <div>
                 <h2>Sign Up!</h2>
+                {this.renderErrors()}
                 <form>
                     <label>Username:
                         <input

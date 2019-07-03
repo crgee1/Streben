@@ -9,7 +9,7 @@ const App = () => (
     <div>
         <Route path="/" component={NavBarContainer} />
         <Route path="/signup" component={SignUpContainer} />
-        <AuthRoute path="/login" component={LoginContainer} />
+        <Route path="/login" component={LoginContainer} />
     </div>
 );
 

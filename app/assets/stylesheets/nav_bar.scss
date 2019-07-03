@@ -1,0 +1,30 @@
+.navbar-main {
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, Roboto, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    font-size: 14px;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    align-items: center;
+}
+
+.navbar-side {
+    background-color: white;
+    display: flex;
+    // padding: 5px, 10px, 5px, 10px;
+    width: 250px;
+    justify-content: flex-end;
+}
+
+.navbar-side > span {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.navbar-main > h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    color: orangered;
+    letter-spacing: -2px;
+}

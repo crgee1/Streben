@@ -3,9 +3,13 @@ import { Link } from 'react-router-dom';
 
 export default ({ currentUser, logout }) => {
 const display = currentUser ? (
-    <div>
-      <h3>Welcome {currentUser.username}!</h3>
-      <button onClick={logout}>Logout</button>
+    <div className="navbar-side">
+      <span>
+        <h3>Welcome {currentUser.username}!</h3>
+        </span>
+      <span>
+        <button onClick={logout}>Logout</button>
+      </span>
     </div>
   ) : (
     <div>
@@ -14,8 +18,8 @@ const display = currentUser ? (
     </div>
   );
   return (
-    <header className="nav-bar">
-      <h1>Streben</h1>
+    <header className="navbar-main">
+      <h1>STREBEN</h1>
       <div>
         {display}
       </div>
