@@ -10,6 +10,13 @@
     background-image: image-url('running.jpg');  
 }
 
+.form-errors {
+    background-color: red;
+    width: 250px;
+    color: white;
+    font-size: 10px;
+}
+
 form {
     display: flex;
     text-align: center;

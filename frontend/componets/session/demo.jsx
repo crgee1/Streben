@@ -4,8 +4,8 @@ class SessionForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: '',
-            password: '',
+            username: this.props.user.username,
+            password: this.props.user.password,
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -25,7 +25,6 @@ class SessionForm extends React.Component {
 
     renderErrors() {
         return (
-            <div className='form-errors'>
             <ul>
                 {this.props.errors.map((error, i) => (
                     <li key={`error-${i}`}>
@@ -33,33 +32,30 @@ class SessionForm extends React.Component {
                     </li>
                 ))}
             </ul>
-            </div>
         );
     }
 
     render() {
         return (
             <div >
-            <div className='form-container'>
+                <div className='form-container'>
                     <h3 className='form-head'>{this.props.formType}</h3>
-                {this.renderErrors()}
-                <form>
-                    <input
-                        type="text"
-                        value={this.state.username}
-                        onChange={this.handleInput('username')}
-                        placeholder="Username"
+                    {this.renderErrors()}
+                    <form>
+                        <input
+                            type="text"
+                            value={this.props.user.username}
+                            onChange={this.handleInput('username')}
                         />
 
-                    <input
-                        type="password"
-                        value={this.state.password}
-                        onChange={this.handleInput('password')}
-                        placeholder="Password"
+                        <input
+                            type="password"
+                            value={this.props.user.password}
+                            onChange={this.handleInput('password')}
                         />
-                    <button onClick={this.handleSubmit}>{this.props.formType}</button>
-                </form>
-            </div>
+                        <button onClick={this.handleSubmit}>{this.props.formType}</button>
+                    </form>
+                </div>
             </div>
         );
     }

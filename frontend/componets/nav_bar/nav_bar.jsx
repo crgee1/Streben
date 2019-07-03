@@ -19,6 +19,9 @@ const display = currentUser ? (
       <span>
         <Link className="btn" to="/login">Log In</Link>
       </span>
+      <span>
+        <Link className="btn" to="/demo">Demo Log In</Link>
+      </span>
     </div>
   );
   return (
