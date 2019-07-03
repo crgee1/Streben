@@ -1,15 +1,19 @@
 .navbar-main {
-    font-size: 14px;
+    font-size: 16px;
     background-color: white;
     display: flex;
     justify-content: space-between;
-    padding: 10px;
+    padding: 0 14px;
+    // align-content: center;
     align-items: center;
+    height: 30px;
 }
 
 .navbar-side {
     background-color: white;
     display: flex;
+    align-items: center;
+    align-content: center;
     // padding: 5px, 10px, 5px, 10px;
     width: 250px;
     justify-content: flex-end;
@@ -18,11 +22,12 @@
 .navbar-side > span {
     padding-left: 10px;
     padding-right: 10px;
+    padding-bottom: 5px;
 }
 
 .navbar-main > h1 {
     font-family: 'Montserrat', sans-serif;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 900;
     color: orangered;
     letter-spacing: -2px;
@@ -33,7 +38,11 @@
     color: white;
     border-radius: 3px;
     font-size: 7px;
-    padding: 6px;
+    padding: 4.5px 10px;
+    // padding-left: 6px;
+    // padding-right: 6px;
+    // padding-top: 5px;
+    // padding-bottom: 5px;
     font-weight: 700;
     text-decoration: none;
     -webkit-appearance: none;
