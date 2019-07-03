@@ -11,6 +11,10 @@ class SessionForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentWillUnmount(){
+        this.props.clearErrors()
+    }
+
     handleInput(field) {
         return (e) => {
             this.setState({ [field]: e.target.value });
@@ -28,10 +32,10 @@ class SessionForm extends React.Component {
             <div className='form-errors'>
             
                 {this.props.errors.map((error, i) => (
-                    <ul>
-                        <li key={`error-${i}`}>
+                    <ul key={`error-${i}`}>
+                        
                             {error}
-                        </li>
+                        
                     </ul>
                 ))}
             
