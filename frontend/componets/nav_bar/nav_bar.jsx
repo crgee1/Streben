@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 export default ({ currentUser, logout }) => {
 const display = currentUser ? (
     <div className="navbar-side">
-      <span>
-        <h3>Welcome {currentUser.username}!</h3>
+      <span className='welcome'>
+        Welcome {currentUser.username}!
         </span>
       <span>
-        <button onClick={logout}>Logout</button>
+        <button className="btn" onClick={logout}>Logout</button>
       </span>
     </div>
   ) : (

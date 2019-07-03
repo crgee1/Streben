@@ -25,39 +25,43 @@ class Login extends React.Component {
 
   renderErrors() {
     return (
-      <ul>
+      <div className='form-errors'>
+
         {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`}>
-            {error}
-          </li>
+          <ul>
+            <li key={`error-${i}`}>
+              {error}
+            </li>
+          </ul>
         ))}
-      </ul>
+
+      </div>
     );
   }
 
   render() {
     return (
-      <div>
-        <h2>{this.props.formType}</h2>
-        {this.renderErrors()}
-        <form>
-          <label>Username:
+      <div >
+        <div className='form-container'>
+          <h3 className='form-head'>{this.props.formType}</h3>
+          {this.renderErrors()}
+          <form>
             <input
               type="text"
               value={this.state.username}
               onChange={this.handleInput('username')}
+              placeholder="Username"
             />
-          </label>
 
-          <label>Password:
             <input
               type="password"
               value={this.state.password}
               onChange={this.handleInput('password')}
+              placeholder="Password"
             />
-          </label>
-          <button onClick={this.handleSubmit}>{this.props.formType}</button>
-        </form>
+            <button onClick={this.handleSubmit}>{this.props.formType}</button>
+          </form>
+        </div>
       </div>
     );
   }

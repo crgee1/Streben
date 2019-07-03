@@ -4,10 +4,11 @@ class SessionForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: this.props.user.username,
-            password: this.props.user.password,
+            username: '',
+            password: '',
         };
 
+        this.handleDemo = this.handleDemo.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -17,10 +18,30 @@ class SessionForm extends React.Component {
         };
     }
 
-    handleSubmit(e) {
+    handleDemo(e) {
         e.preventDefault();
-        this.props.submitAction(this.state)
-            .then(() => this.props.history.push('/dashboard'));
+        
+        let i = 0;
+        let user = 'username';
+        let pword = 'password';
+        let speed = 100;
+
+        function typeWriter() {
+            if (i < user.length) {
+                document.getElementById('username').value += user.charAt(i);
+                document.getElementById('password').value += pword.charAt(i);
+                i++;
+                setTimeout(typeWriter, speed);
+            }
+        }
+        typeWriter();
+        setTimeout(e => this.handleSubmit(e), 1500)
+
+    }
+
+    handleSubmit() {
+        this.props.submitAction({username: 'username', password: 'password'})
+            .then(() => this.props.history.push('/dashboard'))
     }
 
     renderErrors() {
@@ -42,18 +63,22 @@ class SessionForm extends React.Component {
                     <h3 className='form-head'>{this.props.formType}</h3>
                     {this.renderErrors()}
                     <form>
-                        <input
+                        <input 
+                            id='username'
                             type="text"
-                            value={this.props.user.username}
+                            value={this.state.username}
                             onChange={this.handleInput('username')}
+                            placeholder="Username"
                         />
 
                         <input
+                            id='password'
                             type="password"
-                            value={this.props.user.password}
+                            value={this.state.password}
                             onChange={this.handleInput('password')}
+                            placeholder="Password"
                         />
-                        <button onClick={this.handleSubmit}>{this.props.formType}</button>
+                        <button onClick={this.handleDemo}>{this.props.formType}</button>
                     </form>
                 </div>
             </div>

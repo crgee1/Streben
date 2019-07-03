@@ -12,4 +12,4 @@ const mapDispatchToProps = dispatch => ({
     submitAction: user => dispatch(signUp(user)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(SessionForm);
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);

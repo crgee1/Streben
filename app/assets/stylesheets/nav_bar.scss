@@ -27,3 +27,25 @@
     color: orangered;
     letter-spacing: -2px;
 }
+
+.btn {
+    background-color: orangered;
+    color: white;
+    border-radius: 3px;
+    font-size: 7px;
+    padding: 6px;
+    font-weight: 700;
+    text-decoration: none;
+    -webkit-appearance: none;
+    border-style: none;
+}
+
+.btn:hover {
+    cursor: pointer;
+    transition: background-color 300ms;
+    background-color: rgb(218, 65, 9);
+}
+
+// .welcome {
+//     font-size: 7px;
+// }

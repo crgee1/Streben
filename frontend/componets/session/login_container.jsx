@@ -13,4 +13,4 @@ const mapDispatchToProps = dispatch => ({
   submitAction: user => dispatch(login(user)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(SessionForm);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
