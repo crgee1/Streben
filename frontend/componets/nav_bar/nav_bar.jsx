@@ -26,7 +26,7 @@ const display = currentUser ? (
   );
   return (
     <header className="navbar-main">
-      <h1>STREBEN</h1>
+      <Link className="logo" to="/dashboard">STREBEN</Link>
       <div>
         {display}
       </div>

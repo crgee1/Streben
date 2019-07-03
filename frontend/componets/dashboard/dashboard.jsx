@@ -3,6 +3,6 @@ import { Link } from 'react-router-dom';
 
 export default () => {
     return (
-        <div>Dash</div>
+        <div className="dashboard">Dash</div>
     )
 }
