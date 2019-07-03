@@ -26,7 +26,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack --watch --mode=development"
+    "start": "webpack --watch --mode=development",
+    "postinstall": "webpack"
   },
   "repository": {
     "type": "git",
@@ -41,5 +42,9 @@
   "homepage": "https://github.com/crgee1/FSP#readme",
   "devDependencies": {
     "webpack-cli": "^3.3.5"
+  },
+  "engines": {
+    "node": "6.9.0",
+    "npm": "10.13.0"
   }
 }
