@@ -12,9 +12,13 @@ const display = currentUser ? (
       </span>
     </div>
   ) : (
-    <div>
-      <Link className="btn" to="/signup">Sign Up</Link>
-      <Link className="btn" to="/login">Log In</Link>
+    <div className="navbar-side">
+      <span>
+        <Link className="btn" to="/signup">Sign Up</Link>
+      </span>
+      <span>
+        <Link className="btn" to="/login">Log In</Link>
+      </span>
     </div>
   );
   return (
