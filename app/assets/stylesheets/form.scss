@@ -1,11 +1,13 @@
 .form-container {
     display: flex;
-    // justify-content: center;
+    justify-content: center;
     align-items: center;
     text-align: center; 
     flex-direction: column;
     width: 100%;
-    background-image: url(../images/running.jpg);
+    height: 340px;
+    background-size: cover;
+    background-image: image-url('running.jpg');  
 }
 
 form {

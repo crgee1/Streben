@@ -37,7 +37,7 @@ class SessionForm extends React.Component {
 
     render() {
         return (
-            <div background-image='url(../images/running.jpg)'>
+            <div >
             <div className='form-container'>
                     <h3 className='form-head'>{this.props.formType}</h3>
                 {this.renderErrors()}
