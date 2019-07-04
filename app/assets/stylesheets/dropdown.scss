@@ -1,0 +1,69 @@
+.nav__submenu {
+  display: none;
+}
+
+.nav__menu-item:hover {
+  .nav__submenu {
+    display: block;
+  }
+}
+
+/*
+Layout styles.
+
+I like to work on stuff that's good looking so I remixed a cool simple menu by Mike Rojas (thanks!): https://codepen.io/mikerojas87/pen/rojKb 
+*/
+
+$color-blue: #00aeef;
+$color-blue-dark: #0d2035;
+
+
+.nav {
+  display: inline-block;
+  background: orangered;
+  color: white;
+  border-radius: 3px;
+  font-weight: 700;
+  font-size: 7px;
+  a {
+    display: block;
+    padding: 0 16px;
+    line-height: inherit;
+    cursor: pointer;
+  }
+}
+  
+.nav__menu {
+  line-height: 20px;
+  text-transform: uppercase;
+}
+  
+.nav__menu-item {
+  display: inline-block;
+  position: relative;
+
+  &:hover {
+    background-color: orangered;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    .nav__submenu {
+      display: block;
+    }
+  }
+}
+    
+.nav__submenu {
+  right: 0px;
+  font-weight: 300;
+  text-transform: none;
+  display: none;
+  position: absolute;
+  width: 100px;
+  background-color: orangered;
+}
+    
+.nav__submenu-item {
+  &:hover {
+    background: rgba(#000, 0.1);
+  }
+}

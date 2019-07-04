@@ -5,7 +5,7 @@ import NavBarContainer from './nav_bar/nav_bar_container';
 import LoginContainer from './session/login_container';
 import DemoLoginContainer from './session/demo_login_container';
 import Splash from './splash/splash';
-import Dashboard from './dashboard/dashboard'
+import Dashboard from './dashboard/dashboard_container'
 import { AuthRoute, ProtectedRoute } from '../util/route_util'
 
 const App = () => (

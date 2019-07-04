@@ -3,3 +3,16 @@
     padding-top: 40px;
     height: 700px;
 }
+
+.container {
+    top: 30px;
+    // left: 600px;
+    
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown {
+    position: absolute;
+    top: 100%;
+}
