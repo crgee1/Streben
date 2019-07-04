@@ -12,6 +12,7 @@ const mapStateToProps = ({ errors }) => ({
 
 const mapDispatchToProps = dispatch => ({
   submitAction: user => dispatch(login(user)),
+  login: user => dispatch(login(user)),
   clearErrors: () => dispatch(clearErrors()),
 });
 

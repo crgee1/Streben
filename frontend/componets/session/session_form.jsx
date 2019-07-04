@@ -7,12 +7,18 @@ class SessionForm extends React.Component {
             username: '',
             password: '',
         };
-
+        
+        this.facebookLogin = this.facebookLogin.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentWillUnmount(){
         this.props.clearErrors()
+    }
+
+    facebookLogin() {
+        this.props.login({username: 'username', password: 'password'})
+            .then(() => this.props.history.push('/dashboard'));
     }
 
     handleInput(field) {
@@ -50,7 +56,7 @@ class SessionForm extends React.Component {
                     <h3 className='form-head'>{this.props.formType}</h3>
                 {this.renderErrors()}
                 <form>
-                    <a className="facebook">{this.props.formType} using Facebook</a>
+                    <a className="facebook" onClick={this.facebookLogin}>{this.props.formType} using Facebook</a>
                     <input
                         type="text"
                         value={this.state.username}
