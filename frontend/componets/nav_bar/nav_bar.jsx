@@ -30,13 +30,15 @@ class Navbar extends React.Component {
       <div className="navbar-side">
         <span className='welcome'>
           Welcome {currentUser.username}!
-          </span>
-        <nav className="drop">
-            <ul className="drop-menu">
-              <a>PROFILE</a>
-              {submenu}
-            </ul>
-        </nav>
+        </span>
+        <span>
+            <nav className="drop">
+              <ul className="drop-menu">
+                <a>PROFILE</a>
+                {submenu}
+              </ul>
+            </nav>
+        </span>
       </div>
     ) : (
       <div className="navbar-side">
