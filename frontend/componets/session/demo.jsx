@@ -18,6 +18,10 @@ class SessionForm extends React.Component {
         };
     }
 
+    componentDidMount(){
+        this.handleDemo();
+    }
+
     handleDemo(e) {
         e.preventDefault();
         
@@ -33,7 +37,7 @@ class SessionForm extends React.Component {
             }
         }
         typeWriter();
-        setTimeout(e => this.handleSubmit(e), 1500)
+        setTimeout(e => this.handleSubmit(e), 1000)
     }
 
     handleSubmit() {
