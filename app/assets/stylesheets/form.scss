@@ -6,7 +6,6 @@
     flex-direction: column;
     width: 100%;
     height: 370px;
-    // margin-top: 30px;
     padding-top: 40px;
     background-size: cover;
     background-image: image-url('running.png');  
@@ -19,7 +18,6 @@
     font-size: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
-    // display: none;
 }
 
 .form-errors:empty {
@@ -37,8 +35,6 @@ form {
     background-color: rgba(0,0,0,0.75);
     border-bottom-right-radius: 3px;
     border-bottom-left-radius: 3px;
-    // border-radius: 3px;
-    /* opacity: .7; */
  }
 
  .form-head {
@@ -87,5 +83,4 @@ form {
  form h3 {
      color: white;
      font-weight: 700;
-     
  }

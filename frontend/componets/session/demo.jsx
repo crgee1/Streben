@@ -24,19 +24,16 @@ class SessionForm extends React.Component {
         let i = 0;
         let user = 'username';
         let pword = 'password';
-        let speed = 100;
-
-        function typeWriter() {
+        const typeWriter = () => {
             if (i < user.length) {
                 document.getElementById('username').value += user.charAt(i);
                 document.getElementById('password').value += pword.charAt(i);
                 i++;
-                setTimeout(typeWriter, speed);
+                setTimeout(typeWriter, 100);
             }
         }
         typeWriter();
         setTimeout(e => this.handleSubmit(e), 1500)
-
     }
 
     handleSubmit() {

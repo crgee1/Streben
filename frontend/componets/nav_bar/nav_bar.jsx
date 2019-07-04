@@ -4,9 +4,6 @@ import { Link } from 'react-router-dom';
 class Navbar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      open: false,
-    };
     this.handleLogout = this.handleLogout.bind(this);
   }
 
@@ -15,16 +12,15 @@ class Navbar extends React.Component {
     this.props.logout();
   }
 
-
   render() {
-    const submenu = <ul className="nav__submenu">
-      <li className="nav__submenu-item ">
+    const submenu = <ul className="nav-submenu">
+      <li className="nav-submenu-item ">
         <a>Profile</a>
       </li>
-      <li className="nav__submenu-item ">
+      <li className="nav-submenu-item ">
         <a>Friends</a>
       </li>
-      <li className="nav__submenu-item ">
+      <li className="nav-submenu-item ">
         <a onClick={this.handleLogout}>Logout</a>
       </li>
     </ul>
@@ -36,14 +32,10 @@ class Navbar extends React.Component {
           Welcome {currentUser.username}!
           </span>
         <nav className="nav">
-          <ul className="nav__menu">
-            <li
-              className="nav__menu-item"
-            >
-              <a>Profile</a>
+            <ul className="nav-menu">
+              <a>PROFILE</a>
               {submenu}
-            </li>
-          </ul>
+            </ul>
         </nav>
       </div>
     ) : (
