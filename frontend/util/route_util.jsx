@@ -19,7 +19,7 @@ const Protected = ({ loggedIn, path, component: Componet }) => (
     <Route
         path={path}
         render={props => (
-            loggedIn ? <Componet {...props} /> : <Redirect to='/signup' />
+            loggedIn ? <Componet {...props} /> : <Redirect to='/' />
         )}
     />
 );
