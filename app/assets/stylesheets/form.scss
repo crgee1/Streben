@@ -1,6 +1,6 @@
 .form-container {
     display: flex;
-    justify-content: center;
+    // justify-content: center;
     align-items: center;
     text-align: center; 
     flex-direction: column;
@@ -12,6 +12,7 @@
 }
 
 .form-errors {
+    top: 10px;
     background-color: red;
     width: 400px;
     color: white;
@@ -35,12 +36,27 @@ form {
     background-color: rgba(0,0,0,0.75);
     border-bottom-right-radius: 3px;
     border-bottom-left-radius: 3px;
+
+    input {
+        height: 40px;
+        width: 180px;
+        font-size: 13px;
+        color: lightgray;
+        background-color: rgba(0,0,0,0.75);
+        margin: 0;
+        -webkit-appearance: none;
+        border-style: none;
+        border-radius: 3px;
+        padding-left: 10px;
+        border: solid .5px lightgray;
+    }
  }
 
  .form-head {
     color: white;
     display: flex;
     text-align: center;
+    font-size: 34px;
     background-color: rgba(0,0,0,0.85);
     width: 400px;
     height: 82px;
@@ -51,17 +67,12 @@ form {
     border-top-right-radius: 3px;
  }
 
- form input {
-    color: lightgray;
-    background-color: rgba(0,0,0,0.75);
-    margin: 0;
-    -webkit-appearance: none;
-    border-style: none;
-    height: 20px;
-    width: 180px;
-    border-radius: 3px;
-    padding-left: 10px;
-    border: solid .5px lightgray;
+
+ form input:focus {
+     background-color: rgba(255,255,255,0.9);
+     box-shadow: 0 0 8px 0 rgba(255,255,255,0.8);
+     border: .5px solid rgba(0,0,0,0.5);
+     color: #333;
  }
 
  form button {
@@ -69,8 +80,9 @@ form {
      color: white;
      -webkit-appearance: none;
     border-style: none;
-    height: 20px;
-    width: 195px;
+    height: 40px;
+    width: 180px;
+    font-size: 13px;
     border-radius: 3px;
  }
 
@@ -83,4 +95,34 @@ form {
  form h3 {
      color: white;
      font-weight: 700;
+ }
+
+ .facebook {
+    display: flex;
+    text-align: center;
+    color: white;
+    // border-color: #2f4779;
+    background-color: #3f5d9e;
+    border-radius: 3px;
+    line-height: 20.3px;
+    padding: 6px 16px;
+    padding-left: 40px;
+    font-size: 14px;
+    font-weight: 700;
+    background-image: image-url('Facebook_icon.svg');
+    background-position: 0px;
+    background-size: 30px;
+    background-repeat: no-repeat;
+ }
+
+ .facebook:hover {
+     cursor: pointer;
+    //  background-color: #2f477a;
+     background-image: image-url('Facebook_icon.svg');
+     -webkit-filter: brightness(70%);
+    -webkit-transition: all .25s ease;
+    -moz-transition: all .25s ease;
+    -o-transition: all .25s ease;
+    -ms-transition: all .25s ease;
+    transition: all .25s ease;
  }

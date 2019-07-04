@@ -50,6 +50,7 @@ class SessionForm extends React.Component {
                     <h3 className='form-head'>{this.props.formType}</h3>
                 {this.renderErrors()}
                 <form>
+                    <a className="facebook">{this.props.formType} using Facebook</a>
                     <input
                         type="text"
                         value={this.state.username}

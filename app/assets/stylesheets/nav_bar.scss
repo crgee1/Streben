@@ -12,17 +12,17 @@
     border-bottom: .5px solid lightgray;
 }
 
-.navbar-side {
+.navbar-right-side {
     background-color: white;
     display: flex;
     align-items: center;
     align-content: center;
     width: 300px;
-    margin-right: 40px;
+    margin-right: 75px;
     justify-content: flex-end;
 }
 
-.navbar-side > span {
+.navbar-right-side > span {
     padding-left: 15px;
     // padding-right: 10px;
     padding-bottom: 5px;

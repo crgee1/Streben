@@ -13,7 +13,7 @@ class Navbar extends React.Component {
   }
 
   render() {
-    const submenu = <ul className="drop-submenu">
+    const submenuRight = <ul className="drop-submenu">
       <li className="drop-submenu-item ">
         <a>Profile</a>
       </li>
@@ -25,9 +25,18 @@ class Navbar extends React.Component {
       </li>
     </ul>
 
+    const submenuLeft = <ul className="drop-submenu">
+      <li className="drop-submenu-item ">
+        <a>Activity Fee</a>
+      </li>
+      <li className="drop-submenu-item ">
+        <a>My Routes</a>
+      </li>
+    </ul>
+
   const {currentUser} = this.props;
-  const display = currentUser ? (
-      <div className="navbar-side">
+  const displayRight = currentUser ? (
+      <div className="navbar-right-side">
         <span className='welcome'>
           Welcome {currentUser.username}!
         </span>
@@ -35,13 +44,13 @@ class Navbar extends React.Component {
             <nav className="drop">
               <ul className="drop-menu">
                 <a>PROFILE</a>
-                {submenu}
+                {submenuRight}
               </ul>
             </nav>
         </span>
       </div>
     ) : (
-      <div className="navbar-side">
+      <div className="navbar-right-side">
         <span>
           <Link className="btn" to="/signup">Sign Up</Link>
         </span>
@@ -53,11 +62,24 @@ class Navbar extends React.Component {
         </span>
       </div>
     );
+
+    // const displayLeft = currentUser ? (
+    // <div className="navbar-left-side"> 
+    //   <span>
+    //   <nav className="drop">
+    //     <ul className="drop-menu">
+    //       <a>Dashboard</a>
+    //       {submenuLeft}
+    //     </ul>
+    //   </nav>
+    // </span></div> ) : null;
+
     return (
       <header className="navbar-main">
         <Link className="logo" to="/dashboard">STREBEN</Link>
         <div>
-          {display}
+          {/* {displayLeft} */}
+          {displayRight}
         </div>
       </header>
     )
