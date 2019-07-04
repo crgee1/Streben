@@ -1,9 +1,11 @@
-.nav {
+.drop {
   display: inline-block;
   color: white;
   border-radius: 3px;
   font-weight: 700;
-  font-size: 7px;
+  font-size: 10px;
+  margin-right: 24px;
+  // padding: 8px 10px;
   a {
     display: block;
     padding: 0 16px;
@@ -11,10 +13,10 @@
   }
 }
 
-.nav-menu {
+.drop-menu {
   border-radius: 3px;
   background-color: orangered;
-  line-height: 20px;
+  line-height: 29px;
   display: inline-block;
   position: relative;
 
@@ -23,13 +25,13 @@
     
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
-    .nav-submenu {
+    .drop-submenu {
     display: block;
     }
   }
 }
     
-.nav-submenu {
+.drop-submenu {
   right: 0px;
   font-weight: 300;
   text-transform: none;
@@ -39,7 +41,7 @@
   background-color: orangered;
 }
     
-.nav-submenu-item {
+.drop-submenu-item {
   &:hover {
     background: rgba(#000, 0.1);
   }

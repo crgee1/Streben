@@ -3,11 +3,14 @@
     background-color: white;
     display: flex;
     justify-content: space-between;
-    padding: 0 14px;
+    padding: 0;
     align-items: center;
-    height: 30px;
+    height: 55px;
     position: fixed;
     width: 100%;
+    padding-right: 32px;
+    padding-left: 32px;
+    border-bottom: .5px solid lightgray;
 }
 
 .navbar-side {
@@ -16,7 +19,7 @@
     align-items: center;
     align-content: center;
     width: 300px;
-    padding-right: 60px;
+    margin-right: 40px;
     justify-content: flex-end;
 }
 
@@ -28,10 +31,10 @@
 
 .logo {
     font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
+    font-size: 25px;
     font-weight: 900;
     color: orangered;
-    letter-spacing: -2px;
+    letter-spacing: -1.2px;
     text-decoration: none;
 }
 
@@ -39,8 +42,8 @@
     background-color: orangered;
     color: white;
     border-radius: 3px;
-    font-size: 7px;
-    padding: 4.5px 10px;
+    font-size: 10px;
+    padding: 8px 10px;
     font-weight: 700;
     text-decoration: none;
     -webkit-appearance: none;

@@ -13,14 +13,14 @@ class Navbar extends React.Component {
   }
 
   render() {
-    const submenu = <ul className="nav-submenu">
-      <li className="nav-submenu-item ">
+    const submenu = <ul className="drop-submenu">
+      <li className="drop-submenu-item ">
         <a>Profile</a>
       </li>
-      <li className="nav-submenu-item ">
+      <li className="drop-submenu-item ">
         <a>Friends</a>
       </li>
-      <li className="nav-submenu-item ">
+      <li className="drop-submenu-item ">
         <a onClick={this.handleLogout}>Logout</a>
       </li>
     </ul>
@@ -31,8 +31,8 @@ class Navbar extends React.Component {
         <span className='welcome'>
           Welcome {currentUser.username}!
           </span>
-        <nav className="nav">
-            <ul className="nav-menu">
+        <nav className="drop">
+            <ul className="drop-menu">
               <a>PROFILE</a>
               {submenu}
             </ul>

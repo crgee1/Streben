@@ -25,8 +25,8 @@ class SessionForm extends React.Component {
     handleDemo() {
         
         let i = 0;
-        let user = 'username';
-        let pword = 'password';
+        let user = ' username';
+        let pword = ' password';
         const typeWriter = () => {
             if (i < user.length) {
                 document.getElementById('username').value += user.charAt(i);
