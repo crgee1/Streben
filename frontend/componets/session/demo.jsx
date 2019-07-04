@@ -22,8 +22,7 @@ class SessionForm extends React.Component {
         this.handleDemo();
     }
 
-    handleDemo(e) {
-        e.preventDefault();
+    handleDemo() {
         
         let i = 0;
         let user = 'username';
