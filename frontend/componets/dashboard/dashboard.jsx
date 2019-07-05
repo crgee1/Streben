@@ -1,32 +1,29 @@
 import React from 'react';
 
 class Dashboard extends React.Component {
-    constructor(props) {
-        super(props);
-        this.handleLogout = this.handleLogout.bind(this);
-        this.handleButtonClick = this.handleButtonClick.bind(this);
-    }
-    
-    handleButtonClick(e) {
-        e.preventDefault;
-        this.setState(state => {
-            return {
-                open: !state.open,
-            };
-        });
-    }
+  constructor(props) {
+    super(props);
+    this.handleLogout = this.handleLogout.bind(this);
+    this.handleButtonClick = this.handleButtonClick.bind(this);
+  }
 
-    handleLogout(e) {
-        e.preventDefault;
-        this.props.logout();
-    }
+  handleButtonClick(e) {
+    e.preventDefault;
+    this.setState(state => ({
+      open: !state.open,
+    }));
+  }
 
-    render() {
-        return (
-            <div className="dashboard">Dash</div>
-        )
-    }
+  handleLogout(e) {
+      e.preventDefault;
+      this.props.logout();
+  }
 
+  render() {
+    return (
+      <div className="dashboard">Dash</div>
+    );
+  }
 }
 
 export default Dashboard;

@@ -9,5 +9,3 @@ export default combineReducers({
   session,
   errors,
 });
-
-

@@ -15,31 +15,32 @@ class Navbar extends React.Component {
   render() {
     const { currentUser } = this.props;
 
-    const submenuRight = (<ul className="drop-submenu">
-      <li className="drop-submenu-item ">
-        <a>Profile</a>
-      </li>
-      <li className="drop-submenu-item ">
-        <a>Friends</a>
-      </li>
-      <li className="drop-submenu-item ">
-        <a onClick={this.handleLogout}>Logout</a>
-      </li>
-    </ul>
+    const submenuRight = (
+      <ul className="drop-submenu">
+        <li className="drop-submenu-item ">
+          <a>Profile</a>
+        </li>
+        <li className="drop-submenu-item ">
+          <a>Friends</a>
+        </li>
+        <li className="drop-submenu-item ">
+          <a onClick={this.handleLogout}>Logout</a>
+        </li>
+      </ul>
     );
 
-  const displayRight = currentUser ? (
+    const displayRight = currentUser ? (
       <div className="navbar-right-side">
         <span className="welcome">
           <h3>Welcome {currentUser.username}!</h3>
         </span>
         <span>
-            <nav className="drop">
-              <ul className="drop-menu">
-                <a>Profile</a>
-                {submenuRight}
-              </ul>
-            </nav>
+          <nav className="drop">
+            <ul className="drop-menu">
+              <a>Profile</a>
+              {submenuRight}
+            </ul>
+          </nav>
         </span>
       </div>
     ) : (
@@ -56,27 +57,29 @@ class Navbar extends React.Component {
       </div>
     );
 
-    const submenuLeft = (<ul className="drop-submenu">
-      <li className="drop-submenu-item ">
-        <a>Activity Feed</a>
-      </li>
-      <li className="drop-submenu-item ">
-        <a>My Routes</a>
-      </li>
-    </ul>
+    const submenuLeft = (
+      <ul className="drop-submenu">
+        <li className="drop-submenu-item ">
+          <a>Activity Feed</a>
+        </li>
+        <li className="drop-submenu-item ">
+          <a>My Routes</a>
+        </li>
+      </ul>
     );
 
     const displayLeft = currentUser ? (
-    <div className="navbar-left-side"> 
-      <span>
-        <nav className="drop">
-          <ul className="drop-menu">
-              <a>{'Dashboard \u2228'}</a>
-            {submenuLeft}
-          </ul>
-        </nav>
-      </span>
-    </div> ) : null;
+      <div className="navbar-left-side">
+        <span>
+          <nav className="drop">
+            <ul className="drop-menu">
+                <a>{'Dashboard \u2228'}</a>
+              {submenuLeft}
+            </ul>
+          </nav>
+        </span>
+      </div>
+    ) : null;
 
     return (
       <div className="navbar-main">
@@ -86,11 +89,11 @@ class Navbar extends React.Component {
             {displayLeft}
           </section>
           <section>
-          {displayRight}
+            {displayRight}
           </section>
         </section>
       </div>
-    )
+    );
   }
 }
 
