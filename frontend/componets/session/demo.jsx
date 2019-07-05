@@ -64,6 +64,7 @@ class SessionForm extends React.Component {
                     {this.renderErrors()}
                     <form>
                         <a className="facebook" onClick={this.facebookLogin}>Login In using Demo</a>
+                        <h3>Or Use The Demo</h3>
                         <input 
                             id='username'
                             type="text"

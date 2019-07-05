@@ -13,7 +13,9 @@ class Navbar extends React.Component {
   }
 
   render() {
-    const submenuRight = <ul className="drop-submenu">
+    const { currentUser } = this.props;
+
+    const submenuRight = (<ul className="drop-submenu">
       <li className="drop-submenu-item ">
         <a>Profile</a>
       </li>
@@ -24,26 +26,17 @@ class Navbar extends React.Component {
         <a onClick={this.handleLogout}>Logout</a>
       </li>
     </ul>
+    );
 
-    const submenuLeft = <ul className="drop-submenu">
-      <li className="drop-submenu-item ">
-        <a>Activity Fee</a>
-      </li>
-      <li className="drop-submenu-item ">
-        <a>My Routes</a>
-      </li>
-    </ul>
-
-  const {currentUser} = this.props;
   const displayRight = currentUser ? (
       <div className="navbar-right-side">
-        <span className='welcome'>
-          Welcome {currentUser.username}!
+        <span className="welcome">
+          <h3>Welcome {currentUser.username}!</h3>
         </span>
         <span>
             <nav className="drop">
               <ul className="drop-menu">
-                <a>PROFILE</a>
+                <a>Profile</a>
                 {submenuRight}
               </ul>
             </nav>
@@ -63,25 +56,40 @@ class Navbar extends React.Component {
       </div>
     );
 
-    // const displayLeft = currentUser ? (
-    // <div className="navbar-left-side"> 
-    //   <span>
-    //   <nav className="drop">
-    //     <ul className="drop-menu">
-    //       <a>Dashboard</a>
-    //       {submenuLeft}
-    //     </ul>
-    //   </nav>
-    // </span></div> ) : null;
+    const submenuLeft = (<ul className="drop-submenu">
+      <li className="drop-submenu-item ">
+        <a>Activity Feed</a>
+      </li>
+      <li className="drop-submenu-item ">
+        <a>My Routes</a>
+      </li>
+    </ul>
+    );
+
+    const displayLeft = currentUser ? (
+    <div className="navbar-left-side"> 
+      <span>
+        <nav className="drop">
+          <ul className="drop-menu">
+              <a>{'Dashboard \u2228'}</a>
+            {submenuLeft}
+          </ul>
+        </nav>
+      </span>
+    </div> ) : null;
 
     return (
-      <header className="navbar-main">
+      <div className="navbar-main">
         <Link className="logo" to="/dashboard">STREBEN</Link>
-        <div>
-          {/* {displayLeft} */}
+        <section className="navbar-side">
+          <section>
+            {displayLeft}
+          </section>
+          <section>
           {displayRight}
-        </div>
-      </header>
+          </section>
+        </section>
+      </div>
     )
   }
 }
