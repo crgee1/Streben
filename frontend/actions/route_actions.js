@@ -26,7 +26,7 @@ const receiveErrors = errors => ({
 });
 
 export const createRoute = route => dispatch => (
-  APIUtil.fetchRoute(route)
+  APIUtil.createRoute(route)
     .then(route => (dispatch(receiveRoute(route)))),
   err => (dispatch(receiveErrors(err.responseJSON)))
 )
@@ -51,6 +51,5 @@ export const updateRoute = route => dispatch => (
 
 export const deleteRoute = id => dispatch => (
   APIUtil.deleteRoute(id)
-    .then(route => (dispatch(removeRoute(route)))),
-  err => (dispatch(receiveErrors(err.responseJSON)))
+    .then(route => (dispatch(removeRoute(route))))
 )

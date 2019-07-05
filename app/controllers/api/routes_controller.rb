@@ -1,6 +1,12 @@
 class Api::RoutesController < ApplicationController
   def create
     @route = Route.new(route_params)
+
+    if @route.save
+      render 'api/routes/show'
+    else
+      render json: @route.errors.full_messages, status: 422
+    end
   end
 
   def update
@@ -14,10 +20,12 @@ class Api::RoutesController < ApplicationController
 
   def index
     @routes = Route.all
+    render 'api/routes/index'
   end
 
   def show
     @route = Route.find(params[:id])
+    render 'api/routes/show'
   end
 
   def destroy
@@ -28,6 +36,6 @@ class Api::RoutesController < ApplicationController
   private
 
   def route_params
-    params.require(:route).permit(:name, :user_id, :distance, :elevation, :description)
+    params.require(:route).permit(:name, :user_id, :distance, :elevation, :description, :duration)
   end
 end

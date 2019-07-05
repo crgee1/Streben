@@ -8,7 +8,7 @@ const usersReducer = (state = {}, action) => {
       return merge({}, state, { [action.currentUser.id]: action.currentUser });
     default:
       return state;
-  }
+  };
 };
 
 export default usersReducer;
