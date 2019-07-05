@@ -66,10 +66,10 @@ class Navbar extends React.Component {
     const submenuLeft = (
       <ul className="drop-submenu-dash">
         <li className="drop-submenu-item ">
-          <a>Activity Feed</a>
+          <Link className='drop-submenu-item' to='/dashboard'>Activity Feed</Link>
         </li>
-        <li className="drop-submenu-item ">
-          <a>My Routes</a>
+        <li className="drop-submenu-item">
+          <Link className="drop-submenu-item" to="/routes">My Routes</Link>
         </li>
       </ul>
     );

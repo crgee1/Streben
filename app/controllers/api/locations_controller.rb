@@ -4,7 +4,7 @@ class Api::LocationsController < ApplicationController
   end
 
   def update
-    @location = Location.find(params[:id])
+    @location = current_user.routes.locations.find(params[:id])
     if @location.update_attributes(location_params)
       render 'api/locations/show'
     else

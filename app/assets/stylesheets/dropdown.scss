@@ -29,10 +29,9 @@
     border-left: 1px solid black;
     margin-left: -1px;
     margin-right: -1px;
-    // z-index: 20;
     .drop-submenu-dash, .drop-submenu-profile {
     display: block;
-    z-index: 10;
+    z-index: 100;
     }
   }
 }
@@ -41,7 +40,6 @@
   left: -1px;
   margin-top: 1px;
   color: #2d2d32;
-  // right: 0px;
   font-weight: 300;
   text-transform: none;
   display: none;
@@ -49,14 +47,12 @@
   width: 200px;
   background-color: white;
   border: solid 1px #2d2d32;
-  // border-top: solid 1px transparent;
 }
 
 .drop-submenu-profile {
   left: -126px;
   margin-top: 1px;
   color: #2d2d32;
-  // right: 0px;
   font-weight: 300;
   text-transform: none;
   display: none;
@@ -64,11 +60,17 @@
   width: 200px;
   background-color: white;
   border: solid 1px #2d2d32;
-  // border-top: solid 1px transparent;
 }
     
 .drop-submenu-item {
   &:hover {
     background: rgba(#000, 0.1);
+  }
+}
+
+.drop-submenu-item {
+  a {
+    text-decoration: none;
+    color: #2d2d32
   }
 }
