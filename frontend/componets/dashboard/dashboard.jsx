@@ -1,3 +1,6 @@
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-expressions */
 import React from 'react';
 
 class Dashboard extends React.Component {
@@ -15,8 +18,8 @@ class Dashboard extends React.Component {
   }
 
   handleLogout(e) {
-      e.preventDefault;
-      this.props.logout();
+    e.preventDefault;
+    this.props.logout();
   }
 
   render() {

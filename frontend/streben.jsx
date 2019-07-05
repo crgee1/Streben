@@ -4,7 +4,7 @@ import configureStore from './store/store';
 import Root from './componets/root';
 
 document.addEventListener('DOMContentLoaded', () => {
-  let preloadedState = undefined;
+  let preloadedState;
   if (window.currentUser) {
     preloadedState = {
       session: { currentUser: window.currentUser },

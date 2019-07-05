@@ -29,22 +29,42 @@
     border-left: 1px solid black;
     margin-left: -1px;
     margin-right: -1px;
-    .drop-submenu {
+    // z-index: 20;
+    .drop-submenu-dash, .drop-submenu-profile {
     display: block;
+    z-index: 10;
     }
   }
 }
-    
-.drop-submenu {
+   
+.drop-submenu-dash {
+  left: -1px;
   margin-top: 1px;
   color: #2d2d32;
-  right: 0px;
+  // right: 0px;
   font-weight: 300;
   text-transform: none;
   display: none;
   position: absolute;
   width: 200px;
   background-color: white;
+  border: solid 1px #2d2d32;
+  // border-top: solid 1px transparent;
+}
+
+.drop-submenu-profile {
+  left: -126px;
+  margin-top: 1px;
+  color: #2d2d32;
+  // right: 0px;
+  font-weight: 300;
+  text-transform: none;
+  display: none;
+  position: absolute;
+  width: 200px;
+  background-color: white;
+  border: solid 1px #2d2d32;
+  // border-top: solid 1px transparent;
 }
     
 .drop-submenu-item {

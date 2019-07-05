@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
 import React from 'react';
 
 class Login extends React.Component {
@@ -25,7 +27,7 @@ class Login extends React.Component {
 
   renderErrors() {
     return (
-      <div className='form-errors'>
+      <div className="form-errors">
 
         {this.props.errors.map((error, i) => (
           <ul>
@@ -41,8 +43,8 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div >
-        <div className='form-container'>
+      <div>
+        <div className="form-container">
           <h3 className='form-head'>{this.props.formType}</h3>
           {this.renderErrors()}
           <form>

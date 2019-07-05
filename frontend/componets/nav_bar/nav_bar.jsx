@@ -1,3 +1,9 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable no-unused-expressions */
+/* eslint-disable react/prop-types */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -16,7 +22,7 @@ class Navbar extends React.Component {
     const { currentUser } = this.props;
 
     const submenuRight = (
-      <ul className="drop-submenu">
+      <ul className="drop-submenu-profile">
         <li className="drop-submenu-item ">
           <a>Profile</a>
         </li>
@@ -32,7 +38,7 @@ class Navbar extends React.Component {
     const displayRight = currentUser ? (
       <div className="navbar-right-side">
         <span className="welcome">
-          <h3>Welcome {currentUser.username}!</h3>
+          <h3>Welcome { currentUser.username }!</h3>
         </span>
         <span>
           <nav className="drop">
@@ -58,7 +64,7 @@ class Navbar extends React.Component {
     );
 
     const submenuLeft = (
-      <ul className="drop-submenu">
+      <ul className="drop-submenu-dash">
         <li className="drop-submenu-item ">
           <a>Activity Feed</a>
         </li>
@@ -73,7 +79,7 @@ class Navbar extends React.Component {
         <span>
           <nav className="drop">
             <ul className="drop-menu">
-                <a>{'Dashboard \u2228'}</a>
+              <a>{'Dashboard \u2228'}</a>
               {submenuLeft}
             </ul>
           </nav>
