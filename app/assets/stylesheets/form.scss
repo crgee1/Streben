@@ -1,12 +1,10 @@
 .form-container {
     display: flex;
-    // justify-content: center;
     align-items: center;
     text-align: center; 
     flex-direction: column;
     width: 100%;
     height: 100vh;
-    // margin-top: 90px;
     padding-top: 116px;
     background-size: cover;
     background-image: image-url('running_sf.jpg');  
@@ -40,7 +38,7 @@ form {
 
     input {
         height: 40px;
-        width: 180px;
+        width: 300px;
         font-size: 13px;
         color: lightgray;
         background-color: rgba(0,0,0,0.75);
@@ -100,12 +98,13 @@ form {
 
  .facebook {
     display: flex;
+    justify-content: center;
     text-align: center;
     color: white;
-    // border-color: #2f4779;
     background-color: #3f5d9e;
+    width: 255px;
     border-radius: 3px;
-    line-height: 20.3px;
+    line-height: 24px;
     padding: 6px 16px;
     padding-left: 40px;
     font-size: 14px;
