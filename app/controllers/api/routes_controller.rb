@@ -4,7 +4,7 @@ class Api::RoutesController < ApplicationController
   end
 
   def update
-    @route = Route.find(params[:id])
+    @route = current_user.routes.find(params[:id])
     if @route.update_attributes(route_params)
       render 'api/routes/show'
     else
