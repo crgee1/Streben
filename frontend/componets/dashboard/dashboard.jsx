@@ -24,7 +24,7 @@ class Dashboard extends React.Component {
 
   render() {
     return (
-      <div className="dashboard">Dash</div>
+      <div className="dashboard">Activity Feed</div>
     );
   }
 }

@@ -1,6 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 class Navbar extends React.Component {
   constructor(props) {
@@ -19,10 +18,10 @@ class Navbar extends React.Component {
     const submenuRight = (
       <ul className="drop-submenu-profile">
         <li className="drop-submenu-item ">
-          <a>Profile</a>
+          <a>My Profile</a>
         </li>
         <li className="drop-submenu-item ">
-          <a>Friends</a>
+          <a>My Friends</a>
         </li>
         <li className="drop-submenu-item ">
           <a onClick={this.handleLogout}>Logout</a>
@@ -38,7 +37,7 @@ class Navbar extends React.Component {
         <span>
           <nav className="drop">
             <ul className="drop-menu">
-              <a>Profile</a>
+              <a>Account</a>
               {submenuRight}
             </ul>
           </nav>
