@@ -34,4 +34,3 @@ export const deleteRoute = (id) => (
     url: `api/routes/${id}`,
   })
 )
-

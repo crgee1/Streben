@@ -1,6 +1,12 @@
 class Api::LocationsController < ApplicationController
   def create
     @location = Location.new(location_params)
+
+    if @location.save
+      render 'api/locations/show'
+    else
+      render json: @location.errors.full_messages, status: 422
+    end
   end
 
   def update
@@ -30,6 +36,6 @@ class Api::LocationsController < ApplicationController
   private
 
   def location_params
-    params.require(:location).permit(:name, :user_id, :distance, :elevation, :description)
+    params.require(:location).permit(:route_id, :order, :latitude, :longitude)
   end
 end
