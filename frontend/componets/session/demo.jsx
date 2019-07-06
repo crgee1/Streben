@@ -30,7 +30,7 @@ class SessionForm extends React.Component {
 
   handleDemo() {
     let i = 0;
-    const user = ' username';
+    const user = ' DemoUser';
     const pword = ' password';
     const typeWriter = () => {
       if (i < user.length) {
@@ -45,7 +45,7 @@ class SessionForm extends React.Component {
   }
 
   handleSubmit() {
-    this.props.submitAction({ username: 'username', password: 'password' })
+    this.props.submitAction({ username: 'DemoUser', password: 'password' })
       .then(() => this.props.history.push('/dashboard'));
   }
 

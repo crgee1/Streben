@@ -19,7 +19,7 @@ class SessionForm extends React.Component {
   }
 
   facebookLogin() {
-    this.props.login({ username: 'username', password: 'password' })
+    this.props.login({ username: 'DemoUser', password: 'password' })
       .then(() => this.props.history.push('/dashboard'));
   }
 

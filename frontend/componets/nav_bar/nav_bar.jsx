@@ -1,10 +1,5 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable no-unused-expressions */
-/* eslint-disable react/prop-types */
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 class Navbar extends React.Component {
@@ -87,20 +82,25 @@ class Navbar extends React.Component {
       </div>
     ) : null;
 
-    return (
-      <div className="navbar-main">
-        <Link className="logo" to="/dashboard">STREBEN</Link>
-        <section className="navbar-side">
-          <section>
-            {displayLeft}
-          </section>
-          <section>
-            {displayRight}
-          </section>
+    const onTheRoutes = this.props.location.pathname !== '/routes' ? (<div className="navbar-main">
+      <Link className="logo" to="/dashboard">STREBEN</Link>
+      <section className="navbar-side">
+        <section>
+          {displayLeft}
         </section>
+        <section>
+          {displayRight}
+        </section>
+      </section>
+    </div>
+    ) : null;
+    
+    return (
+      <div>
+        {onTheRoutes}
       </div>
     );
   }
 }
 
-export default Navbar;
+export default withRouter(Navbar);
