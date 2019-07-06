@@ -12,10 +12,10 @@ class Api::LocationsController < ApplicationController
     end
   end
 
-  # def index
-  #   @locations = Location.all
-  #   render 'api/locations/index'
-  # end
+  def index
+    @locations = current_user.routes.locations
+    render 'api/locations/index'
+  end
 
   def show
     @location = Location.find(params[:id])
