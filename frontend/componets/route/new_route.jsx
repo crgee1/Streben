@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 function initMap() {
   let map = new google.maps.Map(document.getElementById('map'), {
     zoom: 18,
-    center: { lat: 37.7989687, lng: -122.4024461 }  // Australia.
+    center: { lat: 37.7989687, lng: -122.4024461 }  // 825 Battery
   });
   let directionsService = new google.maps.DirectionsService;
   let directionsDisplay = new google.maps.DirectionsRenderer({
