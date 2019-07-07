@@ -15,6 +15,7 @@
 
 class Route < ApplicationRecord
   validates :user_id, :distance, :duration, :elevation, :name, presence: true
+  validates :name, uniqueness: true
 
   belongs_to :user
   has_many :locations
