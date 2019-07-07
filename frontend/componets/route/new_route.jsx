@@ -98,7 +98,7 @@ class RouteMap extends React.Component {
             <h1>ROUTE BUILDER</h1>
           </section>
           <section>
-            <Link className='exit-button' to='/route'>Exit Builder</Link>
+            <Link className='exit-button' to='/routes'>Exit Builder</Link>
           </section>
         </div>
         <div id="map"></div>
