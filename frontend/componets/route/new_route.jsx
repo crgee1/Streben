@@ -16,11 +16,9 @@ function initMap() {
   });
 
   google.maps.event.addListener(map, 'click', (event) => {
-    // console.log(event.latLng.lat(), event.latLng.lng());
     placeMarker(event.latLng);
   });
 
-  
   let markerArr = [];
   function placeMarker(location) {
     var marker = new google.maps.Marker({
@@ -34,8 +32,6 @@ function initMap() {
       displayRoute(markerArr[0].position, markerArr[markerArr.length - 1].position, directionsService, directionsDisplay);
       // displayRoute('San Francisco, CA', 'Daly City, CA', directionsService, directionsDisplay);
     }
-
-    
   }
 
   directionsDisplay.addListener('directions_changed', function () {
@@ -43,8 +39,6 @@ function initMap() {
   });
 
 }
-
-
 
 function displayRoute(origin, destination, service, display) {
   service.route({
@@ -74,12 +68,18 @@ function computeTotalDistance(result) {
   distance = distance.toFixed(2);
   let time = (60 * distance / 4.43).toFixed(2);
 
-  document.getElementById('duration').innerHTML = time;
+  document.getElementById('duration').innerHTML = displayTime(time);
   document.getElementById('distance').innerHTML = distance + ' mi';
 }
 
 function displayTime(minutes) {
-  
+  let hour = Math.floor(minutes / 60);
+  let min = Math.floor(minutes%60);
+  let sec = minutes % 1;
+  sec = Math.floor(60 * sec);
+  if (sec < 10) sec = `0${sec}`;
+  if (hour >= 1 && min < 10) min = `0${min}`
+  return hour >= 1 ? `${hour}:${min}:${sec}` : `${min}:${sec}`
 }
 
 window.initMap = initMap;
@@ -105,7 +105,7 @@ class RouteMap extends React.Component {
         <div id="right-panel">
           <ul className='stats'>
             <label>Est. Time
-                <li id='duration'></li>
+              <li id='duration'></li>
             </label>
             <label>Distance
               <li id='distance'></li>
@@ -120,4 +120,5 @@ class RouteMap extends React.Component {
     )
   }
 }
+
 export default RouteMap;
