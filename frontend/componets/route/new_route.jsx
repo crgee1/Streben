@@ -86,6 +86,7 @@ import { Link } from 'react-router-dom';
 class RouteMap extends React.Component {
   constructor(props) {
     super(props);
+
     this.markersArr = [];
     this.placeMarker = this.placeMarker.bind(this);
     this.displayRoute = this.displayRoute.bind(this);
@@ -120,10 +121,8 @@ class RouteMap extends React.Component {
     marker.setMap(this.map);
     this.markersArr.push(marker);
     if (this.markersArr.length >= 2) {
-      this.markersArr[0].setMap(null);
-      this.markersArr[this.markersArr.length - 1].setMap(null);
-      this.displayRoute(this.markersArr[0].position, this.markersArr[this.markersArr.length - 1].position, this.directionsService, this.directionsRender);
-      // displayRoute('San Francisco, CA', 'Daly City, CA', directionsService, directionsDisplay);
+      this.markersArr.forEach(mark => mark.setMap(null));
+      this.displayRoute(this.markersArr[0].position, this.markersArr[this.markersArr.length - 1].position, this.markersArr.slice(1, this.markersArr.length-1), this.directionsService, this.directionsRender);
     }
   }
 
@@ -142,11 +141,11 @@ class RouteMap extends React.Component {
     document.getElementById('distance').innerHTML = distance + ' mi';
   }
 
-  displayRoute(origin, destination, service, render) {
+  displayRoute(origin, destination, midpoints, service, render) {
     service.route({
       origin: origin,
       destination: destination,
-      // waypoints: [{ location: 'Adelaide, SA' }, { location: 'Broken Hill, NSW' }],
+      waypoints: midpoints.map(mark => ({location: mark.position})),
       travelMode: 'WALKING',
       // unitSystem: google.maps.UnitSystem.IMPERIAL,
       avoidTolls: true
@@ -172,14 +171,31 @@ class RouteMap extends React.Component {
   render() {
     return (
       <div>
-        <div className='route-navbar'>
-          <section className='route-nav-left'>
-            <Link className="logo" to="/dashboard">STREBEN</Link>
-            <h1>ROUTE BUILDER</h1>
-          </section>
-          <section>
-            <Link className='exit-button' to='/routes'>Exit Builder</Link>
-          </section>
+        <div>
+          <div className='route-navbar'>
+            <section className='route-nav-left'>
+              <Link className="logo" to="/dashboard">STREBEN</Link>
+              <h1>ROUTE BUILDER</h1>
+            </section>
+            <section>
+              <Link className='exit-btn' to='/routes'>Exit Builder</Link>
+            </section>
+          </div>
+          <div className='route-toolbar'>
+            <div className='toolbar-btn'>
+              <div className='toolbar-btn-icon'></div>
+              <div className='toolbar-btn-label'>Undo</div>
+            </div>
+            <div className='toolbar-btn'>
+              <div className='toolbar-btn-icon'></div>
+              <div className='toolbar-btn-label'>Redo</div>
+            </div>
+            <div className='toolbar-btn'>
+              <div className='toolbar-btn-icon'></div>
+              <div className='toolbar-btn-label'>Clear</div>
+            </div>
+            <button className='btn'>Save</button>
+          </div>
         </div>
         <div id="map" ref='map'></div>
         <div id="right-panel">
@@ -189,6 +205,9 @@ class RouteMap extends React.Component {
             </label>
             <label>Distance
               <li id='distance'></li>
+            </label>
+            <label>Elevation
+              <li id='elevation'></li>
             </label>
           </ul>
         </div>

@@ -18,8 +18,9 @@
 }
 
 #map {
-  height: 96vh;
+  height: 89vh;
   width: 100%;
+  top: 42px;
 }
 
 #right-panel {
@@ -67,13 +68,37 @@
   }
 }
 
-.exit-button {
+.exit-btn {
   color: #999;
   font-size: 13px;
   font-weight: 400;
   text-decoration: none;
   line-height: 22px;
   letter-spacing: 0px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.route-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #F1F1F1;
+  font-size: 13px;
+  // line-height: 1.4em;
+  padding: 0px 10px 0 10px;
+  height: 38px;
+}
+
+.toolbar-btn {
+  line-height: 38px;
+
+  &:hover {
+    background-color: #DDD;
+    cursor: pointer;
+  }
 }
 
 .warnbox-content {

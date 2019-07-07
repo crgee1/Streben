@@ -11,13 +11,14 @@
     background-color: #fff;
     width: 281px;
     height: 700px;
-    
+    border-radius: 4px;
 }
 
 .activity-feed {
     background-color: #fff;
     width: 593px;
     height: 700px;
+    border-radius: 4px;
 }
 
 .banner {
@@ -27,6 +28,8 @@
     background-image: image-url('running_banner.jpg');
     height: 180px;
     width: 100%;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
 }
 
 .profile-card {

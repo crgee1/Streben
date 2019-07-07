@@ -29,6 +29,7 @@ class Dashboard extends React.Component {
           <section className='profile-card'>
             <section className='avatar-image'>
               <h1>
+                {console.log(currentUser)}
                   {currentUser.username[0]}
               </h1>
             </section>
