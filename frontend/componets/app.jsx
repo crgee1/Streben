@@ -7,6 +7,7 @@ import DemoLoginContainer from './session/demo_login_container';
 import Splash from './splash/splash';
 import DashboardContainer from './dashboard/dashboard_container'
 import RouteComponent from './route/route';
+import NewRoute from './route/new_route';
 import { AuthRoute, ProtectedRoute } from '../util/route_util'
 
 const App = () => (
@@ -16,6 +17,7 @@ const App = () => (
             <AuthRoute exact path='/' component={Splash} />
             <ProtectedRoute path='/dashboard' component={DashboardContainer}/>
             <ProtectedRoute path='/routes' component={RouteComponent} />
+            <ProtectedRoute path='/routes/new' component={NewRoute} />
             <AuthRoute path="/signup" component={SignUpContainer} />
             <AuthRoute path="/login" component={LoginContainer} />
             <AuthRoute path="/demo" component={DemoLoginContainer} />

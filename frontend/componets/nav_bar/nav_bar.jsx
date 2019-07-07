@@ -81,7 +81,7 @@ class Navbar extends React.Component {
       </div>
     ) : null;
 
-    const onTheRoutes = this.props.location.pathname !== '/routes' ? (<div className="navbar-main">
+    const onTheRoutes = this.props.location.pathname !== '/routes/new' ? (<div className="navbar-main">
       <Link className="logo" to="/dashboard">STREBEN</Link>
       <section className="navbar-side">
         <section>

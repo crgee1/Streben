@@ -1,1 +1,1 @@
-json.extract! location, :id, :route_id, :order, :latitide, :longitude
+json.extract! location, :id, :route_id, :order, :latitude, :longitude

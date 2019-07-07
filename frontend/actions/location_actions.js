@@ -51,6 +51,6 @@ export const updateLocation = location => dispatch => (
 
 export const deleteLocation = id => dispatch => (
   APIUtil.deleteLocation(id)
-    .then(id => (dispatch(removeLocation(id)))),
+    .then(location => (dispatch(removeLocation(location)))),
     err => (dispatch(receiveErrors(err.responseJSON)))
 )
