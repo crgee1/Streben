@@ -8,6 +8,7 @@ import Splash from './splash/splash';
 import DashboardContainer from './dashboard/dashboard_container'
 import RouteComponent from './route/route';
 import NewRoute from './route/new_route';
+import TrainingContainer from './training/training_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util'
 
 const App = () => (
@@ -18,6 +19,7 @@ const App = () => (
             <ProtectedRoute path='/dashboard' component={DashboardContainer}/>
             <ProtectedRoute path='/routes/new' component={NewRoute} />
             <ProtectedRoute path='/routes' component={RouteComponent} />
+            <ProtectedRoute path='/training' component={TrainingContainer} />
             <AuthRoute path="/signup" component={SignUpContainer} />
             <AuthRoute path="/login" component={LoginContainer} />
             <AuthRoute path="/demo" component={DemoLoginContainer} />
