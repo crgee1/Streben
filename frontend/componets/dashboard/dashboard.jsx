@@ -44,10 +44,10 @@ class Dashboard extends React.Component {
         </div>
         <div className='advertise'>
           <section>
-            <a href="https://www.linkedin.com/in/christopher-gee-426527118" class='personal-adver'>Linkedin</a>
+            <a href="https://www.linkedin.com/in/christopher-gee-426527118" className='personal-adver'>Linkedin</a>
           </section>
           <section>
-            <a href="https://github.com/crgee1" class='personal-adver'>GitHub</a>
+            <a href="https://github.com/crgee1" className='personal-adver'>GitHub</a>
           </section>
         </div>
       </div>
