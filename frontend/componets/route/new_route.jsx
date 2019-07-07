@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 function initMap() {
   let map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 18,
+    zoom: 16,
     center: { lat: 37.7989687, lng: -122.4024461 }  // 825 Battery
   });
   let directionsService = new google.maps.DirectionsService;
@@ -15,27 +15,36 @@ function initMap() {
     // panel: document.getElementById('right-panel')
   });
 
+  google.maps.event.addListener(map, 'click', (event) => {
+    // console.log(event.latLng.lat(), event.latLng.lng());
+    placeMarker(event.latLng);
+  });
+
+  
+  let markerArr = [];
+  function placeMarker(location) {
+    var marker = new google.maps.Marker({
+      position: location,
+    });
+    marker.setMap(map);
+    markerArr.push(marker);
+    if (markerArr.length >= 2) {
+      markerArr[0].setMap(null);
+      markerArr[markerArr.length - 1].setMap(null);
+      displayRoute(markerArr[0].position, markerArr[markerArr.length - 1].position, directionsService, directionsDisplay);
+      // displayRoute('San Francisco, CA', 'Daly City, CA', directionsService, directionsDisplay);
+    }
+
+    
+  }
+
   directionsDisplay.addListener('directions_changed', function () {
     computeTotalDistance(directionsDisplay.getDirections());
   });
 
-  displayRoute('San Francisco, CA', 'Daly City, CA', directionsService,
-    directionsDisplay);
-
-
-  google.maps.event.addListener(map, 'click', (event) => {
-    console.log(event.latLng.lat());
-    placeMarker(event.latLng);
-  });
-
-  function placeMarker(location) {
-    var marker = new google.maps.Marker({
-      position: location,
-      map,
-    });
-  }
-
 }
+
+
 
 function displayRoute(origin, destination, service, display) {
   service.route({
@@ -43,6 +52,7 @@ function displayRoute(origin, destination, service, display) {
     destination: destination,
     // waypoints: [{ location: 'Adelaide, SA' }, { location: 'Broken Hill, NSW' }],
     travelMode: 'WALKING',
+    // unitSystem: google.maps.UnitSystem.IMPERIAL,
     avoidTolls: true
   }, function (response, status) {
     if (status === 'OK') {
@@ -65,7 +75,11 @@ function computeTotalDistance(result) {
   let time = (60 * distance / 4.43).toFixed(2);
 
   document.getElementById('duration').innerHTML = time;
-  document.getElementById('distance').innerHTML = distance;
+  document.getElementById('distance').innerHTML = distance + ' mi';
+}
+
+function displayTime(minutes) {
+  
 }
 
 window.initMap = initMap;
@@ -79,7 +93,13 @@ class RouteMap extends React.Component {
     return (
       <div>
         <div className='route-navbar'>
-          <Link className="logo" to="/dashboard">STREBEN</Link>
+          <section className='route-nav-left'>
+            <Link className="logo" to="/dashboard">STREBEN</Link>
+            <h1>ROUTE BUILDER</h1>
+          </section>
+          <section>
+            <Link className='exit-button' to='/route'>Exit Builder</Link>
+          </section>
         </div>
         <div id="map"></div>
         <div id="right-panel">

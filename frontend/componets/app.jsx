@@ -16,8 +16,8 @@ const App = () => (
         <Switch>
             <AuthRoute exact path='/' component={Splash} />
             <ProtectedRoute path='/dashboard' component={DashboardContainer}/>
-            <ProtectedRoute exact path='/routes' component={RouteComponent} />
             <ProtectedRoute path='/routes/new' component={NewRoute} />
+            <ProtectedRoute path='/routes' component={RouteComponent} />
             <AuthRoute path="/signup" component={SignUpContainer} />
             <AuthRoute path="/login" component={LoginContainer} />
             <AuthRoute path="/demo" component={DemoLoginContainer} />

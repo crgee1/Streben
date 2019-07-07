@@ -26,7 +26,7 @@
   position: fixed;
   top: 581px;
   left: 20px;
-  width: 87%;
+  width: 92%;
   height: 75px;
   background-color: rgba(255, 255, 255, 0.753)
 }
@@ -45,12 +45,35 @@
 }
 
 .route-navbar {
+  display: flex;
+  justify-content: space-between;
   padding: 16px;
   font-family: 'Montserrat', sans-serif;
   font-size: 25px;
   font-weight: 900;
   letter-spacing: -1.2px;
   text-decoration: none;
+
+  section {
+    display: flex;
+    // justify-content: space-around;
+    h1 {
+      padding-left: 10px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      line-height: 24px;
+    }
+  }
+}
+
+.exit-button {
+  color: #999;
+  font-size: 13px;
+  font-weight: 400;
+  text-decoration: none;
+  line-height: 22px;
+  letter-spacing: 0px;
 }
 
 .warnbox-content {
