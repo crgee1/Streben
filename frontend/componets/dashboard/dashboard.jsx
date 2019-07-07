@@ -29,7 +29,7 @@ class Dashboard extends React.Component {
           <section className='profile-card'>
             <section className='avatar-image'>
               <h1>
-                {currentUser.username[0]}
+                  {currentUser.username[0]}
               </h1>
             </section>
             <section className='profile-main-text'>
@@ -39,7 +39,17 @@ class Dashboard extends React.Component {
             </section>
           </section>
         </div>
-        <div className='activity-feed'></div>
+        <div className='activity-feed'>
+          <section className='banner'></section>
+        </div>
+        <div className='advertise'>
+          <section>
+            <a href="https://www.linkedin.com/in/christopher-gee-426527118" class='personal-adver'>Linkedin</a>
+          </section>
+          <section>
+            <a href="https://github.com/crgee1" class='personal-adver'>GitHub</a>
+          </section>
+        </div>
       </div>
     );
   }

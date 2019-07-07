@@ -1,8 +1,10 @@
 .dashboard-home {
+    display: flex;
+    justify-content: space-between;
     background-color: #f5f5fa;
     padding-top: 120px;
     height: 100vh;
-    padding-left: 40px;
+    padding-left: 34px;
 }
 
 .personal-stats {
@@ -14,7 +16,18 @@
 
 .activity-feed {
     background-color: #fff;
-    width: 593;
+    width: 593px;
+    height: 700px;
+    // margin-right: 190px;
+}
+
+.banner {
+    background-position-y: -41px;
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-image: image-url('running_banner.jpg');
+    height: 180px;
+    width: 100%;
 }
 
 .profile-card {
@@ -25,11 +38,15 @@
 }
 
 .profile-main-text {
-    margin-top: -20px;
+    margin-top: -16px;
     text-align: center;
     h1 {
         font-size: 22px;
         font-weight: 700;
+        color: #2d2d32;
+        &:hover {
+            color: #005b83;
+        }
     }
 }
 
@@ -39,8 +56,8 @@
     align-items: center;
     position: relative;
     top: -36px;
-    width: 75px;
-    height: 75px;
+    width: 70px;
+    height: 70px;
     background-color: rgb(6, 102, 158);
     border-radius: 50%;
     color: white;
@@ -50,4 +67,22 @@
         font-weight: 400;
 
     }
+}
+
+.advertise {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    // align-items: center;
+    width: 270px;
+    height: 400px;
+    margin-right: 40px;
+
+    section {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.185);
+    }
+}
+
+.personal-adver {
+    text-decoration: none;
 }
