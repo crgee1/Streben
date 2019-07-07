@@ -24,7 +24,23 @@ class Dashboard extends React.Component {
 
   render() {
     return (
-      <div className="dashboard">Activity Feed</div>
+      <div className="dashboard-home">
+        <div className='personal-stats'>
+          <section className='profile-card'>
+            <section className='avatar-image'>
+              <h1>
+                {currentUser.username[0]}
+              </h1>
+            </section>
+            <section className='profile-main-text'>
+              <h1>
+                {currentUser.username}
+              </h1>
+            </section>
+          </section>
+        </div>
+        <div className='activity-feed'></div>
+      </div>
     );
   }
 }

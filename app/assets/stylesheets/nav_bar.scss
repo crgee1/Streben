@@ -1,6 +1,6 @@
 .navbar-main {
     font-size: 16px;
-    background-color: white;
+    background-color: #fff;
     display: flex;
     justify-content: space-between;
     padding: 0;
@@ -10,6 +10,7 @@
     width: 100%;
     padding-left: 32px;
     border-bottom: .5px solid lightgray;
+    z-index: 30;
 }
 
 .navbar-side {

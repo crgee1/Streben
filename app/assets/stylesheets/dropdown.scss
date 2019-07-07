@@ -16,7 +16,7 @@
   font-size: 14px;
   margin-bottom: 2px;
   background-color: transparent;
-  line-height: 62px;
+  line-height: 69px;
   display: inline-block;
   position: relative;
   border-bottom: 2px solid orangered;
@@ -30,7 +30,7 @@
     margin-right: -1px;
     .drop-submenu-dash, .drop-submenu-profile {
     display: block;
-    z-index: 100;
+    z-index: 20;
     }
   }
 }
@@ -46,6 +46,7 @@
   width: 200px;
   background-color: white;
   border: solid 1px #2d2d32;
+  z-index: 20;
 }
 
 .drop-submenu-profile {

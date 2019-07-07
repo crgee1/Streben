@@ -1,6 +1,53 @@
-.dashboard {
+.dashboard-home {
     background-color: #f5f5fa;
-    padding-top: 60px;
+    padding-top: 120px;
     height: 100vh;
+    padding-left: 40px;
 }
 
+.personal-stats {
+    background-color: #fff;
+    width: 281px;
+    height: 700px;
+    
+}
+
+.activity-feed {
+    background-color: #fff;
+    width: 593;
+}
+
+.profile-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-main-text {
+    margin-top: -20px;
+    text-align: center;
+    h1 {
+        font-size: 22px;
+        font-weight: 700;
+    }
+}
+
+.avatar-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: -36px;
+    width: 75px;
+    height: 75px;
+    background-color: rgb(6, 102, 158);
+    border-radius: 50%;
+    color: white;
+    z-index: 1;
+    h1 {
+        font-size: 39px;
+        font-weight: 400;
+
+    }
+}
