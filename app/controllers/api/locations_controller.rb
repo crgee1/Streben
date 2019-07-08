@@ -31,6 +31,7 @@ class Api::LocationsController < ApplicationController
   def destroy
     @location = Location.find(params[:id])
     @location.destroy
+    render 'api/locations/index'
   end
 
   private

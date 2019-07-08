@@ -28,9 +28,11 @@ export const fetchWorkouts = () => (
   })
 )
 
-export const deleteWorkout = id => (
+export const deleteWorkout = id => {
+  debugger;
+  return (
   $.ajax({
     method: 'DELETE',
     url: `api/workouts/${id}`,
   })
-)
+  )}

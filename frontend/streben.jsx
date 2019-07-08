@@ -20,13 +20,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
   const store = configureStore(preloadedState);
 
-  window.getState = store.getState;
-  window.dispatch = store.dispatch;
-  window.createWorkout = createWorkout;
-  window.fetchWorkout = fetchWorkout;
-  window.fetchWorkouts = fetchWorkouts;
-  window.updateWorkout = updateWorkout;
-  window.deleteWorkout = deleteWorkout;
+  // window.getState = store.getState;
+  // window.dispatch = store.dispatch;
+  // window.createWorkout = createWorkout;
+  // window.fetchWorkout = fetchWorkout;
+  // window.fetchWorkouts = fetchWorkouts;
+  // window.updateWorkout = updateWorkout;
+  // window.deleteWorkout = deleteWorkout;
 
   ReactDOM.render(<Root store={store} />, root);
 });

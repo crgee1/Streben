@@ -15,10 +15,11 @@ const receiveWorkouts = workouts => ({
   workouts,
 })
 
-const removeWorkout = workout => ({
+const removeWorkout = workout => {
+  return {
   type: REMOVE_WORKOUT,
   workoutId: workout.id
-})
+}}
 
 const receiveErrors = errors => ({
   type: RECEIVE_WORKOUT_ERRORS,
@@ -49,7 +50,9 @@ export const updateWorkout = workout => dispatch => (
   err => (dispatch(receiveErrors(err.responseJSON)))
 )
 
-export const deleteWorkout = id => dispatch => (
+export const deleteWorkout = id => dispatch => {
+  debugger;
+  return (
   APIUtil.deleteWorkout(id)
     .then(workout => (dispatch(removeWorkout(workout))))
-)
+  )}

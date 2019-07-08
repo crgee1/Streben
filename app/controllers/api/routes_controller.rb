@@ -31,6 +31,7 @@ class Api::RoutesController < ApplicationController
   def destroy
     @route = Route.find(params[:id])
     @route.destroy
+    render 'api/routes/index'
   end
 
   private
