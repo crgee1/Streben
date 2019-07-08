@@ -1,8 +1,12 @@
 import React from 'react';
 
 class SaveRoute extends React.Component {
-  
+  constructor(props) {
+    super(props);
+  }
+
   render(){
+    console.log(this.props);
     return (
       <div className='save-route-modal'>
         <section className='save-header'>

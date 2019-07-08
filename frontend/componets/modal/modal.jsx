@@ -3,30 +3,39 @@ import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import SaveRouteContainer from '../route/save_route_container';
 
-function Modal({modal, closeModal}) {
-  if (!modal) {
-    return null;
+class Modal extends React.Component {
+  constructor(props) {
+    super(props);
   }
-  let component;
-  switch (modal) {
-    case 'saveRoute':
-      component = <SaveRouteContainer />;
-      break;
-    default:
+  
+  render() {
+    const { routeInfo } = this.props;
+    // console.log(routeInfo)
+    if (!this.props.modal) {
       return null;
-  }
+    }
+
+    switch (this.props.modal) {
+      case 'saveRoute':
+        this.component = <SaveRouteContainer routeInfo={routeInfo}/>;
+        break;
+      default:
+        return null;
+    }
+    
   return (
-    <div className="modal-background" onClick={closeModal}>
+    <div className="modal-background" onClick={this.props.closeModal}>
       <div className="modal-child" onClick={e => e.stopPropagation()}>
-        { component }
+        { this.component }
       </div>
     </div>
   );
 }
+}
 
 const mapStateToProps = state => {
   return {
-    modal: state.ui.modal
+    modal: state.ui.modal,
   };
 };
 

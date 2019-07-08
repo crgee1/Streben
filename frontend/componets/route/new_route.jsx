@@ -50,6 +50,7 @@ class RouteMap extends React.Component {
       if (cur < next) {
         sum += (next - cur);
       }
+      this.setState({ elevation: Math.round(sum) })
       document.getElementById('elevation').innerHTML = Math.round(sum) + ' ft';
     }
 
@@ -115,7 +116,7 @@ class RouteMap extends React.Component {
     distance = distance / 1.60934;
     distance = distance.toFixed(2);
     let time = (60 * distance / 4.43).toFixed(2);
-
+    this.setState({ duration: time, distance: distance })
     document.getElementById('duration').innerHTML = this.displayTime(time);
     document.getElementById('distance').innerHTML = distance + ' mi';
   }
@@ -150,20 +151,20 @@ class RouteMap extends React.Component {
   handleSave(e) {
     e.preventDefault();
     this.props.openModal('saveRoute');
-    console.log(this.markersArr)
-    console.log(this.markersArr[0].getPosition().lat())
-    console.log(this.markersArr.map((mark, i) => ({
-      latitude: mark.getPosition().lat(),
-      longitude: mark.getPosition().lng(),
-      order: i,
-    })))
-    console.log(this.state);
+    // console.log(this.markersArr)
+    // console.log(this.markersArr[0].getPosition().lat())
+    // console.log(this.markersArr.map((mark, i) => ({
+    //   latitude: mark.getPosition().lat(),
+    //   longitude: mark.getPosition().lng(),
+    //   order: i,
+    // })))
+    // console.log(this.state);
   }
 
   render() {
     return (
       <div>
-        <Modal locations={this.state}/>
+        <Modal routeInfo={this.state}/>
         <div>
           <div className='route-navbar'>
             <section className='route-nav-left'>

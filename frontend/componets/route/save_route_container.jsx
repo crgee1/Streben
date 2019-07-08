@@ -5,6 +5,10 @@ import SaveRoute from './save_route';
 import { createRoute } from '../../actions/route_actions';
 import { createLocation } from '../../actions/location_actions';
 
+const mapStatetoProps = state => ({
+  currentUser: state.session.currentUser
+})
+
 const mapDispatchToProps = dispatch => {
   return {
     closeModal: () => dispatch(closeModal()),
@@ -13,4 +17,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(SaveRoute);
+export default connect(mapStatetoProps, mapDispatchToProps)(SaveRoute);
