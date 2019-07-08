@@ -241,7 +241,7 @@ class RouteMap extends React.Component {
               <div className='toolbar-btn-icon'></div>
               <div className='toolbar-btn-label'>Clear</div>
             </div>
-            <button className='btn' onClick={() => openModal('login')}>Login</button>
+            <button className='btn' onClick={() => this.props.openModal('saveRoute')}>Save</button>
           </div>
         </div>
         <div id="map" ref='map'></div>

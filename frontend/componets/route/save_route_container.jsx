@@ -5,7 +5,6 @@ import SaveRoute from './save_route';
 
 const mapDispatchToProps = dispatch => {
   return {
-    processForm: (user) => dispatch(login(user)),
     closeModal: () => dispatch(closeModal()),
   };
 };

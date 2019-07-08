@@ -9,11 +9,8 @@ function Modal({modal, closeModal}) {
   }
   let component;
   switch (modal) {
-    case 'login':
+    case 'saveRoute':
       component = <SaveRouteContainer />;
-      break;
-    case 'signup':
-      component = <SignupFormContainer />;
       break;
     default:
       return null;
