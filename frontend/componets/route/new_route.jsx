@@ -115,50 +115,50 @@ class RouteMap extends React.Component {
         lat: mark.getPosition().lat(), 
         lng: mark.getPosition().lng() 
       }));
-      // path = [
-        // { lat: 36.579, lng: -118.292 },  // Mt. Whitney
-        // { lat: 36.606, lng: -118.0638 },  // Lone Pine
-        // { lat: 36.433, lng: -117.951 },  // Owens Lake
-        // { lat: 36.588, lng: -116.943 },  // Beatty Junction
-        // { lat: 36.34, lng: -117.468 },  // Panama Mint Springs
-        // { lat: 36.24, lng: -116.832 }];  // Badwater, Death Valley
 
-      // this.elevationService.getElevationAlongPath({ path: path, samples: 50, })
-      // console.log(path);
-      // console.log(this.elevationService.getElevationAlongPath({path: path, samples: 50}, this.plotElevation));
+      this.elevationService.getElevationAlongPath({ path: path, samples: 50, }, this.plotElevation)
       this.computeTotalDistance(this.directionsRender.getDirections(), );
     });
   }
 
   plotElevation(elevations, status) {
-    console.log(elevations, status);
-    var chartDiv = document.getElementById('elevation_chart');
-    if (status !== 'OK') {
-      // Show the error code inside the chartDiv.
-      chartDiv.innerHTML = 'Cannot show elevation: request failed because ' +
-        status;
-      return;
+    let sum = 0;
+    for (let i = 0; i < elevations.length - 1; i++) {
+      let cur = elevations[i].elevation;
+      let next = elevations[i+1].elevation;
+      if (cur < next) {
+        sum += (next - cur);
+      }
+      document.getElementById('elevation').innerHTML = Math.round(sum) + ' ft';
     }
+
+    // var chartDiv = document.getElementById('elevation_chart');
+    // if (status !== 'OK') {
+      // Show the error code inside the chartDiv.
+      // chartDiv.innerHTML = 'Cannot show elevation: request failed because ' +
+      //   status;
+    //   return;
+    // }
     // Create a new chart in the elevation_chart DIV.
-    var chart = new google.visualization.ColumnChart(chartDiv);
+    // var chart = new google.visualization.ColumnChart(chartDiv);
 
     // Extract the data from which to populate the chart.
     // Because the samples are equidistant, the 'Sample'
     // column here does double duty as distance along the
     // X axis.
-    var data = new google.visualization.DataTable();
-    data.addColumn('string', 'Sample');
-    data.addColumn('number', 'Elevation');
-    for (var i = 0; i < elevations.length; i++) {
-      data.addRow(['', elevations[i].elevation]);
-    }
+    // var data = new google.visualization.DataTable();
+    // data.addColumn('string', 'Sample');
+    // data.addColumn('number', 'Elevation');
+    // for (var i = 0; i < elevations.length; i++) {
+    //   data.addRow(['', elevations[i].elevation]);
+    // }
 
     // Draw the chart using the data within its DIV.
-    chart.draw(data, {
-      height: 150,
-      legend: 'none',
-      titleY: 'Elevation (m)'
-    });
+    // chart.draw(data, {
+    //   height: 150,
+    //   legend: 'none',
+    //   titleY: 'Elevation (m)'
+    // });
   }
 
   placeMarker(location) {
@@ -253,7 +253,7 @@ class RouteMap extends React.Component {
             <label>Distance
               <li id='distance'></li>
             </label>
-            <label>Elevation
+            <label>Elevation Gain
               <li id='elevation'></li>
             </label>
           </ul>
