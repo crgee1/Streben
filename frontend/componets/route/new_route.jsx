@@ -43,6 +43,17 @@ class RouteMap extends React.Component {
   }
 
   plotElevation(elevations, status) {
+    let pointsArr = elevations.map(point => {
+      let lat = point.location.lat();
+      let lng = point.location.lng();
+      return [lat, lng];
+    })
+
+    let url = `https://maps.googleapis.com/maps/api/staticmap?size=400x400&markers=%7C${pointsArr[0][0]},${pointsArr[0][1]}&markers=%7C${pointsArr[pointsArr.length-1][0]},${pointsArr[pointsArr.length-1][1]}`    
+    let key = `&key=${window.googleAPIKey}`;
+    url += key
+  console.log(url);
+
     let sum = 0;
     for (let i = 0; i < elevations.length - 1; i++) {
       let cur = elevations[i].elevation;
