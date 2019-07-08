@@ -3,7 +3,6 @@ import React from 'react';
 class SaveRoute extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props);
     this.state = {
       user_id: this.props.currentUser.id,
       distance: this.props.routeInfo.distance,
@@ -18,11 +17,14 @@ class SaveRoute extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    let route = this.props.createRoute(this.state);
-    this.props.routeInfo.locationArr.forEach(location => 
-      this.props.createLocation({
-        route_id: route.id,
-      }))
+    this.props.createRoute(this.state)
+    .then(res => this.props.routeInfo.locationArr.forEach(location =>
+        this.props.createLocation({
+          route_id: res.route.id,
+          order: location.order,
+          latitude: location.latitude,
+          longitude: location.longitude,
+        })));
   }
 
   update(field) {
@@ -32,7 +34,6 @@ class SaveRoute extends React.Component {
   }
 
   render(){
-    console.log(this.props);
     return (
       <div className='save-route-modal'>
         <section className='save-header'>

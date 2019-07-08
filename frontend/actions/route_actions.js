@@ -27,8 +27,7 @@ const receiveErrors = errors => ({
 
 export const createRoute = route => dispatch => (
   APIUtil.createRoute(route)
-    .then(route => (dispatch(receiveRoute(route)))),
-  err => (dispatch(receiveErrors(err.responseJSON)))
+    .then(route => (dispatch(receiveRoute(route))))
 )
 
 export const fetchRoute = id => dispatch => (
