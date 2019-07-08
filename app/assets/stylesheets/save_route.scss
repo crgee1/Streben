@@ -1,3 +1,8 @@
+.save-route-modal {
+  background-color: rgba(255,255,255,0.95);
+  width: 650px;
+}
+
 .save-header {
   background-color: #F7F7F7;
   border-bottom: 1px solid #ccccd1;
@@ -10,13 +15,40 @@
   }
 }
 
+.inline-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px -16px;
+}
+
 .save-main {
-  // color: #333;
+  color: #333;
+  min-height: 300px;
+  max-height: 65vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: rgba(255,255,255,0.95);
+  padding: 20px;
   form {
     background-color: rgba(255,255,255,0.95);
+    label {
+      color: rgb(96, 96, 101);
+      cursor: pointer;
+    }
     input {
       background-color: #fff;
+    }
+    textarea {
+      width: 96%;
+      min-height: 3.6em;
+    }
+    .modal-save-btn {
+      background-color: rgb(45, 45, 50);
+      color: rgb(255, 255, 255);
+      align-items: center;
+      cursor: pointer;
     }
   }
 }

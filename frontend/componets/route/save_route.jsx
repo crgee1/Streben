@@ -4,23 +4,25 @@ class SaveRoute extends React.Component {
   
   render(){
     return (
-      <div>
+      <div className='save-route-modal'>
         <section className='save-header'>
           <h1>Save</h1>
         </section>
         <section className='save-main'>
           <form>
             Enter a name and description for your route below. On the next page, you'll be able to see, edit, and share your route.
-            <label>Type
-              <input type="text"/>
+            <div className='inline-row'>
+              <label>Type
+                <input type="text"/>
+              </label>
+              <label>Route Name (required)
+                <input type="text"/>
+              </label>
+            </div>
+            <label htmlFor='description'>Description
             </label>
-            <label>Route Name (required)
-              <input type="text"/>
-            </label>
-            <label>Description
-              <textarea type="text"/>
-            </label>
-            <input type="submit"/>
+              <textarea id='description' type="text"/>
+            <input className='modal-save-btn' type="submit"/>
           </form>
         </section>
       </div>
