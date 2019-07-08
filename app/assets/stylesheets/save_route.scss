@@ -38,9 +38,11 @@
       cursor: pointer;
     }
     input {
+      border: 1px solid #ccccd1;
       background-color: #fff;
     }
     textarea {
+      border: 1px solid #ccccd1;
       width: 96%;
       min-height: 3.6em;
     }
@@ -51,4 +53,13 @@
       cursor: pointer;
     }
   }
+}
+
+.selectbox {
+  border: 1px solid #ccccd1;
+  background-color: #fff;
+  height: 34px;
+  width: 110px;
+  font-weight: 400;
+  font-size: 14px;
 }

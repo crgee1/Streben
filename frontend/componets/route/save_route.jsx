@@ -3,6 +3,32 @@ import React from 'react';
 class SaveRoute extends React.Component {
   constructor(props) {
     super(props);
+    console.log(props);
+    this.state = {
+      user_id: this.props.currentUser.id,
+      distance: this.props.routeInfo.distance,
+      duration: this.props.routeInfo.duration,
+      elevation: this.props.routeInfo.elevation,
+      name: '',
+      description: '',
+    }
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.update = this.update.bind(this);
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    let route = this.props.createRoute(this.state);
+    this.props.routeInfo.locationArr.forEach(location => 
+      this.props.createLocation({
+        route_id: route.id,
+      }))
+  }
+
+  update(field) {
+    return (e) => {
+      this.setState({ [field]: e.target.value });
+    };
   }
 
   render(){
@@ -13,19 +39,23 @@ class SaveRoute extends React.Component {
           <h1>Save</h1>
         </section>
         <section className='save-main'>
-          <form>
+          <form onSubmit={this.handleSubmit}>
             Enter a name and description for your route below. On the next page, you'll be able to see, edit, and share your route.
             <div className='inline-row'>
-              <label>Type
-                <input type="text"/>
+              <label htmlFor='types'>Type
               </label>
+              <select name="types" id="types" className='selectbox'>
+                <option value="Run">Run</option>
+                <option value="Cycle">Cycle</option>
+                <option value="Walk">Walk</option>
+              </select>
               <label>Route Name (required)
-                <input type="text"/>
+                <input type="text" value={this.state.name} onChange={this.update('name')}/>
               </label>
             </div>
             <label htmlFor='description'>Description
             </label>
-              <textarea id='description' type="text"/>
+            <textarea id='description' type="text" value={this.state.description} onChange={this.update('description')}/>
             <input className='modal-save-btn' type="submit"/>
           </form>
         </section>
