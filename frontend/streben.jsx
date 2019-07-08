@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './componets/root';
 import { 
-  createLocation,
-  fetchLocation,
-  fetchLocations,
-  updateLocation,
-  deleteLocation,
- } from './actions/location_actions';
+  createWorkout,
+  fetchWorkout,
+  fetchWorkouts,
+  updateWorkout,
+  deleteWorkout,
+ } from './actions/workout_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   let preloadedState;
@@ -22,11 +22,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.getState = store.getState;
   window.dispatch = store.dispatch;
-  window.createLocation = createLocation;
-  window.fetchLocation = fetchLocation;
-  window.fetchLocations = fetchLocations;
-  window.updateLocation = updateLocation;
-  window.deleteLocation = deleteLocation;
+  window.createWorkout = createWorkout;
+  window.fetchWorkout = fetchWorkout;
+  window.fetchWorkouts = fetchWorkouts;
+  window.updateWorkout = updateWorkout;
+  window.deleteWorkout = deleteWorkout;
 
   ReactDOM.render(<Root store={store} />, root);
 });
