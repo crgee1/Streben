@@ -4,6 +4,7 @@ import { logout, signUp } from '../../actions/session_actions';
 
 const mapStateToProps = (state, ownProps) => ({
     ownProps: ownProps,
+    currentUser: state.session.currentUser
 })
 
 const mapDispatchToProps = dispatch => ({

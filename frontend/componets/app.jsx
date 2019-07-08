@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+import Modal from '../componets/modal/modal';
 import SignUpContainer from './session/signup_container';
 import NavBarContainer from './nav_bar/nav_bar_container';
 import LoginContainer from './session/login_container';
@@ -7,17 +8,18 @@ import DemoLoginContainer from './session/demo_login_container';
 import Splash from './splash/splash';
 import DashboardContainer from './dashboard/dashboard_container'
 import RouteComponent from './route/route';
-import NewRoute from './route/new_route';
+import NewRouteContainer from './route/new_route_container';
 import TrainingContainer from './training/training_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util'
 
 const App = () => (
     <div>
+        <Modal />
         <NavBarContainer />
         <Switch>
             <AuthRoute exact path='/' component={Splash} />
             <ProtectedRoute path='/dashboard' component={DashboardContainer}/>
-            <ProtectedRoute path='/routes/new' component={NewRoute} />
+            <ProtectedRoute path='/routes/new' component={NewRouteContainer} />
             <ProtectedRoute path='/routes' component={RouteComponent} />
             <ProtectedRoute path='/training' component={TrainingContainer} />
             <AuthRoute path="/signup" component={SignUpContainer} />
