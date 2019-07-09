@@ -13,7 +13,6 @@ class RouteMap extends React.Component {
   }
 
   render() {
-    console.log(this.props.allRoutes)
     const index = this.props.allRoutes.map((route, i) => (
       <RouteIndexItem 
         key={i}
@@ -24,7 +23,7 @@ class RouteMap extends React.Component {
       <div className='route-home'>
         <div className='route-header'>
           <h1>My Routes</h1>
-          <Link className='btn' to='routes/new'>Create New Route</Link>
+          <Link className='btn-primary' to='routes/new'>Create New Route</Link>
         </div>
         <div className='route-index'>
           {index}

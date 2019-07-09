@@ -141,7 +141,7 @@ class RouteMap extends React.Component {
     distance = distance / 1.60934;
     distance = distance.toFixed(2);
     let time = (60 * distance / 4.43).toFixed(2);
-    this.setState({ duration: time, distance: distance })
+    this.setState({ duration: time*60, distance: distance })
     document.getElementById('duration').innerHTML = this.displayTime(time);
     document.getElementById('distance').innerHTML = distance + ' mi';
   }

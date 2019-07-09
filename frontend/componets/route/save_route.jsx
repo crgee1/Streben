@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 class SaveRoute extends React.Component {
   constructor(props) {
     super(props);
+    console.log(this.props.routeInfo.duration)
     this.state = {
       user_id: this.props.currentUser.id,
       distance: this.props.routeInfo.distance,
