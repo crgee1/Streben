@@ -82,6 +82,8 @@
 }
 
 .map-image {
+  z-index: 1;
+  position: relative;
   width: 290px;
   height: 175px;
   margin-bottom: -2px;

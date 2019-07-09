@@ -1,9 +1,11 @@
 import React from 'react';
+import { Link, withRouter } from 'react-router-dom';
 
 class RouteIndexItem extends React.Component {
   constructor(props) {
     super(props)
     this.displayTime = this.displayTime.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   displayTime(seconds) {
@@ -15,11 +17,16 @@ class RouteIndexItem extends React.Component {
     return hour >= 1 ? `${hour}:${min}:${sec}` : `${min}:${sec}`
   }
 
+  handleClick() {
+    this.props.history.push(`/routes/edit/${this.props.route.id}`)
+  }
+
   render() {
     const { route } = this.props;
     return (
       <div className='route-index-item'>
         <img className='map-image' src={`${route.url}`}/>
+        <i className="fas fa-wrench" onClick={this.handleClick}></i>
         <section className='route-index-item-stats'>
           <ul className='route-index-list'>
             <div className='map-name'>
@@ -44,4 +51,4 @@ class RouteIndexItem extends React.Component {
   }
 } 
 
-export default RouteIndexItem
+export default withRouter(RouteIndexItem)

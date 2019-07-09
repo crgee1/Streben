@@ -81,7 +81,8 @@ class Navbar extends React.Component {
       </div>
     ) : null;
 
-    const onTheRoutes = this.props.location.pathname !== '/routes/new' ? (<div className="navbar-main">
+    const routeBuilder = ['/routes/new', '/routes/edit/'];
+    const urlRoute = routeBuilder.some(url => this.props.location.pathname.includes(url)) ? null : (<div className="navbar-main">
       <Link className="logo" to="/dashboard">STREBEN</Link>
       <section className="navbar-side">
         <section>
@@ -92,11 +93,11 @@ class Navbar extends React.Component {
         </section>
       </section>
     </div>
-    ) : null;
+    );
     
     return (
       <div>
-        {onTheRoutes}
+        {urlRoute}
       </div>
     );
   }

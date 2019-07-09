@@ -1,0 +1,14 @@
+.fa-wrench {
+  margin-left: -20px;
+  margin-top: 28px;
+  position: absolute;
+  z-index: 3;
+  background-color: white;
+  color: lightgrey;
+  padding: 2px;
+
+  &:hover {
+    color: gray;
+    cursor: pointer;
+  }
+}
