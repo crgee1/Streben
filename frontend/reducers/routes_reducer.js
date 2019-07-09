@@ -13,6 +13,7 @@ const routesReducer = (state = {}, action) => {
     case RECEIVE_ROUTES:
       return merge({}, action.routes)
     case REMOVE_ROUTE:
+      debugger
       let newState = merge({}, state);
       delete newState[action.routeId];
       return newState;

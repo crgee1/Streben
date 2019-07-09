@@ -17,6 +17,7 @@ class RouteMap extends React.Component {
       <RouteIndexItem 
         key={i}
         route={route}
+        deleteRoute={this.props.deleteRoute}
       />
     ))
     return (

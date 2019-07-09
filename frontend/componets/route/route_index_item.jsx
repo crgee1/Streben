@@ -5,7 +5,8 @@ class RouteIndexItem extends React.Component {
   constructor(props) {
     super(props)
     this.displayTime = this.displayTime.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    this.handleEdit = this.handleEdit.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   displayTime(seconds) {
@@ -17,8 +18,12 @@ class RouteIndexItem extends React.Component {
     return hour >= 1 ? `${hour}:${min}:${sec}` : `${min}:${sec}`
   }
 
-  handleClick() {
+  handleEdit() {
     this.props.history.push(`/routes/edit/${this.props.route.id}`)
+  }
+
+  handleDelete() {
+    this.props.deleteRoute(this.props.route.id)
   }
 
   render() {
@@ -26,7 +31,8 @@ class RouteIndexItem extends React.Component {
     return (
       <div className='route-index-item'>
         <img className='map-image' src={`${route.url}`}/>
-        <i className="fas fa-wrench" onClick={this.handleClick}></i>
+        <i className="fas fa-wrench" onClick={this.handleEdit}></i>
+        <i className="fas fa-times" onClick={this.handleDelete}></i>
         <section className='route-index-item-stats'>
           <ul className='route-index-list'>
             <div className='map-name'>

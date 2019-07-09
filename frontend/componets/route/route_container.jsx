@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Route from './route';
-import { fetchRoutes } from '../../actions/route_actions';
+import { fetchRoutes, deleteRoute } from '../../actions/route_actions';
 
 const mapStatetoProps = state => ({
   currentUser: state.session.currentUser,
@@ -9,6 +9,7 @@ const mapStatetoProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchRoutes: () => dispatch(fetchRoutes()),
+  deleteRoute: (id) => dispatch(deleteRoute(id)),
 })
 
 export default connect(mapStatetoProps, mapDispatchToProps)(Route)
