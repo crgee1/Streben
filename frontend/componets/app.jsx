@@ -7,7 +7,7 @@ import LoginContainer from './session/login_container';
 import DemoLoginContainer from './session/demo_login_container';
 import Splash from './splash/splash';
 import DashboardContainer from './dashboard/dashboard_container'
-import RouteComponent from './route/route';
+import RouteComponent from './route/route_container';
 import ShowRouteComponent from './route/show_route';
 import NewRouteContainer from './route/new_route_container';
 import TrainingContainer from './training/training_container';

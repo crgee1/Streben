@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 class SaveRoute extends React.Component {
   constructor(props) {
@@ -25,7 +26,8 @@ class SaveRoute extends React.Component {
           order: location.order,
           latitude: location.latitude,
           longitude: location.longitude,
-        })));
+        })))
+      .then(() => this.props.history.push(`/routes`));
         this.props.closeModal();
   }
 
@@ -67,4 +69,4 @@ class SaveRoute extends React.Component {
   }
 }
 
-export default SaveRoute;
+export default withRouter(SaveRoute);
