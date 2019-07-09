@@ -1,7 +1,7 @@
 import { Map, GoogleApiWrapper, GoogleMap, withGoogleMap } from 'google-maps-react';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Modal from '../../componets/modal/modal';
+import Modal from '../modal/modal';
 
 class RouteMap extends React.Component {
   constructor(props) {
@@ -14,8 +14,12 @@ class RouteMap extends React.Component {
     this.computeTotalDistance = this.computeTotalDistance.bind(this);
     this.plotElevation = this.plotElevation.bind(this);
     this.handleSave = this.handleSave.bind(this);
+    this.computeUrl = this.computeUrl.bind(this);
   }
+
   componentDidMount() {
+    this.props.fetchLocations();
+    this.props.fetchRoute(this.props.match.params.routeId);
     this.map = new google.maps.Map(this.refs.map, {
       zoom: 16,
       center: { lat: 37.7989687, lng: -122.4024461 }  // 825 Battery
@@ -32,37 +36,31 @@ class RouteMap extends React.Component {
     });
 
     this.directionsRender.addListener('directions_changed', () => {
-      let path = this.markersArr.map(mark => ({ 
-        lat: mark.getPosition().lat(), 
-        lng: mark.getPosition().lng() 
+      let path = this.markersArr.map(mark => ({
+        lat: mark.getPosition().lat(),
+        lng: mark.getPosition().lng()
       }));
 
       this.elevationService.getElevationAlongPath({ path: path, samples: 10, }, this.plotElevation)
-      this.computeTotalDistance(this.directionsRender.getDirections(), );
+      const result = this.directionsRender.getDirections();
+      this.computeUrl(result);
+      this.computeTotalDistance(result);
     });
+
+    setTimeout(() => this.props.prevLocations.sort((a, b) => (a.order > b.order) ? 1 : -1)
+      .forEach(point => {this.placeMarker({
+        lat: point.latitude, lng: point.longitude
+      })
+    }), 2000);;
   }
 
+  
+
   plotElevation(elevations, status) {
-    let pointsArr = elevations.map(point => {
-      let lat = point.location.lat();
-      let lng = point.location.lng();
-      return [lat, lng];
-    })
-    
-    let url = `https://maps.googleapis.com/maps/api/staticmap?size=200x200&markers=label:S%7C${pointsArr[0][0]},${pointsArr[0][1]}&markers=label:E%7C${pointsArr[pointsArr.length-1][0]},${pointsArr[pointsArr.length-1][1]}`    
-    let path = `&path=color:0x0000ff80|weight:2`
-    pointsArr.forEach(point => {
-      path += `|${point[0]},${point[1]}`
-    })
-
-    let key = `&key=${window.googleAPIKey}`;
-    url += path + key
-    // console.log(url);
-
     let sum = 0;
     for (let i = 0; i < elevations.length - 1; i++) {
       let cur = elevations[i].elevation;
-      let next = elevations[i+1].elevation;
+      let next = elevations[i + 1].elevation;
       if (cur < next) {
         sum += (next - cur);
       }
@@ -70,33 +68,6 @@ class RouteMap extends React.Component {
       document.getElementById('elevation').innerHTML = Math.round(sum) + ' ft';
     }
 
-    // var chartDiv = document.getElementById('elevation_chart');
-    // if (status !== 'OK') {
-      // Show the error code inside the chartDiv.
-      // chartDiv.innerHTML = 'Cannot show elevation: request failed because ' +
-      //   status;
-    //   return;
-    // }
-    // Create a new chart in the elevation_chart DIV.
-    // var chart = new google.visualization.ColumnChart(chartDiv);
-
-    // Extract the data from which to populate the chart.
-    // Because the samples are equidistant, the 'Sample'
-    // column here does double duty as distance along the
-    // X axis.
-    // var data = new google.visualization.DataTable();
-    // data.addColumn('string', 'Sample');
-    // data.addColumn('number', 'Elevation');
-    // for (var i = 0; i < elevations.length; i++) {
-    //   data.addRow(['', elevations[i].elevation]);
-    // }
-
-    // Draw the chart using the data within its DIV.
-    // chart.draw(data, {
-    //   height: 150,
-    //   legend: 'none',
-    //   titleY: 'Elevation (m)'
-    // });
   }
 
   placeMarker(location) {
@@ -107,8 +78,8 @@ class RouteMap extends React.Component {
     this.markersArr.push(marker);
     if (this.markersArr.length >= 2) {
       this.markersArr.forEach(mark => mark.setMap(null));
-      this.displayRoute(this.markersArr[0].position, this.markersArr[this.markersArr.length - 1].position, this.markersArr.slice(1, this.markersArr.length-1), this.directionsService, this.directionsRender);
-    
+      this.displayRoute(this.markersArr[0].position, this.markersArr[this.markersArr.length - 1].position, this.markersArr.slice(1, this.markersArr.length - 1), this.directionsService, this.directionsRender);
+
       this.setState({
         locationArr: this.markersArr.map((mark, i) => {
           return {
@@ -118,8 +89,19 @@ class RouteMap extends React.Component {
           }
         })
       })
-      
+
     }
+  }
+
+  computeUrl(result) {
+    let myroute = result.routes[0];
+    let path = myroute.overview_path;
+    let url = `https://maps.googleapis.com/maps/api/staticmap?size=400x400&markers=label:S%7C${path[0].lat()},${path[0].lng()}&markers=label:E%7C${path[path.length - 1].lat()},${path[path.length - 1].lng()}`
+    let pathUrl = `&path=color:0x0000ff80|weight:2|`
+    let polyline = `enc:${myroute.overview_polyline}`
+    let key = `&key=${window.googleAPIKey}`;
+    url += pathUrl + polyline + key
+    this.setState({ url: url });
   }
 
   computeTotalDistance(result) {
@@ -129,19 +111,11 @@ class RouteMap extends React.Component {
       distance += myroute.legs[i].distance.value;
     }
 
-    let path = myroute.overview_path;
-    let url = `https://maps.googleapis.com/maps/api/staticmap?size=200x200&markers=label:S%7C${path[0].lat()},${path[0].lng()}&markers=label:E%7C${path[path.length-1].lat()},${path[path.length-1].lng()}`
-    let pathUrl = `&path=color:0x0000ff80|weight:2|`
-    let polyline = `enc:${myroute.overview_polyline}`
-    let key = `&key=${window.googleAPIKey}`;
-    url += pathUrl + polyline + key
-    this.setState({ url: url });
-
     distance = distance / 1000;
     distance = distance / 1.60934;
     distance = distance.toFixed(2);
     let time = (60 * distance / 4.43).toFixed(2);
-    this.setState({ duration: time*60, distance: distance })
+    this.setState({ duration: time * 60, distance: distance })
     document.getElementById('duration').innerHTML = this.displayTime(time);
     document.getElementById('distance').innerHTML = distance + ' mi';
   }
@@ -150,7 +124,7 @@ class RouteMap extends React.Component {
     service.route({
       origin: origin,
       destination: destination,
-      waypoints: midpoints.map(mark => ({location: mark.position})),
+      waypoints: midpoints.map(mark => ({ location: mark.position })),
       travelMode: 'WALKING',
       // unitSystem: google.maps.UnitSystem.IMPERIAL,
       avoidTolls: true
@@ -165,7 +139,7 @@ class RouteMap extends React.Component {
 
   displayTime(minutes) {
     let hour = Math.floor(minutes / 60);
-    let min = Math.floor(minutes%60);
+    let min = Math.floor(minutes % 60);
     let sec = minutes % 1;
     sec = Math.floor(60 * sec);
     if (sec < 10) sec = `0${sec}`;
@@ -175,13 +149,13 @@ class RouteMap extends React.Component {
 
   handleSave(e) {
     e.preventDefault();
-    this.props.openModal('saveRoute');
+    this.props.openModal('updateRoute');
   }
 
   render() {
     return (
       <div>
-        <Modal routeInfo={this.state}/>
+        <Modal routeInfo={this.state} prevRoute={this.props.currentRoute} prevLocations={this.props.prevLocations}/>
         <div>
           <div className='route-navbar'>
             <section className='route-nav-left'>

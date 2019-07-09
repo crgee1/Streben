@@ -2,6 +2,7 @@ import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import SaveRouteContainer from '../route/save_route_container';
+import UpdateRouteContainer from '../route/update_route_container';
 
 class Modal extends React.Component {
   constructor(props) {
@@ -9,8 +10,7 @@ class Modal extends React.Component {
   }
   
   render() {
-    const { routeInfo } = this.props;
-    // console.log(routeInfo)
+    const { routeInfo, prevRoute, prevLocations } = this.props;
     if (!this.props.modal) {
       return null;
     }
@@ -18,6 +18,9 @@ class Modal extends React.Component {
     switch (this.props.modal) {
       case 'saveRoute':
         this.component = <SaveRouteContainer routeInfo={routeInfo}/>;
+        break;
+      case 'updateRoute':
+        this.component= <UpdateRouteContainer routeInfo={routeInfo} prevRoute={prevRoute} prevLocations={prevLocations}/>;
         break;
       default:
         return null;

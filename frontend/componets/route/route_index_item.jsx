@@ -17,7 +17,6 @@ class RouteIndexItem extends React.Component {
 
   render() {
     const { route } = this.props;
-    console.log(this.props)
     return (
       <div className='route-index-item'>
         <img className='map-image' src={`${route.url}`}/>
@@ -43,6 +42,6 @@ class RouteIndexItem extends React.Component {
       </div>
     )
   }
-}
+} 
 
 export default RouteIndexItem

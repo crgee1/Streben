@@ -11,7 +11,7 @@ const receiveLocation = location => ({
 })
 
 const receiveLocations = locations => ({
-  type: RECEIVE_LOCATION,
+  type: RECEIVE_LOCATIONS,
   locations,
 })
 

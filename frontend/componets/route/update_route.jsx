@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
-class SaveRoute extends React.Component {
+class UpdateRoute extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -10,8 +10,8 @@ class SaveRoute extends React.Component {
       duration: this.props.routeInfo.duration,
       elevation: this.props.routeInfo.elevation,
       url: this.props.routeInfo.url,
-      name: '',
-      description: '',
+      name: this.props.prevRoute.name,
+      description: this.props.prevRoute.description,
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
@@ -20,7 +20,7 @@ class SaveRoute extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.createRoute(this.state)
-    .then(res => this.props.routeInfo.locationArr.forEach(location =>
+      .then(res => this.props.routeInfo.locationArr.forEach(location =>
         this.props.createLocation({
           route_id: res.route.id,
           order: location.order,
@@ -28,7 +28,8 @@ class SaveRoute extends React.Component {
           longitude: location.longitude,
         })))
       .then(() => this.props.history.push(`/routes`));
-        this.props.closeModal();
+    this.props.prevLocations.forEach(location => this.props.deleteLocation(location.id))
+    this.props.closeModal();
   }
 
   update(field) {
@@ -37,7 +38,7 @@ class SaveRoute extends React.Component {
     };
   }
 
-  render(){
+  render() {
     return (
       <div className='save-route-modal'>
         <section className='save-header'>
@@ -55,13 +56,13 @@ class SaveRoute extends React.Component {
                 <option value="Walk">Walk</option>
               </select>
               <label>Route Name (required)
-                <input type="text" value={this.state.name} onChange={this.update('name')}/>
+                <input type="text" value={this.state.name} onChange={this.update('name')} />
               </label>
             </div>
             <label htmlFor='description'>Description
             </label>
-            <textarea id='description' type="text" value={this.state.description} onChange={this.update('description')}/>
-            <input className='modal-save-btn' type="submit"/>
+            <textarea id='description' type="text" value={this.state.description} onChange={this.update('description')} />
+            <input className='modal-save-btn' type="submit" />
           </form>
         </section>
       </div>
@@ -69,4 +70,4 @@ class SaveRoute extends React.Component {
   }
 }
 
-export default withRouter(SaveRoute);
+export default withRouter(UpdateRoute);

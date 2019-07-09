@@ -9,7 +9,8 @@ import Splash from './splash/splash';
 import DashboardContainer from './dashboard/dashboard_container'
 import RouteComponent from './route/route_container';
 import ShowRouteComponent from './route/show_route';
-import NewRouteContainer from './route/new_route_container';
+import NewRouteBuilderContainer from './route/new_route_builder_container';
+import EditRouteContainer from './route/edit_route_container';
 import TrainingContainer from './training/training_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util'
 
@@ -19,7 +20,8 @@ const App = () => (
         <Switch>
             <AuthRoute exact path='/' component={Splash} />
             <ProtectedRoute path='/dashboard' component={DashboardContainer}/>
-            <ProtectedRoute path='/routes/new' component={NewRouteContainer} />
+            <ProtectedRoute path='/routes/new' component={NewRouteBuilderContainer} />
+            <ProtectedRoute path='/routes/edit/:routeId' component={EditRouteContainer} />
             <ProtectedRoute path='/routes/:routeId' component={ShowRouteComponent} />
             <ProtectedRoute path='/routes' component={RouteComponent} />
             <ProtectedRoute path='/training' component={TrainingContainer} />

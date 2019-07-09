@@ -19,7 +19,7 @@ class Api::LocationsController < ApplicationController
   end
 
   def index
-    @locations = current_user.routes.locations
+    @locations = Location.all
     render 'api/locations/index'
   end
 
