@@ -11,10 +11,11 @@
 #  description :text
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  url         :text
 #
 
 class Route < ApplicationRecord
-  validates :user_id, :distance, :duration, :elevation, :name, presence: true
+  validates :user_id, :url, :distance, :duration, :elevation, :name, presence: true
   validates :name, uniqueness: true
 
   belongs_to :user

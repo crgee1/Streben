@@ -37,7 +37,7 @@ class RouteMap extends React.Component {
         lng: mark.getPosition().lng() 
       }));
 
-      this.elevationService.getElevationAlongPath({ path: path, samples: 50, }, this.plotElevation)
+      this.elevationService.getElevationAlongPath({ path: path, samples: 10, }, this.plotElevation)
       this.computeTotalDistance(this.directionsRender.getDirections(), );
     });
   }
@@ -48,11 +48,16 @@ class RouteMap extends React.Component {
       let lng = point.location.lng();
       return [lat, lng];
     })
+    
+    let url = `https://maps.googleapis.com/maps/api/staticmap?size=200x200&markers=label:S%7C${pointsArr[0][0]},${pointsArr[0][1]}&markers=label:E%7C${pointsArr[pointsArr.length-1][0]},${pointsArr[pointsArr.length-1][1]}`    
+    let path = `&path=color:0x0000ff80|weight:2`
+    pointsArr.forEach(point => {
+      path += `|${point[0]},${point[1]}`
+    })
 
-    let url = `https://maps.googleapis.com/maps/api/staticmap?size=400x400&markers=%7C${pointsArr[0][0]},${pointsArr[0][1]}&markers=%7C${pointsArr[pointsArr.length-1][0]},${pointsArr[pointsArr.length-1][1]}`    
     let key = `&key=${window.googleAPIKey}`;
-    url += key
-  console.log(url);
+    url += path + key
+    // console.log(url);
 
     let sum = 0;
     for (let i = 0; i < elevations.length - 1; i++) {
@@ -123,6 +128,15 @@ class RouteMap extends React.Component {
     for (let i = 0; i < myroute.legs.length; i++) {
       distance += myroute.legs[i].distance.value;
     }
+
+    let path = myroute.overview_path;
+    let url = `https://maps.googleapis.com/maps/api/staticmap?size=200x200&markers=label:S%7C${path[0].lat()},${path[0].lng()}&markers=label:E%7C${path[path.length-1].lat()},${path[path.length-1].lng()}`
+    let pathUrl = `&path=color:0x0000ff80|weight:2|`
+    let polyline = `enc:${myroute.overview_polyline}`
+    let key = `&key=${window.googleAPIKey}`;
+    url += pathUrl + polyline + key
+    this.setState({ url: url });
+
     distance = distance / 1000;
     distance = distance / 1.60934;
     distance = distance.toFixed(2);
@@ -162,14 +176,6 @@ class RouteMap extends React.Component {
   handleSave(e) {
     e.preventDefault();
     this.props.openModal('saveRoute');
-    // console.log(this.markersArr)
-    // console.log(this.markersArr[0].getPosition().lat())
-    // console.log(this.markersArr.map((mark, i) => ({
-    //   latitude: mark.getPosition().lat(),
-    //   longitude: mark.getPosition().lng(),
-    //   order: i,
-    // })))
-    // console.log(this.state);
   }
 
   render() {

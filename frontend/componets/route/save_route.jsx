@@ -8,6 +8,7 @@ class SaveRoute extends React.Component {
       distance: this.props.routeInfo.distance,
       duration: this.props.routeInfo.duration,
       elevation: this.props.routeInfo.elevation,
+      url: this.props.routeInfo.url,
       name: '',
       description: '',
     }
@@ -25,6 +26,7 @@ class SaveRoute extends React.Component {
           latitude: location.latitude,
           longitude: location.longitude,
         })));
+        this.props.closeModal();
   }
 
   update(field) {

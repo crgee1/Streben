@@ -16,9 +16,9 @@ ActiveRecord::Base.transaction do
   user7 = User.create(username: 'username', password: 'password')
 
   Route.destroy_all
-  route1 = Route.create(user_id: user1.id, distance: 3, duration: 1401, elevation: 24, name: 'First Run', description: 'Super fun and energizing')
-  route2 = Route.create(user_id: user1.id, distance: 5, duration: 1923, elevation: 12, name: 'Second Run', description: 'I saw a deer while running')
-  route3 = Route.create(user_id: user1.id, distance: 1, duration: 418, elevation: 8, name: 'Third Run', description: '1 mile sprint')
-  route4 = Route.create(user_id: user2.id, distance: 1, duration: 418, elevation: 8, name: 'Buddy Run', description: 'My friend showed me this route')
-  route5 = Route.create(user_id: user2.id, distance: 2, duration: 900, elevation: 29, name: 'Local Jog', description: 'Just around my neighborhood')
+  # route1 = Route.create(user_id: user1.id, distance: 3, duration: 1401, elevation: 24, name: 'First Run', description: 'Super fun and energizing')
+  # route2 = Route.create(user_id: user1.id, distance: 5, duration: 1923, elevation: 12, name: 'Second Run', description: 'I saw a deer while running')
+  # route3 = Route.create(user_id: user1.id, distance: 1, duration: 418, elevation: 8, name: 'Third Run', description: '1 mile sprint')
+  # route4 = Route.create(user_id: user2.id, distance: 1, duration: 418, elevation: 8, name: 'Buddy Run', description: 'My friend showed me this route')
+  # route5 = Route.create(user_id: user2.id, distance: 2, duration: 900, elevation: 29, name: 'Local Jog', description: 'Just around my neighborhood')
 end
