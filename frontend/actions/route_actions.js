@@ -25,10 +25,12 @@ const receiveErrors = errors => ({
   errors,
 });
 
-export const createRoute = route => dispatch => (
+export const createRoute = route => dispatch => {
+  return(
   APIUtil.createRoute(route)
-    .then(route => (dispatch(receiveRoute(route))))
-)
+    .then(route => (dispatch(receiveRoute(route))),
+  err => (dispatch(receiveErrors(err.responseJSON))))
+  )}
 
 export const fetchRoute = id => dispatch => (
   APIUtil.fetchRoute(id)
@@ -44,7 +46,8 @@ export const fetchRoutes = () => dispatch => (
 
 export const updateRoute = route => dispatch => (
   APIUtil.updateRoute(route)
-    .then(route => (dispatch(receiveRoute(route))))
+    .then(route => (dispatch(receiveRoute(route))),
+      err => (dispatch(receiveErrors(err.responseJSON))))
 )
 
 export const deleteRoute = id => dispatch => {

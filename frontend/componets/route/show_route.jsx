@@ -43,8 +43,8 @@ class ShowRoute extends React.Component {
   }
 
   render() {
+    // debugger;
     const { route, currentUser } = this.props;
-    
     const display = this.props.route === undefined ? null : (<div className='show-route'>
       <div className='show-route-header'>
         <header>{route.name}</header>

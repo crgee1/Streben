@@ -105,7 +105,6 @@ class RouteMap extends React.Component {
           }
         })
       })
-      
     }
   }
 
@@ -168,6 +167,18 @@ class RouteMap extends React.Component {
     this.props.openModal('saveRoute');
   }
 
+  handleRedo() {
+
+  }
+
+  handleUndo() {
+
+  }
+
+  handleClear() {
+
+  }
+
   render() {
     return (
       <div>
@@ -183,7 +194,7 @@ class RouteMap extends React.Component {
             </section>
           </div>
           <div className='route-toolbar'>
-            <div className='toolbar-btn'>
+            {/* <div className='toolbar-btn'>
               <div className='toolbar-btn-icon'></div>
               <div className='toolbar-btn-label'>Undo</div>
             </div>
@@ -194,8 +205,8 @@ class RouteMap extends React.Component {
             <div className='toolbar-btn'>
               <div className='toolbar-btn-icon'></div>
               <div className='toolbar-btn-label'>Clear</div>
-            </div>
-            <button className='btn' disabled={this.markersArr.length < 2} onClick={this.handleSave}>Save</button>
+            </div> */}
+            <button className={'btn' + (this.markersArr < 2 ? ' disabled' : '')} disabled={this.markersArr < 2}onClick={this.handleSave}>Save</button>
           </div>
         </div>
         <div id="map" ref='map'></div>

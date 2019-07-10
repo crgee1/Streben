@@ -40,6 +40,20 @@ class UpdateRoute extends React.Component {
     };
   }
 
+  renderErrors() {
+    return (
+      <div className="save-errors">
+        {this.props.errors.map((error, i) => (
+          <ul>
+            <li key={`error-${i}`}>
+              {error}
+            </li>
+          </ul>
+        ))}
+      </div>
+    );
+  }
+
   render() {
     return (
       <div className='save-route-modal'>
@@ -59,6 +73,7 @@ class UpdateRoute extends React.Component {
               </label>
               <label>Route Name (required)
                 <input type="text" value={this.state.name} onChange={this.update('name')} />
+                {this.renderErrors()}
               </label>
             </div>
             <label htmlFor='description'>Description

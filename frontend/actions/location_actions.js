@@ -27,7 +27,8 @@ const receiveErrors = errors => ({
 
 export const createLocation = location => dispatch => (
   APIUtil.createLocation(location)
-    .then(location => (dispatch(receiveLocation(location))))
+    .then(location => (dispatch(receiveLocation(location))),
+      err => (dispatch(receiveErrors(err.responseJSON))))
 )
 
 export const fetchLocation = id => dispatch => (
@@ -38,7 +39,8 @@ export const fetchLocation = id => dispatch => (
 
 export const fetchLocations = () => dispatch => (
   APIUtil.fetchLocations()
-    .then(locations => (dispatch(receiveLocations(locations))))
+    .then(locations => (dispatch(receiveLocations(locations))),
+      err => (dispatch(receiveErrors(err.responseJSON))))
 )
 
 export const updateLocation = location => dispatch => (

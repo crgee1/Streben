@@ -101,6 +101,13 @@
   }
 }
 
+.disabled {
+  background-color: rgb(218, 65, 9);
+  &:hover {
+    cursor: default;
+ } 
+}
+
 .warnbox-content {
   display: none;
   background-color: none;

@@ -6,7 +6,8 @@ import { createRoute } from '../../actions/route_actions';
 import { createLocation } from '../../actions/location_actions';
 
 const mapStatetoProps = state => ({
-  currentUser: state.session.currentUser
+  currentUser: state.session.currentUser,
+  errors: state.errors.routes
 })
 
 const mapDispatchToProps = dispatch => {

@@ -20,23 +20,38 @@ class SaveRoute extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.createRoute(this.state)
-    .then(res => {this.props.routeInfo.locationArr.forEach(location =>
+    .then(res => {this.props.routeInfo.locationArr.forEach(location =>{
         this.props.createLocation({
           route_id: res.route.id,
           order: location.order,
           latitude: location.latitude,
           longitude: location.longitude,
-        }))
-        this.props.history.push(`/routes/${res.route.id}`);
+        })})
+        this.props.closeModal();
+        this.props.history.push(`/routes/${res.route.id}`)
       })
-      .then((res) => this.props.history.push(`/routes/${res.route.id}`));
-      this.props.closeModal();
+      // .then((res) => this.props.history.push(`/routes`));
+      
   }
 
   update(field) {
     return (e) => {
       this.setState({ [field]: e.target.value });
     };
+  }
+
+  renderErrors() {
+    return (
+      <div className="save-errors">
+        {this.props.errors.map((error, i) => (
+          <ul>
+            <li key={`error-${i}`}>
+              {error}
+            </li>
+          </ul>
+        ))}
+      </div>
+    );
   }
 
   render(){
@@ -57,7 +72,8 @@ class SaveRoute extends React.Component {
                 </select>
               </label>
               <label>Route Name (required)
-                <input type="text" value={this.state.name} onChange={this.update('name')}/>
+                <input type="text" value={this.state.name} onChange={this.update('name')} />
+                {this.renderErrors()}
               </label>
             </div>
             <label htmlFor='description'>Description

@@ -165,7 +165,7 @@ class RouteMap extends React.Component {
             </section>
           </div>
           <div className='route-toolbar'>
-            <div className='toolbar-btn'>
+            {/* <div className='toolbar-btn'>
               <div className='toolbar-btn-icon'></div>
               <div className='toolbar-btn-label'>Undo</div>
             </div>
@@ -176,7 +176,7 @@ class RouteMap extends React.Component {
             <div className='toolbar-btn'>
               <div className='toolbar-btn-icon'></div>
               <div className='toolbar-btn-label'>Clear</div>
-            </div>
+            </div> */}
             <button className='btn' disabled={this.markersArr.length < 2} onClick={this.handleSave}>Save</button>
           </div>
         </div>

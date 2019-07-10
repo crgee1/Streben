@@ -9,6 +9,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     prevLocations: Object.values(state.entities.locations).filter(location => location.route_id === parseInt(id)),
     currentRoute: state.entities.routes[id],
+    errors: state.errors.routes,
   }
 }
 
