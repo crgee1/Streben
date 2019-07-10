@@ -179,7 +179,7 @@ class RouteMap extends React.Component {
               <div className='toolbar-btn-icon'></div>
               <div className='toolbar-btn-label'>Clear</div>
             </div>
-            <button className='btn' onClick={this.handleSave}>Save</button>
+            <button className='btn' disabled={this.markersArr.length < 2} onClick={this.handleSave}>Save</button>
           </div>
         </div>
         <div id="map" ref='map'></div>

@@ -30,13 +30,13 @@ class RouteIndexItem extends React.Component {
     const { route } = this.props;
     return (
       <div className='route-index-item'>
-        <img className='map-image' src={`${route.url}`}/>
+        <Link to={`routes/${route.id}`}><img className='map-image' src={`${route.url}`} /></Link>
         <i className="fas fa-wrench" onClick={this.handleEdit}></i>
         <i className="fas fa-times" onClick={this.handleDelete}></i>
         <section className='route-index-item-stats'>
           <ul className='route-index-list'>
             <div className='map-name'>
-              <a>{route.name}</a>
+              <Link to={`routes/${route.id}`}><a>{route.name}</a></Link>
             </div>
             <div className='inline-list'>
               <section>
