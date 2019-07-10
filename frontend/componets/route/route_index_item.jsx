@@ -23,7 +23,7 @@ class RouteIndexItem extends React.Component {
   }
 
   handleDelete() {
-    this.props.deleteRoute(this.props.route.id)//.then(() => this.props.history.push('/routes'))
+    this.props.deleteRoute(this.props.route.id)
   }
 
   render() {
