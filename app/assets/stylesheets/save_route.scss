@@ -19,6 +19,7 @@
   display: flex;
   justify-content: space-between;
   margin: 15px -16px;
+  align-items: center;
 }
 
 .save-main {
@@ -58,7 +59,7 @@
 .selectbox {
   border: 1px solid #ccccd1;
   background-color: #fff;
-  height: 34px;
+  height: 44px;
   width: 110px;
   font-weight: 400;
   font-size: 14px;

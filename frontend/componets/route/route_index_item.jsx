@@ -23,7 +23,7 @@ class RouteIndexItem extends React.Component {
   }
 
   handleDelete() {
-    this.props.deleteRoute(this.props.route.id)
+    this.props.deleteRoute(this.props.route.id)//.then(() => this.props.history.push('/routes'))
   }
 
   render() {
@@ -36,7 +36,7 @@ class RouteIndexItem extends React.Component {
         <section className='route-index-item-stats'>
           <ul className='route-index-list'>
             <div className='map-name'>
-              <a href="">{route.name}</a>
+              <a>{route.name}</a>
             </div>
             <div className='inline-list'>
               <section>

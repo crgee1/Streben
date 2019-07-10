@@ -29,7 +29,6 @@ export const fetchWorkouts = () => (
 )
 
 export const deleteWorkout = id => {
-  debugger;
   return (
   $.ajax({
     method: 'DELETE',

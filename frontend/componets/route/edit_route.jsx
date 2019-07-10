@@ -51,7 +51,7 @@ class RouteMap extends React.Component {
       .forEach(point => {this.placeMarker({
         lat: point.latitude, lng: point.longitude
       })
-    }), 2000);;
+    }), 1200);;
   }
 
   

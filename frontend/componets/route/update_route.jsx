@@ -5,6 +5,7 @@ class UpdateRoute extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: this.props.prevRoute.id,
       user_id: this.props.currentUser.id,
       distance: this.props.routeInfo.distance,
       duration: this.props.routeInfo.duration,
@@ -19,7 +20,7 @@ class UpdateRoute extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createRoute(this.state)
+    this.props.updateRoute(this.state)
       .then(res => this.props.routeInfo.locationArr.forEach(location =>
         this.props.createLocation({
           route_id: res.route.id,
@@ -49,12 +50,12 @@ class UpdateRoute extends React.Component {
             Enter a name and description for your route below. On the next page, you'll be able to see, edit, and share your route.
             <div className='inline-row'>
               <label htmlFor='types'>Type
+                <select name="types" id="types" className='selectbox'>
+                  <option value="Run">Run</option>
+                  <option value="Cycle">Cycle</option>
+                  <option value="Walk">Walk</option>
+                </select>
               </label>
-              <select name="types" id="types" className='selectbox'>
-                <option value="Run">Run</option>
-                <option value="Cycle">Cycle</option>
-                <option value="Walk">Walk</option>
-              </select>
               <label>Route Name (required)
                 <input type="text" value={this.state.name} onChange={this.update('name')} />
               </label>

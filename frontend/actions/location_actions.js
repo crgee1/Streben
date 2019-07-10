@@ -16,7 +16,7 @@ const receiveLocations = locations => ({
 })
 
 const removeLocation = location => ({
-  type: RECEIVE_LOCATION,
+  type: REMOVE_LOCATION,
   locationId: location.id
 })
 

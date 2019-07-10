@@ -44,12 +44,10 @@ export const fetchRoutes = () => dispatch => (
 
 export const updateRoute = route => dispatch => (
   APIUtil.updateRoute(route)
-    .then(route => (dispatch(receiveRoute(route)))),
-  err => (dispatch(receiveErrors(err.responseJSON)))
+    .then(route => (dispatch(receiveRoute(route))))
 )
 
 export const deleteRoute = id => dispatch => {
-  // debugger;
   return (APIUtil.deleteRoute(id)
-    .then(routeId => (dispatch(removeRoute(routeId))))
+    .then(route => (dispatch(removeRoute(route.id))))
   )}

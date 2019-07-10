@@ -30,12 +30,8 @@ class Api::WorkoutsController < ApplicationController
 
   def destroy
     @workout = Workout.find(params[:id])
-    # debugger
     @workout.destroy
-    # debugger
-    @workouts = Workout.all
-    # debugger
-    render 'api/workouts/index'
+    render json: @workout
   end
 
   private
