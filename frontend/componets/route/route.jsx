@@ -1,4 +1,3 @@
-import { Map, GoogleApiWrapper, GoogleMap, withGoogleMap, DirectionsRenderer } from 'google-maps-react';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import RouteIndexItem from './route_index_item';
@@ -13,7 +12,8 @@ class RouteMap extends React.Component {
   }
 
   render() {
-    const index = this.props.allRoutes.map((route, i) => (
+    const index = this.props.allRoutes.filter(
+      ele => ele.user_id === this.props.currentUser.id).map((route, i) => (
       <RouteIndexItem 
         key={i}
         route={route}

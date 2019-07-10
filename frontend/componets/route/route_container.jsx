@@ -5,7 +5,7 @@ import { fetchRoutes, deleteRoute } from '../../actions/route_actions';
 const mapStatetoProps = state => {
   return ({
   currentUser: state.session.currentUser,
-  allRoutes: Object.values(state.entities.routes).filter(route => route.user_id === currentUser.id),
+  allRoutes: Object.values(state.entities.routes),
 })}
 
 const mapDispatchToProps = dispatch => ({
