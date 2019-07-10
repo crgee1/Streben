@@ -28,8 +28,8 @@ const receiveErrors = errors => ({
 
 export const createWorkout = workout => dispatch => (
   APIUtil.createWorkout(workout)
-    .then(workout => (dispatch(receiveWorkout(workout)))),
-  err => (dispatch(receiveErrors(err.responseJSON)))
+    .then(workout => (dispatch(receiveWorkout(workout))),
+  err => (dispatch(receiveErrors(err.responseJSON))))
 )
 
 export const fetchWorkout = id => dispatch => (

@@ -15,7 +15,7 @@
 #
 
 class Workout < ApplicationRecord
-  validates :user_id, :distance, :duration, :elevation, :name, presence: true
+  validates :user_id, :distance, :duration, :elevation, :name, :workout_type, presence: true
 
   belongs_to :user
 end

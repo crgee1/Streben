@@ -18,7 +18,7 @@ class Navbar extends React.Component {
     const submenuRight = (
       <ul className="drop-submenu-profile">
         <li className="drop-submenu-item ">
-          <a>My Profile</a>
+          <Link className="drop-submenu-item" to="/training/new">Manual Entry</Link>
         </li>
         <li className="drop-submenu-item ">
           <a>My Friends</a>
