@@ -20,15 +20,17 @@ class SaveRoute extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.createRoute(this.state)
-    .then(res => this.props.routeInfo.locationArr.forEach(location =>
+    .then(res => {this.props.routeInfo.locationArr.forEach(location =>
         this.props.createLocation({
           route_id: res.route.id,
           order: location.order,
           latitude: location.latitude,
           longitude: location.longitude,
-        })))
-      .then(() => this.props.history.push(`/routes`));
-        this.props.closeModal();
+        }))
+        this.props.history.push(`/routes/${res.route.id}`);
+      })
+      .then((res) => this.props.history.push(`/routes/${res.route.id}`));
+      this.props.closeModal();
   }
 
   update(field) {

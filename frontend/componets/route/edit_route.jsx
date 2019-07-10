@@ -94,7 +94,7 @@ class RouteMap extends React.Component {
   computeUrl(result) {
     let myroute = result.routes[0];
     let path = myroute.overview_path;
-    let url = `https://maps.googleapis.com/maps/api/staticmap?size=400x400&markers=label:S%7C${path[0].lat()},${path[0].lng()}&markers=label:E%7C${path[path.length - 1].lat()},${path[path.length - 1].lng()}`
+    let url = `https://maps.googleapis.com/maps/api/staticmap?size=300x180&markers=label:S%7C${path[0].lat()},${path[0].lng()}&markers=label:E%7C${path[path.length - 1].lat()},${path[path.length - 1].lng()}`
     let pathUrl = `&path=color:0x0000ff80|weight:2|`
     let polyline = `enc:${myroute.overview_polyline}`
     let key = `&key=${window.googleAPIKey}`;

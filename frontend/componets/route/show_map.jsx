@@ -11,7 +11,6 @@ class SmallMap extends React.Component {
   componentDidMount() {
     this.map = new google.maps.Map(document.getElementById('minimap'), {
       zoom: 16,
-      center: { lat: 37.7989687, lng: -122.4024461 }  // 825 Battery
     });
     this.directionsService = new google.maps.DirectionsService;
     this.directionsRender = new google.maps.DirectionsRenderer({
