@@ -46,8 +46,8 @@ export const fetchWorkouts = () => dispatch => (
 
 export const updateWorkout = workout => dispatch => (
   APIUtil.updateWorkout(workout)
-    .then(workout => (dispatch(receiveWorkout(workout)))),
-  err => (dispatch(receiveErrors(err.responseJSON)))
+    .then(workout => (dispatch(receiveWorkout(workout))),
+  err => (dispatch(receiveErrors(err.responseJSON))))
 )
 
 export const deleteWorkout = id => dispatch => {

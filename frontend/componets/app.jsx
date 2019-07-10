@@ -12,6 +12,7 @@ import ShowRouteContainer from './route/show_route_container';
 import NewRouteBuilderContainer from './route/new_route_builder_container';
 import EditRouteContainer from './route/edit_route_container';
 import IndexWorkoutContainer from './workout/index_workout_container';
+import ShowWorkoutContainer from './workout/show_workout_container';
 import NewWorkoutContainer from './workout/new_workout_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util'
 
@@ -26,6 +27,7 @@ const App = () => (
             <ProtectedRoute path='/routes/:routeId' component={ShowRouteContainer} />
             <ProtectedRoute path='/routes' component={RouteContainer} />
             <ProtectedRoute path='/training/new' component={NewWorkoutContainer} />
+            <ProtectedRoute path='/training/:workoutId' component={ShowWorkoutContainer} />
             <ProtectedRoute path='/training' component={IndexWorkoutContainer} />
             <AuthRoute path="/signup" component={SignUpContainer} />
             <AuthRoute path="/login" component={LoginContainer} />

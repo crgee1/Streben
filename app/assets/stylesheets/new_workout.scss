@@ -1,13 +1,14 @@
 .new-workout {
   margin-left: 20px;
   margin-right: 20px;
-  padding-top: 90px;
+  padding-top: 162px;
   background-color: rgb(255, 255, 255);
   
   div {
     display: flex;
     flex-direction: column;
     padding-right: 30px; 
+    align-items: flex-start;
   }
 
   h1 {
@@ -153,5 +154,38 @@ hr {
 
     &:focus {
     border-color: #007FB6;
+  }
+}
+
+.workout-errors {
+  display: flex;
+  flex-direction: row;
+  font-size: 11px;
+  background-color: transparent;
+  color: #fe0c0b;
+  white-space: normal;
+  margin: 0;
+  line-height: 1.2em;
+  padding-top: 5px;
+  position: relative;
+  margin-bottom: -18px;
+  top: 54px;
+
+  li{
+    padding: 15px;
+  }
+  &:empty {
+    display: none;
+  }
+}
+
+#name-err {
+  color: #fe0c0b;
+  font-size: 11px;
+  position: absolute;
+  // line-height: 1.2em;
+  margin-top: 57px;
+  &:empty {
+    display: none;
   }
 }

@@ -5,9 +5,9 @@ class NewWorkout extends React.Component {
     super(props);
     this.state = {
       user_id: this.props.currentUser.id,
-      distance: '',
+      distance: 0,
       duration: 0,
-      elevation: '',
+      elevation: 0,
       name: '',
       workout_type: 'Run'
     }
@@ -19,7 +19,11 @@ class NewWorkout extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    if (this.state.name === '') {
+     document.getElementById('name-err').innerHTML = 'Name cant be blank';
+    } else {
     this.props.createWorkout(this.state).then(res => this.props.history.push(`/training/${res.workout.id}`));
+    }
   }
 
   update(field) {
@@ -36,7 +40,7 @@ class NewWorkout extends React.Component {
 
   renderErrors() {
     return (
-      <div className="save-errors">
+      <section className="workout-errors">
         {this.props.errors.map((error, i) => (
           <ul>
             <li key={`error-${i}`}>
@@ -44,7 +48,7 @@ class NewWorkout extends React.Component {
             </li>
           </ul>
         ))}
-      </div>
+      </section>
     );
   }
 
@@ -93,6 +97,7 @@ class NewWorkout extends React.Component {
             <div>
               <label>Title</label>
               <input className='title-workout-form' type="text" value={this.state.name} onChange={this.update('name')}/>
+              <label id='name-err'></label>
             </div>
           </section>
           <hr/>
