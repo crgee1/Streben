@@ -54,8 +54,6 @@ class RouteMap extends React.Component {
     }), 1200);;
   }
 
-  
-
   plotElevation(elevations, status) {
     let sum = 0;
     for (let i = 0; i < elevations.length - 1; i++) {

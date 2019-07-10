@@ -1,15 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SmallMap from './show_map';
 
 class ShowRoute extends React.Component {
   constructor(props) {
     super(props);
     this.route = this.props.route
     this.displayTime = this.displayTime.bind(this);
+    this.displayDate = this.displayDate.bind(this);
   }
 
   componentWillMount() {
     this.props.fetchRoute(this.props.match.params.routeId)
+    this.props.fetchLocations();
   }
 
   displayTime(seconds) {
@@ -21,6 +24,24 @@ class ShowRoute extends React.Component {
     return hour >= 1 ? `${hour}:${min}:${sec}` : `${min}:${sec}`
   }
 
+  displayDate(date) {
+    const mth = {
+      '01': 'January',
+      '02': 'Febuary',
+      '03': 'March',
+      '04': 'April',
+      '05': 'May',
+      '06': 'June',
+      '07': 'July',
+      '08': 'August',
+      '09': 'September',
+      '10': 'October',
+      '11': 'November',
+      '12': 'December'
+    };
+    return `${mth[date.slice(5,7)]} ${date.slice(8,10)}, ${date.slice(0,4)}`
+  }
+
   render() {
     const { route, currentUser } = this.props;
     
@@ -30,17 +51,18 @@ class ShowRoute extends React.Component {
         <Link to={`/routes/edit/${route.id}`} className='edit-btn'>Edit</Link>
       </div>
       <div className='show-route-main'>
-        <section className='minimap'><img src={`${route.url}`}/></section>
+        <section className='minimap'><SmallMap route={route} locations={this.props.prevLocations}/></section>
         <section className='show-route-stats'>
           
           <div className='name-section'>
             <section className='avatar-image'>
               <h1>
-                {this.props.currentUser.username[0]}
+                {currentUser.username[0]}
               </h1>
             </section>
-            <section class='show-username'>
+            <section className='show-username'>
               By {currentUser.username}
+              <h3>Created on {this.displayDate(route.created_at)}</h3>
             </section>
           </div>
           <hr className='hr'/>

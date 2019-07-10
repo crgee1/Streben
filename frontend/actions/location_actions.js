@@ -38,8 +38,7 @@ export const fetchLocation = id => dispatch => (
 
 export const fetchLocations = () => dispatch => (
   APIUtil.fetchLocations()
-    .then(locations => (dispatch(receiveLocations(locations)))),
-    err => (dispatch(receiveErrors(err.responseJSON)))
+    .then(locations => (dispatch(receiveLocations(locations))))
 )
 
 export const updateLocation = location => dispatch => (

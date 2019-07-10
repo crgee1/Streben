@@ -6,6 +6,7 @@
       font-weight: 400;
       font-size: 20px;
       line-height: 1;
+      -webkit-font-smoothing: antialiased;
     }
 
   h3 {
@@ -65,6 +66,8 @@
 
 .minimap {
   padding-right: 16px;
+  height: 100px;
+  width: 600px;
 }
 
 .show-route-main {
@@ -106,4 +109,9 @@
 
 .show-route-description {
   min-height: 100px;
+}
+
+#minimap {
+  height: 60vh;
+  width: 100%;
 }
