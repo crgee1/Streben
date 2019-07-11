@@ -1,7 +1,13 @@
+// #root {
+//     height: 100%;
+//     background-color: #f5f5fa;
+// }
+
 .dashboard-home {
     display: flex;
     justify-content: space-between;
     background-color: #f5f5fa;
+    background-size: cover;
     padding-top: 120px;
     height: 100%;
     padding-left: 34px;
@@ -12,16 +18,24 @@
     width: 281px;
     height: 270px;
     border-radius: 4px;
+    float: left;
+    // overflow: auto;
 }
 
 .activity-feed {
-    background-color: #fff;
+    background-color: #f5f5fa;
     width: 593px;
-    height: 292px;
+    // height: 292px;
     border-radius: 4px;
+    float: left;
+    height: 100%;
+    overflow: auto;
+    box-sizing: border-box;
+    // padding: 0.5em;
 }
 
 .banner {
+    background-color: #fff;
     background-position-y: -91px;
     background-repeat: no-repeat;
     background-size: cover; 
@@ -30,7 +44,7 @@
     width: 100%;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
-    margin-bottom: 169px;
+    margin-bottom: 27px;
 }
 
 .profile-card {

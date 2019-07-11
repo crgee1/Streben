@@ -19,6 +19,7 @@ class NewWorkout extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    this.setState({duration: this.state.hours * 3600 + this.state.minutes * 60 + this.state.seconds})
     if (this.state.name === '') {
      document.getElementById('name-err').innerHTML = 'Name cant be blank';
     } else {
@@ -67,9 +68,9 @@ class NewWorkout extends React.Component {
             <div>
               <label>Duration</label>
               <section className='duration'>
-                <input type="text" value={this.hours} onChange={this.updateDuration(3600)}/>
-                <input type="text" value={this.mins} onChange={this.updateDuration(60)}/>
-                <input type="text" value={this.secs} onChange={this.updateDuration(1)}/>
+                <input type="text" value={this.state.hours} onChange={this.update('hours')}/>
+                <input type="text" value={this.state.minutes} onChange={this.update('minutes')}/>
+                <input type="text" value={this.state.seconds} onChange={this.update('seconds')}/>
               </section>
             </div>
             <div>
