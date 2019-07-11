@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class ActivityFeedItem extends React.Component {
 
@@ -12,7 +13,7 @@ class ActivityFeedItem extends React.Component {
   }
 
   render() {
-    const { distance, elevation, duration, description, name } = this.props.workout;
+    const { distance, elevation, duration, description, name, id } = this.props.workout;
     const { user } = this.props;
     return (
       <div className='activity-feed-item'>
@@ -20,7 +21,7 @@ class ActivityFeedItem extends React.Component {
           <h2>{user.username}</h2>
         </header>
         <div className='feed-item-name'>
-          <h1>{name}</h1>
+          <Link to={`workouts/edit/${id}`}>{name}</Link>
         </div>
         <div className='feed-item-desc'>
           <p>{description}</p>

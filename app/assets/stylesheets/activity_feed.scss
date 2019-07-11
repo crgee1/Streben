@@ -1,12 +1,17 @@
 .activity-feed-item {
     margin-bottom: 23px;
     background-color: #fff;
-    padding: 15px;
+    padding: 20px 15px;
 
-    h1 {
+    a {
         font-size: 22px;
         font-weight: 700;
         line-height: 28px;
+        color: #2d2d32;
+
+        &:hover {
+            color: #005b83;
+        }
     }
 
     h2 {
@@ -29,6 +34,18 @@
         font-size: 13px;
         line-height: 1.45;
     }
+
+    header {
+        margin-bottom: 10px;
+    }
+}
+
+.feed-item-name {
+    margin-bottom: 10px;
+}
+
+.feed-item-desc {
+    margin-bottom: 10px;
 }
 
 .feed-item-stats {

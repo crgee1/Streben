@@ -22,13 +22,13 @@ class SaveRoute extends React.Component {
     this.props.createRoute(this.state)
     .then(res => {this.props.routeInfo.locationArr.forEach(location =>{
         this.props.createLocation({
-          route_id: res.route.id,
+          route_id: res.payload.routes.id,
           order: location.order,
           latitude: location.latitude,
           longitude: location.longitude,
         })})
         this.props.closeModal();
-        this.props.history.push(`/routes/${res.route.id}`)
+      this.props.history.push(`/routes/${res.payload.routes.id}`)
       })
       // .then((res) => this.props.history.push(`/routes`));
       

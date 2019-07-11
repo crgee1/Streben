@@ -5,11 +5,11 @@ class EditWorkout extends React.Component {
     super(props);
     this.state = {
       user_id: this.props.currentUser.id,
-      distance: this.props.workout.distance,
-      // duration: 0,
-      elevation: 0,
-      name: '',
-      workout_type: 'Run',
+      distance: this.props.distance,
+      duration: this.props.duration,
+      elevation: this.props.elevation,
+      name: this.props.name,
+      workout_type: this.props.workout_type,
       // hours: 0,
       // minutes: 0,
       // seconds: 0,
@@ -21,7 +21,7 @@ class EditWorkout extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchWorkout(this.props.match.params.workoutId)
+    this.props.fetchWorkout(this.props.match.params.workoutId);
   }
 
   handleSubmit(e) {
@@ -34,7 +34,7 @@ class EditWorkout extends React.Component {
     if (this.state.name === '') {
       document.getElementById('name-err').innerHTML = 'Name cant be blank';
     } else {
-      this.props.createWorkout(this.state).then(res => this.props.history.push(`/training/${res.workout.id}`));
+      this.props.updateWorkout(this.state).then(res => this.props.history.push(`/training/${res.payload.workouts.id}`));
     }
   }
 

@@ -4,7 +4,7 @@ import {
   RECEIVE_LOCATIONS,
   REMOVE_LOCATION,
 } from '../actions/location_actions';
-import { RECEIVE_ROUTE } from '../actions/route_actions'
+import { RECEIVE_ROUTE, RECEIVE_ROUTES } from '../actions/route_actions'
 
 const locationsReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -19,6 +19,8 @@ const locationsReducer = (state = {}, action) => {
       return newState;
     case RECEIVE_ROUTE:
       return merge({}, state, action.payload.locations)
+    case RECEIVE_ROUTES:
+      return merge({}, action.payload.locations)
     default:
       return state;
   }
