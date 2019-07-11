@@ -12,7 +12,7 @@ class ShowRoute extends React.Component {
 
   componentWillMount() {
     this.props.fetchRoute(this.props.match.params.routeId)
-    this.props.fetchLocations();
+    // this.props.fetchLocations();
   }
 
   displayTime(seconds) {

@@ -16,7 +16,7 @@ class SmallMap extends React.Component {
     this.directionsRender = new google.maps.DirectionsRenderer({
       map: this.map,
     });
-    console.log('mount');
+    
     setTimeout(() => this.props.locations.sort((a, b) => (a.order > b.order) ? 1 : -1)
       .forEach(point => {
         this.placeMarker({

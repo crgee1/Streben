@@ -34,8 +34,8 @@ export const createWorkout = workout => dispatch => (
 
 export const fetchWorkout = id => dispatch => (
   APIUtil.fetchWorkout(id)
-    .then(workout => (dispatch(receiveWorkout(workout)))),
-  err => (dispatch(receiveErrors(err.responseJSON)))
+    .then(workout => (dispatch(receiveWorkout(workout))),
+  err => (dispatch(receiveErrors(err.responseJSON))))
 )
 
 export const fetchWorkouts = () => dispatch => (
