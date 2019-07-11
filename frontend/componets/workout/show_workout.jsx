@@ -3,6 +3,7 @@ import React from 'react';
 class ShowWorkout extends React.Component {
   constructor(props) {
     super(props);
+    this.displayTime = this.displayTime.bind(this);
   }
 
   componentDidMount() {
@@ -10,9 +11,18 @@ class ShowWorkout extends React.Component {
       .then(res => this.props.fetchUser(res.workout.user_id));
   }
 
+  displayTime(seconds) {
+    let hour = Math.floor(seconds / 3600);
+    let min = Math.floor(seconds % 3600 / 60);
+    let sec = seconds % 60;
+    if (sec < 10) sec = `0${sec}`;
+    if (hour >= 1 && min < 10) min = `0${min}`
+    return hour >= 1 ? `${hour}:${min}:${sec}` : `${min}:${sec}`
+  }
+
   render() {
     const {workout} = this.props;
-    const display = this.props.workout === undefined ? null : (<div>
+    const display = this.props.workout === undefined ? null : (<div className='show-workout-main'>
       <div className='icons'>
         <i class="far fa-edit"></i>
       </div>
@@ -25,15 +35,35 @@ class ShowWorkout extends React.Component {
                 {workout.user.username[0]}
               </h1>
             </section>
-            <h2>{workout.name}</h2>
+            <section className='show-text'>
+              <h2>{workout.name}</h2>
+              <p>{workout.description}</p>
+            </section>
+            <hr/>
           </section>
-          <section className='show-workout-right'></section>
+          <section className='show-workout-right'>
+            <section>
+              <div>
+                <h3>{workout.distance} mi</h3>
+                <label>Distance</label>
+              </div>
+              <div>
+                <h3>{this.displayTime(workout.duration)}</h3>
+                <label>Duration</label>
+              </div>
+              <div>
+                <h3>{workout.elevation} ft</h3>
+                <label>Elevation</label>
+              </div>
+            </section>
+            <hr />
+          </section>
         </div>
       </div>
     </div>);
     console.log(this.props.users)
     return (
-      <div className='show-workout-main'>
+      <div>
       {display}
     </div>
     )
