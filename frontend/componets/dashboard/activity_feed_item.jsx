@@ -12,14 +12,16 @@ class ActivityFeedItem extends React.Component {
   }
 
   render() {
-    const { distance, elevation, duration, description} = this.props.workout;
+    const { distance, elevation, duration, description, name } = this.props.workout;
     const { user } = this.props;
     return (
       <div className='activity-feed-item'>
         <header className='feed-item-header'>
           <h2>{user.username}</h2>
         </header>
-        <div className='feed-item-name'></div>
+        <div className='feed-item-name'>
+          <h1>{name}</h1>
+        </div>
         <div className='feed-item-desc'>
           <p>{description}</p>
         </div>

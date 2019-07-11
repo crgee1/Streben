@@ -30,7 +30,7 @@ class NewWorkout extends React.Component {
     if (this.state.name === '') {
      document.getElementById('name-err').innerHTML = 'Name cant be blank';
     } else {
-    this.props.createWorkout(this.state).then(res => this.props.history.push(`/training/${res.workout.id}`));
+    this.props.createWorkout(this.state).then(res => this.props.history.push(`/training/${res.payload.workouts.id}`));
     }
   }
 
