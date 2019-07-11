@@ -1,14 +1,25 @@
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-expressions */
 import React from 'react';
+import ActivityFeedItem from './activity_feed_item';
 
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
   }
 
+  componentDidMount() {
+    this.props.fetchWorkouts();
+  }
+
   render() {
+    const { currentUser } = this.props;
+    const workouts = this.props.workouts
+      .filter(workout => workout.user_id === currentUser.id)
+        .map((workout, i) => (
+          <ActivityFeedItem
+            workout={workout}
+            key={i}
+          />
+        ))
     return (
       <div className="dashboard-home">
         <div className='personal-stats'>
@@ -20,13 +31,14 @@ class Dashboard extends React.Component {
             </section>
             <section className='profile-main-text'>
               <h1>
-                {this.props.currentUser.username}
+                {currentUser.username}
               </h1>
             </section>
           </section>
         </div>
         <div className='activity-feed'>
           <section className='banner'></section>
+          {workouts}
         </div>
         <div className='advertise'>
           <section>
