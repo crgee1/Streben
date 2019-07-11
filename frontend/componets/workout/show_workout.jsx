@@ -13,7 +13,9 @@ class ShowWorkout extends React.Component {
   render() {
     const {workout} = this.props;
     const display = this.props.workout === undefined ? null : (<div>
-      <div className='icons'></div>
+      <div className='icons'>
+        <i class="far fa-edit"></i>
+      </div>
       <div className='show-workout-display'>
         <header><h1>{workout.user.username} - {workout.workout_type}</h1></header>
         <div className='show-workout-info'>
@@ -32,7 +34,6 @@ class ShowWorkout extends React.Component {
     console.log(this.props.users)
     return (
       <div className='show-workout-main'>
-        <h1>Activites</h1>
       {display}
     </div>
     )

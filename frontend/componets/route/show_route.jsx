@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import SmallMap from './show_map';
+import SmallMapContainer from './show_map_container';
 
 class ShowRoute extends React.Component {
   constructor(props) {
@@ -51,7 +51,7 @@ class ShowRoute extends React.Component {
         <Link to={`/routes/edit/${route.id}`} className='edit-btn'>Edit</Link>
       </div>
       <div className='show-route-main'>
-        <section className='minimap'><SmallMap route={route} locations={this.props.prevLocations}/></section>
+        <section className='minimap'><SmallMapContainer /></section>
         <section className='show-route-stats'>
           
           <div className='name-section'>

@@ -36,7 +36,7 @@ class RouteIndexItem extends React.Component {
         <section className='route-index-item-stats'>
           <ul className='route-index-list'>
             <div className='map-name'>
-              <Link to={`routes/${route.id}`}><a>{route.name}</a></Link>
+              <Link to={`routes/${route.id}`}>{route.name}</Link>
             </div>
             <div className='inline-list'>
               <section>

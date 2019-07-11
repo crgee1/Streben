@@ -5,10 +5,10 @@ import { fetchLocations } from '../../actions/location_actions';
 
 const mapStateToProps = (state, ownProps) => {
   // let id = ownProps.match.params.routeId;
-  // return {
+  return {
   //   prevLocations: Object.values(state.entities.locations).filter(location => location.route_id === parseInt(id)),
-  //   currentRoute: state.entities.routes[id],
-  // }
+    // route: state.entities.routes[id],
+  }
 }
 
 const mapDispatchToProps = dispatch => ({
@@ -16,4 +16,4 @@ const mapDispatchToProps = dispatch => ({
   fetchLocations: () => dispatch(fetchLocations()),
 })
 
-// export default connect(null, mapDispatchToProps)(ShowMap);
+export default connect(mapStateToProps, mapDispatchToProps)(ShowMap);

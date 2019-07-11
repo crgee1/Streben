@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 class SmallMap extends React.Component {
   constructor(props) {
@@ -16,13 +17,16 @@ class SmallMap extends React.Component {
     this.directionsRender = new google.maps.DirectionsRenderer({
       map: this.map,
     });
-    
-    setTimeout(() => this.props.locations.sort((a, b) => (a.order > b.order) ? 1 : -1)
-      .forEach(point => {
-        this.placeMarker({
-          lat: point.latitude, lng: point.longitude
+    console.log(this.props.match.params.routeId);
+    this.props.fetchRoute(this.props.match.params.routeId)
+      .then(res => res.route.locations
+        .sort((a, b) => (a.order > b.order) ? 1 : -1)
+        .forEach(point => {
+          this.placeMarker({
+            lat: point.latitude, lng: point.longitude
+          })
         })
-      }), 1200);;
+        )
   }
 
   placeMarker(location) {
@@ -62,4 +66,4 @@ class SmallMap extends React.Component {
   }
 }
 
-export default SmallMap;
+export default withRouter(SmallMap);

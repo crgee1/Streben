@@ -34,14 +34,13 @@ export const createRoute = route => dispatch => {
 
 export const fetchRoute = id => dispatch => (
   APIUtil.fetchRoute(id)
-    .then(route => (dispatch(receiveRoute(route)))),
-  err => (dispatch(receiveErrors(err.responseJSON)))
+    .then(route => (dispatch(receiveRoute(route))))
 )
 
 export const fetchRoutes = () => dispatch => (
   APIUtil.fetchRoutes()
-    .then(routes => (dispatch(receiveRoutes(routes)))),
-  err => (dispatch(receiveErrors(err.responseJSON)))
+    .then(routes => (dispatch(receiveRoutes(routes))),
+  err => (dispatch(receiveErrors(err.responseJSON))))
 )
 
 export const updateRoute = route => dispatch => (
