@@ -1,6 +1,6 @@
 import React from 'react';
 
-class NewWorkout extends React.Component {
+class EditWorkout extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -26,15 +26,15 @@ class NewWorkout extends React.Component {
     // ((this.state.hours * 3600) || 0) + ((this.state.minutes * 60) || 0) + (this.state.seconds * 1 || 0)
     // .then((res) => console.log(res));
     // .then((res) => this.setState({ duration: res }));
-    
+
     if (this.state.name === '') {
-     document.getElementById('name-err').innerHTML = 'Name cant be blank';
+      document.getElementById('name-err').innerHTML = 'Name cant be blank';
     } else {
-    this.props.createWorkout(this.state).then(res => this.props.history.push(`/training/${res.workout.id}`));
+      this.props.createWorkout(this.state).then(res => this.props.history.push(`/training/${res.workout.id}`));
     }
   }
 
-  
+
 
   update(field) {
     return (e) => {
@@ -77,22 +77,22 @@ class NewWorkout extends React.Component {
           <section className='form-sec'>
             <div>
               <label>Distance</label>
-              <input className='distance-workout-form' type="text" value={this.state.distance} onChange={this.update('distance')}/>
+              <input className='distance-workout-form' type="text" value={this.state.distance} onChange={this.update('distance')} />
             </div>
             <div>
               <label>Duration</label>
               <section className='duration'>
-                <input type="number" value={this.state.hours} onChange={this.update('hours')}/>
-                <input type="number" value={this.state.minutes} onChange={this.update('minutes')}/>
-                <input type="number" value={this.state.seconds} onChange={this.update('seconds')}/>
+                <input type="number" value={this.state.hours} onChange={this.update('hours')} />
+                <input type="number" value={this.state.minutes} onChange={this.update('minutes')} />
+                <input type="number" value={this.state.seconds} onChange={this.update('seconds')} />
               </section>
             </div>
             <div>
               <label>Elevation</label>
-              <input className='elevation-workout-form' type="text" value={this.state.elevation} onChange={this.update('elevation')}/>
+              <input className='elevation-workout-form' type="text" value={this.state.elevation} onChange={this.update('elevation')} />
             </div>
           </section>
-          <hr/>
+          <hr />
           <section className='form-sec'>
             <div>
               <label>Sport</label>
@@ -111,18 +111,18 @@ class NewWorkout extends React.Component {
           <section className='form-sec'>
             <div>
               <label>Title</label>
-              <input className='title-workout-form' type="text" value={this.state.name} onChange={this.update('name')}/>
+              <input className='title-workout-form' type="text" value={this.state.name} onChange={this.update('name')} />
               <label id='name-err'></label>
             </div>
           </section>
-          <hr/>
+          <hr />
           <section className='form-sec'>
             <div>
               <label>Description</label>
               <textarea className='description-workout-form' value={this.state.description} onChange={this.update('description')}></textarea>
             </div>
           </section>
-          <hr/>
+          <hr />
           <section className='form-sec'>
             <div>
               <button>Create</button>
@@ -134,4 +134,4 @@ class NewWorkout extends React.Component {
   }
 }
 
-export default NewWorkout;
+export default EditWorkout;
