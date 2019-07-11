@@ -8,7 +8,6 @@ class ShowWorkout extends React.Component {
 
   componentDidMount() {
     this.props.fetchWorkout(this.props.match.params.workoutId)
-      .then(res => this.props.fetchUser(res.workout.user_id));
   }
 
   displayTime(seconds) {
@@ -21,18 +20,18 @@ class ShowWorkout extends React.Component {
   }
 
   render() {
-    const {workout} = this.props;
+    const {workout, user} = this.props;
     const display = this.props.workout === undefined ? null : (<div className='show-workout-main'>
       <div className='icons'>
-        <i class="far fa-edit"></i>
+        <i className="far fa-edit"></i>
       </div>
       <div className='show-workout-display'>
-        <header><h1>{workout.user.username} - {workout.workout_type}</h1></header>
+        <header><h1>{user.username} - {workout.workout_type}</h1></header>
         <div className='show-workout-info'>
           <section className='show-workout-left'>
             <section className='avatar-image'>
               <h1>
-                {workout.user.username[0]}
+                {user.username[0]}
               </h1>
             </section>
             <section className='show-text'>
@@ -61,11 +60,10 @@ class ShowWorkout extends React.Component {
         </div>
       </div>
     </div>);
-    console.log(this.props.users)
     return (
       <div>
-      {display}
-    </div>
+        {display}
+      </div>
     )
   }
 }

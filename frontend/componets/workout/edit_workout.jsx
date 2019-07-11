@@ -5,7 +5,7 @@ class EditWorkout extends React.Component {
     super(props);
     this.state = {
       user_id: this.props.currentUser.id,
-      distance: 0,
+      distance: this.props.workout.distance,
       // duration: 0,
       elevation: 0,
       name: '',
@@ -18,6 +18,10 @@ class EditWorkout extends React.Component {
     this.update = this.update.bind(this);
     this.updateDuration = this.updateDuration.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.fetchWorkout(this.props.match.params.workoutId)
   }
 
   handleSubmit(e) {

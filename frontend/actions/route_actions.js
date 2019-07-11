@@ -5,14 +5,14 @@ export const RECEIVE_ROUTES = 'RECEIVE_ROUTES';
 export const REMOVE_ROUTE = 'REMOVE_ROUTE';
 export const RECEIVE_ROUTE_ERRORS = 'RECEIVE_ROUTE_ERRORS';
 
-const receiveRoute = route => ({
+const receiveRoute = payload => ({
   type: RECEIVE_ROUTE,
-  route,
+  payload,
 })
 
-const receiveRoutes = routes => ({
+const receiveRoutes = payload => ({
   type: RECEIVE_ROUTES,
-  routes,
+  payload,
 })
 
 const removeRoute = routeId => ({

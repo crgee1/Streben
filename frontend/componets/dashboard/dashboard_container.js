@@ -4,6 +4,7 @@ import { logout, signUp } from '../../actions/session_actions';
 import { fetchWorkouts } from '../../actions/workout_actions';
 
 const mapStateToProps = (state) => ({
+    users: state.entities.users,
     currentUser: state.session.currentUser,
     workouts: Object.values(state.entities.workouts)
 })

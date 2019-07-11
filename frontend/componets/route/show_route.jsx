@@ -1,11 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import SmallMapContainer from './show_map_container';
+import SmallMap from './show_map';
 
 class ShowRoute extends React.Component {
   constructor(props) {
     super(props);
     this.route = this.props.route
+
+    // this.locations = Object.values(this.props.locations)
+    //   .filter(location => location.route_id === parseInt(this.props.match.params.routeId));
     this.displayTime = this.displayTime.bind(this);
     this.displayDate = this.displayDate.bind(this);
   }
@@ -13,6 +16,7 @@ class ShowRoute extends React.Component {
   componentWillMount() {
     this.props.fetchRoute(this.props.match.params.routeId)
     // this.props.fetchLocations();
+    
   }
 
   displayTime(seconds) {
@@ -44,14 +48,15 @@ class ShowRoute extends React.Component {
 
   render() {
     // debugger;
-    const { route, currentUser } = this.props;
+    // console.log(this.props.locations)
+    const { route, currentUser, locations } = this.props;
     const display = this.props.route === undefined ? null : (<div className='show-route'>
       <div className='show-route-header'>
         <header>{route.name}</header>
         <Link to={`/routes/edit/${route.id}`} className='edit-btn'>Edit</Link>
       </div>
       <div className='show-route-main'>
-        <section className='minimap'><SmallMapContainer /></section>
+        <section className='minimap'><SmallMap route={route} locations={Object.values(locations)}/></section>
         <section className='show-route-stats'>
           
           <div className='name-section'>

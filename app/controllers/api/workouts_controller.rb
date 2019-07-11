@@ -25,6 +25,7 @@ class Api::WorkoutsController < ApplicationController
 
   def show
     @workout = Workout.find(params[:id])
+    @user = @workout.user
     render 'api/workouts/show'
   end
 

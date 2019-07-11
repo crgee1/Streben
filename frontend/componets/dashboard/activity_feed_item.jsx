@@ -12,7 +12,8 @@ class ActivityFeedItem extends React.Component {
   }
 
   render() {
-    const { distance, elevation, duration, user, description} = this.props.workout
+    const { distance, elevation, duration, description} = this.props.workout;
+    const { user } = this.props;
     return (
       <div className='activity-feed-item'>
         <header className='feed-item-header'>

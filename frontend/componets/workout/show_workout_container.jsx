@@ -4,8 +4,16 @@ import { fetchWorkout } from '../../actions/workout_actions';
 import { fetchUser } from '../../actions/session_actions';
 
 const mapStatetoProps = (state, ownProps) => {
+  const workout = state.entities.workouts[ownProps.match.params.workoutId]
+  let user;
+  if (workout === undefined) {
+    user = { username: ''};
+  } else {
+    user = state.entities.users[workout.user_id]
+  }
   return ({
-    workout: state.entities.workouts[ownProps.match.params.workoutId]
+    user,
+    workout  
   })
 }
 

@@ -9,9 +9,9 @@ const workoutsReducer = (state = {}, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_WORKOUT:
-      return merge({}, state, { [action.workout.id]: action.workout });
+      return merge({}, state, { [action.payload.workouts.id]: action.payload.workouts });
     case RECEIVE_WORKOUTS:
-      return merge({}, action.workouts)
+      return merge({}, action.payload.workouts)
     case REMOVE_WORKOUT:
       let newState = merge({}, state);
       delete newState[action.workoutId];

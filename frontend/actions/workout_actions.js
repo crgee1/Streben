@@ -5,14 +5,14 @@ export const RECEIVE_WORKOUTS = 'RECEIVE_WORKOUTS';
 export const REMOVE_WORKOUT = 'REMOVE_WORKOUT';
 export const RECEIVE_WORKOUT_ERRORS = 'RECEIVE_WORKOUT_ERRORS';
 
-const receiveWorkout = workout => ({
+const receiveWorkout = payload => ({
   type: RECEIVE_WORKOUT,
-  workout,
+  payload,
 })
 
-const receiveWorkouts = workouts => ({
+const receiveWorkouts = payload => ({
   type: RECEIVE_WORKOUTS,
-  workouts,
+  payload,
 })
 
 const removeWorkout = workout => {

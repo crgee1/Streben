@@ -4,10 +4,18 @@ import { fetchRoute } from '../../actions/route_actions';
 import { fetchLocations } from '../../actions/location_actions';
 
 const mapStatetoProps = (state, ownProps) => {
+  const route = state.entities.routes[ownProps.match.params.routeId];
+  let locations;
+  if (route === undefined) {
+    locations = {};
+  } else {
+    locations = state.entities.locations
+  }
   return ({
     currentUser: state.session.currentUser,
-    // prevLocations: Object.values(state.entities.locations).filter(location => location.route_id === parseInt(ownProps.match.params.routeId)),
-    route: state.entities.routes[ownProps.match.params.routeId],
+    // prevLocations: Object.values(locations).filter(location => location.route_id === parseInt(ownProps.match.params.routeId)),
+    locations,
+    route,
   })
 }
 

@@ -17,16 +17,16 @@ class SmallMap extends React.Component {
     this.directionsRender = new google.maps.DirectionsRenderer({
       map: this.map,
     });
-    console.log(this.props.match.params.routeId);
-    this.props.fetchRoute(this.props.match.params.routeId)
-      .then(res => res.route.locations
-        .sort((a, b) => (a.order > b.order) ? 1 : -1)
+    console.log(this.props.locations);
+    
+    this.props.locations.filter(location => location.route_id === parseInt(this.props.match.params.routeId))
+      .sort((a, b) => (a.order > b.order) ? 1 : -1)
         .forEach(point => {
           this.placeMarker({
             lat: point.latitude, lng: point.longitude
           })
         })
-        )
+    
   }
 
   placeMarker(location) {
