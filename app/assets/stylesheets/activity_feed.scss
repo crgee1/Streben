@@ -2,4 +2,39 @@
     margin-bottom: 23px;
     background-color: #fff;
     padding: 15px;
+
+    h1 {
+        font-size: 22px;
+        font-weight: 700;
+        line-height: 28px;
+    }
+
+    h2 {
+        font-size: 13px;
+        line-height: 1.45;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+
+    label {
+        font-size: 12px;
+        font-weight: 400;
+        color: #606065;
+        line-height: 1.2;
+    }
+
+    p {
+        font-size: 13px;
+        line-height: 1.45;
+    }
+}
+
+.feed-item-stats {
+    display: flex;
+
+    section {
+        margin-right: 33px;
+    }
 }
