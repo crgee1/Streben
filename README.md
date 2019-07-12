@@ -1,6 +1,6 @@
 # Streben
 
-[Streben](https://streben.herokuapp.com/#/) is a website for outdoor activities like running. It is a clone and based off of Strava's website. It has the capability of being able to track manually entered activities and display accumulated stats related to your activities; as well as generate a route between two points on a map and relay pertinent information, like distance and elevation.
+[Streben](https://streben.herokuapp.com/#/) is a website for outdoor activities like running. It is a clone of Strava's website. It has the capability of being able to track manually entered activities and display accumulated stats related to your activities; as well as generate a route between two points on a map and relay pertinent information, like distance and elevation.
 
 The project was done in 10 days, with future plans to develop it further.
 
