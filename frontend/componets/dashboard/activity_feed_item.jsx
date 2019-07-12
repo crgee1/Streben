@@ -21,7 +21,7 @@ class ActivityFeedItem extends React.Component {
           <h2>{user.username}</h2>
         </header>
         <div className='feed-item-name'>
-          <Link to={`workouts/edit/${id}`}>{name}</Link>
+          <Link to={`training/${id}`}>{name}</Link>
         </div>
         <div className='feed-item-desc'>
           <p>{description}</p>

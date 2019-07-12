@@ -11,12 +11,19 @@ class ShowRoute extends React.Component {
     //   .filter(location => location.route_id === parseInt(this.props.match.params.routeId));
     this.displayTime = this.displayTime.bind(this);
     this.displayDate = this.displayDate.bind(this);
+    this.state = {locations: this.props.locations}
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchRoute(this.props.match.params.routeId)
     // this.props.fetchLocations();
     
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.locations !== this.props.locations) {
+      this.setState({locations: this.props.locations})
+    }
   }
 
   displayTime(seconds) {

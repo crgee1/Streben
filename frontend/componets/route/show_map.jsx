@@ -7,11 +7,13 @@ class SmallMap extends React.Component {
     this.markersArr = [];
     this.placeMarker = this.placeMarker.bind(this);
     this.displayRoute = this.displayRoute.bind(this);
+    this.state = {locations: []}
   }
 
   componentDidMount() {
     this.map = new google.maps.Map(document.getElementById('minimap'), {
       zoom: 16,
+      center: { lat: 37.7989687, lng: -122.4024461 }
     });
     this.directionsService = new google.maps.DirectionsService;
     this.directionsRender = new google.maps.DirectionsRenderer({
@@ -19,14 +21,21 @@ class SmallMap extends React.Component {
     });
     console.log(this.props.locations);
     
-    this.props.locations.filter(location => location.route_id === parseInt(this.props.match.params.routeId))
+    setTimeout(()=> {this.props.locations.filter(location => location.route_id === parseInt(this.props.match.params.routeId))
       .sort((a, b) => (a.order > b.order) ? 1 : -1)
         .forEach(point => {
           this.placeMarker({
             lat: point.latitude, lng: point.longitude
           })
-        })
+        })}, 1200)
     
+  }
+
+  componentDidUpdate(prevProps) {
+    // debugger
+    if (prevProps.locations !== this.props.locations) {
+      this.setState({ locations: this.props.locations })
+    }
   }
 
   placeMarker(location) {

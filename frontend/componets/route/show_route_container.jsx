@@ -7,10 +7,13 @@ const mapStatetoProps = (state, ownProps) => {
   const route = state.entities.routes[ownProps.match.params.routeId];
   let locations;
   if (route === undefined) {
-    locations = {};
+    locations = [];
   } else {
-    locations = state.entities.locations
+    locations = Object.values(state.entities.locations).filter( (location) => {
+      return location.route_id === Number(ownProps.match.params.routeId)
+    })
   }
+  // debugger;
   return ({
     currentUser: state.session.currentUser,
     // prevLocations: Object.values(locations).filter(location => location.route_id === parseInt(ownProps.match.params.routeId)),

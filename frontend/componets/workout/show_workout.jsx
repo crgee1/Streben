@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class ShowWorkout extends React.Component {
   constructor(props) {
@@ -22,9 +23,9 @@ class ShowWorkout extends React.Component {
   render() {
     const {workout, user} = this.props;
     const display = this.props.workout === undefined ? null : (<div className='show-workout-main'>
-      <div className='icons'>
+      <Link to={`edit/${workout.id}`}><div className='icons'>
         <i className="far fa-edit"></i>
-      </div>
+      </div></Link>
       <div className='show-workout-display'>
         <header><h1>{user.username} - {workout.workout_type}</h1></header>
         <div className='show-workout-info'>

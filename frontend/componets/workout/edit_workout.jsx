@@ -4,12 +4,13 @@ class EditWorkout extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user_id: this.props.currentUser.id,
-      distance: this.props.distance,
-      duration: this.props.duration,
-      elevation: this.props.elevation,
-      name: this.props.name,
-      workout_type: this.props.workout_type,
+      user_id: this.props.preworkout.user_id,
+      distance: this.props.preworkout.distance,
+      duration: this.props.preworkout.duration,
+      elevation: this.props.preworkout.elevation,
+      name: this.props.preworkout.name,
+      workout_type: this.props.preworkout.workout_type,
+      description: this.props.preworkout.description,
       // hours: 0,
       // minutes: 0,
       // seconds: 0,
@@ -21,8 +22,27 @@ class EditWorkout extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchWorkout(this.props.match.params.workoutId);
+    // let that = this;
+    this.props.fetchWorkout(this.props.match.params.workoutId)
+      .then(() => this.setState({
+        user_id: this.props.preworkout.user_id,
+        distance: this.props.preworkout.distance,
+        duration: this.props.preworkout.duration,
+        elevation: this.props.preworkout.elevation,
+        name: this.props.preworkout.name,
+        workout_type: this.props.preworkout.workout_type,
+        description: this.props.preworkout.description,
+        hours: Math.floor(this.props.preworkout.duration / 3600),
+        minutes: Math.floor(this.props.preworkout.duration / 60),
+        seconds: Math.floor(this.props.preworkout.duration % 60),
+      }));
   }
+
+  // componentDidUpdate(prevProps) {
+  //   if (prevProps.workout.id != this.props.match.params.postId) {
+  //     this.props.fetchPost(this.props.match.params.postId);
+  //   }
+  // }
 
   handleSubmit(e) {
     e.preventDefault();
@@ -37,8 +57,6 @@ class EditWorkout extends React.Component {
       this.props.updateWorkout(this.state).then(res => this.props.history.push(`/training/${res.payload.workouts.id}`));
     }
   }
-
-
 
   update(field) {
     return (e) => {

@@ -23,12 +23,12 @@ class UpdateRoute extends React.Component {
     this.props.updateRoute(this.state)
       .then(res => {this.props.routeInfo.locationArr.forEach(location =>
         this.props.createLocation({
-          route_id: res.route.id,
+          route_id: res.payload.routes.id,
           order: location.order,
           latitude: location.latitude,
           longitude: location.longitude,
         }));
-        this.props.history.push(`/routes/${res.route.id}`);
+        this.props.history.push(`/routes/${res.payload.routes.id}`);
       })
     this.props.prevLocations.forEach(location => this.props.deleteLocation(location.id))
     this.props.closeModal();
