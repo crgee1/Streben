@@ -124,7 +124,6 @@ class RouteMap extends React.Component {
       destination: destination,
       waypoints: midpoints.map(mark => ({ location: mark.position })),
       travelMode: 'WALKING',
-      // unitSystem: google.maps.UnitSystem.IMPERIAL,
       avoidTolls: true
     }, function (response, status) {
       if (status === 'OK') {

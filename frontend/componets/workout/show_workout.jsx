@@ -5,6 +5,8 @@ class ShowWorkout extends React.Component {
   constructor(props) {
     super(props);
     this.displayTime = this.displayTime.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleEdit = this.handleEdit.bind(this);
   }
 
   componentDidMount() {
@@ -20,12 +22,26 @@ class ShowWorkout extends React.Component {
     return hour >= 1 ? `${hour}:${min}:${sec}` : `${min}:${sec}`
   }
 
+  handleDelete() {
+    this.props.deleteWorkout(this.props.match.params.workoutId)
+      .then(() => this.props.history.push(`/dashboard`))
+  }
+
+  handleEdit() {
+    this.props.history.push(`/training/edit/${this.props.match.params.workoutId}`)
+  }
+
   render() {
     const {workout, user} = this.props;
     const display = this.props.workout === undefined ? null : (<div className='show-workout-main'>
-      <Link to={`edit/${workout.id}`}><div className='icons'>
-        <i className="far fa-edit"></i>
-      </div></Link>
+      <div className='icons'>
+        <span onClick={this.handleEdit}>
+          <i className="far fa-edit"></i>
+        </span>
+        <span onClick={this.handleDelete}>
+          <i className="far fa-trash-alt"></i>
+        </span>
+      </div>
       <div className='show-workout-display'>
         <header><h1>{user.username} - {workout.workout_type}</h1></header>
         <div className='show-workout-info'>

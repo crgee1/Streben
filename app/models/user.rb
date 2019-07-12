@@ -20,6 +20,7 @@ class User < ApplicationRecord
   after_initialize :ensure_session_token
 
   has_many :routes
+  has_many :workouts
 
   def ensure_session_token
     self.session_token ||= SecureRandom.urlsafe_base64

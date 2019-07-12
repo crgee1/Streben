@@ -19,7 +19,6 @@ class SmallMap extends React.Component {
     this.directionsRender = new google.maps.DirectionsRenderer({
       map: this.map,
     });
-    console.log(this.props.locations);
     
     setTimeout(()=> {this.props.locations.filter(location => location.route_id === parseInt(this.props.match.params.routeId))
       .sort((a, b) => (a.order > b.order) ? 1 : -1)
@@ -39,7 +38,6 @@ class SmallMap extends React.Component {
   }
 
   placeMarker(location) {
-    console.log(location);
     var marker = new google.maps.Marker({
       position: location,
     });

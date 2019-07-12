@@ -11,9 +11,6 @@ class EditWorkout extends React.Component {
       name: this.props.preworkout.name,
       workout_type: this.props.preworkout.workout_type,
       description: this.props.preworkout.description,
-      // hours: 0,
-      // minutes: 0,
-      // seconds: 0,
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
@@ -22,9 +19,9 @@ class EditWorkout extends React.Component {
   }
 
   componentDidMount() {
-    // let that = this;
     this.props.fetchWorkout(this.props.match.params.workoutId)
       .then(() => this.setState({
+        id: this.props.preworkout.id,
         user_id: this.props.preworkout.user_id,
         distance: this.props.preworkout.distance,
         duration: this.props.preworkout.duration,
@@ -38,19 +35,8 @@ class EditWorkout extends React.Component {
       }));
   }
 
-  // componentDidUpdate(prevProps) {
-  //   if (prevProps.workout.id != this.props.match.params.postId) {
-  //     this.props.fetchPost(this.props.match.params.postId);
-  //   }
-  // }
-
   handleSubmit(e) {
     e.preventDefault();
-    // console.log(this.state)
-    // ((this.state.hours * 3600) || 0) + ((this.state.minutes * 60) || 0) + (this.state.seconds * 1 || 0)
-    // .then((res) => console.log(res));
-    // .then((res) => this.setState({ duration: res }));
-
     if (this.state.name === '') {
       document.getElementById('name-err').innerHTML = 'Name cant be blank';
     } else {
@@ -61,9 +47,6 @@ class EditWorkout extends React.Component {
   update(field) {
     return (e) => {
       e.preventDefault();
-      // debugger;
-      // const num = (parseInt(this.state.hours) * 3600) + (parseInt(this.state.minutes) * 60) + parseInt(this.state.seconds);
-      // this.setState({ duration: num })
       this.setState({ [field]: e.target.value }, () => {
         let result = parseInt(this.state.hours * 3600 || 0) + parseInt(this.state.minutes * 60 || 0) + parseInt(this.state.seconds || 0);
         this.setState({ duration: result })
@@ -147,7 +130,7 @@ class EditWorkout extends React.Component {
           <hr />
           <section className='form-sec'>
             <div>
-              <button>Create</button>
+              <button>Save</button>
             </div>
           </section>
         </form>

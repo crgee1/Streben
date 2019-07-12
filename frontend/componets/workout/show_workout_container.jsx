@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import ShowWorkout from './show_workout';
-import { fetchWorkout } from '../../actions/workout_actions';
+import { fetchWorkout, deleteWorkout } from '../../actions/workout_actions';
 import { fetchUser } from '../../actions/session_actions';
 
 const mapStatetoProps = (state, ownProps) => {
@@ -20,6 +20,7 @@ const mapStatetoProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => ({
   fetchWorkout: id => dispatch(fetchWorkout(id)),
   fetchUser: id => dispatch(fetchUser(id)),
+  deleteWorkout: id => dispatch(deleteWorkout(id)),
 })
 
 export default connect(mapStatetoProps, mapDispatchToProps)(ShowWorkout)

@@ -20,9 +20,9 @@ class Navbar extends React.Component {
         <li className="drop-submenu-item ">
           <Link className="drop-submenu-item" to="/training/new">Manual Entry</Link>
         </li>
-        <li className="drop-submenu-item ">
+        {/* <li className="drop-submenu-item ">
           <a>My Friends</a>
-        </li>
+        </li> */}
         <li className="drop-submenu-item ">
           <a onClick={this.handleLogout}>Logout</a>
         </li>
@@ -62,9 +62,9 @@ class Navbar extends React.Component {
         <li className="drop-submenu-item">
           <Link className="drop-submenu-item" to="/routes">My Routes</Link>
         </li>
-        <li className="drop-submenu-item">
+        {/* <li className="drop-submenu-item">
           <Link className="drop-submenu-item" to="/training">My Activities</Link>
-        </li>
+        </li> */}
       </ul>
     );
 

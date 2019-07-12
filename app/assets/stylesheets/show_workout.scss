@@ -101,8 +101,16 @@
   width: 110px;
   height: 40px;
 
-  &:hover {
-    background-color: #f5f5fa;
+  span {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+      &:hover {
+      background-color: #f5f5fa;
+    }
   }
 }
 

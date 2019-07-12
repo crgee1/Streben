@@ -10,9 +10,6 @@ class NewWorkout extends React.Component {
       elevation: 0,
       name: '',
       workout_type: 'Run',
-      // hours: 0,
-      // minutes: 0,
-      // seconds: 0,
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
@@ -22,11 +19,6 @@ class NewWorkout extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    // console.log(this.state)
-    // ((this.state.hours * 3600) || 0) + ((this.state.minutes * 60) || 0) + (this.state.seconds * 1 || 0)
-    // .then((res) => console.log(res));
-    // .then((res) => this.setState({ duration: res }));
-    
     if (this.state.name === '') {
      document.getElementById('name-err').innerHTML = 'Name cant be blank';
     } else {
