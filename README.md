@@ -12,3 +12,7 @@ The project uses a rails backend with a PostgreSQL database with React-Redux as 
 The main APIs used are from Google Maps API, such as Directions API, Maps JavaScript API, and Maps Elevation API. When using the Google Maps API, the developer guides and overviews were very helpful, but still required some testing to see what met my requirements.
 
 ![Test Image 1](https://github.com/crgee1/Streben/blob/master/app/assets/images/Screen%20Shot%202019-07-12%20at%2010.35.09%20AM.png)
+
+![New Route](https://github.com/crgee1/Streben/blob/master/app/assets/images/new_route.png)
+
+![New Route Show](https://github.com/crgee1/Streben/blob/master/app/assets/images/new_route_show.png)
