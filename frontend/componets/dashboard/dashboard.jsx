@@ -24,7 +24,7 @@ class Dashboard extends React.Component {
     const workoutArr = this.props.workouts.filter(
       workout => workout.user_id === currentUser.id
     );
-    const workouts = workoutArr.map((workout, i) => (
+    const workouts = workoutArr.reverse().map((workout, i) => (
       <ActivityFeedItem
         user={users[workout.user_id]}
         workout={workout}
