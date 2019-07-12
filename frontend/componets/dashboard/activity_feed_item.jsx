@@ -29,11 +29,11 @@ class ActivityFeedItem extends React.Component {
         <div className='feed-item-stats'>
           <section>
             <label>Distance</label>
-            <h3>{distance}</h3>
+            <h3>{distance} mi</h3>
           </section>
           <section>
             <label>Elevation</label>
-            <h3>{elevation}</h3>
+            <h3>{elevation} ft</h3>
           </section>
           <section>
             <label>Time</label>
