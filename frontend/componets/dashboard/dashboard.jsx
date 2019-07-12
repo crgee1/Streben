@@ -57,18 +57,20 @@ class Dashboard extends React.Component {
                 <label>Activities</label>
                 <h2>{workoutArr.length}</h2>
               </section>
-              <section>
-                <label>Distance</label>
-                <h2>{totDistance} mi</h2>
-              </section>
-              <section>
-                <label>Elevation</label>
-                <h2>{totElevation} ft</h2>
-              </section>
-              <section>
-                <label>Time</label>
-                <h2>{this.displayTime(totDuration)}</h2>
-              </section>
+              <div>
+                <section>
+                  <label>Distance</label>
+                  <h2>{totDistance} mi</h2>
+                </section>
+                <section>
+                  <label>Elevation</label>
+                  <h2>{totElevation} ft</h2>
+                </section>
+                <section>
+                  <label>Time</label>
+                  <h2>{this.displayTime(totDuration)}</h2>
+                </section>
+              </div>
             </div>
           </section>
         </div>
