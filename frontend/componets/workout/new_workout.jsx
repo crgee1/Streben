@@ -31,9 +31,6 @@ class NewWorkout extends React.Component {
   update(field) {
     return (e) => {
       e.preventDefault();
-      // debugger;
-      // const num = (parseInt(this.state.hours) * 3600) + (parseInt(this.state.minutes) * 60) + parseInt(this.state.seconds);
-      // this.setState({ duration: num })
       this.setState({ [field]: e.target.value }, () => {
         let result = parseInt(this.state.hours * 3600 || 0) + parseInt(this.state.minutes * 60 || 0) + parseInt(this.state.seconds || 0);
         this.setState({ duration: result })

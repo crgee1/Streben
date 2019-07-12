@@ -13,10 +13,8 @@ const mapStatetoProps = (state, ownProps) => {
       return location.route_id === Number(ownProps.match.params.routeId)
     })
   }
-  // debugger;
   return ({
     currentUser: state.session.currentUser,
-    // prevLocations: Object.values(locations).filter(location => location.route_id === parseInt(ownProps.match.params.routeId)),
     locations,
     route,
   })

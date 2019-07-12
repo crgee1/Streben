@@ -27,11 +27,9 @@ class SmallMap extends React.Component {
             lat: point.latitude, lng: point.longitude
           })
         })}, 1200)
-    
   }
 
   componentDidUpdate(prevProps) {
-    // debugger
     if (prevProps.locations !== this.props.locations) {
       this.setState({ locations: this.props.locations })
     }

@@ -84,5 +84,4 @@ class ShowWorkout extends React.Component {
     )
   }
 }
-// { this.props.users[this.props.workout.user_id].username }
 export default ShowWorkout;
