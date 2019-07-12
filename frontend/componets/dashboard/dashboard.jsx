@@ -83,12 +83,17 @@ class Dashboard extends React.Component {
             <a
               href="https://www.linkedin.com/in/christopher-gee-426527118"
               className="personal-adver"
+              target="_blank"
             >
               Linkedin
             </a>
           </section>
           <section>
-            <a href="https://github.com/crgee1" className="personal-adver">
+            <a
+              href="https://github.com/crgee1"
+              target="_blank"
+              className="personal-adver"
+            >
               GitHub
             </a>
           </section>
