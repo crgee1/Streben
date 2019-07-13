@@ -55,7 +55,6 @@ class ShowWorkout extends React.Component {
               <h2>{workout.name}</h2>
               <p>{workout.description}</p>
             </section>
-            <hr/>
           </section>
           <section className='show-workout-right'>
             <section>
@@ -72,7 +71,6 @@ class ShowWorkout extends React.Component {
                 <label>Elevation</label>
               </div>
             </section>
-            <hr />
           </section>
         </div>
       </div>
