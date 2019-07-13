@@ -32,7 +32,7 @@ The user can drop pins down on a map and generate a route between multiple point
 
 ## Project Design
 
-This project was made with cloning Strava's key features in mind, but on a 10 day. Managing expectations to match the givin timeline was crucial in order to have a final project to demo.
+This project was made with cloning Strava's key features in mind, but in 10 days. Managing expectations to match the givin timeline was crucial in order to have a final project to demo.
 
 ## Future Changes
 
