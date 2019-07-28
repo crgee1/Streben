@@ -3,10 +3,17 @@
     width: 100%;
     height: 100vh;
     padding-top: 70px;
-    background-image: image-url('running.png'); 
     background-size: cover;
 }
 
+.splash-content {
+    height: 100vh;
+}
+
 .splash h1 {
+    color: rgb(36, 36, 40);
+    font-size: 48px;
     font-weight: 700;
+    margin-top: 70px;
+    margin-bottom: 80px;
 }

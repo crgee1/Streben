@@ -6,7 +6,10 @@
     <%= csp_meta_tag %>
     <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.google[:api_key]}" %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%# <link rel="shortcut icon" href="app/assets/images/shortcut_icon.png" type="image/x-icon" /> %>
+    <link rel="shortcut icon" href="../../assets/images/shortcut_icon.png" type="image/x-icon" />
     <%= javascript_include_tag 'application' %>
+    <script type="text/javascript"> window.splashURL = "<%= image_url('splash.png') %>" </script>
     <link rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
       integrity="sha384-
