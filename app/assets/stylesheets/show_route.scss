@@ -1,6 +1,8 @@
-.show-route {
+.show-route-content {
   padding-top: 90px;
   margin-left: 33px;
+  display: flex;
+  flex-direction: column;
 
   h2 {
       font-weight: 400;
@@ -34,6 +36,9 @@
 }
 
 .show-route-header {
+    // display: flex;
+    // justify-content: flex-start;
+    // align-self: flex-start;
     margin-top: 10px;
     margin-bottom: 30px;
     header {
@@ -65,7 +70,7 @@
 }
 
 .minimap {
-  padding-right: 16px;
+  padding-right: 100px;
   height: 100px;
   width: 600px;
 }
@@ -114,4 +119,10 @@
 #minimap {
   height: 60vh;
   width: 100%;
+}
+
+.show-route {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

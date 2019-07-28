@@ -55,7 +55,7 @@ class ShowRoute extends React.Component {
 
   render() {
     const { route, currentUser, locations } = this.props;
-    const display = this.props.route === undefined ? null : (<div className='show-route'>
+    const display = this.props.route === undefined ? null : (<div className='show-route-content'>
       <div className='show-route-header'>
         <header>{route.name}</header>
         <Link to={`/routes/edit/${route.id}`} className='edit-btn'>Edit</Link>
@@ -104,7 +104,7 @@ class ShowRoute extends React.Component {
     </div>);
 
     return (
-      <div>
+      <div className='show-route'>
         {display}
       </div>
     )
