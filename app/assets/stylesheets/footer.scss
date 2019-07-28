@@ -3,10 +3,11 @@
   color: rgb(255, 255, 255);
   font-weight: 700;
   font-size: 10px;  
-  height: 50vh;
+  height: 40vh;
 
   h2 {
     color: #99999e;
+    margin-bottom: 40px;
   }
 
   .footer-logo {
@@ -25,6 +26,7 @@
   
   .start-column {
     padding-top: 7px;
+
   }
 
   .logo-column {
@@ -33,17 +35,36 @@
   .footer-content {
     display: flex;
     // height: 100%;
-    // justify-content: center;
+    justify-content: center;
     padding-top: 64px;
-    padding-left: 50px;
+    // padding-left: 32px;
     
     section {
       display: flex;
       flex-direction: column;
+      align-items: flex-start;
       min-width: 243px;
       padding-right: 20px;
+
+      div {
+        margin-bottom: 20px;
+        font-weight: 400;
+      }
+
+      a {
+        color: white;
+      }
     }
 
+  }
+
+  @media only screen and (max-width: 1600px) {
+    .footer-content {
+      display: flex;
+      justify-content: flex-start;
+      padding-top: 64px;
+      padding-left: 32px;
+    }
   }
 
 }

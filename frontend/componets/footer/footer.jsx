@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default () => {
   return (
@@ -9,22 +10,32 @@ export default () => {
         </section>
         <section className='follow-column'>
           <h2>FOLLOW</h2>
-          <ul>
-            <li>GITHUB</li>
-            <li>LINKEDIN</li>
-          </ul>
+          <div>
+            <a
+              href="https://github.com/crgee1"
+              target="_blank"
+              className="personal-adver"
+            >
+            GITHUB
+            </a>
+          </div>
+          <div>
+            <a
+              href="https://www.linkedin.com/in/christopher-gee-426527118"
+              className="personal-adver"
+              target="_blank"
+            >
+            LINKEDIN
+            </a>
+          </div>
         </section>
         <section className='start-column'>
           <h2>GET STARTED</h2>
-          <ul>
-            <li>SIGN UP</li>
-            <li>LOG IN</li>
-          </ul>
+          <div><Link to="/signup">SIGN UP</Link></div>
+          <div><Link to="/login">LOG IN</Link></div>
         </section>
       </div>
     </footer>
 
   )
 }
-
-
