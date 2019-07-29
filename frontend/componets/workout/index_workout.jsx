@@ -6,7 +6,8 @@ class Training extends React.Component {
     super(props);
     this.state = {workouts: this.props.workouts}
 
-    this.onSort = this.onSort.bind(this);
+    this.onSortNum = this.onSortNum.bind(this);
+    this.onSortAlpha = this.onSortAlpha.bind(this);
   }
 
   componentDidMount() {
@@ -15,7 +16,13 @@ class Training extends React.Component {
     }));
   }
 
-  onSort(sortKey) {
+  onSortAlpha(sortKey) {
+    const workouts = this.state.workouts;
+    workouts.sort((a, b) => a[sortKey] > b[sortKey] ? 1 : -1);
+    this.setState({ workouts });
+  }
+
+  onSortNum(sortKey) {
     const workouts = this.state.workouts;
     workouts.sort((a, b) => a[sortKey] - b[sortKey]);
     this.setState({ workouts });
@@ -43,11 +50,11 @@ class Training extends React.Component {
           <table>
             <thead>
               <tr>
-                <th className='sport-header'>Sport</th>
-                <th onClick={e => this.onSort('name')}>Title</th>
-                <th onClick={e => this.onSort('duration')}>Time</th>
-                <th onClick={e => this.onSort('distance')}>Distance</th>
-                <th onClick={e => this.onSort('elevation')}>Elevation</th>
+                <th className='sport-header' onClick={e => this.onSortAlpha('workout_type')}>Sport</th>
+                <th onClick={e => this.onSortAlpha('name')}>Title</th>
+                <th onClick={e => this.onSortNum('duration')}>Time</th>
+                <th onClick={e => this.onSortNum('distance')}>Distance</th>
+                <th onClick={e => this.onSortNum('elevation')}>Elevation</th>
                 <th>Actions</th>
               </tr>
             </thead>
