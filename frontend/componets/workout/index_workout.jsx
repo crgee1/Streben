@@ -4,7 +4,14 @@ import IndexWorkoutItem from './index_workout_item';
 class Training extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {workouts: this.props.workouts}
+    this.state = {
+      workouts: this.props.workouts,
+      workout_type: true,
+      name: true,
+      distance: true,
+      elevation: true,
+      duration: true,
+    }
 
     this.onSortNum = this.onSortNum.bind(this);
     this.onSortAlpha = this.onSortAlpha.bind(this);
@@ -18,13 +25,24 @@ class Training extends React.Component {
 
   onSortAlpha(sortKey) {
     const workouts = this.state.workouts;
-    workouts.sort((a, b) => a[sortKey] > b[sortKey] ? 1 : -1);
+    if (this.state[sortKey]) {
+      workouts.sort((a, b) => a[sortKey] > b[sortKey] ? 1 : -1);
+      this.setState({ workouts });
+    } else {
+      workouts.sort((a, b) => b[sortKey] > a[sortKey] ? 1 : -1);
+    }
+    this.setState({[sortKey]: !this.state[sortKey]})
     this.setState({ workouts });
   }
 
   onSortNum(sortKey) {
     const workouts = this.state.workouts;
-    workouts.sort((a, b) => a[sortKey] - b[sortKey]);
+    if (this.state[sortKey]) {
+      workouts.sort((a, b) => a[sortKey] - b[sortKey]);
+    } else {
+      workouts.sort((a, b) => b[sortKey] - a[sortKey]);
+    }
+    this.setState({ [sortKey]: !this.state[sortKey] })
     this.setState({ workouts });
   }
 
