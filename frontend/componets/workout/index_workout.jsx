@@ -2,9 +2,23 @@ import React from 'react';
 import IndexWorkoutItem from './index_workout_item';
 
 class Training extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {workouts: this.props.workouts}
+
+    this.onSort = this.onSort.bind(this);
+  }
 
   componentDidMount() {
-    this.props.fetchWorkouts();
+    this.props.fetchWorkouts().then(() => this.setState({
+      workouts: this.props.workouts
+    }));
+  }
+
+  onSort(sortKey) {
+    const workouts = this.state.workouts;
+    workouts.sort((a, b) => a[sortKey] - b[sortKey]);
+    this.setState({ workouts });
   }
 
   render() {
@@ -30,10 +44,10 @@ class Training extends React.Component {
             <thead>
               <tr>
                 <th className='sport-header'>Sport</th>
-                <th>Title</th>
-                <th>Time</th>
-                <th>Distance</th>
-                <th>Elevation</th>
+                <th onClick={e => this.onSort('name')}>Title</th>
+                <th onClick={e => this.onSort('duration')}>Time</th>
+                <th onClick={e => this.onSort('distance')}>Distance</th>
+                <th onClick={e => this.onSort('elevation')}>Elevation</th>
                 <th>Actions</th>
               </tr>
             </thead>
