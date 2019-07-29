@@ -1,12 +1,37 @@
 .training-main {
+  padding-top: 85px;
+  padding-left: 32px;
+  height: 100vh;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  div {
+    width: 900px;
+  }
+
+  .training-head {
+    width: 100%;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 41px;
+    color: #2d2d32;
+
+    h1 {
+      font-size: 34px;
+    }
+  }
+
   tr {
     display: flex;
+    border-bottom: 1px solid rgb(221, 221, 221);
   }
   th {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 118px;
+    width: 150px;
     height: 33px;
     background-color: rgb(230, 230, 235);
 
@@ -14,16 +39,46 @@
       background-color: rgb(245, 245, 245);
     }
   }
+
+  .sport-header {
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 10px;
+  }
+
   td {
     display: flex;
-    width: 118px;
+    flex-direction: column;
+    padding-top: 20px;
+    width: 150px;
+
+    a {
+      color: #007FB6;
+      padding-right: 10px;
+
+      &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .table-type {
+    align-items: flex-start;
+    padding-left: 10px;
   }
 
   .table-string {
-    justify-content: center;
+    align-items: center;
   }
 
   .table-number {
+    align-items: center;
+
+  }
+
+  .table-button {
+    flex-direction: row;
     justify-content: flex-end;
   }
 
@@ -31,3 +86,11 @@
     min-height: 90px;
   }
 }
+
+.activity-count {
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 28px;
+  padding: 10px 0
+}
+

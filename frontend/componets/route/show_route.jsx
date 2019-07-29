@@ -16,7 +16,6 @@ class ShowRoute extends React.Component {
 
   componentDidMount() {
     this.props.fetchRoute(this.props.match.params.routeId)
-    // this.props.fetchLocations();
     
   }
 
