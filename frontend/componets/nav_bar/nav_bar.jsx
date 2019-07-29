@@ -20,6 +20,9 @@ class Navbar extends React.Component {
         <li className="drop-submenu-item ">
           <Link className="drop-submenu-item" to="/training/new">Manual Entry</Link>
         </li>
+        <li className="drop-submenu-item ">
+          <Link className="drop-submenu-item" to="/routes/new">Create a Route</Link>
+        </li>
         {/* <li className="drop-submenu-item ">
           <a>My Friends</a>
         </li> */}
