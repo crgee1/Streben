@@ -80,6 +80,7 @@ class Dashboard extends React.Component {
         </div>
         <div className="advertise">
           <section>
+            <img className='linkedin' src={window.linkedinURL} />
             <a
               href="https://www.linkedin.com/in/christopher-gee-426527118"
               className="personal-adver"
@@ -89,6 +90,7 @@ class Dashboard extends React.Component {
             </a>
           </section>
           <section>
+            <img className='github' src={window.githubURL}/>
             <a
               href="https://github.com/crgee1"
               target="_blank"
