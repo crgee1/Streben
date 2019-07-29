@@ -7,18 +7,12 @@ class Training extends React.Component {
     this.props.fetchWorkouts();
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.workouts !== this.props.workouts) {
-      console.log(prevProps.workouts)
-      console.log(this.props.workouts)
-    };
-  }
-
   render() {
-    const { workouts } = this.props;
+    const { workouts, deleteWorkout } = this.props;
     const workoutList = workouts.map((workout, i) => (
       <IndexWorkoutItem
         workout={workout}
+        deleteWorkout={deleteWorkout}
         key={i}
         id={i}
       />

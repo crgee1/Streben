@@ -2,6 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 class IndexWorkoutItem extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.handleDelete = this.handleDelete.bind(this);
+  }
 
   displayTime(seconds) {
     let hour = Math.floor(seconds / 3600);
@@ -18,7 +23,8 @@ class IndexWorkoutItem extends React.Component {
 
   render() {
     const { id, workout_type, name, duration, distance, elevation } = this.props.workout;
-    const rowStyle = this.props.id % 2 === 0 ? { 'backgroundColor': 'rgb(245, 245, 250);' } : { 'backgroundColor': '#f5f5fa' };
+    const rowStyle = this.props.id % 2 === 0 ? 
+      { 'backgroundColor': 'rgb(245, 245, 250);' } : { 'backgroundColor': '#f5f5fa' };
     return (
       <tr className='index-workout-item' style={rowStyle}>
         <td className='table-type'>{workout_type}</td>
