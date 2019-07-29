@@ -1,0 +1,33 @@
+.training-main {
+  tr {
+    display: flex;
+  }
+  th {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 118px;
+    height: 33px;
+    background-color: rgb(230, 230, 235);
+
+    &:hover {
+      background-color: rgb(245, 245, 245);
+    }
+  }
+  td {
+    display: flex;
+    width: 118px;
+  }
+
+  .table-string {
+    justify-content: center;
+  }
+
+  .table-number {
+    justify-content: flex-end;
+  }
+
+  .index-workout-item {
+    min-height: 90px;
+  }
+}

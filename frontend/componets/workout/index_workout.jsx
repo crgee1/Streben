@@ -13,6 +13,7 @@ class Training extends React.Component {
       <IndexWorkoutItem
         workout={workout}
         key={i}
+        id={i}
       />
     ))
     return (
@@ -27,7 +28,6 @@ class Training extends React.Component {
           <thead>
             <tr>
               <th>Sport</th>
-              <th>Date</th>
               <th>Title</th>
               <th>Time</th>
               <th>Distance</th>
