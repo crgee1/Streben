@@ -3,8 +3,11 @@ import IndexWorkout from './index_workout';
 import { fetchWorkouts } from '../../actions/workout_actions';
 
 const mapStateToProps = state => {
+  const { workouts } = state.entities;
+  const { id } = state.session.currentUser;
   return {
-    workouts: state.entities.workouts
+    workouts: Object.values(workouts)
+      .filter(workout => id === workout.user_id),
   }
 }
 
