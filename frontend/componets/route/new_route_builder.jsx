@@ -15,6 +15,10 @@ class RouteMap extends React.Component {
     this.plotElevation = this.plotElevation.bind(this);
     this.handleSave = this.handleSave.bind(this);
     this.computeUrl = this.computeUrl.bind(this);
+
+    this.handleClear = this.handleClear.bind(this);
+    this.handleRedo = this.handleRedo.bind(this);
+    this.handleUndo = this.handleUndo.bind(this);
   }
   componentDidMount() {
     this.map = new google.maps.Map(this.refs.map, {
@@ -25,7 +29,7 @@ class RouteMap extends React.Component {
     this.elevationService = new google.maps.ElevationService;
     this.directionsService = new google.maps.DirectionsService;
     this.directionsRender = new google.maps.DirectionsRenderer({
-      draggable: true,
+      // draggable: true,
       map: this.map,
     });
     google.maps.event.addListener(this.map, 'click', (event) => {
@@ -172,7 +176,32 @@ class RouteMap extends React.Component {
   }
 
   handleUndo() {
+    if (this.markersArr.length === 1) {
+      this.markersArr.pop().setMap(null);
+    } else if (this.markersArr.length === 2) {
+      this.markersArr.pop().setMap(null);
+      this.displayRoute(this.markersArr[0].position, this.markersArr[this.markersArr.length - 1].position, [], this.directionsService, this.directionsRender);
+      // this.displayRoute(this.markersArr[0].position);
+      // this.directionsRender.set('directions', null);
+      // this.markersArr[0].setMap(this.map);
+    } else if (this.markersArr.length > 2) {
+      this.markersArr.pop().setMap(null);
+      if (this.markersArr.length >= 2) {
+        this.markersArr.forEach(mark => mark.setMap(null));
+        this.displayRoute(this.markersArr[0].position, this.markersArr[this.markersArr.length - 1].position, this.markersArr.slice(1, this.markersArr.length - 1), this.directionsService, this.directionsRender);
 
+        this.setState({
+          locationArr: this.markersArr.map((mark, i) => {
+            return {
+              latitude: mark.getPosition().lat(),
+              longitude: mark.getPosition().lng(),
+              order: i,
+            }
+          })
+        })
+      }
+    }
+    // console.log(this.markersArr);
   }
 
   handleClear() {
@@ -193,8 +222,8 @@ class RouteMap extends React.Component {
               <Link className='exit-btn' to='/routes'>Exit Builder</Link>
             </section>
           </div>
-          <div className='route-toolbar'>
-            {/* <div className='toolbar-btn'>
+          <div className='route-toolbar' onClick={this.handleUndo}>
+            <div className='toolbar-btn'>
               <div className='toolbar-btn-icon'></div>
               <div className='toolbar-btn-label'>Undo</div>
             </div>
@@ -205,8 +234,8 @@ class RouteMap extends React.Component {
             <div className='toolbar-btn'>
               <div className='toolbar-btn-icon'></div>
               <div className='toolbar-btn-label'>Clear</div>
-            </div> */}
-            <button className={'btn' + (this.markersArr < 2 ? ' disabled' : '')} disabled={this.markersArr < 2}onClick={this.handleSave}>Save</button>
+            </div>
+            <button className={'btn' + (this.markersArr.length < 2 ? ' disabled' : '')} disabled={this.markersArr.length < 2}onClick={this.handleSave}>Save</button>
           </div>
         </div>
         <div id="map" ref='map'></div>
