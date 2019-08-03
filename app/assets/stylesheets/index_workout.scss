@@ -31,7 +31,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 150px;
+    width: 9rem;
     height: 33px;
     background-color: rgb(230, 230, 235);
 
@@ -49,12 +49,12 @@
   td {
     display: flex;
     flex-direction: column;
-    padding-top: 20px;
-    width: 150px;
+    width: 9rem;
+    justify-content: center;
 
     a {
       color: #007FB6;
-      padding-right: 10px;
+      margin-right: 10px;
 
       &:hover {
         text-decoration: underline;
@@ -79,11 +79,11 @@
 
   .table-button {
     flex-direction: row;
-    justify-content: flex-end;
+    align-items: center;
   }
 
   .index-workout-item {
-    min-height: 90px;
+    min-height: 3em;
   }
 }
 
