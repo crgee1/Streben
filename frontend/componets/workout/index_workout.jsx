@@ -58,29 +58,27 @@ class Training extends React.Component {
     ))
     return (
       <div className='training-main'>
-        <div>
-          <header className='training-head'>
-            <h1>My Activities</h1>
-          </header>
-          <section className='activity-count'>
-            {workouts.length} Activities
-          </section>
-          <table>
-            <thead>
-              <tr>
-                <th className='sport-header' onClick={e => this.onSortAlpha('workout_type')}>Sport</th>
-                <th onClick={e => this.onSortAlpha('name')}>Title</th>
-                <th onClick={e => this.onSortNum('duration')}>Time</th>
-                <th onClick={e => this.onSortNum('distance')}>Distance</th>
-                <th onClick={e => this.onSortNum('elevation')}>Elevation</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {workoutList}
-            </tbody>
-          </table>
-        </div>
+        <header className='training-head'>
+          <h1>My Activities</h1>
+        </header>
+        <section className='activity-count'>
+          {workouts.length} Activities
+        </section>
+        <table>
+          <thead>
+            <tr>
+              <th className='sport-header' onClick={e => this.onSortAlpha('workout_type')}>Sport</th>
+              <th className='title-header' onClick={e => this.onSortAlpha('name')}>Title</th>
+              <th onClick={e => this.onSortNum('duration')}>Time</th>
+              <th onClick={e => this.onSortNum('distance')}>Distance</th>
+              <th onClick={e => this.onSortNum('elevation')}>Elevation</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {workoutList}
+          </tbody>
+        </table>
       </div>
     )
   }

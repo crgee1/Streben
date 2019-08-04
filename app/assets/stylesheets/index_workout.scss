@@ -1,15 +1,11 @@
 .training-main {
   padding-top: 85px;
-  padding-left: 32px;
+  // padding-left: 32px;
   height: 100vh;
   background-color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  div {
-    width: 900px;
-  }
 
   .training-head {
     width: 100%;
@@ -31,7 +27,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 9rem;
+    width: 10.5em;
     height: 33px;
     background-color: rgb(230, 230, 235);
 
@@ -41,15 +37,19 @@
   }
 
   .sport-header {
-    display: flex;
-    justify-content: flex-start;
-    padding-left: 10px;
+    // display: flex;
+    // justify-content: flex-start;
+    // padding-left: 10px;
+  }
+
+  .title-header {
+    width: 11.5em;
   }
 
   td {
     display: flex;
     flex-direction: column;
-    width: 9rem;
+    width: 10.5em;
     justify-content: center;
 
     a {
@@ -64,8 +64,8 @@
   }
 
   .table-type {
-    align-items: flex-start;
-    padding-left: 10px;
+    align-items: center;
+    // padding-left: 10px;
   }
 
   .table-string {
