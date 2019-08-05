@@ -32,7 +32,7 @@ class EditWorkout extends React.Component {
         workout_type: this.props.preworkout.workout_type,
         description: this.props.preworkout.description,
         hours: Math.floor(this.props.preworkout.duration / 3600),
-        minutes: Math.floor(this.props.preworkout.duration / 60),
+        minutes: Math.floor(this.props.preworkout.duration % 3600 / 60),
         seconds: Math.floor(this.props.preworkout.duration % 60),
       }));
   }

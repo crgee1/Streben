@@ -30,9 +30,9 @@ ActiveRecord::Base.transaction do
   Location.create(route_id: route3.id, order: 2, latitude: 37.7799162179, longitude: -122.389325700787)
 
   Workout.destroy_all
-  Workout.create(user_id: user1.id, distance: 3.3, duration: 1523, elevation: 5, name: '3 Mile Run', workout_type: 'Run', description: 'I ran three miles in the morning')
-  Workout.create(user_id: user1.id, distance: 0.9, duration: 410, elevation: 22, name: 'Sprint', workout_type: 'Run', description: 'Track sprints')
-  Workout.create(user_id: user1.id, distance: 1.2, duration: 945, elevation: 22, name: 'Neighborhood Walk', workout_type: 'Walk', description: 'A little walk to the store')
-  Workout.create(user_id: user1.id, distance: 1.1, duration: 964, elevation: 15, name: 'Night Run', workout_type: 'Run', description: 'I ran in the dark')
-  Workout.create(user_id: user1.id, distance: 6.5, duration: 7693, elevation: 67, name: 'Mountain Hike', workout_type: 'Hike', description: 'I took a hike in the woods')
+  Workout.create(create_date: '2019-09-01', user_id: user1.id, distance: 3.3, duration: 1523, elevation: 5, name: '3 Mile Run', workout_type: 'Run', description: 'I ran three miles in the morning')
+  Workout.create(create_date: '2019-09-01', user_id: user1.id, distance: 0.9, duration: 410, elevation: 22, name: 'Sprint', workout_type: 'Run', description: 'Track sprints')
+  Workout.create(create_date: '2019-09-01', user_id: user1.id, distance: 1.2, duration: 945, elevation: 22, name: 'Neighborhood Walk', workout_type: 'Walk', description: 'A little walk to the store')
+  Workout.create(create_date: '2019-09-01', user_id: user1.id, distance: 1.1, duration: 964, elevation: 15, name: 'Night Run', workout_type: 'Run', description: 'I ran in the dark')
+  Workout.create(create_date: '2019-09-01', user_id: user1.id, distance: 6.5, duration: 7693, elevation: 67, name: 'Mountain Hike', workout_type: 'Hike', description: 'I took a hike in the woods')
 end
