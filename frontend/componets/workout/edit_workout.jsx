@@ -11,6 +11,7 @@ class EditWorkout extends React.Component {
       name: this.props.preworkout.name,
       workout_type: this.props.preworkout.workout_type,
       description: this.props.preworkout.description,
+      create_date: this.props.preworkout.create_date,
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
@@ -27,6 +28,7 @@ class EditWorkout extends React.Component {
         duration: this.props.preworkout.duration,
         elevation: this.props.preworkout.elevation,
         name: this.props.preworkout.name,
+        create_date: this.props.preworkout.create_date,
         workout_type: this.props.preworkout.workout_type,
         description: this.props.preworkout.description,
         hours: Math.floor(this.props.preworkout.duration / 3600),
@@ -107,6 +109,8 @@ class EditWorkout extends React.Component {
                 <option value='Hike'>Hike</option>
                 <option value='Walk'>Walk</option>
               </select>
+              <label>Date</label>
+              <input type="date" className='date-workout-form' value={this.state.create_date} onChange={this.update('create_date')} />
             </div>
             {/* <div>
               <label>Date & Time</label>
