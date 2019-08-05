@@ -12,10 +12,11 @@
 #  description  :text
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  create_date  :date
 #
 
 class Workout < ApplicationRecord
-  validates :user_id, :distance, :duration, :elevation, :name, :workout_type, presence: true
+  validates :user_id, :create_date, :distance, :duration, :elevation, :name, :workout_type, presence: true
 
   belongs_to :user
 end
