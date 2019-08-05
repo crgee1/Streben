@@ -10,11 +10,12 @@ class NewWorkout extends React.Component {
       elevation: 0,
       name: '',
       workout_type: 'Run',
+      create_date: this.formatDate(Date.now()),
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
-    this.updateDuration = this.updateDuration.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
+    this.formatDate = this.formatDate.bind(this);
   }
 
   handleSubmit(e) {
@@ -26,6 +27,17 @@ class NewWorkout extends React.Component {
     }
   }
 
+  formatDate(date) {
+    let d = new Date(date);
+    let month = '' + (d.getMonth() + 1);
+    let day = '' + d.getDate();
+    let year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
+  }
   
 
   update(field) {
@@ -33,13 +45,9 @@ class NewWorkout extends React.Component {
       e.preventDefault();
       this.setState({ [field]: e.target.value }, () => {
         let result = parseInt(this.state.hours * 3600 || 0) + parseInt(this.state.minutes * 60 || 0) + parseInt(this.state.seconds || 0);
-        this.setState({ duration: result })
+        this.setState({ duration: result });
       })
     };
-  }
-
-  updateDuration(hr, min, sec) {
-    return hr + min + sec
   }
 
   renderErrors() {
@@ -91,6 +99,8 @@ class NewWorkout extends React.Component {
                 <option value='Hike'>Hike</option>
                 <option value='Walk'>Walk</option>
               </select>
+              <label>Date</label>
+              <input type="date" className='date-workout-form' value={this.state.create_date} onChange={this.update('create_date')}/>
             </div>
             {/* <div>
               <label>Date & Time</label>

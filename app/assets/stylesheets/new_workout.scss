@@ -130,6 +130,23 @@ hr {
   }
 }
 
+.date-workout-form {
+  width: 12em;
+  padding-left: 10px;
+  padding-right: 10px;
+  box-sizing: border-box;
+  font-size: 14px;
+  height: 34px;
+  background-color: #fff;
+  border: 1px solid #ccccd1;
+  color: #666;
+  margin-bottom: 30px;
+
+  &:focus {
+    border-color: #007FB6;
+  }
+}
+
 .title-workout-form {
   width: 455px;
   padding-left: 10px;
