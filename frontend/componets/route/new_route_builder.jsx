@@ -222,10 +222,10 @@ class RouteMap extends React.Component {
               <Link className='exit-btn' to='/routes'>Exit Builder</Link>
             </section>
           </div>
-          <div className='route-toolbar' onClick={this.handleUndo}>
+          <div className='route-toolbar'>
             <div className='toolbar-btn'>
               <div className='toolbar-btn-icon'></div>
-              <div className='toolbar-btn-label'>Undo</div>
+              <div className='toolbar-btn-label' onClick={this.handleUndo}>Undo</div>
             </div>
             <div className='toolbar-btn'>
               <div className='toolbar-btn-icon'></div>

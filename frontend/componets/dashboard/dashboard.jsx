@@ -8,6 +8,10 @@ class Dashboard extends React.Component {
 
   componentDidMount() {
     this.props.fetchWorkouts();
+    // window.addEventListener("beforeunload", (ev) => {
+    //   ev.preventDefault();
+    //   return ev.returnValue = 'Are you sure you want to close?';
+    // });
   }
 
   displayTime(seconds) {
