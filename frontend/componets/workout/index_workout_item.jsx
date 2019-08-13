@@ -21,13 +21,31 @@ class IndexWorkoutItem extends React.Component {
     this.props.deleteWorkout(this.props.workout.id)
   }
 
+  displayDate(inputDate) {
+    let result = [];
+    let date = new Date(inputDate);
+    const days = {
+      0: "Mon",
+      1: "Tue",
+      2: "Wed",
+      3: "Thu",
+      4: "Fri",
+      5: "Sat",
+      6: "Sun",
+    };
+    result.push(days[date.getDay()]);
+    result.push(inputDate.split('-').reverse().join('/'));
+    return result.join(', ')
+  }
+
   render() {
-    const { id, workout_type, name, duration, distance, elevation } = this.props.workout;
+    const { id, workout_type, name, duration, distance, elevation, create_date } = this.props.workout;
     const rowStyle = this.props.id % 2 === 0 ? 
       { 'backgroundColor': 'rgb(245, 245, 250);' } : { 'backgroundColor': '#f5f5fa' };
     return (
       <tr className='index-workout-item' style={rowStyle}>
         <td className='table-type'>{workout_type}</td>
+        <td className='table-date'>{this.displayDate(create_date)}</td>
         <td className='table-string'><Link to={`/training/${id}`}>{name}</Link></td>
         <td className='table-number'><h3>{this.displayTime(duration)}</h3></td>
         <td className='table-number'><h3>{distance} mile</h3></td>
