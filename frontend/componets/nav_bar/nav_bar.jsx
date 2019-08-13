@@ -99,7 +99,7 @@ class Navbar extends React.Component {
     );
     
     return (
-      <div className='navbar-outer'>
+      <div>
         {urlRoute}
       </div>
     );

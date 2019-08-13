@@ -22,6 +22,38 @@ class ShowWorkout extends React.Component {
     return hour >= 1 ? `${hour}:${min}:${sec}` : `${min}:${sec}`
   }
 
+  displayDate(inputDate) {
+    let result = [];
+    let date = new Date(inputDate);
+    const days = {
+      0: "Sunday",
+      1: "Monday",
+      2: "Tuesday",
+      3: "Wednesday",
+      4: "Thursday",
+      5: "Friday",
+      6: "Saturday",
+    };
+    const months = {
+      0: "January",
+      1: "February",
+      2: "March",
+      3: "April",
+      4: "May",
+      5: "June",
+      6: "July",
+      7: "August",
+      8: "September",
+      9: "October",
+      10: "November",
+      11: "December",
+    }
+    result.push(days[date.getDay()]);
+    result.push(`${months[date.getMonth()]} ${date.getDate() + 1}`);
+    result.push(date.getFullYear());
+    return result.join(', ')
+  }
+
   handleDelete() {
     this.props.deleteWorkout(this.props.match.params.workoutId)
       .then(() => this.props.history.push(`/dashboard`))
@@ -52,6 +84,7 @@ class ShowWorkout extends React.Component {
               </h1>
             </section>
             <section className='show-text'>
+              <label className='show-workout-date'>{this.displayDate(workout.create_date)}</label>
               <h2>{workout.name}</h2>
               <p>{workout.description}</p>
             </section>

@@ -28,7 +28,7 @@ class IndexWorkoutItem extends React.Component {
     return (
       <tr className='index-workout-item' style={rowStyle}>
         <td className='table-type'>{workout_type}</td>
-        <td className='table-string'>{name}</td>
+        <td className='table-string'><Link to={`/training/${id}`}>{name}</Link></td>
         <td className='table-number'><h3>{this.displayTime(duration)}</h3></td>
         <td className='table-number'><h3>{distance} mile</h3></td>
         <td className='table-number'><h3>{elevation} ft</h3></td>

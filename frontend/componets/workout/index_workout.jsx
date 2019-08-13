@@ -27,12 +27,10 @@ class Training extends React.Component {
     const workouts = this.state.workouts;
     if (this.state[sortKey]) {
       workouts.sort((a, b) => a[sortKey] > b[sortKey] ? 1 : -1);
-      this.setState({ workouts });
     } else {
       workouts.sort((a, b) => b[sortKey] > a[sortKey] ? 1 : -1);
     }
     this.setState({[sortKey]: !this.state[sortKey]})
-    this.setState({ workouts });
   }
 
   onSortNum(sortKey) {
@@ -43,7 +41,6 @@ class Training extends React.Component {
       workouts.sort((a, b) => b[sortKey] - a[sortKey]);
     }
     this.setState({ [sortKey]: !this.state[sortKey] })
-    this.setState({ workouts });
   }
 
   render() {

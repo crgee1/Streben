@@ -80,13 +80,31 @@
     justify-content: space-between;
 }
 
-.navbar-outer {
-    display: flex;
-    justify-content: center;
-    border-bottom: .5px solid lightgray;
-    width: 100%;
-    height: 54px;
-}
+// @media only screen and (max-width: 1600px) { 
+//     .navbar-side {
+//         display: flex;
+//         margin-left: 20px;
+//         min-width: 900px;
+//         width: 100%;
+//         justify-content: space-between;
+//     }
+
+//    .navbar-main {
+//         font-size: 16px;
+//         background-color: #fff;
+//         display: flex;
+//         justify-content: space-between;
+//         padding: 0;
+//         align-items: center;
+//         height: 54px;
+//         position: fixed;
+//         width: 67%;
+//         padding-left: 32px;
+//         border-bottom: .5px solid lightgray;
+//         z-index: 30;
+//     }
+
+// }
 
 // width: 67%
 // width: 14%
