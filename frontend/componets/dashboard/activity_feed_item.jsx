@@ -12,13 +12,36 @@ class ActivityFeedItem extends React.Component {
     return hour >= 1 ? `${hour}:${min}:${sec}` : `${min}:${sec}`
   }
 
+  displayDate(inputDate) {
+    let result = [];
+    let date = new Date(inputDate);
+    const months = {
+      0: "January",
+      1: "February",
+      2: "March",
+      3: "April",
+      4: "May",
+      5: "June",
+      6: "July",
+      7: "August",
+      8: "September",
+      9: "October",
+      10: "November",
+      11: "December",
+    }
+    result.push(`${months[date.getMonth()]} ${date.getDate() + 1}`);
+    result.push(date.getFullYear());
+    return result.join(', ')
+  }
+
   render() {
-    const { distance, elevation, duration, description, name, id } = this.props.workout;
+    const { distance, elevation, duration, description, name, id, create_date } = this.props.workout;
     const { user } = this.props;
     return (
       <div className='activity-feed-item'>
         <header className='feed-item-header'>
           <h2>{user.username}</h2>
+          <label>{this.displayDate(create_date)}</label>
         </header>
         <div className='feed-item-name'>
           <Link to={`training/${id}`}>{name}</Link>
