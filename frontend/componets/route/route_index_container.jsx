@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Route from './route';
+import RouteIndex from './route_index';
 import { fetchRoutes, deleteRoute } from '../../actions/route_actions';
 
 const mapStatetoProps = state => {
@@ -13,4 +13,4 @@ const mapDispatchToProps = dispatch => ({
   deleteRoute: (id) => dispatch(deleteRoute(id)),
 })
 
-export default connect(mapStatetoProps, mapDispatchToProps)(Route)
+export default connect(mapStatetoProps, mapDispatchToProps)(RouteIndex)

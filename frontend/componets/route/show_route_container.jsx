@@ -10,7 +10,7 @@ const mapStatetoProps = (state, ownProps) => {
     locations = [];
   } else {
     locations = Object.values(state.entities.locations).filter( (location) => {
-      return location.route_id === Number(ownProps.match.params.routeId)
+      return location.routeId === Number(ownProps.match.params.routeId)
     })
   }
   return ({

@@ -35,13 +35,13 @@ class ActivityFeedItem extends React.Component {
   }
 
   render() {
-    const { distance, elevation, duration, description, name, id, create_date } = this.props.workout;
+    const { distance, elevation, duration, description, name, id, createDate } = this.props.workout;
     const { user } = this.props;
     return (
       <div className='activity-feed-item'>
         <header className='feed-item-header'>
           <h2>{user.username}</h2>
-          <label>{this.displayDate(create_date)}</label>
+          <label>{this.displayDate(createDate)}</label>
         </header>
         <div className='feed-item-name'>
           <Link to={`training/${id}`}>{name}</Link>

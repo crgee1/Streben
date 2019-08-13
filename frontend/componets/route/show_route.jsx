@@ -71,7 +71,7 @@ class ShowRoute extends React.Component {
             </section>
             <section className='show-username'>
               By {currentUser.username}
-              <h3>Created on {this.displayDate(route.created_at)}</h3>
+              <h3>Created on {this.displayDate(route.createdAt)}</h3>
             </section>
           </div>
           <hr className='hr'/>

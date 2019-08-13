@@ -9,7 +9,7 @@ const mapStatetoProps = (state, ownProps) => {
   if (workout === undefined) {
     user = { username: ''};
   } else {
-    user = state.entities.users[workout.user_id]
+    user = state.entities.users[workout.userId]
   }
   return ({
     user,

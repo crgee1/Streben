@@ -4,14 +4,14 @@ class EditWorkout extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user_id: this.props.preworkout.user_id,
+      user_id: this.props.preworkout.userId,
       distance: this.props.preworkout.distance,
       duration: this.props.preworkout.duration,
       elevation: this.props.preworkout.elevation,
       name: this.props.preworkout.name,
-      workout_type: this.props.preworkout.workout_type,
+      workout_type: this.props.preworkout.workoutType,
       description: this.props.preworkout.description,
-      create_date: this.props.preworkout.create_date,
+      create_date: this.props.preworkout.createDate,
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
@@ -23,13 +23,13 @@ class EditWorkout extends React.Component {
     this.props.fetchWorkout(this.props.match.params.workoutId)
       .then(() => this.setState({
         id: this.props.preworkout.id,
-        user_id: this.props.preworkout.user_id,
+        user_id: this.props.preworkout.userId,
         distance: this.props.preworkout.distance,
         duration: this.props.preworkout.duration,
         elevation: this.props.preworkout.elevation,
         name: this.props.preworkout.name,
-        create_date: this.props.preworkout.create_date,
-        workout_type: this.props.preworkout.workout_type,
+        create_date: this.props.preworkout.createDate,
+        workout_type: this.props.preworkout.workoutType,
         description: this.props.preworkout.description,
         hours: Math.floor(this.props.preworkout.duration / 3600),
         minutes: Math.floor(this.props.preworkout.duration % 3600 / 60),
@@ -75,6 +75,7 @@ class EditWorkout extends React.Component {
   }
 
   render() {
+    console.log(this.state)
     return (
       <div className='new-workout'>
         <form className='new-workout-form' onSubmit={this.handleSubmit}>
@@ -103,7 +104,7 @@ class EditWorkout extends React.Component {
           <section className='form-sec'>
             <div>
               <label>Sport</label>
-              <select className='sport-workout-form' defaultValue={'Run'} onChange={this.update('workout_type')}>
+              <select className='sport-workout-form' value={`${this.state.workout_type}`} onChange={this.update('workout_type')}>
                 <option value='Run'>Run</option>
                 <option value='Ride'>Ride</option>
                 <option value='Hike'>Hike</option>

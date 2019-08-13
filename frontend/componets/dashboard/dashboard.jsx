@@ -26,11 +26,11 @@ class Dashboard extends React.Component {
   render() {
     const { currentUser, users } = this.props;
     const workoutArr = this.props.workouts
-      .filter(workout => workout.user_id === currentUser.id)
+      .filter(workout => workout.userId === currentUser.id)
       .sort((a, b) => b.create_date > a.create_date ? 1 : -1);
     const workouts = workoutArr.map((workout, i) => (
       <ActivityFeedItem
-        user={users[workout.user_id]}
+        user={users[workout.userId]}
         workout={workout}
         key={i}
       />

@@ -7,8 +7,8 @@ const mapStateToProps = state => {
   const { id } = state.session.currentUser;
   return {
     workouts: Object.values(workouts).reverse()
-      .filter(workout => id === workout.user_id)
-      .sort((a, b) => b.create_date > a.create_date ? 1 : -1),
+      .filter(workout => id === workout.userId)
+      .sort((a, b) => b.createDate > a.createDate ? 1 : -1),
   }
 }
 

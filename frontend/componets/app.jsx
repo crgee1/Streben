@@ -7,7 +7,7 @@ import LoginContainer from './session/login_container';
 import DemoLoginContainer from './session/demo_login_container';
 import Splash from './splash/splash';
 import DashboardContainer from './dashboard/dashboard_container'
-import RouteContainer from './route/route_container';
+import RouteIndexContainer from './route/route_index_container';
 import ShowRouteContainer from './route/show_route_container';
 import NewRouteBuilderContainer from './route/new_route_builder_container';
 import EditRouteContainer from './route/edit_route_container';
@@ -26,7 +26,7 @@ const App = () => (
             <ProtectedRoute path='/routes/new' component={NewRouteBuilderContainer} />
             <ProtectedRoute path='/routes/edit/:routeId' component={EditRouteContainer} />
             <ProtectedRoute path='/routes/:routeId' component={ShowRouteContainer} />
-            <ProtectedRoute path='/routes' component={RouteContainer} />
+            <ProtectedRoute path='/routes' component={RouteIndexContainer} />
             <ProtectedRoute path='/training/new' component={NewWorkoutContainer} />
             <ProtectedRoute path='/training/edit/:workoutId' component={EditWorkoutContainer} />
             <ProtectedRoute path='/training/:workoutId' component={ShowWorkoutContainer} />

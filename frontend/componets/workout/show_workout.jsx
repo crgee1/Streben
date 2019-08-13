@@ -75,7 +75,7 @@ class ShowWorkout extends React.Component {
         </span>
       </div>
       <div className='show-workout-display'>
-        <header><h1>{user.username} - {workout.workout_type}</h1></header>
+        <header><h1>{user.username} - {workout.workoutType}</h1></header>
         <div className='show-workout-info'>
           <section className='show-workout-left'>
             <section className='avatar-image'>
@@ -84,7 +84,7 @@ class ShowWorkout extends React.Component {
               </h1>
             </section>
             <section className='show-text'>
-              <label className='show-workout-date'>{this.displayDate(workout.create_date)}</label>
+              <label className='show-workout-date'>{this.displayDate(workout.createDate)}</label>
               <h2>{workout.name}</h2>
               <p>{workout.description}</p>
             </section>

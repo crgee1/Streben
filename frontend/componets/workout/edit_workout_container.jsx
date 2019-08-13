@@ -6,15 +6,16 @@ const mapStateToProps = (state, ownProps) => {
   let preworkout = state.entities.workouts[ownProps.match.params.workoutId]
   if (preworkout === undefined) {
     preworkout = {
-      user_id: 0,
+      userId: 0,
       name: '',
       distance: 0,
       duration: 0,
       elevation: 0,
-      workout_type: 'Run',
+      workoutType: 'Run',
       description: '',
     }
   }
+  // debugger
   return {
     currentUser: state.session.currentUser,
     preworkout,

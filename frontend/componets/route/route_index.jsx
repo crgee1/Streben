@@ -13,7 +13,7 @@ class RouteMap extends React.Component {
 
   render() {
     const index = this.props.allRoutes.filter(
-      ele => ele.user_id === this.props.currentUser.id).map((route, i) => (
+      ele => ele.userId === this.props.currentUser.id).map((route, i) => (
       <RouteIndexItem 
         key={i}
         route={route}

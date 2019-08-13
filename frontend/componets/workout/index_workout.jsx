@@ -6,12 +6,12 @@ class Training extends React.Component {
     super(props);
     this.state = {
       workouts: this.props.workouts,
-      workout_type: true,
+      workoutType: true,
       name: true,
       distance: true,
       elevation: true,
       duration: true,
-      create_date: true,
+      createDate: true,
     }
 
     this.sortNum = this.sortNum.bind(this);
@@ -66,8 +66,8 @@ class Training extends React.Component {
           <table>
             <thead>
               <tr>
-                <th className='sport-header' onClick={e => this.sortAlpha('workout_type')}>Sport</th>
-                <th className='sport-date' onClick={e => this.sortAlpha('create_date')}>Date</th>
+                <th className='sport-header' onClick={e => this.sortAlpha('workoutType')}>Sport</th>
+                <th className='sport-date' onClick={e => this.sortAlpha('createDate')}>Date</th>
                 <th className='title-header' onClick={e => this.sortAlpha('name')}>Title</th>
                 <th onClick={e => this.sortNum('duration')}>Time</th>
                 <th onClick={e => this.sortNum('distance')}>Distance</th>

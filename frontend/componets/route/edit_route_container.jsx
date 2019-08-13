@@ -7,7 +7,7 @@ import { fetchLocations } from '../../actions/location_actions';
 const mapStateToProps = (state, ownProps) => {
   let id = ownProps.match.params.routeId;
   return {
-    prevLocations: Object.values(state.entities.locations).filter(location => location.route_id === parseInt(id)),
+    prevLocations: Object.values(state.entities.locations).filter(location => location.routeId === parseInt(id)),
     currentRoute: state.entities.routes[id],
     errors: state.errors.routes,
   }
