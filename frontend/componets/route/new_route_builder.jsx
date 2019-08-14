@@ -9,13 +9,11 @@ class RouteMap extends React.Component {
     this.state = { locationArr: [] }
     this.markersArr = [];
     this.placeMarker = this.placeMarker.bind(this);
-    this.displayRoute = this.displayRoute.bind(this);
-    this.displayTime = this.displayTime.bind(this);
     this.computeTotalDistance = this.computeTotalDistance.bind(this);
     this.plotElevation = this.plotElevation.bind(this);
     this.handleSave = this.handleSave.bind(this);
     this.computeUrl = this.computeUrl.bind(this);
-    this.elevation;
+    this.drawRoute = this.drawRoute.bind(this);
 
     this.handleClear = this.handleClear.bind(this);
     this.handleRedo = this.handleRedo.bind(this);
@@ -60,7 +58,7 @@ class RouteMap extends React.Component {
         sum += (next - cur);
       }
       const elevation = Math.round(sum);
-      this.setState({ elevation })
+      this.setState({ elevation });
       document.getElementById('elevation').innerHTML = elevation + ' ft';
     }
 
@@ -94,24 +92,13 @@ class RouteMap extends React.Component {
   }
 
   placeMarker(location) {
-    var marker = new google.maps.Marker({
+    let marker = new google.maps.Marker({
       position: location,
     });
     marker.setMap(this.map);
     this.markersArr.push(marker);
     if (this.markersArr.length >= 2) {
-      this.markersArr.forEach(mark => mark.setMap(null));
-      this.displayRoute(this.markersArr[0].position, this.markersArr[this.markersArr.length - 1].position, this.markersArr.slice(1, this.markersArr.length-1), this.directionsService, this.directionsRender);
-    
-      this.setState({
-        locationArr: this.markersArr.map((mark, i) => {
-          return {
-            latitude: mark.getPosition().lat(),
-            longitude: mark.getPosition().lng(),
-            order: i,
-          }
-        })
-      })
+      this.drawRoute();
     }
   }
 
@@ -169,6 +156,21 @@ class RouteMap extends React.Component {
     return hour >= 1 ? `${hour}:${min}:${sec}` : `${min}:${sec}`
   }
 
+  drawRoute() {
+    this.markersArr.forEach(mark => mark.setMap(null));
+    this.displayRoute(this.markersArr[0].position, this.markersArr[this.markersArr.length - 1].position, this.markersArr.slice(1, this.markersArr.length - 1), this.directionsService, this.directionsRender);
+
+    this.setState({
+      locationArr: this.markersArr.map((mark, i) => {
+        return {
+          latitude: mark.getPosition().lat(),
+          longitude: mark.getPosition().lng(),
+          order: i,
+        }
+      })
+    })
+  }
+
   handleSave(e) {
     e.preventDefault();
     this.props.openModal('saveRoute');
@@ -182,27 +184,12 @@ class RouteMap extends React.Component {
     if (this.markersArr.length === 1) {
       this.markersArr.pop().setMap(null);
     } else if (this.markersArr.length === 2) {
-      this.markersArr.pop().setMap(null);
-      this.displayRoute(this.markersArr[0].position, this.markersArr[this.markersArr.length - 1].position, [], this.directionsService, this.directionsRender);
-      // this.displayRoute(this.markersArr[0].position);
-      // this.directionsRender.set('directions', null);
-      // this.markersArr[0].setMap(this.map);
+      const marker = this.markersArr[0];
+      this.handleClear();
+      this.placeMarker(marker.position)
     } else if (this.markersArr.length > 2) {
       this.markersArr.pop().setMap(null);
-      if (this.markersArr.length >= 2) {
-        this.markersArr.forEach(mark => mark.setMap(null));
-        this.displayRoute(this.markersArr[0].position, this.markersArr[this.markersArr.length - 1].position, this.markersArr.slice(1, this.markersArr.length - 1), this.directionsService, this.directionsRender);
-
-        this.setState({
-          locationArr: this.markersArr.map((mark, i) => {
-            return {
-              latitude: mark.getPosition().lat(),
-              longitude: mark.getPosition().lng(),
-              order: i,
-            }
-          })
-        })
-      }
+      this.drawRoute();
     }
   }
 
