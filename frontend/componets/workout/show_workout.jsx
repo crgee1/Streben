@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import RecentActivities from '../footer/recent_activities_footer';
 
 class ShowWorkout extends React.Component {
   constructor(props) {
@@ -117,14 +118,15 @@ class ShowWorkout extends React.Component {
     return (
       <div className='show-workout-container'>
         {display}
-        <footer className='show-workout-footer'>
+        {/* <footer className='show-workout-footer'>
           <div>
             <section>
             <h2>Your Recent Activities</h2>
               {recent}
             </section>
           </div>
-        </footer>
+        </footer> */}
+        <RecentActivities workouts={recentWorkouts}/>
       </div>
     )
   }
