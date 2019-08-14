@@ -15,8 +15,6 @@ class ActivityFeedItem extends React.Component {
   displayDate(inputDate) {
     let result = [];
     let date = new Date(...inputDate.split('-'));
-    console.log(inputDate.split('-'));
-    console.log(date);
     const days = {
       0: "Monday",
       1: "Tuesday",
