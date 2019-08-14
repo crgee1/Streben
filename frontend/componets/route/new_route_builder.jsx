@@ -15,6 +15,7 @@ class RouteMap extends React.Component {
     this.plotElevation = this.plotElevation.bind(this);
     this.handleSave = this.handleSave.bind(this);
     this.computeUrl = this.computeUrl.bind(this);
+    this.elevation;
 
     this.handleClear = this.handleClear.bind(this);
     this.handleRedo = this.handleRedo.bind(this);
@@ -41,11 +42,12 @@ class RouteMap extends React.Component {
         lat: mark.getPosition().lat(), 
         lng: mark.getPosition().lng() 
       }));
-
-      this.elevationService.getElevationAlongPath({ path: path, samples: 10, }, this.plotElevation)
       const result = this.directionsRender.getDirections();
-      this.computeUrl(result);
-      this.computeTotalDistance(result);
+      if (result !== null) {
+        this.elevationService.getElevationAlongPath({ path: path, samples: 10, }, this.plotElevation)
+        this.computeUrl(result);
+        this.computeTotalDistance(result);
+      }
     });
   }
 
@@ -57,8 +59,9 @@ class RouteMap extends React.Component {
       if (cur < next) {
         sum += (next - cur);
       }
-      this.setState({ elevation: Math.round(sum) })
-      document.getElementById('elevation').innerHTML = Math.round(sum) + ' ft';
+      const elevation = Math.round(sum);
+      this.setState({ elevation })
+      document.getElementById('elevation').innerHTML = elevation + ' ft';
     }
 
     // var chartDiv = document.getElementById('elevation_chart');
@@ -201,11 +204,14 @@ class RouteMap extends React.Component {
         })
       }
     }
-    // console.log(this.markersArr);
   }
 
   handleClear() {
-
+    this.directionsRender.set('directions', null);
+    this.markersArr = [];
+    document.getElementById('duration').innerHTML = '';
+    document.getElementById('distance').innerHTML = '';
+    document.getElementById('elevation').innerHTML = '';
   }
 
   render() {
@@ -233,7 +239,7 @@ class RouteMap extends React.Component {
             </div>
             <div className='toolbar-btn'>
               <div className='toolbar-btn-icon'></div>
-              <div className='toolbar-btn-label'>Clear</div>
+              <div className='toolbar-btn-label' onClick={this.handleClear}>Clear</div>
             </div>
             <button className={'btn' + (this.markersArr.length < 2 ? ' disabled' : '')} disabled={this.markersArr.length < 2}onClick={this.handleSave}>Save</button>
           </div>

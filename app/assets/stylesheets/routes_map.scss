@@ -22,12 +22,10 @@
   justify-content: center;
   font-family: 'Roboto', 'sans-serif';
   line-height: 30px;
-  // padding-left: 10px;
   position: fixed;
-  // top: 581px;
   bottom: 11px;
   left: 20px;
-  width: 30%;
+  width: 360px;
   height: 75px;
   background-color: rgb(255, 255, 255)
 }
@@ -121,4 +119,10 @@
 .warnbox-c2 {
   display: none;
   background-color: none;
+}
+
+@media only screen and (max-width: 1600px) {
+  #right-panel {
+    bottom: 29px;
+  }
 }

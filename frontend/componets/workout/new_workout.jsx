@@ -80,7 +80,7 @@ class NewWorkout extends React.Component {
             <section className='form-sec'>
               <div>
                 <label>Distance</label>
-                <input className='distance-workout-form' type="text" value={this.state.distance} onChange={this.update('distance')}/>
+                <input className='distance-workout-form' type="number" value={this.state.distance} onChange={this.update('distance')}/>
               </div>
               <div>
                 <label>Duration</label>
@@ -92,7 +92,7 @@ class NewWorkout extends React.Component {
               </div>
               <div>
                 <label>Elevation</label>
-                <input className='elevation-workout-form' type="text" value={this.state.elevation} onChange={this.update('elevation')}/>
+                <input className='elevation-workout-form' type="number" value={this.state.elevation} onChange={this.update('elevation')}/>
               </div>
             </section>
             <hr/>
