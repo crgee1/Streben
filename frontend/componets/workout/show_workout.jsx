@@ -10,7 +10,7 @@ class ShowWorkout extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchWorkouts()
+    this.props.fetchWorkouts();
   }
 
   displayTime(seconds) {
@@ -18,15 +18,13 @@ class ShowWorkout extends React.Component {
     let min = Math.floor(seconds % 3600 / 60);
     let sec = seconds % 60;
     if (sec < 10) sec = `0${sec}`;
-    if (hour >= 1 && min < 10) min = `0${min}`
-    return hour >= 1 ? `${hour}:${min}:${sec}` : `${min}:${sec}`
+    if (hour >= 1 && min < 10) min = `0${min}`;
+    return hour >= 1 ? `${hour}:${min}:${sec}` : `${min}:${sec}`;
   }
 
   displayDate(inputDate) {
     let result = [];
     let date = new Date(...inputDate.split('-'));
-    console.log(inputDate.split('-'));
-    console.log(date);
     const days = {
       0: "Monday",
       1: "Tuesday",
@@ -49,20 +47,20 @@ class ShowWorkout extends React.Component {
       10: "October",
       11: "November",
       12: "December",
-    }
+    };
     result.push(days[date.getDay()]);
     result.push(`${months[date.getMonth()]} ${date.getDate()}`);
     result.push(date.getFullYear());
-    return result.join(', ')
+    return result.join(', ');
   }
 
   handleDelete() {
     this.props.deleteWorkout(this.props.match.params.workoutId)
-      .then(() => this.props.history.push(`/dashboard`))
+      .then(() => this.props.history.push(`/dashboard`));
   }
 
   handleEdit() {
-    this.props.history.push(`/training/edit/${this.props.match.params.workoutId}`)
+    this.props.history.push(`/training/edit/${this.props.match.params.workoutId}`);
   }
 
   render() {

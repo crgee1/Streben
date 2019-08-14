@@ -8,13 +8,12 @@ class ActivityFeedItem extends React.Component {
     let min = Math.floor(seconds % 3600 / 60);
     let sec = seconds % 60;
     if (sec < 10) sec = `0${sec}`;
-    if (hour >= 1 && min < 10) min = `0${min}`
-    return hour >= 1 ? `${hour}:${min}:${sec}` : `${min}:${sec}`
+    if (hour >= 1 && min < 10) min = `0${min}`;
+    return hour >= 1 ? `${hour}:${min}:${sec}` : `${min}:${sec}`;
   }
 
   displayDate(inputDate) {
     let result = [];
-    // let date = inputDate.split('-');
     let date = new Date(...inputDate.split('-'));
     console.log(inputDate.split('-'));
     console.log(date);
@@ -40,10 +39,10 @@ class ActivityFeedItem extends React.Component {
       10: "October",
       11: "November",
       12: "December",
-    }
+    };
     result.push(`${months[date.getMonth()]} ${date.getDate()}`);
     result.push(date.getFullYear());
-    return result.join(', ')
+    return result.join(', ');
   }
 
   render() {

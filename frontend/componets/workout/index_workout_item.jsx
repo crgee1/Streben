@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 class IndexWorkoutItem extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.handleDelete = this.handleDelete.bind(this);
   }
@@ -14,11 +14,11 @@ class IndexWorkoutItem extends React.Component {
     let sec = seconds % 60;
     if (sec < 10) sec = `0${sec}`;
     if (hour >= 1 && min < 10) min = `0${min}`
-    return hour >= 1 ? `${hour}:${min}:${sec}` : `${min}:${sec}`
+    return hour >= 1 ? `${hour}:${min}:${sec}` : `${min}:${sec}`;
   }
 
   handleDelete() {
-    this.props.deleteWorkout(this.props.workout.id)
+    this.props.deleteWorkout(this.props.workout.id);
   }
 
   displayDate(inputDate) {
@@ -35,7 +35,7 @@ class IndexWorkoutItem extends React.Component {
     };
     result.push(days[date.getDay()]);
     result.push(inputDate.split('-').reverse().join('/'));
-    return result.join(', ')
+    return result.join(', ');
   }
 
   render() {

@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 
 class SmallMap extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.markersArr = [];
     this.placeMarker = this.placeMarker.bind(this);
     this.displayRoute = this.displayRoute.bind(this);
@@ -26,7 +26,7 @@ class SmallMap extends React.Component {
           this.placeMarker({
             lat: point.latitude, lng: point.longitude
           })
-        })}, 1200)
+        })}, 1200);
   }
 
   componentDidUpdate(prevProps) {
