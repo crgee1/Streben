@@ -118,14 +118,6 @@ class ShowWorkout extends React.Component {
     return (
       <div className='show-workout-container'>
         {display}
-        {/* <footer className='show-workout-footer'>
-          <div>
-            <section>
-            <h2>Your Recent Activities</h2>
-              {recent}
-            </section>
-          </div>
-        </footer> */}
         <RecentActivities workouts={recentWorkouts}/>
       </div>
     )

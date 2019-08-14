@@ -1,8 +1,9 @@
 import { connect } from 'react-redux';
 import EditWorkout from './edit_workout';
-import { updateWorkout, fetchWorkout } from '../../actions/workout_actions'
+import { updateWorkout, fetchWorkout, fetchWorkouts } from '../../actions/workout_actions'
 
 const mapStateToProps = (state, ownProps) => {
+  const { id } = state.session.currentUser;
   let preworkout = state.entities.workouts[ownProps.match.params.workoutId]
   if (preworkout === undefined) {
     preworkout = {
@@ -15,16 +16,19 @@ const mapStateToProps = (state, ownProps) => {
       description: '',
     }
   }
-  // debugger
   return {
     currentUser: state.session.currentUser,
     preworkout,
     errors: state.errors.workouts,
+    recentWorkouts: Object.values(state.entities.workouts).reverse()
+      .filter(el => id === el.userId)
+      .sort((a, b) => b.createDate > a.createDate ? 1 : -1),
 }}
 
 const mapDispatchToProps = dispatch => ({
   updateWorkout: workout => dispatch(updateWorkout(workout)),
   fetchWorkout: id => dispatch(fetchWorkout(id)),
+  fetchWorkouts: () => dispatch(fetchWorkouts()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditWorkout);
