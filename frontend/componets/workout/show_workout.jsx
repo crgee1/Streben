@@ -10,7 +10,7 @@ class ShowWorkout extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchWorkout(this.props.match.params.workoutId)
+    this.props.fetchWorkouts()
   }
 
   displayTime(seconds) {
@@ -49,7 +49,7 @@ class ShowWorkout extends React.Component {
       11: "December",
     }
     result.push(days[date.getDay()]);
-    result.push(`${months[date.getMonth()]} ${date.getDate() + 1}`);
+    result.push(`${months[date.getMonth()]} ${date.getDate()}`);
     result.push(date.getFullYear());
     return result.join(', ')
   }
@@ -64,10 +64,16 @@ class ShowWorkout extends React.Component {
   }
 
   render() {
-    const {workout, user} = this.props;
+    const {workout, user, recentWorkouts} = this.props;
+    const recent = recentWorkouts.slice(0,5).map((el, i) => (
+      <span>
+        <Link to={`/training/${el.id}`} key={i}>
+          {el.name}
+        </Link>
+      </span>));
     const display = this.props.workout === undefined ? null : (<div className='show-workout-main'>
       <div className='icons'>
-        <span onClick={this.handleEdit}>
+        <span onClick={this.handleEdit} className='show-workout-btn-edit'>
           <i className="far fa-edit"></i>
         </span>
         <span onClick={this.handleDelete}>
@@ -109,8 +115,16 @@ class ShowWorkout extends React.Component {
       </div>
     </div>);
     return (
-      <div>
+      <div className='show-workout-container'>
         {display}
+        <footer className='show-workout-footer'>
+          <div>
+            <section>
+            <h2>Your Recent Activities</h2>
+              {recent}
+            </section>
+          </div>
+        </footer>
       </div>
     )
   }

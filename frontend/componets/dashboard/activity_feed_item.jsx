@@ -29,7 +29,7 @@ class ActivityFeedItem extends React.Component {
       10: "November",
       11: "December",
     }
-    result.push(`${months[date.getMonth()]} ${date.getDate() + 1}`);
+    result.push(`${months[date.getMonth()]} ${date.getDate()}`);
     result.push(date.getFullYear());
     return result.join(', ')
   }

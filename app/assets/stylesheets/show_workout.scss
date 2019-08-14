@@ -1,8 +1,18 @@
+.show-workout-container {
+    height: 90vh;
+  }
+
+@media only screen and (max-width: 1600px) {
+  .show-workout-container {
+    height: 85vh;
+  }
+}
+
 .show-workout-main {
   padding-top: 94px;
   display: flex;
   margin-left: 33px;
-
+  height: 60%
 }
 
 .show-workout-display {
@@ -103,7 +113,7 @@
   justify-content: center;
   align-items: center;
   border: 1px solid #e6e6eb;
-  width: 110px;
+  width: 150px;
   height: 40px;
 
   span {
@@ -117,6 +127,10 @@
       background-color: #f5f5fa;
     }
   }
+}
+
+.show-workout-btn-edit {
+  border-right: 1px solid #e6e6eb;
 }
 
 .show-text {
@@ -139,4 +153,32 @@
   color: rgb(102, 102, 102);
   font-size: 12px;
   font-weight: 400;
+}
+
+.show-workout-footer {
+  background-color: rgb(245, 245, 250);
+  height: 40%;
+
+  h2 {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 25px;
+    margin-bottom: 10px;
+  }
+
+  section {
+    padding: 40px 40px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  a {
+    color: #606065;
+    font-size: 13px;
+    line-height: 1.45;
+  }
+
+  span {
+    margin-bottom: 10px;
+  }
 }
