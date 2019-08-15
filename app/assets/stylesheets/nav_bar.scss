@@ -61,7 +61,7 @@
     font-size: 16px;
     background-color: #fff;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     padding: 0;
     align-items: center;
     height: 54px;
@@ -76,10 +76,15 @@
     display: flex;
     margin-left: 20px;
     min-width: 900px;
-    width: 100%;
+    width: 70%;
     justify-content: space-between;
 }
 
+@media only screen and (max-width: 1600px) { 
+    .navbar-side { 
+        width: 100%;
+    }
+}
 // @media only screen and (max-width: 1600px) { 
 //     .navbar-side {
 //         display: flex;

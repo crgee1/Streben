@@ -48,30 +48,35 @@ class ActivityFeedItem extends React.Component {
     const { user } = this.props;
     return (
       <div className='activity-feed-item'>
-        <header className='feed-item-header'>
-          <h2>{user.username}</h2>
-          <label>{this.displayDate(createDate)}</label>
-        </header>
-        <div className='feed-item-name'>
-          <Link to={`training/${id}`}>{name}</Link>
-        </div>
-        <div className='feed-item-desc'>
-          <p>{description}</p>
-        </div>
-        <div className='feed-item-stats'>
-          <section>
-            <label>Distance</label>
-            <h3>{distance} mi</h3>
-          </section>
-          <section>
-            <label>Elevation</label>
-            <h3>{elevation} ft</h3>
-          </section>
-          <section>
-            <label>Time</label>
-            <h3>{this.displayTime(duration)}</h3>
-          </section>
-        </div>
+        <section className="avatar-image-mini">
+          <h1>{user.username[0]}</h1>
+        </section>
+        <section>
+          <header className='feed-item-header'>
+            <h2>{user.username}</h2>
+            <label>{this.displayDate(createDate)}</label>
+          </header>
+          <div className='feed-item-name'>
+            <Link to={`training/${id}`}>{name}</Link>
+          </div>
+          <div className='feed-item-desc'>
+            <p>{description}</p>
+          </div>
+          <div className='feed-item-stats'>
+            <section>
+              <label>Distance</label>
+              <h3>{distance} mi</h3>
+            </section>
+            <section>
+              <label>Elevation</label>
+              <h3>{elevation} ft</h3>
+            </section>
+            <section>
+              <label>Time</label>
+              <h3>{this.displayTime(duration)}</h3>
+            </section>
+          </div>
+        </section>
       </div>
     )
   }
