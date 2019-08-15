@@ -13,21 +13,6 @@
   }
 }
 
-.fa-times {
-  margin-left: -20px;
-  margin-top: 30px;
-  position: absolute;
-  z-index: 3;
-  background-color: white;
-  color: lightgrey;
-  padding: 5px;
-
-  &:hover {
-    color: gray;
-    cursor: pointer;
-  }
-}
-
 .fa-edit {
   color: black;
 }

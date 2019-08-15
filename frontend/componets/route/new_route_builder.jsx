@@ -173,6 +173,7 @@ class RouteMap extends React.Component {
 
   handleSave(e) {
     e.preventDefault();
+    console.log(this.markersArr.length);
     this.props.openModal('saveRoute');
   }
 
@@ -194,6 +195,8 @@ class RouteMap extends React.Component {
   }
 
   handleClear() {
+    if (this.markersArr.length === 0) return;
+    this.markersArr.pop().setMap(null);
     this.directionsRender.set('directions', null);
     this.markersArr = [];
     document.getElementById('duration').innerHTML = '';
@@ -216,19 +219,19 @@ class RouteMap extends React.Component {
             </section>
           </div>
           <div className='route-toolbar'>
-            <div className='toolbar-btn'>
-              <div className='toolbar-btn-icon'></div>
-              <div className='toolbar-btn-label' onClick={this.handleUndo}>Undo</div>
+            <div className='toolbar-btn' onClick={this.handleUndo}>
+              <div className='toolbar-btn-icon'><i class="fas fa-undo-alt"></i></div>
+              <div className='toolbar-btn-label'>Undo</div>
             </div>
-            <div className='toolbar-btn'>
-              <div className='toolbar-btn-icon'></div>
+            <div className='toolbar-btn' onClick={this.handleRedo}>
+              <div className='toolbar-btn-icon'><i class="fas fa-redo-alt"></i></div>
               <div className='toolbar-btn-label'>Redo</div>
             </div>
-            <div className='toolbar-btn'>
-              <div className='toolbar-btn-icon'></div>
-              <div className='toolbar-btn-label' onClick={this.handleClear}>Clear</div>
+            <div className='toolbar-btn' onClick={this.handleClear}>
+              <div className='toolbar-btn-icon'><i class="fas fa-times"></i></div>
+              <div className='toolbar-btn-label'>Clear</div>
             </div>
-            <button className={'btn' + (this.markersArr.length < 2 ? ' disabled' : '')} disabled={this.markersArr.length < 2}onClick={this.handleSave}>Save</button>
+            <button className={'btn' + (this.markersArr.length < 2 ? ' disabled' : '')} disabled={this.markersArr.length < 2} onClick={this.handleSave}>Save</button>
           </div>
         </div>
         <div id="map" ref='map'></div>
