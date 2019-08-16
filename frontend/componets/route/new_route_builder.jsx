@@ -8,6 +8,7 @@ class RouteMap extends React.Component {
     super(props);
     this.state = { locationArr: [], save: false }
     this.markersArr = [];
+    this.prevMarkers = [];
     this.prevActions = [];
     this.placeMarker = this.placeMarker.bind(this);
     this.computeTotalDistance = this.computeTotalDistance.bind(this);
@@ -176,59 +177,52 @@ class RouteMap extends React.Component {
 
   handleSave(e) {
     e.preventDefault();
-    console.log(this.markersArr.length >= 2)
     this.props.openModal('saveRoute');
   }
 
   handleRedo() {
-    if (this.prevActions.length === 0) return;
-    const last = this.prevActions[this.prevActions.length - 1];
-    this.prevActions.pop();
+    if (this.prevMarkers.length === 0) return;
+    const last = this.prevMarkers[this.prevMarkers.length - 1];
     if (last.action === 'undo') {
       if (last.markers instanceof Array) {
         this.handleClear();
-        this.prevActions.pop();
+        this.prevMarkers.pop();
       } else {
         this.placeMarker(last.markers.position);
+        this.prevMarkers.pop();
       }
     }
   }
 
   handleUndo() {
-    let marker;
-    const last = this.prevActions[this.prevActions.length - 1];
+    let last = this.markersArr[this.markersArr.length - 1];
     if (!last) return;
-    if (last.action === 'mark') {
-      if (this.markersArr.length === 0) {
-        return;
-      } else if (this.markersArr.length === 1) {
-        marker = this.markersArr[this.markersArr.length - 1];
+    if (this.markersArr.length === 1) {
         this.markersArr.pop().setMap(null);
       } else if (this.markersArr.length === 2) {
-        marker = this.markersArr[0];
-        this.handleClear();
-        this.prevActions.pop();
-        this.placeMarker(marker.position);
-        this.prevActions.pop();
+        last = this.markersArr[0];
+        let first = this.markersArr[1];
+        this.markersArr.pop().setMap(null);
+        this.directionsRender.set('directions', null);
+        this.markersArr = [];
+        document.getElementById('duration').innerHTML = '';
+        document.getElementById('distance').innerHTML = '';
+        document.getElementById('elevation').innerHTML = '';
+        this.setState({
+          save: false
+        })
+        this.placeMarker(last.position);
+        last = first;
       } else if (this.markersArr.length > 2) {
-        marker = this.markersArr[this.markersArr.length - 1];
         this.markersArr.pop().setMap(null);
         this.drawRoute();
       }
-      this.prevActions.push({action: 'undo', markers: marker});
-    } else if (last.action === 'clear') {
-      marker = last.markers;
-      this.prevActions.push({action: 'undo', markers: marker});
-      last.markers.forEach(mark => {
-        this.placeMarker(mark.position);
-        this.prevActions.pop();
-      });
-    }
+      this.prevMarkers.push({action: 'undo', markers: last});
   }
 
   handleClear() {
     if (this.markersArr.length === 0) return;
-    this.prevActions.push({action: 'clear', markers: [...this.markersArr]});
+    this.prevMarkers = [];
     this.markersArr.pop().setMap(null);
     this.directionsRender.set('directions', null);
     this.markersArr = [];
@@ -258,19 +252,23 @@ class RouteMap extends React.Component {
             </section>
           </div>
           <div className='route-toolbar'>
-            <div className='toolbar-btn' onClick={this.handleUndo}>
-              <div className='toolbar-btn-icon'><i className="fas fa-undo-alt"></i></div>
-              <div className='toolbar-btn-label'>Undo</div>
+            <div className='route-toolbar-left'>
+              <div className='toolbar-btn' onClick={this.handleUndo}>
+                <div className='toolbar-btn-icon'><i className="fas fa-undo-alt"></i></div>
+                <div className='toolbar-btn-label'>Undo</div>
+              </div>
+              <div className='toolbar-btn' onClick={this.handleRedo}>
+                <div className='toolbar-btn-icon'><i className="fas fa-redo-alt"></i></div>
+                <div className='toolbar-btn-label'>Redo</div>
+              </div>
+              <div className='toolbar-btn' onClick={this.handleClear}>
+                <div className='toolbar-btn-icon'><i className="fas fa-times"></i></div>
+                <div className='toolbar-btn-label'>Clear</div>
+              </div>
             </div>
-            <div className='toolbar-btn' onClick={this.handleRedo}>
-              <div className='toolbar-btn-icon'><i className="fas fa-redo-alt"></i></div>
-              <div className='toolbar-btn-label'>Redo</div>
+            <div>
+              <button className={'btn' + (!this.state.save ? ' disabled' : '')} disabled={!this.state.save} onClick={this.handleSave}>Save</button>
             </div>
-            <div className='toolbar-btn' onClick={this.handleClear}>
-              <div className='toolbar-btn-icon'><i className="fas fa-times"></i></div>
-              <div className='toolbar-btn-label'>Clear</div>
-            </div>
-            <button className={'btn' + (!this.state.save ? ' disabled' : '')} disabled={!this.state.save} onClick={this.handleSave}>Save</button>
           </div>
         </div>
         <div id="map" ref='map'></div>

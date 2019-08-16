@@ -12,7 +12,7 @@
 }
 
 #map {
-  height: 89vh;
+  height: 92vh;
   width: 100%;
   top: 0px;
 }
@@ -90,6 +90,10 @@
   height: 38px;
 }
 
+.route-toolbar-left {
+  display: flex;
+}
+
 .toolbar-btn {
   line-height: 38px;
   display: flex;
@@ -127,8 +131,16 @@
   background-color: none;
 }
 
+.gm-style-mtc {
+  display: none;
+}
+
 @media only screen and (max-width: 1600px) {
   #right-panel {
     bottom: 8px;
   }
+
+  #map {
+  height: 89vh;
+}
 }
