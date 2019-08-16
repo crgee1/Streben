@@ -97,6 +97,7 @@ class RouteMap extends React.Component {
       position: location,
     });
     marker.setMap(this.map);
+    this.prevActions.push({action: 'mark', markers: marker})
     this.markersArr.push(marker);
     if (this.markersArr.length >= 2) {
       this.drawRoute();
@@ -179,41 +180,61 @@ class RouteMap extends React.Component {
 
   handleRedo() {
     if (this.prevActions.length === 0) return;
-    if (this.prevActions[this.prevActions.length - 1].action === 'undo') {
-
-    } else {
-      
+    const last = this.prevActions[this.prevActions.length - 1];
+    this.prevActions.pop();
+    // if (last.action === 'undo') {
+    //   this.placeMarker(last.markers.position);
+    // } else if (last.action === 'clear') {
+    //   last.markers.forEach(mark => this.placeMarker(mark.position));
+    // }
+    if (last.action === 'undo') {
+      if (last.markers instanceof Array) {
+        this.handleClear();
+        this.prevActions.pop();
+      } else {
+        this.placeMarker(last.markers.position);
+      }
     }
+    console.log(this.prevActions);
   }
 
   handleUndo() {
     let marker;
-    if (this.markersArr.length === 0) {
-      return;
-    } else if (this.markersArr.length === 1) {
-      marker = this.markersArr[this.markersArr.length - 1];
-      this.markersArr.pop().setMap(null);
-    } else if (this.markersArr.length === 2) {
-      marker = this.markersArr[0];
-      this.directionsRender.set('directions', null);
-      this.markersArr = [];
-      document.getElementById('duration').innerHTML = '';
-      document.getElementById('distance').innerHTML = '';
-      document.getElementById('elevation').innerHTML = '';
-      this.placeMarker(marker.position);
-    } else if (this.markersArr.length > 2) {
-      marker = this.markersArr[this.markersArr.length - 1];
-      this.markersArr.pop().setMap(null);
-      this.drawRoute();
+    const last = this.prevActions[this.prevActions.length - 1];
+    if (last.action === 'mark') {
+      if (this.markersArr.length === 0) {
+        return;
+      } else if (this.markersArr.length === 1) {
+        marker = this.markersArr[this.markersArr.length - 1];
+        this.markersArr.pop().setMap(null);
+      } else if (this.markersArr.length === 2) {
+        marker = this.markersArr[0];
+        this.directionsRender.set('directions', null);
+        this.markersArr = [];
+        document.getElementById('duration').innerHTML = '';
+        document.getElementById('distance').innerHTML = '';
+        document.getElementById('elevation').innerHTML = '';
+        this.placeMarker(marker.position);
+        this.prevActions.pop();
+      } else if (this.markersArr.length > 2) {
+        marker = this.markersArr[this.markersArr.length - 1];
+        this.markersArr.pop().setMap(null);
+        this.drawRoute();
+      }
+      this.prevActions.push({action: 'undo', markers: marker});
+    } else if (last.action === 'clear') {
+      marker = last.markers;
+      this.prevActions.push({action: 'undo', markers: marker});
+      last.markers.forEach(mark => {
+        this.placeMarker(mark.position);
+        this.prevActions.pop();
+      });
     }
-    this.prevActions.push({action: 'undo', markers: marker});
     console.log(this.prevActions);
   }
 
   handleClear() {
     if (this.markersArr.length === 0) return;
-    console.log(this.markersArr);
-    console.log(this.markersArr.length);
     this.prevActions.push({action: 'clear', markers: [...this.markersArr]});
     this.markersArr.pop().setMap(null);
     this.directionsRender.set('directions', null);
