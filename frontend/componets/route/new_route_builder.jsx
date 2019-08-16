@@ -6,7 +6,7 @@ import Modal from '../modal/modal';
 class RouteMap extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { locationArr: [] }
+    this.state = { locationArr: [], save: false }
     this.markersArr = [];
     this.prevActions = [];
     this.placeMarker = this.placeMarker.bind(this);
@@ -100,6 +100,7 @@ class RouteMap extends React.Component {
     this.prevActions.push({action: 'mark', markers: marker})
     this.markersArr.push(marker);
     if (this.markersArr.length >= 2) {
+      this.setState({save: true})
       this.drawRoute();
     }
   }
@@ -175,6 +176,7 @@ class RouteMap extends React.Component {
 
   handleSave(e) {
     e.preventDefault();
+    console.log(this.markersArr.length >= 2)
     this.props.openModal('saveRoute');
   }
 
@@ -182,11 +184,6 @@ class RouteMap extends React.Component {
     if (this.prevActions.length === 0) return;
     const last = this.prevActions[this.prevActions.length - 1];
     this.prevActions.pop();
-    // if (last.action === 'undo') {
-    //   this.placeMarker(last.markers.position);
-    // } else if (last.action === 'clear') {
-    //   last.markers.forEach(mark => this.placeMarker(mark.position));
-    // }
     if (last.action === 'undo') {
       if (last.markers instanceof Array) {
         this.handleClear();
@@ -195,12 +192,12 @@ class RouteMap extends React.Component {
         this.placeMarker(last.markers.position);
       }
     }
-    console.log(this.prevActions);
   }
 
   handleUndo() {
     let marker;
     const last = this.prevActions[this.prevActions.length - 1];
+    if (!last) return;
     if (last.action === 'mark') {
       if (this.markersArr.length === 0) {
         return;
@@ -209,11 +206,8 @@ class RouteMap extends React.Component {
         this.markersArr.pop().setMap(null);
       } else if (this.markersArr.length === 2) {
         marker = this.markersArr[0];
-        this.directionsRender.set('directions', null);
-        this.markersArr = [];
-        document.getElementById('duration').innerHTML = '';
-        document.getElementById('distance').innerHTML = '';
-        document.getElementById('elevation').innerHTML = '';
+        this.handleClear();
+        this.prevActions.pop();
         this.placeMarker(marker.position);
         this.prevActions.pop();
       } else if (this.markersArr.length > 2) {
@@ -230,7 +224,6 @@ class RouteMap extends React.Component {
         this.prevActions.pop();
       });
     }
-    console.log(this.prevActions);
   }
 
   handleClear() {
@@ -242,10 +235,15 @@ class RouteMap extends React.Component {
     document.getElementById('duration').innerHTML = '';
     document.getElementById('distance').innerHTML = '';
     document.getElementById('elevation').innerHTML = '';
-    console.log(this.prevActions);
+    this.setState({
+      save: false
+    })
   }
 
   render() {
+    // let saveBtn = this.markersArr.length >= 2 ? 
+    //   <div className='btn' onClick={this.handleSave}>Save</div> :
+    //   <div className='btn disabled'>Save</div>;
     return (
       <div>
         <Modal routeInfo={this.state}/>
@@ -272,7 +270,7 @@ class RouteMap extends React.Component {
               <div className='toolbar-btn-icon'><i className="fas fa-times"></i></div>
               <div className='toolbar-btn-label'>Clear</div>
             </div>
-            <button className={'btn' + (this.markersArr.length < 2 ? ' disabled' : '')} disabled={this.markersArr.length < 2} onClick={this.handleSave}>Save</button>
+            <button className={'btn' + (!this.state.save ? ' disabled' : '')} disabled={!this.state.save} onClick={this.handleSave}>Save</button>
           </div>
         </div>
         <div id="map" ref='map'></div>
