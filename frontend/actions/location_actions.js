@@ -33,8 +33,8 @@ export const createLocation = location => dispatch => (
 
 export const fetchLocation = id => dispatch => (
   APIUtil.fetchLocation(id)
-    .then(location => (dispatch(receiveLocation(location)))),
-    err => (dispatch(receiveErrors(err.responseJSON)))
+    .then(location => (dispatch(receiveLocation(location))),
+    err => (dispatch(receiveErrors(err.responseJSON))))
 )
 
 export const fetchLocations = () => dispatch => (
@@ -45,12 +45,12 @@ export const fetchLocations = () => dispatch => (
 
 export const updateLocation = location => dispatch => (
   APIUtil.updateLocation(location)
-    .then(location => (dispatch(receiveLocation(location)))),
-    err => (dispatch(receiveErrors(err.responseJSON)))
+    .then(location => (dispatch(receiveLocation(location))),
+    err => (dispatch(receiveErrors(err.responseJSON))))
 )
 
 export const deleteLocation = id => dispatch => (
   APIUtil.deleteLocation(id)
-    .then(location => (dispatch(removeLocation(location)))),
-    err => (dispatch(receiveErrors(err.responseJSON)))
+    .then(location => (dispatch(removeLocation(location))),
+    err => (dispatch(receiveErrors(err.responseJSON))))
 )

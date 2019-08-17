@@ -8,6 +8,7 @@ import { RECEIVE_ROUTE, RECEIVE_ROUTES } from '../actions/route_actions'
 
 const locationsReducer = (state = {}, action) => {
   Object.freeze(state);
+  
   switch (action.type) {
     case RECEIVE_LOCATION:
       return merge({}, state, { [action.location.id]: action.location });

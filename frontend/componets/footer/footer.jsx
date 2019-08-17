@@ -36,6 +36,5 @@ export default () => {
         </section>
       </div>
     </footer>
-
   )
 }
