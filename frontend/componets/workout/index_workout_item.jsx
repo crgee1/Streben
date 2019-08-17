@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 class IndexWorkoutItem extends React.Component {
   constructor(props) {
     super(props);
-
     this.handleDelete = this.handleDelete.bind(this);
   }
 
@@ -40,10 +39,8 @@ class IndexWorkoutItem extends React.Component {
 
   render() {
     const { id, workoutType, name, duration, distance, elevation, createDate } = this.props.workout;
-    const rowStyle = this.props.id % 2 === 0 ? 
-      { 'backgroundColor': 'rgb(245, 245, 250);' } : { 'backgroundColor': '#f5f5fa' };
     return (
-      <tr className='index-workout-item' style={rowStyle}>
+      <tr className={this.props.id % 2 === 0 ? 'index-workout-item-grey' : 'index-workout-item-white'}>
         <td className='table-type'>{workoutType}</td>
         <td className='table-date'>{this.displayDate(createDate)}</td>
         <td className='table-string'><Link to={`/training/${id}`}>{name}</Link></td>

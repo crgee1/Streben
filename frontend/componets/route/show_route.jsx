@@ -6,9 +6,6 @@ class ShowRoute extends React.Component {
   constructor(props) {
     super(props);
     this.route = this.props.route
-
-    // this.locations = Object.values(this.props.locations)
-    //   .filter(location => location.route_id === parseInt(this.props.match.params.routeId));
     this.displayTime = this.displayTime.bind(this);
     this.displayDate = this.displayDate.bind(this);
     this.state = {locations: this.props.locations}

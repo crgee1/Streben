@@ -44,7 +44,6 @@ class Dashboard extends React.Component {
 
     return (
       <div className="dashboard-home">
-        {/* <div> */}
           <div className="personal-stats">
             <section className="profile-card">
               <section className="avatar-image">
@@ -117,7 +116,6 @@ class Dashboard extends React.Component {
               </div>
             </section>
           </div>
-        {/* </div> */}
       </div>
     );
   }

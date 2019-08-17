@@ -240,9 +240,6 @@ class RouteMap extends React.Component {
   }
 
   render() {
-    // let saveBtn = this.markersArr.length >= 2 ? 
-    //   <div className='btn' onClick={this.handleSave}>Save</div> :
-    //   <div className='btn disabled'>Save</div>;
     return (
       <div>
         <Modal routeInfo={this.state} prevRoute={this.props.currentRoute} prevLocations={this.props.prevLocations} />

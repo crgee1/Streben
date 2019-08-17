@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/destructuring-assignment */
 import React from 'react';
 
 class SessionForm extends React.Component {
@@ -38,15 +36,11 @@ class SessionForm extends React.Component {
   renderErrors() {
     return (
       <div className="form-errors">
-
         {this.props.errors.map((error, i) => (
           <ul key={`error-${i}`}>
-
             {error}
-
           </ul>
         ))}
-
       </div>
     );
   }

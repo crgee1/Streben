@@ -1,6 +1,3 @@
-/* eslint-disable react/no-array-index-key */
-/* eslint-disable react/prop-types */
-/* eslint-disable react/destructuring-assignment */
 import React from 'react';
 
 class Signup extends React.Component {
@@ -36,7 +33,6 @@ class Signup extends React.Component {
             </li>
           </ul>
         ))}
-
       </div>
     );
   }

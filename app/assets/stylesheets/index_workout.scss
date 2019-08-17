@@ -85,8 +85,13 @@
     align-items: center;
   }
 
-  .index-workout-item {
+  .index-workout-item-grey{
     min-height: 3em;
+  }
+
+  .index-workout-item-white{
+    min-height: 3em;
+    background-color: #f5f5fa;
   }
 }
 

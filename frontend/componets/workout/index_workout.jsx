@@ -53,7 +53,7 @@ class Training extends React.Component {
       key={i}
       id={i}
       />
-      ))
+    ));
     return (
       <div className='training-main'>
         <div>

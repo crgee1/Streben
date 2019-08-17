@@ -29,7 +29,6 @@ class RouteMap extends React.Component {
     this.elevationService = new google.maps.ElevationService;
     this.directionsService = new google.maps.DirectionsService;
     this.directionsRender = new google.maps.DirectionsRenderer({
-      // draggable: true,
       map: this.map,
     });
     google.maps.event.addListener(this.map, 'click', (event) => {
@@ -234,9 +233,6 @@ class RouteMap extends React.Component {
   }
 
   render() {
-    // let saveBtn = this.markersArr.length >= 2 ? 
-    //   <div className='btn' onClick={this.handleSave}>Save</div> :
-    //   <div className='btn disabled'>Save</div>;
     return (
       <div>
         <Modal routeInfo={this.state}/>

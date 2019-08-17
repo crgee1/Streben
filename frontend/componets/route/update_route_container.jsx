@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
-import React from 'react';
-import { openModal, closeModal } from '../../actions/modal_actions';
+import { closeModal } from '../../actions/modal_actions';
 import UpdateRoute from './update_route';
 import { updateRoute } from '../../actions/route_actions';
 import { createLocation, deleteLocation } from '../../actions/location_actions';

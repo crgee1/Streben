@@ -119,6 +119,10 @@
 #minimap {
   height: 60vh;
   width: 100%;
+
+  .gm-svpc {
+    display: none;
+  }
 }
 
 .show-route {
