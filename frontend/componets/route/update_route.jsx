@@ -29,8 +29,8 @@ class UpdateRoute extends React.Component {
           longitude: location.longitude,
         }));
         this.props.history.push(`/routes/${res.payload.routes.id}`);
-      })
-    this.props.prevLocations.forEach(location => this.props.deleteLocation(location.id))
+      });
+    this.props.prevLocations.forEach(location => this.props.deleteLocation(location.id));
     this.props.closeModal();
   }
 

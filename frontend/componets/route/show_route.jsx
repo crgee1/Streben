@@ -5,20 +5,20 @@ import SmallMap from './show_map';
 class ShowRoute extends React.Component {
   constructor(props) {
     super(props);
-    this.route = this.props.route
+    this.route = this.props.route;
     this.displayTime = this.displayTime.bind(this);
     this.displayDate = this.displayDate.bind(this);
-    this.state = {locations: this.props.locations}
+    this.state = {locations: this.props.locations};
   }
 
   componentDidMount() {
-    this.props.fetchRoute(this.props.match.params.routeId)
+    this.props.fetchRoute(this.props.match.params.routeId);
     
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.locations !== this.props.locations) {
-      this.setState({locations: this.props.locations})
+      this.setState({locations: this.props.locations});
     }
   }
 
@@ -44,9 +44,9 @@ class ShowRoute extends React.Component {
       '09': 'September',
       '10': 'October',
       '11': 'November',
-      '12': 'December'
+      '12': 'December',
     };
-    return `${mth[date.slice(5,7)]} ${date.slice(8,10)}, ${date.slice(0,4)}`
+    return `${mth[date.slice(5,7)]} ${date.slice(8,10)}, ${date.slice(0,4)}`;
   }
 
   render() {

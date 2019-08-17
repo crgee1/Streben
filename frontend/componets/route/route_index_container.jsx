@@ -13,4 +13,4 @@ const mapDispatchToProps = dispatch => ({
   deleteRoute: (id) => dispatch(deleteRoute(id)),
 })
 
-export default connect(mapStatetoProps, mapDispatchToProps)(RouteIndex)
+export default connect(mapStatetoProps, mapDispatchToProps)(RouteIndex);

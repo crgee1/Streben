@@ -38,11 +38,11 @@ class RouteMap extends React.Component {
     this.directionsRender.addListener('directions_changed', () => {
       let path = this.markersArr.map(mark => ({ 
         lat: mark.getPosition().lat(), 
-        lng: mark.getPosition().lng() 
+        lng: mark.getPosition().lng(), 
       }));
       const result = this.directionsRender.getDirections();
       if (result !== null) {
-        this.elevationService.getElevationAlongPath({ path: path, samples: 10, }, this.plotElevation)
+        this.elevationService.getElevationAlongPath({ path: path, samples: 10, }, this.plotElevation);
         this.computeUrl(result);
         this.computeTotalDistance(result);
       }
@@ -96,10 +96,10 @@ class RouteMap extends React.Component {
       position: location,
     });
     marker.setMap(this.map);
-    this.prevActions.push({action: 'mark', markers: marker})
+    this.prevActions.push({action: 'mark', markers: marker});
     this.markersArr.push(marker);
     if (this.markersArr.length >= 2) {
-      this.setState({save: true})
+      this.setState({ save: true });
       this.drawRoute();
     }
   }
@@ -107,11 +107,11 @@ class RouteMap extends React.Component {
   computeUrl(result) {
     let myroute = result.routes[0];
     let path = myroute.overview_path;
-    let url = `https://maps.googleapis.com/maps/api/staticmap?size=300x180&markers=label:S%7C${path[0].lat()},${path[0].lng()}&markers=label:E%7C${path[path.length - 1].lat()},${path[path.length - 1].lng()}`
-    let pathUrl = `&path=color:0x0000ff80|weight:2|`
-    let polyline = `enc:${myroute.overview_polyline}`
+    let url = `https://maps.googleapis.com/maps/api/staticmap?size=300x180&markers=label:S%7C${path[0].lat()},${path[0].lng()}&markers=label:E%7C${path[path.length - 1].lat()},${path[path.length - 1].lng()}`;
+    let pathUrl = `&path=color:0x0000ff80|weight:2|`;
+    let polyline = `enc:${myroute.overview_polyline}`;
     let key = `&key=${window.googleAPIKey}`;
-    url += pathUrl + polyline + key
+    url += pathUrl + polyline + key;
     this.setState({ url: url });
   }
 
@@ -126,7 +126,7 @@ class RouteMap extends React.Component {
     distance = distance / 1.60934;
     distance = distance.toFixed(2);
     let time = (60 * distance / 4.43).toFixed(2);
-    this.setState({ duration: time*60, distance: distance })
+    this.setState({ duration: time*60, distance: distance });
     document.getElementById('duration').innerHTML = this.displayTime(time);
     document.getElementById('distance').innerHTML = distance + ' mi';
   }
@@ -154,8 +154,8 @@ class RouteMap extends React.Component {
     let sec = minutes % 1;
     sec = Math.floor(60 * sec);
     if (sec < 10) sec = `0${sec}`;
-    if (hour >= 1 && min < 10) min = `0${min}`
-    return hour >= 1 ? `${hour}:${min}:${sec}` : `${min}:${sec}`
+    if (hour >= 1 && min < 10) min = `0${min}`;
+    return hour >= 1 ? `${hour}:${min}:${sec}` : `${min}:${sec}`;
   }
 
   drawRoute() {
@@ -170,7 +170,7 @@ class RouteMap extends React.Component {
           order: i,
         }
       })
-    })
+    });
   }
 
   handleSave(e) {
@@ -206,9 +206,7 @@ class RouteMap extends React.Component {
         document.getElementById('duration').innerHTML = '';
         document.getElementById('distance').innerHTML = '';
         document.getElementById('elevation').innerHTML = '';
-        this.setState({
-          save: false
-        })
+        this.setState({ save: false });
         this.placeMarker(last.position);
         last = first;
       } else if (this.markersArr.length > 2) {
@@ -227,9 +225,7 @@ class RouteMap extends React.Component {
     document.getElementById('duration').innerHTML = '';
     document.getElementById('distance').innerHTML = '';
     document.getElementById('elevation').innerHTML = '';
-    this.setState({
-      save: false
-    })
+    this.setState({ save: false });
   }
 
   render() {

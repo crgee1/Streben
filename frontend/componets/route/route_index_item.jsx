@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 
 class RouteIndexItem extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.displayTime = this.displayTime.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
@@ -14,16 +14,16 @@ class RouteIndexItem extends React.Component {
     let min = Math.floor(seconds % 3600 / 60);
     let sec = seconds % 60;
     if (sec < 10) sec = `0${sec}`;
-    if (hour >= 1 && min < 10) min = `0${min}`
-    return hour >= 1 ? `${hour}:${min}:${sec}` : `${min}:${sec}`
+    if (hour >= 1 && min < 10) min = `0${min}`;
+    return hour >= 1 ? `${hour}:${min}:${sec}` : `${min}:${sec}`;
   }
 
   handleEdit() {
-    this.props.history.push(`/routes/edit/${this.props.route.id}`)
+    this.props.history.push(`/routes/edit/${this.props.route.id}`);
   }
 
   handleDelete() {
-    this.props.deleteRoute(this.props.route.id)
+    this.props.deleteRoute(this.props.route.id);
   }
 
   render() {

@@ -30,8 +30,7 @@ class SaveRoute extends React.Component {
       })
         this.props.closeModal();
         return res;
-    }).then(res => this.props.history.push(`/routes/${res.payload.routes.id}`))
-      
+    }).then(res => this.props.history.push(`/routes/${res.payload.routes.id}`));
   }
 
   update(field) {
