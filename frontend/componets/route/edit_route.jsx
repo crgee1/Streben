@@ -1,4 +1,3 @@
-import { Map, GoogleApiWrapper, GoogleMap, withGoogleMap } from 'google-maps-react';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Modal from '../modal/modal';
@@ -6,8 +5,10 @@ import Modal from '../modal/modal';
 class RouteMap extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { locationArr: [] }
+    this.state = { locationArr: [], save: false }
     this.markersArr = [];
+    this.prevMarkers = [];
+    this.prevActions = [];
     this.placeMarker = this.placeMarker.bind(this);
     this.computeTotalDistance = this.computeTotalDistance.bind(this);
     this.plotElevation = this.plotElevation.bind(this);
@@ -19,10 +20,7 @@ class RouteMap extends React.Component {
     this.handleRedo = this.handleRedo.bind(this);
     this.handleUndo = this.handleUndo.bind(this);
   }
-
   componentDidMount() {
-    this.props.fetchLocations();
-    this.props.fetchRoute(this.props.match.params.routeId);
     this.map = new google.maps.Map(this.refs.map, {
       zoom: 16,
       center: { lat: 37.7989687, lng: -122.4024461 }  // 825 Battery
@@ -31,7 +29,7 @@ class RouteMap extends React.Component {
     this.elevationService = new google.maps.ElevationService;
     this.directionsService = new google.maps.DirectionsService;
     this.directionsRender = new google.maps.DirectionsRenderer({
-      draggable: true,
+      // draggable: true,
       map: this.map,
     });
     google.maps.event.addListener(this.map, 'click', (event) => {
@@ -43,7 +41,6 @@ class RouteMap extends React.Component {
         lat: mark.getPosition().lat(),
         lng: mark.getPosition().lng()
       }));
-
       const result = this.directionsRender.getDirections();
       if (result !== null) {
         this.elevationService.getElevationAlongPath({ path: path, samples: 10, }, this.plotElevation)
@@ -51,12 +48,12 @@ class RouteMap extends React.Component {
         this.computeTotalDistance(result);
       }
     });
-
     setTimeout(() => this.props.prevLocations.sort((a, b) => (a.order > b.order) ? 1 : -1)
-      .forEach(point => {this.placeMarker({
-        lat: point.latitude, lng: point.longitude
-      })
-    }), 1200);;
+      .forEach(point => {
+        this.placeMarker({
+          lat: point.latitude, lng: point.longitude
+        })
+      }), 1200);
   }
 
   plotElevation(elevations, status) {
@@ -71,15 +68,45 @@ class RouteMap extends React.Component {
       this.setState({ elevation });
       document.getElementById('elevation').innerHTML = elevation + ' ft';
     }
+
+    // var chartDiv = document.getElementById('elevation_chart');
+    // if (status !== 'OK') {
+    // Show the error code inside the chartDiv.
+    // chartDiv.innerHTML = 'Cannot show elevation: request failed because ' +
+    //   status;
+    //   return;
+    // }
+    // Create a new chart in the elevation_chart DIV.
+    // var chart = new google.visualization.ColumnChart(chartDiv);
+
+    // Extract the data from which to populate the chart.
+    // Because the samples are equidistant, the 'Sample'
+    // column here does double duty as distance along the
+    // X axis.
+    // var data = new google.visualization.DataTable();
+    // data.addColumn('string', 'Sample');
+    // data.addColumn('number', 'Elevation');
+    // for (var i = 0; i < elevations.length; i++) {
+    //   data.addRow(['', elevations[i].elevation]);
+    // }
+
+    // Draw the chart using the data within its DIV.
+    // chart.draw(data, {
+    //   height: 150,
+    //   legend: 'none',
+    //   titleY: 'Elevation (m)'
+    // });
   }
 
   placeMarker(location) {
-    var marker = new google.maps.Marker({
+    let marker = new google.maps.Marker({
       position: location,
     });
     marker.setMap(this.map);
+    this.prevActions.push({ action: 'mark', markers: marker })
     this.markersArr.push(marker);
     if (this.markersArr.length >= 2) {
+      this.setState({ save: true })
       this.drawRoute();
     }
   }
@@ -117,6 +144,7 @@ class RouteMap extends React.Component {
       destination: destination,
       waypoints: midpoints.map(mark => ({ location: mark.position })),
       travelMode: 'WALKING',
+      // unitSystem: google.maps.UnitSystem.IMPERIAL,
       avoidTolls: true
     }, function (response, status) {
       if (status === 'OK') {
@@ -125,6 +153,16 @@ class RouteMap extends React.Component {
         alert('Could not display directions due to: ' + status);
       }
     });
+  }
+
+  displayTime(minutes) {
+    let hour = Math.floor(minutes / 60);
+    let min = Math.floor(minutes % 60);
+    let sec = minutes % 1;
+    sec = Math.floor(60 * sec);
+    if (sec < 10) sec = `0${sec}`;
+    if (hour >= 1 && min < 10) min = `0${min}`
+    return hour >= 1 ? `${hour}:${min}:${sec}` : `${min}:${sec}`
   }
 
   drawRoute() {
@@ -142,50 +180,72 @@ class RouteMap extends React.Component {
     })
   }
 
-  displayTime(minutes) {
-    let hour = Math.floor(minutes / 60);
-    let min = Math.floor(minutes % 60);
-    let sec = minutes % 1;
-    sec = Math.floor(60 * sec);
-    if (sec < 10) sec = `0${sec}`;
-    if (hour >= 1 && min < 10) min = `0${min}`
-    return hour >= 1 ? `${hour}:${min}:${sec}` : `${min}:${sec}`
-  }
-
   handleSave(e) {
     e.preventDefault();
     this.props.openModal('updateRoute');
   }
 
+  handleRedo() {
+    if (this.prevMarkers.length === 0) return;
+    const last = this.prevMarkers[this.prevMarkers.length - 1];
+    if (last.action === 'undo') {
+      if (last.markers instanceof Array) {
+        this.handleClear();
+        this.prevMarkers.pop();
+      } else {
+        this.placeMarker(last.markers.position);
+        this.prevMarkers.pop();
+      }
+    }
+  }
+
   handleUndo() {
+    let last = this.markersArr[this.markersArr.length - 1];
+    if (!last) return;
     if (this.markersArr.length === 1) {
       this.markersArr.pop().setMap(null);
     } else if (this.markersArr.length === 2) {
-      const marker = this.markersArr[0];
-      this.handleClear();
-      this.placeMarker(marker.position)
+      last = this.markersArr[0];
+      let first = this.markersArr[1];
+      this.markersArr.pop().setMap(null);
+      this.directionsRender.set('directions', null);
+      this.markersArr = [];
+      document.getElementById('duration').innerHTML = '';
+      document.getElementById('distance').innerHTML = '';
+      document.getElementById('elevation').innerHTML = '';
+      this.setState({
+        save: false
+      })
+      this.placeMarker(last.position);
+      last = first;
     } else if (this.markersArr.length > 2) {
       this.markersArr.pop().setMap(null);
       this.drawRoute();
     }
-  }
-
-  handleRedo() {
-
+    this.prevMarkers.push({ action: 'undo', markers: last });
   }
 
   handleClear() {
+    if (this.markersArr.length === 0) return;
+    this.prevMarkers = [];
+    this.markersArr.pop().setMap(null);
     this.directionsRender.set('directions', null);
     this.markersArr = [];
     document.getElementById('duration').innerHTML = '';
     document.getElementById('distance').innerHTML = '';
     document.getElementById('elevation').innerHTML = '';
+    this.setState({
+      save: false
+    })
   }
 
   render() {
+    // let saveBtn = this.markersArr.length >= 2 ? 
+    //   <div className='btn' onClick={this.handleSave}>Save</div> :
+    //   <div className='btn disabled'>Save</div>;
     return (
       <div>
-        <Modal routeInfo={this.state} prevRoute={this.props.currentRoute} prevLocations={this.props.prevLocations}/>
+        <Modal routeInfo={this.state} prevRoute={this.props.currentRoute} prevLocations={this.props.prevLocations} />
         <div>
           <div className='route-navbar'>
             <section className='route-nav-left'>
@@ -197,19 +257,23 @@ class RouteMap extends React.Component {
             </section>
           </div>
           <div className='route-toolbar'>
-            <div className='toolbar-btn'>
-              <div className='toolbar-btn-icon'></div>
-              <div className='toolbar-btn-label' onClick={this.handleUndo}>Undo</div>
+            <div className='route-toolbar-left'>
+              <div className='toolbar-btn' onClick={this.handleUndo}>
+                <div className='toolbar-btn-icon'><i className="fas fa-undo-alt"></i></div>
+                <div className='toolbar-btn-label'>Undo</div>
+              </div>
+              <div className='toolbar-btn' onClick={this.handleRedo}>
+                <div className='toolbar-btn-icon'><i className="fas fa-redo-alt"></i></div>
+                <div className='toolbar-btn-label'>Redo</div>
+              </div>
+              <div className='toolbar-btn' onClick={this.handleClear}>
+                <div className='toolbar-btn-icon'><i className="fas fa-times"></i></div>
+                <div className='toolbar-btn-label'>Clear</div>
+              </div>
             </div>
-            <div className='toolbar-btn'>
-              <div className='toolbar-btn-icon'></div>
-              <div className='toolbar-btn-label' onClick={this.handleRedo}>Redo</div>
+            <div>
+              <button className={'btn' + (!this.state.save ? ' disabled' : '')} disabled={!this.state.save} onClick={this.handleSave}>Save</button>
             </div>
-            <div className='toolbar-btn'>
-              <div className='toolbar-btn-icon'></div>
-              <div className='toolbar-btn-label' onClick={this.handleClear}>Clear</div>
-            </div>
-            <button className='btn' disabled={this.markersArr.length < 2} onClick={this.handleSave}>Save</button>
           </div>
         </div>
         <div id="map" ref='map'></div>

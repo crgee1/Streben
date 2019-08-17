@@ -62,24 +62,30 @@ class UpdateRoute extends React.Component {
         </section>
         <section className='save-main'>
           <form onSubmit={this.handleSubmit}>
-            Enter a name and description for your route below. On the next page, you'll be able to see, edit, and share your route.
+            <p>
+              Enter a name and description for your route below. On the next page, you'll be able to see, edit, and share your route.
+            </p>
             <div className='inline-row'>
-              <label htmlFor='types'>Type
-                <select name="types" id="types" className='selectbox'>
+              <section className='save-route-textcontainer'>
+                <label>Type</label>
+                <select name="types" className='selectbox'>
                   <option value="Run">Run</option>
                   <option value="Cycle">Cycle</option>
                   <option value="Walk">Walk</option>
                 </select>
-              </label>
-              <label>Route Name (required)
-                <input type="text" value={this.state.name} onChange={this.update('name')} />
+              </section>
+              <section className='save-route-textcontainer'>
+                <label>Route Name (required)</label>
+                <input className='save-route-name' type="text" value={this.state.name} onChange={this.update('name')} />
                 {this.renderErrors()}
-              </label>
+              </section>
             </div>
-            <label htmlFor='description'>Description
-            </label>
-            <textarea id='description' type="text" value={this.state.description} onChange={this.update('description')} />
-            <input className='modal-save-btn' type="submit" />
+            <section className='save-route-textcontainer-desc'>
+              <label>Description
+              </label>
+              <textarea type="text" value={this.state.description} onChange={this.update('description')} />
+            </section>
+            <input className='modal-save-btn' type="submit" value='Save' />
           </form>
         </section>
       </div>

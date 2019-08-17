@@ -1,4 +1,3 @@
-import { Map, GoogleApiWrapper, GoogleMap, withGoogleMap } from 'google-maps-react';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Modal from '../modal/modal';
