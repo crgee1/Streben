@@ -39,6 +39,7 @@
     section {
         display: flex;
         align-items: center;
+        justify-content: center;
         border-bottom: 1px solid rgba(0, 0, 0, 0.185);
         padding-bottom: 10px;
     }
@@ -103,7 +104,6 @@
     h1 {
         font-size: 38px;
         font-weight: 400;
-
     }
 }
 
@@ -139,7 +139,22 @@
     }
 }
 
+.github {
+    height: 55px;
+    width: 55px;
+    padding-right: 12px;
+}
+
+.linkedin {
+    height: 60px;
+    width: 60px;
+    padding-right: 12px;
+}
+
 @media only screen and (max-width: 1600px) {
+    .dashboard-home {
+        min-height: 569px;
+    }
     .personal-stats {
         background-color: #fff;
         width: 281px;
@@ -160,16 +175,4 @@
         height: 300px;
         // margin-right: 40px;
     }
-}
-
-.github {
-    height: 50px;
-    width: 50px;
-    padding-right: 10px;
-}
-
-.linkedin {
-    height: 50px;
-    width: 50px;
-    padding-right: 10px;
 }

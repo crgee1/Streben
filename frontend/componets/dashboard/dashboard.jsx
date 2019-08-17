@@ -81,7 +81,9 @@ class Dashboard extends React.Component {
           </div>
           <div className="advertise">
             <section>
-              <img className='linkedin' src={window.linkedinURL} />
+              <div>
+                <img className='linkedin' src={window.linkedinURL} />
+              </div>
               <div>
                 <label>LinkedIn</label>
                 <p>
@@ -97,7 +99,9 @@ class Dashboard extends React.Component {
               </div>
             </section>
             <section>
-              <img className='github' src={window.githubURL}/>
+              <div>
+                <img className='github' src={window.githubURL}/>
+              </div>
               <div>
                 <label>GitHub</label>
                 <p>
@@ -108,7 +112,7 @@ class Dashboard extends React.Component {
                   target="_blank"
                   className="personal-adver"
                 >
-                  GitHub
+                  View My Profile
                 </a>
               </div>
             </section>
