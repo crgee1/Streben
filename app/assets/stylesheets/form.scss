@@ -118,10 +118,9 @@ form {
  }
 
  .facebook:hover {
-     cursor: pointer;
-    //  background-color: #2f477a;
-     background-image: image-url('Facebook_icon.svg');
-     -webkit-filter: brightness(70%);
+    cursor: pointer;
+    background-image: image-url('Facebook_icon.svg');
+    -webkit-filter: brightness(70%);
     -webkit-transition: all .25s ease;
     -moz-transition: all .25s ease;
     -o-transition: all .25s ease;

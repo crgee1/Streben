@@ -36,19 +36,16 @@
 }
 
 .show-route-header {
-    // display: flex;
-    // justify-content: flex-start;
-    // align-self: flex-start;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  header {
+    color: rgb(45, 45, 50);
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 41px;
     margin-top: 10px;
-    margin-bottom: 30px;
-    header {
-      color: rgb(45, 45, 50);
-      font-size: 34px;
-      font-weight: 700;
-      line-height: 41px;
-      margin-top: 10px;
-      margin-bottom: 21px;
-  }
+    margin-bottom: 21px;
+}
 }
 
 .edit-btn {

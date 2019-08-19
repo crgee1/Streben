@@ -57,18 +57,17 @@
 
 .route-index-item-stats {
   width: 290px;
-  // padding-bottom: 41px;
   background-color: #f7f7f7;
-      color: #2d2d32;
+  color: #2d2d32;
 
-      .route-index-list {
-        padding: 15px 20px;
-        li {
-          font-weight: 300;
-          font-size: 24px;
-          line-height: 1.2em;
-        }
-      }
+  .route-index-list {
+    padding: 15px 20px;
+    li {
+      font-weight: 300;
+      font-size: 24px;
+      line-height: 1.2em;
+    }
+  }
 }
 
 .inline-list {
