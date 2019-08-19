@@ -1,5 +1,6 @@
 import React from 'react';
 import ActivityFeedItem from './activity_feed_item';
+import { Link } from 'react-router-dom';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -72,6 +73,7 @@ class Dashboard extends React.Component {
                   </section>
                 </div>
               </div>
+            <Link className='dashboard-link' to='/training'>Your Activity Log <span className='chevron-container'><i className="fas fa-chevron-right"></i></span></Link>
             </section>
           </div>
           <div className="activity-feed">

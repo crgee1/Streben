@@ -11,7 +11,7 @@
 .personal-stats {
     background-color: #fff;
     width: 281px;
-    height: 245px;
+    height: 255px;
     border-radius: 4px;
     position: fixed;
     left: 15%;
@@ -130,6 +130,7 @@
         width: 90%;
         border-bottom: 1px solid #E6E6EB;
         padding-bottom: 20px;
+        margin-bottom: 20px;
     }
 }
 
@@ -145,26 +146,37 @@
     padding-right: 12px;
 }
 
+.dashboard-link {
+    width: 80%;
+    color: #242428;
+    font-size: 13px;
+
+    &:hover {
+        color: #007FB6;
+        .fa-chevron-right {
+            transition: .3s;
+            margin-left: 5px;
+        }
+    }
+}
+
+.fa-chevron-right {
+    transition: .3s;
+}
+
+.chevron-container {
+    padding-left: 105px;
+}
+
 @media only screen and (max-width: 1600px) {
     .dashboard-home {
         min-height: 569px;
     }
     .personal-stats {
-        background-color: #fff;
-        width: 281px;
-        height: 245px;
-        border-radius: 4px;
         left: 4%;
-        box-shadow: 0px 8px 24px rgba(13,13,18,0.04);
     }
 
     .advertise {
-        position: fixed;
         right: 4%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        width: 240px;
-        height: 300px;
     }
 }
