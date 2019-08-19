@@ -1,5 +1,6 @@
 import React from 'react';
 import IndexWorkoutItem from './index_workout_item';
+import ActivitiesFooter from '../footer/recent_activities_footer';
 
 class Training extends React.Component {
   constructor(props) {
@@ -55,6 +56,8 @@ class Training extends React.Component {
       />
     ));
     return (
+      <div>
+      
       <div className='training-main'>
         <div>
           <header className='training-head'>
@@ -80,6 +83,8 @@ class Training extends React.Component {
             </tbody>
           </table>
         </div>
+      </div>
+        <ActivitiesFooter workouts={this.props.recentWorkouts} />
       </div>
     )
   }

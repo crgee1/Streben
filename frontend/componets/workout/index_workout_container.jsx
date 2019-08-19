@@ -9,6 +9,9 @@ const mapStateToProps = state => {
     workouts: Object.values(workouts).reverse()
       .filter(workout => id === workout.userId)
       .sort((a, b) => b.createDate > a.createDate ? 1 : -1),
+    recentWorkouts: Object.values(workouts).reverse()
+      .filter(workout => id === workout.userId)
+      .sort((a, b) => b.createDate > a.createDate ? 1 : -1),
   }
 }
 
