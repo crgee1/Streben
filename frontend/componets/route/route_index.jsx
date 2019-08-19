@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import RouteIndexItem from './route_index_item';
+import ActivitiesFooter from '../footer/recent_activities_footer';
 
 class RouteMap extends React.Component {
   constructor(props) {
@@ -9,6 +10,7 @@ class RouteMap extends React.Component {
 
   componentDidMount() {
     this.props.fetchRoutes();
+    this.props.fetchWorkouts();
   }
 
   render() {
@@ -21,14 +23,17 @@ class RouteMap extends React.Component {
       />
     ))
     return (
-      <div className='route-home'>
-        <div className='route-header'>
-          <h1>My Routes</h1>
-          <Link className='btn-primary' to='routes/new'>Create New Route</Link>
+      <div>
+        <div className='route-home'>
+          <div className='route-header'>
+            <h1>My Routes</h1>
+            <Link className='btn-primary' to='routes/new'>Create New Route</Link>
+          </div>
+          <div className='route-index'>
+            {index}
+          </div>
         </div>
-        <div className='route-index'>
-          {index}
-        </div>
+        <ActivitiesFooter workouts={this.props.recentWorkouts} />
       </div>
     )
   }

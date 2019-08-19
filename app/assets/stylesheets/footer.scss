@@ -86,10 +86,15 @@
     color: #606065;
     font-size: 13px;
     line-height: 1.45;
+
+    &:hover {
+      color: #007FB6;
+    }
   }
 
   span {
     margin-bottom: 10px;
+
   }
 }
 
