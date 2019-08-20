@@ -2,16 +2,10 @@
     height: 90vh;
   }
 
-@media only screen and (max-width: 1600px) {
-  .show-workout-container {
-    height: 83vh;
-  }
-}
-
 .show-workout-main {
   padding-top: 94px;
   display: flex;
-  margin-left: 33px;
+  margin-left: 13%;
   height: 60%
 }
 
@@ -149,4 +143,14 @@
   font-size: 12px;
   font-weight: 400;
   margin-bottom: 3px;
+}
+
+@media only screen and (max-width: 1600px) {
+  .show-workout-container {
+    height: 83vh;
+  }
+
+  .show-workout-main {
+    margin-left: 33px;
+  }
 }
