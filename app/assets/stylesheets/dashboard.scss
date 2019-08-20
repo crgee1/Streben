@@ -104,6 +104,10 @@
 .personal-adver {
     text-decoration: none;
     color: #fc4c02;
+
+    &:hover {
+        color: #bd3902;
+    }
 }
 
 .total-stats {

@@ -1,6 +1,5 @@
 .training-main {
   padding-top: 85px;
-  // height: 100vh;
   background-color: #fff;
   display: flex;
   flex-direction: column;
@@ -26,7 +25,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 10.5em;
+    width: 12.75em;
     height: 33px;
     background-color: rgb(230, 230, 235);
 
@@ -42,7 +41,7 @@
   td {
     display: flex;
     flex-direction: column;
-    width: 10.5em;
+    width: 12.75em;
     justify-content: center;
 
     a {
@@ -96,3 +95,15 @@
   align-self: flex-start;
 }
 
+@media only screen and (max-width: 1600px) {
+  .training-main {
+
+    th {
+      width: 10.75em;
+    }
+
+    td {
+      width: 10.75em;
+    }
+  }
+}

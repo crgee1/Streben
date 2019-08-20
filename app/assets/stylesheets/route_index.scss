@@ -1,6 +1,5 @@
 .route-home {
-  padding-top: 88px;
-  padding-left: 32px;
+  padding: 88px 255px;
   background-color: #FFF;
   height: 100%;
 }
@@ -31,8 +30,8 @@
   padding-top: 75px;
   margin: 30px 0 140px 0;
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
-  
 }
 
 .route-index-item {
@@ -56,7 +55,7 @@
 }
 
 .route-index-item-stats {
-  width: 290px;
+  width: 300px;
   background-color: #f7f7f7;
   color: #2d2d32;
 
@@ -95,7 +94,25 @@
 .map-image {
   z-index: 1;
   position: relative;
-  width: 290px;
+  width: 300px;
   height: 175px;
   margin-bottom: -2px;
+}
+
+@media only screen and (max-width: 1600px) {
+  .route-home {
+    padding: 88px 32px;
+  }
+
+  .route-index {
+    justify-content: flex-start;
+  }
+
+  .route-index-item-stats {
+    width: 282px;
+  }
+
+  .map-image {
+    width: 282px;
+  }
 }
