@@ -57,33 +57,32 @@ class Training extends React.Component {
     ));
     return (
       <div>
-      
-      <div className='training-main'>
-        <div>
-          <header className='training-head'>
-            <h1>My Activities</h1>
-          </header>
-          <section className='activity-count'>
-            {workouts.length} Activities
-          </section>
-          <table>
-            <thead>
-              <tr>
-                <th className='sport-header' onClick={e => this.sortAlpha('workoutType')}>Sport</th>
-                <th className='sport-date' onClick={e => this.sortAlpha('createDate')}>Date</th>
-                <th className='title-header' onClick={e => this.sortAlpha('name')}>Title</th>
-                <th onClick={e => this.sortNum('duration')}>Time</th>
-                <th onClick={e => this.sortNum('distance')}>Distance</th>
-                <th onClick={e => this.sortNum('elevation')}>Elevation</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {workoutList}
-            </tbody>
-          </table>
+        <div className='training-main'>
+          <div>
+            <header className='training-head'>
+              <h1>My Activities</h1>
+            </header>
+            <section className='activity-count'>
+              {workouts.length} Activities
+            </section>
+            <table>
+              <thead>
+                <tr>
+                  <th className='sport-header' onClick={e => this.sortAlpha('workoutType')}>Sport</th>
+                  <th className='sport-date' onClick={e => this.sortAlpha('createDate')}>Date</th>
+                  <th className='title-header' onClick={e => this.sortAlpha('name')}>Title</th>
+                  <th onClick={e => this.sortNum('duration')}>Time</th>
+                  <th onClick={e => this.sortNum('distance')}>Distance</th>
+                  <th onClick={e => this.sortNum('elevation')}>Elevation</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {workoutList}
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div>
         <ActivitiesFooter workouts={this.props.recentWorkouts} />
       </div>
     )

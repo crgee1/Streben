@@ -33,7 +33,7 @@ const App = () => (
             <ProtectedRoute path='/training/edit/:workoutId' component={EditWorkoutContainer} />
             <ProtectedRoute path='/training/:workoutId' component={ShowWorkoutContainer} />
             <ProtectedRoute path='/training' component={IndexWorkoutContainer} />
-            <ProtectedRoute path='/users' component={IndexUserContainer} />
+            <ProtectedRoute path='/athletes' component={IndexUserContainer} />
             <ProtectedRoute path='/friends' component={IndexFriendContainer} />
             <AuthRoute path="/signup" component={SignUpContainer} />
             <AuthRoute path="/login" component={LoginContainer} />
