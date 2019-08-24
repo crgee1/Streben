@@ -34,4 +34,4 @@ export const deleteWorkout = id => {
     method: 'DELETE',
     url: `api/workouts/${id}`,
   })
-  )}
+)}

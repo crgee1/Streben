@@ -17,6 +17,7 @@ import NewWorkoutContainer from './workout/new_workout_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util'
 import EditWorkoutContainer from './workout/edit_workout_container';
 import IndexFriendContainer from './friend/index_friend_container';
+import IndexUserContainer from './user/index_user_container';
 
 const App = () => (
     <div>
@@ -32,6 +33,7 @@ const App = () => (
             <ProtectedRoute path='/training/edit/:workoutId' component={EditWorkoutContainer} />
             <ProtectedRoute path='/training/:workoutId' component={ShowWorkoutContainer} />
             <ProtectedRoute path='/training' component={IndexWorkoutContainer} />
+            <ProtectedRoute path='/users' component={IndexUserContainer} />
             <ProtectedRoute path='/friends' component={IndexFriendContainer} />
             <AuthRoute path="/signup" component={SignUpContainer} />
             <AuthRoute path="/login" component={LoginContainer} />
