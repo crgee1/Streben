@@ -1,0 +1,1 @@
+json.extract! friendship, :id, :username
