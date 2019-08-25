@@ -26,19 +26,19 @@ const receiveUser = user => ({
 
 export const login = user => dispatch => (
   APIUtil.login(user)
-    .then(user => (dispatch(receiveCurrentUser(user))),
-      err => (dispatch(receiveErrors(err.responseJSON))))
+    .then(user => dispatch(receiveCurrentUser(user)),
+      err => dispatch(receiveErrors(err.responseJSON)))
 );
 
 export const signUp = user => dispatch => (
   APIUtil.signUp(user)
-    .then(user => (dispatch(receiveCurrentUser(user))),
-      err => (dispatch(receiveErrors(err.responseJSON))))
+    .then(user => dispatch(receiveCurrentUser(user)),
+      err => dispatch(receiveErrors(err.responseJSON)))
 );
 
 export const logout = () => dispatch => (
   APIUtil.logout()
-    .then(() => (dispatch(logoutCurrentUser())))
+    .then(() => dispatch(logoutCurrentUser()))
 );
 
 export const fetchUser = id => dispatch => (

@@ -13,7 +13,6 @@ class IndexUserItem extends React.Component {
   }
 
   handleFollow() {
-    // console.log(this.state);
     this.props.createFriendship(this.state);
   }
 
@@ -23,7 +22,6 @@ class IndexUserItem extends React.Component {
 
   render() {
     const { user, friends } = this.props;
-    // console.log(this.props);
     const follow = friends.includes(user.id) ? 
       <button className='btn' onClick={this.handleUnfollow}>Unfollow</button> :
       <button className='btn' onClick={this.handleFollow}>Follow</button>;

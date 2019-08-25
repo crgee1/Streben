@@ -27,30 +27,30 @@ const receiveErrors = errors => ({
 
 export const createLocation = location => dispatch => (
   APIUtil.createLocation(location)
-    .then(location => (dispatch(receiveLocation(location))),
-      err => (dispatch(receiveErrors(err.responseJSON))))
+    .then(location => dispatch(receiveLocation(location)),
+      err => dispatch(receiveErrors(err.responseJSON)))
 )
 
 export const fetchLocation = id => dispatch => (
   APIUtil.fetchLocation(id)
-    .then(location => (dispatch(receiveLocation(location))),
-    err => (dispatch(receiveErrors(err.responseJSON))))
+    .then(location => dispatch(receiveLocation(location)),
+    err => dispatch(receiveErrors(err.responseJSON)))
 )
 
 export const fetchLocations = () => dispatch => (
   APIUtil.fetchLocations()
-    .then(locations => (dispatch(receiveLocations(locations))),
-      err => (dispatch(receiveErrors(err.responseJSON))))
+    .then(locations => dispatch(receiveLocations(locations)),
+      err => dispatch(receiveErrors(err.responseJSON)))
 )
 
 export const updateLocation = location => dispatch => (
   APIUtil.updateLocation(location)
-    .then(location => (dispatch(receiveLocation(location))),
-    err => (dispatch(receiveErrors(err.responseJSON))))
+    .then(location => dispatch(receiveLocation(location)),
+    err => dispatch(receiveErrors(err.responseJSON)))
 )
 
 export const deleteLocation = id => dispatch => (
   APIUtil.deleteLocation(id)
-    .then(location => (dispatch(removeLocation(location))),
-    err => (dispatch(receiveErrors(err.responseJSON))))
+    .then(location => dispatch(removeLocation(location)),
+    err => dispatch(receiveErrors(err.responseJSON)))
 )

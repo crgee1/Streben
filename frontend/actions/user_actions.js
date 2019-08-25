@@ -22,11 +22,11 @@ const receiveErrors = errors => ({
 export const fetchUser = id => dispatch => (
   APIUtil.fetchUser(id)
     .then(user => (dispatch(receiveUser(user))),
-  err => (dispatch(receiveErrors(err.responseJSON))))
+  err => dispatch(receiveErrors(err.responseJSON)))
 )
 
 export const fetchUsers = () => dispatch => (
   APIUtil.fetchUsers()
     .then(users => (dispatch(receiveUsers(users))),
-  err => (dispatch(receiveErrors(err.responseJSON))))
+  err => dispatch(receiveErrors(err.responseJSON)))
 )
