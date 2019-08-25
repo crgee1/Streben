@@ -3,7 +3,6 @@ class Api::FriendshipsController < ApplicationController
     @friendship = Friendship.new(friendship_params)
 
     if @friendship.save
-      @friendship = @friendship.friend
       render 'api/friendships/show'
     else
       render json: @friendship.errors.full_messages, status: 422
@@ -11,13 +10,12 @@ class Api::FriendshipsController < ApplicationController
   end
 
   def index
-    @friendships = current_user.friends
+    @friendships = current_user.friendships
     render 'api/friendships/index'
   end
 
   def show
     @friendship = Friendship.find(params[:id])
-    @friendship = @friendship.friend
     render 'api/friendships/show'
   end
 

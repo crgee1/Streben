@@ -1,8 +1,29 @@
-.usersIndex-main {
+.userIndex-main {
   padding-top: 85px;
   background-color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 140px;
+}
+
+.userIndex-item {
+  display: flex;
+  align-items: center;
+
+  .avatar-image-mini {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 45px;
+      height: 45px;
+      background-color: rgb(0, 87, 155);
+      border-radius: 50%;
+      color: white;
+
+      h1 {
+          font-size: 25px;
+          font-weight: 400;
+      }
+  }
 }

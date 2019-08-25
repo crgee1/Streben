@@ -12,17 +12,23 @@ class UsersIndex extends React.Component {
   }
 
   render() {
-    let { users, friends } = this.props;
-    friends = friends.map(el => el.username);
+    const { users, friendships, currentUser, createFriendship, deleteFriendship } = this.props;
+    const friendshipsObject = {};
+    friendships.forEach(el => friendshipsObject[el.friendId] = el)
+    const friends = friendships.map(el => el.friendId);
     const usersList = users.map((user, i) => 
       <IndexUserItem
+        currentUser={currentUser}
         user={user}
         friends={friends}
+        friendships={friendshipsObject}
+        createFriendship={createFriendship}
+        deleteFriendship={deleteFriendship}
         key={i}
       />
     )
     return (
-      <div className='usersIndex-main'>
+      <div className='userIndex-main'>
         {usersList}
       </div>
     )
