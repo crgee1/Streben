@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Dashboard from './dashboard';
-import { logout, signUp } from '../../actions/session_actions';
 import { fetchWorkouts } from '../../actions/workout_actions';
+import { fetchFriendships } from '../../actions/friendship_actions';
 
 const mapStateToProps = (state) => ({
     users: state.entities.users,
@@ -11,10 +11,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    logout: () => dispatch(logout()),
-    signUp: (user) => dispatch(signUp(user)),
     fetchWorkouts: () => dispatch(fetchWorkouts()),
-    
+    fetchFriendships: () => dispatch(fetchFriendships()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

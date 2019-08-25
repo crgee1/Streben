@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import RecentActivities from '../footer/recent_activities_footer';
 
 class ShowWorkout extends React.Component {
@@ -65,22 +64,19 @@ class ShowWorkout extends React.Component {
   }
 
   render() {
-    const {workout, user, recentWorkouts} = this.props;
-    const recent = recentWorkouts.slice(0,5).map((el, i) => (
-      <span key={i}>
-        <Link to={`/training/${el.id}`}>
-          {el.name}
-        </Link>
-      </span>));
+    const {workout, user, recentWorkouts, id} = this.props;
+    const icons = id === workout.userId ? 
+    <div className='icons'>
+      <span onClick={this.handleEdit} className='show-workout-btn-edit'>
+        <i className="far fa-edit"></i>
+      </span>
+      <span onClick={this.handleDelete}>
+        <i className="far fa-trash-alt"></i>
+      </span>
+    </div> :
+    null;
     const display = this.props.workout.id === 0 ? null : (<div className='show-workout-main'>
-      <div className='icons'>
-        <span onClick={this.handleEdit} className='show-workout-btn-edit'>
-          <i className="far fa-edit"></i>
-        </span>
-        <span onClick={this.handleDelete}>
-          <i className="far fa-trash-alt"></i>
-        </span>
-      </div>
+      {icons}
       <div className='show-workout-display'>
         <header><h1>{user.username} - {workout.workoutType}</h1></header>
         <div className='show-workout-info'>

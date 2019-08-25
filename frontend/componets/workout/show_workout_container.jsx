@@ -14,6 +14,7 @@ const mapStatetoProps = (state, ownProps) => {
     user = state.entities.users[workout.userId]
   }
   return ({
+    id,
     user,
     workout,
     recentWorkouts: Object.values(state.entities.workouts).reverse()
