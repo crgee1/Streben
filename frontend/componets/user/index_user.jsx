@@ -1,4 +1,5 @@
 import React from 'react';
+import IndexUserItem from './index_user_item';
 
 class UsersIndex extends React.Component {
   constructor(props) {
@@ -11,15 +12,18 @@ class UsersIndex extends React.Component {
   }
 
   render() {
-    const users = this.props.users.map((user, i) => 
-    <div key={i}>
-      {user.username}
-      <button className='btn'>Follow</button>
-    </div>
+    let { users, friends } = this.props;
+    friends = friends.map(el => el.username);
+    const usersList = users.map((user, i) => 
+      <IndexUserItem
+        user={user}
+        friends={friends}
+        key={i}
+      />
     )
     return (
       <div className='usersIndex-main'>
-        {users}
+        {usersList}
       </div>
     )
   }
