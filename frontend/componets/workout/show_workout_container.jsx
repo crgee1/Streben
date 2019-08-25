@@ -4,10 +4,11 @@ import { fetchWorkouts, deleteWorkout } from '../../actions/workout_actions';
 import { fetchUser } from '../../actions/session_actions';
 
 const mapStatetoProps = (state, ownProps) => {
-  const workout = state.entities.workouts[ownProps.match.params.workoutId];
+  let workout = state.entities.workouts[ownProps.match.params.workoutId];
   const { id } = state.session.currentUser;
   let user;
   if (workout === undefined) {
+    workout = {id: 0}
     user = { username: ''};
   } else {
     user = state.entities.users[workout.userId]

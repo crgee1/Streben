@@ -57,7 +57,7 @@ class ShowWorkout extends React.Component {
 
   handleDelete() {
     this.props.deleteWorkout(this.props.match.params.workoutId)
-      .then(() => this.props.history.push(`/dashboard`));
+      .then(() => this.props.history.push(`/training`));
   }
 
   handleEdit() {
@@ -72,7 +72,7 @@ class ShowWorkout extends React.Component {
           {el.name}
         </Link>
       </span>));
-    const display = this.props.workout === undefined ? null : (<div className='show-workout-main'>
+    const display = this.props.workout.id === 0 ? null : (<div className='show-workout-main'>
       <div className='icons'>
         <span onClick={this.handleEdit} className='show-workout-btn-edit'>
           <i className="far fa-edit"></i>
