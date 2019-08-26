@@ -65,20 +65,30 @@ class Dashboard extends React.Component {
                 <h1>{currentUser.username}</h1>
               </section>
               <div className="total-stats">
-                <section>
-                  <label>Activities</label>
-                  <h2>{workoutArr.length}</h2>
-                </section>
                 <div>
-                  <section>
+                  <section className="total-stats-stat">
+                    <label>Following</label>
+                    <h2>{followingCount}</h2>
+                  </section>
+                  <section className="total-stats-stat">
+                    <label>Followers</label>
+                    <h2>{followersCount}</h2>
+                  </section>
+                  <section className="total-stats-stat">
+                    <label>Activities</label>
+                    <h2>{workoutArr.length}</h2>
+                  </section>
+                </div>
+                <div>
+                  <section className="total-stats-stat">
                     <label>Distance</label>
                     <h2>{totDistance} mi</h2>
                   </section>
-                  <section>
+                  <section className="total-stats-stat">
                     <label>Elevation</label>
                     <h2>{totElevation} ft</h2>
                   </section>
-                  <section>
+                  <section className="total-stats-stat">
                     <label>Time</label>
                     <h2>{this.displayTime(totDuration)}</h2>
                   </section>

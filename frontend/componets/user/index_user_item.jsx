@@ -13,8 +13,10 @@ class IndexUserItem extends React.Component {
   }
 
   handleFollow() {
-    // console.log(this.state)
-    this.props.createFollow(this.state);
+    this.setState({
+      user_id: this.props.user.id,
+      follower_id: this.props.currentUser.id
+    }, () => this.props.createFollow(this.state))
   }
 
   handleUnfollow() {

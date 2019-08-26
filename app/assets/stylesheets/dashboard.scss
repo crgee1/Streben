@@ -11,7 +11,7 @@
 .personal-stats {
     background-color: #fff;
     width: 281px;
-    height: 255px;
+    height: 291px;
     border-radius: 4px;
     position: fixed;
     left: 15%;
@@ -123,12 +123,19 @@
         line-height: 1.2;
     }
 
-    section {
+    .total-stats-stat {
         text-align: center;
+
+        h2 {
+            padding-top: 5px;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 1;
+        }
     }
 
     div {
-        margin-top: 20px;
+        // margin-top: 20px;
         display: flex;
         justify-content: space-around;
         width: 90%;

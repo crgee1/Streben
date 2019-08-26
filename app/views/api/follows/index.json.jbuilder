@@ -1,11 +1,11 @@
-@follows.each do |follow|
-  json.set! follow.id do
-    json.partial! 'api/follows/follow', follow: follow
+@followees.each do |followee|
+  json.set! followee.id do
+    json.partial! 'api/follows/follow', follow: followee
   end
 end
 
-current_user.follows.each do |follow|
-  json.set! follow.id do
-    json.partial! 'api/follows/follow', follow: follow
+current_user.followers.each do |follower|
+  json.set! follower.id do
+    json.partial! 'api/follows/follow', follow: follower
   end
 end

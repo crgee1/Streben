@@ -10,7 +10,7 @@ class Api::FollowsController < ApplicationController
   end
 
   def index
-    @follows = current_user.followees
+    @followees = current_user.followees
     render 'api/follows/index'
   end
 
