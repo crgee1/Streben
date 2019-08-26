@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :locations, except: [:new, :edit]
     resources :workouts, except: [:new, :edit]
     resources :friendships, except: [:new, :edit]
+    resources :follows, except: [:new, :edit]
   end
   root 'static_pages#root'
 end

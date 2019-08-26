@@ -4,9 +4,11 @@ import routes from './routes_reducer';
 import locations from './locations_reducer';
 import workouts from './workouts_reducer';
 import friendships from './friendships_reducer';
+import follows from './follows_reducer';
 
 export default combineReducers({
   users,
+  follows,
   friendships,
   routes,
   locations,
