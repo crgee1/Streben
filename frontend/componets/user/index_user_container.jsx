@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
 import IndexUser from './index_user';
 import { fetchUsers, } from '../../actions/user_actions';
-import { createFriendship, deleteFriendship } from '../../actions/friendship_actions';
+import { createFollow, deleteFollow } from '../../actions/follow_actions';
 
 const mapStatetoProps = state => {
   const { currentUser } = state.session;
   return ({
     currentUser,
-    friendships: Object.values(state.entities.friendships),
+    follows: Object.values(state.entities.follows),
     users: Object.values(state.entities.users)
       .filter(user => user.id !== currentUser.id),
   })
@@ -15,8 +15,8 @@ const mapStatetoProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   fetchUsers: () => dispatch(fetchUsers()),
-  createFriendship: friendship => dispatch(createFriendship(friendship)),
-  deleteFriendship: id => dispatch(deleteFriendship(id)),
+  createFollow: follow => dispatch(createFollow(follow)),
+  deleteFollow: id => dispatch(deleteFollow(id)),
 })
 
 export default connect(mapStatetoProps, mapDispatchToProps)(IndexUser);

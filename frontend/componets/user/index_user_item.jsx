@@ -4,8 +4,8 @@ class IndexUserItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user_id: this.props.currentUser.id,
-      friend_id: this.props.user.id
+      user_id: this.props.user.id,
+      follower_id: this.props.currentUser.id
     }
 
     this.handleFollow = this.handleFollow.bind(this);
@@ -13,16 +13,18 @@ class IndexUserItem extends React.Component {
   }
 
   handleFollow() {
-    this.props.createFriendship(this.state);
+    // console.log(this.state)
+    this.props.createFollow(this.state);
   }
 
   handleUnfollow() {
-    this.props.deleteFriendship(this.props.friendships[this.props.user.id].id);
+    const id = this.props.follows[this.props.user.id].id
+    this.props.deleteFollow(id);
   }
 
   render() {
-    const { user, friends } = this.props;
-    const follow = friends.includes(user.id) ? 
+    const { user, followees } = this.props;
+    const follow = followees.includes(user.id) ? 
       <button className='btn' onClick={this.handleUnfollow}>Unfollow</button> :
       <button className='btn' onClick={this.handleFollow}>Follow</button>;
     return (

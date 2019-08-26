@@ -10,7 +10,7 @@ class Api::FollowsController < ApplicationController
   end
 
   def index
-    @follows = current_user.follows
+    @follows = current_user.followees
     render 'api/follows/index'
   end
 
@@ -28,6 +28,6 @@ class Api::FollowsController < ApplicationController
   private
 
   def follow_params
-    params.require(:follow).permit(:user_id, :friend_id)
+    params.require(:follow).permit(:user_id, :follower_id)
   end
 end

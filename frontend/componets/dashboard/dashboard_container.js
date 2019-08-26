@@ -1,18 +1,18 @@
 import { connect } from 'react-redux';
 import Dashboard from './dashboard';
 import { fetchWorkouts } from '../../actions/workout_actions';
-import { fetchFriendships } from '../../actions/friendship_actions';
+import { fetchFollows } from '../../actions/follow_actions';
 
 const mapStateToProps = (state) => ({
     users: state.entities.users,
     currentUser: state.session.currentUser,
     workouts: Object.values(state.entities.workouts),
-    friends: Object.values(state.entities.friendships)
+    follows: Object.values(state.entities.follows)
 })
 
 const mapDispatchToProps = dispatch => ({
     fetchWorkouts: () => dispatch(fetchWorkouts()),
-    fetchFriendships: () => dispatch(fetchFriendships()),
+    fetchFollows: () => dispatch(fetchFollows()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

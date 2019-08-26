@@ -9,7 +9,7 @@ class Dashboard extends React.Component {
 
   componentDidMount() {
     this.props.fetchWorkouts();
-    this.props.fetchFriendships();
+    this.props.fetchFollows();
   }
 
   displayTime(seconds) {
@@ -22,13 +22,13 @@ class Dashboard extends React.Component {
   }
 
   render() {
-    const { currentUser, users, friends } = this.props;
-    const friendsArr = friends.map(friend => friend.friendId);
+    const { currentUser, users, follows } = this.props;
+    const followsArr = follows.map(follow => follow.userId);
     let activityFeed = [];
     let workoutArr = [];
     this.props.workouts.forEach(workout => {
       if (workout.userId === currentUser.id) workoutArr.push(workout);
-      if (workout.userId === currentUser.id || friendsArr.includes(workout.userId)) activityFeed.push(workout);
+      if (workout.userId === currentUser.id || followsArr.includes(workout.userId)) activityFeed.push(workout);
     })
     activityFeed.sort((a, b) => b.createDate > a.createDate ? 1 : -1);
     const workouts = activityFeed.map((workout, i) => (
