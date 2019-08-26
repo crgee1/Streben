@@ -22,6 +22,24 @@ class User < ApplicationRecord
   has_many :routes
   has_many :workouts
   has_many :friendships
+  has_many :follows
+
+
+  has_many :followers,
+  class_name: "Follow",
+  foreign_key: "user_id"
+
+  has_many :followees,
+  class_name: "Follow",
+  foreign_key: "follower_id"
+
+  has_many :followed_by,
+  through: :followers,
+  source: :follower
+
+  has_many :following,
+  through: :followees,
+  source: :user
 
   has_many :friends,
   through: :friendships,
