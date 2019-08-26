@@ -22,16 +22,21 @@ class Dashboard extends React.Component {
   }
 
   render() {
-    const { currentUser, users, follows } = this.props;
-    const followsArr = follows.map(follow => follow.userId);
-    let activityFeed = [];
-    let workoutArr = [];
-    this.props.workouts.forEach(workout => {
+    let { currentUser, users, follows, workouts } = this.props;
+    let followersCount = 0, followingCount = 0, followsArr = [];
+    follows.forEach(follow => {
+      followsArr.push(follow.userId);
+      if (follow.userId === currentUser.id) followersCount += 1;
+      if (follow.followerId === currentUser.id) followingCount += 1;
+    });
+    let activityFeed = [], workoutArr = [];
+    workouts.forEach(workout => {
       if (workout.userId === currentUser.id) workoutArr.push(workout);
-      if (workout.userId === currentUser.id || followsArr.includes(workout.userId)) activityFeed.push(workout);
+      if (workout.userId === currentUser.id || followsArr
+        .includes(workout.userId)) activityFeed.push(workout);
     })
     activityFeed.sort((a, b) => b.createDate > a.createDate ? 1 : -1);
-    const workouts = activityFeed.map((workout, i) => (
+    const workoutsDisplay = activityFeed.map((workout, i) => (
       <ActivityFeedItem
         user={users[workout.userId]}
         workout={workout}
@@ -84,7 +89,7 @@ class Dashboard extends React.Component {
           </div>
           <div className="activity-feed">
             <section className="banner" />
-            {workouts}
+            {workoutsDisplay}
           </div>
           <div className="advertise">
             <section>
