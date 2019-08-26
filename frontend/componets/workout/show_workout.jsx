@@ -26,13 +26,13 @@ class ShowWorkout extends React.Component {
     let result = [];
     let date = new Date(...inputDate.split('-'));
     const days = {
-      0: "Monday",
-      1: "Tuesday",
-      2: "Wednesday",
-      3: "Thursday",
-      4: "Friday",
-      5: "Saturday",
-      6: "Sunday",
+      4: "Monday",
+      5: "Tuesday",
+      6: "Wednesday",
+      0: "Thursday",
+      1: "Friday",
+      2: "Saturday",
+      3: "Sunday",
     };
     const months = {
       1: "January",

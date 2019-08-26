@@ -56,7 +56,7 @@ class Training extends React.Component {
       />
     ));
     return (
-      <div>
+      <div className='training-container'>
         <div className='training-main'>
           <div>
             <header className='training-head'>

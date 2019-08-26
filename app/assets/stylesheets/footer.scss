@@ -52,16 +52,6 @@
         }
       }
     }
-
-  }
-
-  @media only screen and (max-width: 1600px) {
-    .footer-content {
-      display: flex;
-      justify-content: flex-start;
-      padding-top: 64px;
-      padding-left: 32px;
-    }
   }
 }
 
@@ -99,8 +89,17 @@
 }
 
 @media only screen and (max-width: 1600px) {
+  .footer {
+    .footer-content {
+      display: flex;
+      justify-content: flex-start;
+      padding-top: 64px;
+      padding-left: 32px;
+    }
+  }
   .recentActivities-footer {
     height: 44%;
+    min-height: 255px;
 
     section {
       padding: 40px 40px;
