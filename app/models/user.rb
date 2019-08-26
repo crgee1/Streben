@@ -21,7 +21,6 @@ class User < ApplicationRecord
 
   has_many :routes
   has_many :workouts
-  has_many :friendships
   has_many :follows
 
 
@@ -40,10 +39,6 @@ class User < ApplicationRecord
   has_many :following,
   through: :followees,
   source: :user
-
-  has_many :friends,
-  through: :friendships,
-  source: :friend
 
   def ensure_session_token
     self.session_token ||= SecureRandom.urlsafe_base64
