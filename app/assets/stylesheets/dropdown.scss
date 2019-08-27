@@ -19,7 +19,7 @@
   line-height: 69px;
   display: inline-block;
   position: relative;
-  border-bottom: 2px solid orangered;
+  
 
   &:hover {
     color: orangered;
@@ -34,6 +34,10 @@
     }
   }
 }
+
+.orange {
+  border-bottom: 2px solid orangered;
+}
    
 .drop-submenu-dash {
   left: -1px;
@@ -43,10 +47,17 @@
   text-transform: none;
   display: none;
   position: absolute;
-  width: 200px;
   background-color: white;
   border: solid 1px #2d2d32;
   z-index: 20;
+}
+
+.dash {
+  width: 200px;
+}
+
+.friends {
+  width: 150px;
 }
 
 .drop-submenu-profile {

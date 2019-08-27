@@ -58,7 +58,7 @@ class Navbar extends React.Component {
     );
 
     const submenuLeft = (
-      <ul className="drop-submenu-dash">
+      <ul className="drop-submenu-dash dash">
         <li className="drop-submenu-item ">
           <Link className='drop-submenu-item' to='/dashboard'>Activity Feed</Link>
         </li>
@@ -68,9 +68,6 @@ class Navbar extends React.Component {
         <li className="drop-submenu-item">
           <Link className="drop-submenu-item" to="/training">My Activities</Link>
         </li>
-        <li className="drop-submenu-item">
-          <Link className="drop-submenu-item" to="/athletes">Athletes</Link>
-        </li>
       </ul>
     );
 
@@ -78,9 +75,19 @@ class Navbar extends React.Component {
       <div className="navbar-left-side">
         <span>
           <nav className="drop">
-            <ul className="drop-menu">
+            <ul className="drop-menu orange">
               <a>{'Dashboard \u2228'}</a>
               {submenuLeft}
+            </ul>
+          </nav>
+          <nav className="drop">
+            <ul className="drop-menu">
+              <a>{'Athletes \u2228'}</a>
+              <ul className="drop-submenu-dash friends">
+                <li className="drop-submenu-item">
+                  <Link className='drop-submenu-item' to='/athletes'>Find Athletes</Link>
+                </li>
+              </ul>
             </ul>
           </nav>
         </span>
@@ -88,7 +95,10 @@ class Navbar extends React.Component {
     ) : null;
 
     const routeBuilder = ['/routes/new', '/routes/edit/'];
-    const urlRoute = routeBuilder.some(url => this.props.location.pathname.includes(url)) ? null : (<div className="navbar-main">
+    const urlRoute = routeBuilder
+      .some(url => this.props.location.pathname.includes(url)) ? 
+      null : 
+      (<div className="navbar-main">
       <Link className="logo" to="/dashboard">STREBEN</Link>
       <section className="navbar-side">
         <section>
