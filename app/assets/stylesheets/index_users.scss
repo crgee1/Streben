@@ -1,29 +1,86 @@
 .userIndex-main {
-  padding-top: 85px;
+  padding: 85px 32px 0 32px;
   background-color: #fff;
   display: flex;
   flex-direction: column;
-  align-items: center;
   margin-bottom: 140px;
+}
+
+.userIndex-header {
+  border-bottom: 1px solid #e6e6eb;
+  padding-bottom: 20px;
+  h1 {
+    color: #2d2d32;
+    margin-bottom: 30px;
+    font-weight: 700;
+    font-size: 34px;
+  }
+}
+
+.dark {
+  background-color: rgb(247, 247, 247);
 }
 
 .userIndex-item {
   display: flex;
   align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #e6e6eb;
 
-  .avatar-image-mini {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 45px;
-      height: 45px;
-      background-color: rgb(0, 87, 155);
-      border-radius: 50%;
-      color: white;
+  .avatar-image-mid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    background-color: rgb(0, 87, 155);
+    border-radius: 50%;
+    color: white;
+    margin: 0 20px;
+    
+    h1 {
+      font-size: 30px;
+      font-weight: 400;
+    }
+  }
 
-      h1 {
-          font-size: 25px;
-          font-weight: 400;
-      }
+  .userIndex-item-info {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 30%;
+
+    .userIndex-item-name {
+      font-size: 17px;
+      line-height: 22px;
+      color: rgb(0, 127, 182);
+      margin-bottom: 10px;
+    }
+  }
+
+  .userIndex-item-count {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 10px;
+  }
+}
+
+.follow-btn {
+  background-color: orangered;
+  color: white;
+  width: 70px;
+  border-radius: 3px;
+  font-size: 11px;
+  padding: 9.5px 10px;
+  font-weight: 700;
+  text-decoration: none;
+  -webkit-appearance: none;
+  border-style: none;
+
+  &:hover {
+    cursor: pointer;
+    transition: background-color 300ms;
+    background-color: rgb(218, 65, 9);
   }
 }

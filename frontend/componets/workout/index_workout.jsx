@@ -52,7 +52,7 @@ class Training extends React.Component {
       workout={workout}
       deleteWorkout={deleteWorkout}
       key={i}
-      id={i}
+      i={i}
       />
     ));
     return (

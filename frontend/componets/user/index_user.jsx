@@ -24,10 +24,14 @@ class UsersIndex extends React.Component {
         createFollow={createFollow}
         deleteFollow={deleteFollow}
         key={i}
+        i={i}
       />
     );
     return (
       <div className='userIndex-main'>
+        <header className='userIndex-header'>
+          <h1>Athletes</h1>
+        </header>
         {usersList}
       </div>
     )

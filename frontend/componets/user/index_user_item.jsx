@@ -25,17 +25,31 @@ class IndexUserItem extends React.Component {
   }
 
   render() {
-    const { user, followees } = this.props;
+    const { user, followees, i } = this.props;
     const follow = followees.includes(user.id) ? 
-      <button className='btn' onClick={this.handleUnfollow}>Unfollow</button> :
-      <button className='btn' onClick={this.handleFollow}>Follow</button>;
+      <button className='follow-btn' onClick={this.handleUnfollow}>Unfollow</button> :
+      <button className='follow-btn' onClick={this.handleFollow}>Follow</button>;
     return (
-      <div className='userIndex-item'>
-        <section className='avatar-image-mini'>
+      <div className={i % 2 === 0 ? 'userIndex-item dark' : 'userIndex-item'}>
+        <section className='avatar-image-mid'>
           <h1>{user.username[0]}</h1>
         </section>
-        <div>{user.username}</div>
-        {follow}
+        <section className='userIndex-item-info'>
+          <div className='userIndex-item-name'>{user.username}</div>
+          {follow}
+        </section>
+        <section className='userIndex-item-count'>
+          <label>Activities</label>
+          <div>
+            {user.activitiesCount}
+          </div>
+        </section>
+        <section className='userIndex-item-count'>
+          <label>Routes</label>
+          <div>
+            {user.routesCount}
+          </div>
+        </section>
       </div>
     )
   }

@@ -62,12 +62,12 @@
     background-color: #fff;
     display: flex;
     justify-content: center;
-    padding: 0;
+    padding: 0 0 0 32px;
     align-items: center;
     height: 54px;
     position: fixed;
     width: 100%;
-    padding-left: 32px;
+    // padding-left: 32px;
     border-bottom: .5px solid lightgray;
     z-index: 30;
 }

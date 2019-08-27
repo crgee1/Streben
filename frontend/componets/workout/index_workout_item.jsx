@@ -40,7 +40,7 @@ class IndexWorkoutItem extends React.Component {
   render() {
     const { id, workoutType, name, duration, distance, elevation, createDate } = this.props.workout;
     return (
-      <tr className={this.props.id % 2 === 0 ? 'index-workout-item-grey' : 'index-workout-item-white'}>
+      <tr className={this.props.i % 2 === 0 ? 'index-workout-item' : 'index-workout-item white'}>
         <td className='table-type'>{workoutType}</td>
         <td className='table-date'>{this.displayDate(createDate)}</td>
         <td className='table-string'><Link to={`/training/${id}`}>{name}</Link></td>

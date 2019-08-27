@@ -25,10 +25,10 @@ class RouteMap extends React.Component {
     return (
       <div>
         <div className='route-home'>
-          <div className='route-header'>
+          <header className='route-header'>
             <h1>My Routes</h1>
             <Link className='btn-primary' to='routes/new'>Create New Route</Link>
-          </div>
+          </header>
           <div className='route-index'>
             {index}
           </div>
