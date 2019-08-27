@@ -37,7 +37,7 @@ class Navbar extends React.Component {
         <span>
           <nav className="drop">
             <ul className="drop-menu">
-              <a>Account</a>
+              <a>{'Account \u2228'}</a>
               {submenuRight}
             </ul>
           </nav>

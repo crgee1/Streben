@@ -8,12 +8,12 @@
 ActiveRecord::Base.transaction do
   User.destroy_all
   user1 = User.create(username: 'DemoUser', password: 'password')
-  User.create(username: 'Sonic', password: 'password')
-  User.create(username: 'Knuckles', password: 'password')
-  User.create(username: 'kallmeehkev', password: 'password')
+  user2 = User.create(username: 'Sonic', password: 'password')
+  user3 = User.create(username: 'Knuckles', password: 'password')
+  user4 = User.create(username: 'Kallmeehkev', password: 'password')
   User.create(username: 'JimboJams', password: 'password')
   User.create(username: 'SoapyRedPanda', password: 'password')
-  User.create(username: 'username', password: 'password')
+  User.create(username: 'Username', password: 'password')
 
   Route.destroy_all
   route1 = Route.create(user_id: user1.id, distance: 0.92, duration: 747, elevation: 63, name: 'First Run', description: 'First route of the season', url: "https://maps.googleapis.com/maps/api/staticmap?size=300x180&markers=label:S%7C37.80462,-122.41656&markers=label:E%7C37.79795,-122.42374000000001&path=color:0x0000ff80|weight:2|enc:{uveFnndjV}@zAi@x@Dh@HdATpDb@fHj@vHh@dIf@xHrJkAjDa@XG`D]~ASpDe@fFm@&key=AIzaSyCpCGBt5GjRXJ8H48OKvz2TeuoNWAqlZko")
@@ -35,4 +35,11 @@ ActiveRecord::Base.transaction do
   Workout.create(create_date: '2019-08-10', user_id: user1.id, distance: 1.2, duration: 945, elevation: 22, name: 'Neighborhood Walk', workout_type: 'Walk', description: 'A little walk to the store')
   Workout.create(create_date: '2019-07-29', user_id: user1.id, distance: 1.1, duration: 964, elevation: 15, name: 'Night Run', workout_type: 'Run', description: 'I ran in the dark')
   Workout.create(create_date: '2019-07-20', user_id: user1.id, distance: 6.5, duration: 7693, elevation: 67, name: 'Mountain Hike', workout_type: 'Hike', description: 'I took a hike in the woods')
+
+  Follow.destroy_all
+  Follow.create(user_id: user1.id, follower_id: user2.id)
+  Follow.create(user_id: user1.id, follower_id: user3.id)
+  Follow.create(user_id: user1.id, follower_id: user4.id)
+  Follow.create(user_id: user2.id, follower_id: user1.id)
+  Follow.create(user_id: user3.id, follower_id: user1.id)
 end
