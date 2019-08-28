@@ -35,6 +35,8 @@ ActiveRecord::Base.transaction do
   Workout.create(create_date: '2019-08-10', user_id: user1.id, distance: 1.2, duration: 945, elevation: 22, name: 'Neighborhood Walk', workout_type: 'Walk', description: 'A little walk to the store')
   Workout.create(create_date: '2019-07-29', user_id: user1.id, distance: 1.1, duration: 964, elevation: 15, name: 'Night Run', workout_type: 'Run', description: 'I ran in the dark')
   Workout.create(create_date: '2019-07-20', user_id: user1.id, distance: 6.5, duration: 7693, elevation: 67, name: 'Mountain Hike', workout_type: 'Hike', description: 'I took a hike in the woods')
+  Workout.create(create_date: '2019-08-11', user_id: user2.id, distance: 88.7, duration: 322, elevation: 67, name: 'Green Hill Zone', workout_type: 'Run', description: 'First level')
+  Workout.create(create_date: '2019-08-10', user_id: user2.id, distance: 120.7, duration: 482, elevation: 103, name: 'Sonic Time', workout_type: 'Run', description: 'Gotta Go Fast')
 
   Follow.destroy_all
   Follow.create(user_id: user1.id, follower_id: user2.id)
