@@ -1,5 +1,6 @@
 import React from 'react';
 import IndexUserItem from './index_user_item';
+import ActivitiesFooter from '../footer/recent_activities_footer';
 
 class UsersIndex extends React.Component {
   constructor(props) {
@@ -8,6 +9,7 @@ class UsersIndex extends React.Component {
 
   componentDidMount() {
     this.props.fetchUsers();
+    this.props.fetchWorkouts();
   }
 
   render() {
@@ -28,12 +30,15 @@ class UsersIndex extends React.Component {
       />
     );
     return (
+        <div>
       <div className='userIndex-main'>
         <header className='userIndex-header'>
           <h1>Athletes</h1>
         </header>
         {usersList}
       </div>
+      <ActivitiesFooter workouts={this.props.recentWorkouts} />
+        </div>
     )
   }
 }
