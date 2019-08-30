@@ -8,8 +8,8 @@ class UsersIndex extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchUsers();
-    this.props.fetchWorkouts();
+    this.props.fetchWorkouts()
+      .then(() => this.props.fetchUsers());
   }
 
   render() {
