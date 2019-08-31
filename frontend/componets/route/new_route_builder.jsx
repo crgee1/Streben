@@ -8,14 +8,13 @@ class RouteMap extends React.Component {
     this.state = { locationArr: [], save: false }
     this.markersArr = [];
     this.prevMarkers = [];
-    this.prevActions = [];
+
     this.placeMarker = this.placeMarker.bind(this);
     this.computeTotalDistance = this.computeTotalDistance.bind(this);
     this.plotElevation = this.plotElevation.bind(this);
     this.handleSave = this.handleSave.bind(this);
     this.computeUrl = this.computeUrl.bind(this);
     this.drawRoute = this.drawRoute.bind(this);
-
     this.handleClear = this.handleClear.bind(this);
     this.handleRedo = this.handleRedo.bind(this);
     this.handleUndo = this.handleUndo.bind(this);
@@ -61,34 +60,6 @@ class RouteMap extends React.Component {
       this.setState({ elevation });
       document.getElementById('elevation').innerHTML = elevation + ' ft';
     }
-
-    // var chartDiv = document.getElementById('elevation_chart');
-    // if (status !== 'OK') {
-      // Show the error code inside the chartDiv.
-      // chartDiv.innerHTML = 'Cannot show elevation: request failed because ' +
-      //   status;
-    //   return;
-    // }
-    // Create a new chart in the elevation_chart DIV.
-    // var chart = new google.visualization.ColumnChart(chartDiv);
-
-    // Extract the data from which to populate the chart.
-    // Because the samples are equidistant, the 'Sample'
-    // column here does double duty as distance along the
-    // X axis.
-    // var data = new google.visualization.DataTable();
-    // data.addColumn('string', 'Sample');
-    // data.addColumn('number', 'Elevation');
-    // for (var i = 0; i < elevations.length; i++) {
-    //   data.addRow(['', elevations[i].elevation]);
-    // }
-
-    // Draw the chart using the data within its DIV.
-    // chart.draw(data, {
-    //   height: 150,
-    //   legend: 'none',
-    //   titleY: 'Elevation (m)'
-    // });
   }
 
   placeMarker(location) {
@@ -96,7 +67,6 @@ class RouteMap extends React.Component {
       position: location,
     });
     marker.setMap(this.map);
-    this.prevActions.push({action: 'mark', markers: marker});
     this.markersArr.push(marker);
     if (this.markersArr.length >= 2) {
       this.setState({ save: true });
@@ -137,7 +107,6 @@ class RouteMap extends React.Component {
       destination: destination,
       waypoints: midpoints.map(mark => ({location: mark.position})),
       travelMode: 'WALKING',
-      // unitSystem: google.maps.UnitSystem.IMPERIAL,
       avoidTolls: true
     }, function (response, status) {
       if (status === 'OK') {
