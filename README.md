@@ -36,6 +36,5 @@ This project was made with cloning Strava's key features in mind, but in 10 days
 
 ## Future Changes
 
-* Add other users as friends
-* Pull friends' data into their activity feed
 * Comment on activitiy feed items
+* Like other people's activities
