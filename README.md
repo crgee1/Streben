@@ -6,7 +6,7 @@ The project was done in 10 days, with future plans to develop it further.
 
 ## Technologies
 
-This project uses a rails backend with a PostgreSQL database with React-Redux as the frontend.
+This project uses a Ruby on Rails backend with a PostgreSQL database with JavaScript React-Redux as the frontend.
 
 The main APIs used are from Google Maps API, such as Directions API, Maps JavaScript API, and Maps Elevation API. When using the Google Maps API, the developer guides and overviews were very helpful, but still required some testing to see what met my requirements.
 
