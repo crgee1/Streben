@@ -17,6 +17,7 @@ The main APIs used are from Google Maps API, such as Directions API, Maps JavaSc
 * Track manually entered data related to outdoor activities
 * Display accumulated data for the user
 * Create routes on a map and provide related data
+* Index of all personal workouts with sortable headers
 
 ### Activity Feed
 
@@ -30,7 +31,7 @@ The user's mainpage will pull their inputted activities and display it. On the l
 
 The user can drop pins down on a map and generate a route between multiple points and save it for future displaying.
 
-## Route Builder Toolbar
+### Route Builder Toolbar
 
 ![gif](https://media.giphy.com/media/jS8g6341sRBtom2JMk/giphy.gif)
 
@@ -84,6 +85,36 @@ The undo, redo, and clear buttons are all custom operations, not native to the G
     document.getElementById('elevation').innerHTML = '';
     this.setState({ save: false });
   }
+```
+
+### Activities Page
+
+![gif2](https://media.giphy.com/media/Y0yjMhq6uNOMIG87ri/giphy.gif)
+
+The activities page is a index of all of a user's activities they added. The headers are clickable and allow quick sorting for the given category. Two sorting functions were needed to handle alpha characters and numeric data slightly differently.
+
+``` javascript
+
+  sortAlpha(sortKey) {
+    const workouts = this.state.workouts;
+    if (this.state[sortKey]) {
+      workouts.sort((a, b) => a[sortKey] > b[sortKey] ? 1 : -1);
+    } else {
+      workouts.sort((a, b) => b[sortKey] > a[sortKey] ? 1 : -1);
+    }
+    this.setState({[sortKey]: !this.state[sortKey]})
+  }
+
+  sortNum(sortKey) {
+    const workouts = this.state.workouts;
+    if (this.state[sortKey]) {
+      workouts.sort((a, b) => a[sortKey] - b[sortKey]);
+    } else {
+      workouts.sort((a, b) => b[sortKey] - a[sortKey]);
+    }
+    this.setState({ [sortKey]: !this.state[sortKey] })
+  }
+
 ```
 
 ## Project Design
