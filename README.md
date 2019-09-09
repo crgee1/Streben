@@ -30,6 +30,62 @@ The user's mainpage will pull their inputted activities and display it. On the l
 
 The user can drop pins down on a map and generate a route between multiple points and save it for future displaying.
 
+## Route BuilderToolbar
+
+![gif](https://media.giphy.com/media/jS8g6341sRBtom2JMk/giphy.gif)
+
+The undo, redo, and clear buttons are all custom operations, not native to the Google Maps API. It allows for the ability to undo any dropped pins, as well as keep track of the undone pins to allow for redoing. As well as get rid of every pin altogether.
+
+``` javascript
+ handleRedo() {
+    if (this.prevMarkers.length === 0) return;
+    const last = this.prevMarkers[this.prevMarkers.length - 1];
+    if (last.action === 'undo') {
+      if (last.markers instanceof Array) {
+        this.handleClear();
+        this.prevMarkers.pop();
+      } else {
+        this.placeMarker(last.markers.position);
+        this.prevMarkers.pop();
+      }
+    }
+  }
+
+  handleUndo() {
+    let last = this.markersArr[this.markersArr.length - 1];
+    if (!last) return;
+    if (this.markersArr.length === 1) {
+        this.markersArr.pop().setMap(null);
+      } else if (this.markersArr.length === 2) {
+        last = this.markersArr[0];
+        let first = this.markersArr[1];
+        this.clearStats()
+        this.placeMarker(last.position);
+        last = first;
+      } else if (this.markersArr.length > 2) {
+        this.markersArr.pop().setMap(null);
+        this.drawRoute();
+      }
+      this.prevMarkers.push({action: 'undo', markers: last});
+  }
+
+  handleClear() {
+    if (this.markersArr.length === 0) return;
+    this.prevMarkers = [];
+    this.clearStats();
+  }
+
+  clearStats() {
+    this.markersArr.pop().setMap(null);
+    this.directionsRender.set('directions', null);
+    this.markersArr = [];
+    document.getElementById('duration').innerHTML = '';
+    document.getElementById('distance').innerHTML = '';
+    document.getElementById('elevation').innerHTML = '';
+    this.setState({ save: false });
+  }
+```
+
 ## Project Design
 
 This project was made with cloning Strava's key features in mind, but in 10 days. Managing expectations to match the givin timeline was crucial in order to have a final project to demo.
@@ -38,3 +94,4 @@ This project was made with cloning Strava's key features in mind, but in 10 days
 
 * Comment on activitiy feed items
 * Like other people's activities
+* Undo clears on the route builder
