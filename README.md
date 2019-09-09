@@ -30,7 +30,7 @@ The user's mainpage will pull their inputted activities and display it. On the l
 
 The user can drop pins down on a map and generate a route between multiple points and save it for future displaying.
 
-## Route BuilderToolbar
+## Route Builder Toolbar
 
 ![gif](https://media.giphy.com/media/jS8g6341sRBtom2JMk/giphy.gif)
 
