@@ -19,6 +19,7 @@ class RouteMap extends React.Component {
     this.handleClear = this.handleClear.bind(this);
     this.handleRedo = this.handleRedo.bind(this);
     this.handleUndo = this.handleUndo.bind(this);
+    this.clearStats = this.clearStats.bind(this);
   }
   componentDidMount() {
     this.map = new google.maps.Map(this.refs.map, {
@@ -207,15 +208,7 @@ class RouteMap extends React.Component {
     } else if (this.markersArr.length === 2) {
       last = this.markersArr[0];
       let first = this.markersArr[1];
-      this.markersArr.pop().setMap(null);
-      this.directionsRender.set('directions', null);
-      this.markersArr = [];
-      document.getElementById('duration').innerHTML = '';
-      document.getElementById('distance').innerHTML = '';
-      document.getElementById('elevation').innerHTML = '';
-      this.setState({
-        save: false
-      })
+      this.clearStats()
       this.placeMarker(last.position);
       last = first;
     } else if (this.markersArr.length > 2) {
@@ -228,15 +221,17 @@ class RouteMap extends React.Component {
   handleClear() {
     if (this.markersArr.length === 0) return;
     this.prevMarkers = [];
+    this.clearStats();
+  }
+
+  clearStats() {
     this.markersArr.pop().setMap(null);
     this.directionsRender.set('directions', null);
     this.markersArr = [];
     document.getElementById('duration').innerHTML = '';
     document.getElementById('distance').innerHTML = '';
     document.getElementById('elevation').innerHTML = '';
-    this.setState({
-      save: false
-    })
+    this.setState({ save: false });
   }
 
   render() {
