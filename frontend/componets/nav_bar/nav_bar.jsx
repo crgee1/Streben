@@ -23,9 +23,6 @@ class Navbar extends React.Component {
         <li className="drop-submenu-item ">
           <Link className="drop-submenu-item" to="/routes/new">Create a Route</Link>
         </li>
-        {/* <li className="drop-submenu-item ">
-          <a>My Friends</a>
-        </li> */}
         <li className="drop-submenu-item ">
           <a onClick={this.handleLogout}>Logout</a>
         </li>
@@ -59,7 +56,7 @@ class Navbar extends React.Component {
 
     const submenuLeft = (
       <ul className="drop-submenu-dash dash">
-        <li className="drop-submenu-item ">
+        <li className="drop-submenu-item">
           <Link className='drop-submenu-item' to='/dashboard'>Activity Feed</Link>
         </li>
         <li className="drop-submenu-item">
