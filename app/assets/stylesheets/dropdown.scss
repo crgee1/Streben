@@ -1,3 +1,18 @@
+.drop-right {
+  display: inline-block;
+  color: #2d2d32;
+  font-weight: 700;
+  font-size: 10px;
+  a {
+    display: block;
+    box-sizing: border-box;
+    // width: 99px;
+    height: 61px;
+    padding: 0px 16px;
+    cursor: pointer;
+  }
+}
+
 .drop {
   display: inline-block;
   color: #2d2d32;
@@ -5,6 +20,7 @@
   font-size: 10px;
   a {
     display: block;
+    // width: 99px;
     height: 61px;
     padding: 0px 16px;
     cursor: pointer;

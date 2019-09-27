@@ -35,7 +35,7 @@ class Navbar extends React.Component {
     const displayRight = currentUser ? (
       <div className="navbar-right-side">
         <span>
-          <nav className="drop">
+          <nav className="drop-right">
             <ul className="drop-menu">
               <a>{'Account \u2228'}</a>
               {submenuRight}
