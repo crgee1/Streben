@@ -1,6 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-import Modal from '../componets/modal/modal';
+import { Switch } from 'react-router-dom';
 import SignUpContainer from './session/signup_container';
 import NavBarContainer from './nav_bar/nav_bar_container';
 import LoginContainer from './session/login_container';
