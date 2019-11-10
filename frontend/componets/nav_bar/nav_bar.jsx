@@ -34,7 +34,7 @@ class Navbar extends React.Component {
         <span>
           <nav className="drop-right">
             <ul className="drop-menu">
-              <a>{'Account \u2228'}</a>
+              <a className="tab-header">{'Account \u2228'}</a>
               {submenuRight}
             </ul>
           </nav>
@@ -73,13 +73,13 @@ class Navbar extends React.Component {
         <span>
           <nav className="drop">
             <ul className="drop-menu orange">
-              <a>{'Dashboard \u2228'}</a>
+              <a className="tab-header">{'Dashboard \u2228'}</a>
               {submenuLeft}
             </ul>
           </nav>
           <nav className="drop">
             <ul className="drop-menu">
-              <a>{'Athletes \u2228'}</a>
+              <a className="tab-header">{'Athletes \u2228'}</a>
               <ul className="drop-submenu-dash friends">
                 <li className="drop-submenu-item">
                   <Link className='drop-submenu-item' to='/athletes'>Find Athletes</Link>

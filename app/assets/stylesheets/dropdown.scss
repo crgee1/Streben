@@ -19,7 +19,7 @@
   font-size: 10px;
   a {
     display: block;
-    height: 61px;
+    height: 63px;
     padding: 0px 16px;
     cursor: pointer;
   }
@@ -38,13 +38,23 @@
   &:hover {
     color: orangered;
     border-bottom: 2px solid white;
-    border-right: 1px solid black;
-    border-left: 1px solid black;
+    // border-right: 1px solid black;
+    // border-left: 1px solid black;
     margin-left: -1px;
     margin-right: -1px;
     .drop-submenu-dash, .drop-submenu-profile {
     display: block;
     z-index: 20;
+    }
+    .tab-header {
+      box-sizing: border-box;
+      position: relative;
+      border-right: 1px solid black;
+      border-left: 1px solid black;
+      border-bottom: 2px solid white;
+      // top: 1px;
+      z-index: 30;
+      height: 64px;
     }
   }
 }
@@ -54,7 +64,7 @@
 }
    
 .drop-submenu-dash {
-  left: -1px;
+  // left: -1px;
   margin-top: 1px;
   color: #2d2d32;
   font-weight: 300;
@@ -64,6 +74,7 @@
   background-color: white;
   border: solid 1px #2d2d32;
   z-index: 20;
+  top: 62px;
 }
 
 .dash {
@@ -75,7 +86,7 @@
 }
 
 .drop-submenu-profile {
-  left: -105px;
+  left: -101px;
   margin-top: 1px;
   color: #2d2d32;
   font-weight: 300;
@@ -85,6 +96,7 @@
   width: 200px;
   background-color: white;
   border: solid 1px #2d2d32;
+  top: 62px;
 }
     
 .drop-submenu-item {
@@ -104,6 +116,6 @@
 
 @media only screen and (max-width: 1600px) {
   .drop-submenu-profile {
-    left: -102px;
+    left: -101px;
   }
 }
