@@ -11,7 +11,7 @@
 .personal-stats {
     background-color: #fff;
     // width: 281px;
-    width: 22%;
+    width: 17%;
     height: 291px;
     border-radius: 4px;
     position: fixed;
@@ -26,7 +26,7 @@
     flex-direction: column;
     justify-content: space-between;
     // width: 240px;
-    width: 22%;
+    width: 17%;
     height: 300px;
     
     p {
@@ -46,7 +46,7 @@
 
 .activity-feed {
     background-color: #f5f5fa;
-    width: 45%;
+    width: 34%;
     // width: 593px;
     border-radius: 4px;
     float: left;
@@ -186,12 +186,18 @@
     .dashboard-home {
         min-height: 569px;
     }
+    
+    .activity-feed {
+        width: 45%;
+    }
     .personal-stats {
         left: 4%;
+        width: 22%;
     }
 
     .advertise {
         right: 4%;
+        width: 22%;
     }
 }
 
