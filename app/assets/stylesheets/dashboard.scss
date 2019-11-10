@@ -179,7 +179,7 @@
 }
 
 .chevron-container {
-    padding-left: 36%;
+    padding-left: 34%;
 }
 
 @media only screen and (max-width: 1600px) {
@@ -199,10 +199,6 @@
     .dashboard-home {
         flex-direction: column;
         align-items: center;
-    }
-
-    .banner {
-        display: none;
     }
 
     .activity-feed {
