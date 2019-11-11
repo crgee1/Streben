@@ -38,9 +38,6 @@
   content: '';
   display: table;
   clear: both;
-  // display: flex;
-  // justify-content: flex-start;
-  // flex-wrap: wrap;
 }
 
 .route-index-item {
@@ -65,7 +62,6 @@
 }
 
 .route-index-item-stats {
-  // width: 300px;
   background-color: #f7f7f7;
   color: #2d2d32;
 
@@ -113,17 +109,5 @@
 @media only screen and (max-width: 1600px) {
   .route-home {
     padding: 88px 32px;
-  }
-
-  .route-index-item-stats {
-    // width: 282px;
-  }
-
-  .route-index-item {
-    // margin: 0 1.9% 40px 0;
-  }
-
-  .map-image {
-    // width: 282px;
   }
 }
