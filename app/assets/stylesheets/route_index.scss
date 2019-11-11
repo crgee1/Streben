@@ -113,3 +113,15 @@
     padding: 88px 32px;
   }
 }
+
+@media (max-width: 945px) {
+  .route-index-list {
+    .inline-list {
+      flex-direction: column;
+      margin-bottom: 0;
+      section {
+        margin-bottom: 30px;
+      }
+    }
+  }
+}
