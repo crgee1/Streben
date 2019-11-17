@@ -11,5 +11,12 @@
     json.set! workout.user.id do
       json.partial! 'api/users/user', user: workout.user
     end
+
+    workout.likers.each do |liker|
+      json.set! liker.id do
+        json.partial! 'api/users/user', user: liker
+      end
+    end
+
   end
 end
