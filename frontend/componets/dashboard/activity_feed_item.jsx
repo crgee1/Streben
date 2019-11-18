@@ -59,11 +59,11 @@ class ActivityFeedItem extends React.Component {
   render() {
     const { distance, elevation, duration, description, name, id, createDate } = this.props.workout;
     const { user, likes, liked } = this.props;
-    console.log(this.props);
-    const button = liked ? <button onClick={this.handleButtonDelete}>
+  const kudosSection = likes > 0 ? <div className="kudos-section">{likes} kudos</div> : <div className="kudos-section">Be the first to give kudos!</div>
+    const button = liked ? <button className="like-button" onClick={this.handleButtonDelete}>
       <i className="fas fa-thumbs-up"></i>
     </button> : 
-      <button onClick={this.handleButtonCreate}>
+      <button className="like-button" onClick={this.handleButtonCreate}>
         <i className="far fa-thumbs-up"></i>
       </button>;
     return (
@@ -101,7 +101,7 @@ class ActivityFeedItem extends React.Component {
         </div>
         <div className="user-feedback">
           <div className="comment-section">
-            {likes}{button}
+            {kudosSection}{button}
           </div>
         </div>
       </div>

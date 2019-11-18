@@ -224,4 +224,14 @@
     .advertise {
         display: none;
     }
+
+    .banner {
+        display: none;
+    }
+}
+
+@media (max-width: 645px) {
+    .chevron-container {
+        padding-left: 34%;
+    }
 }

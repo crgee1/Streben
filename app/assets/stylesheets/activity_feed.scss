@@ -1,7 +1,7 @@
 .activity-feed-item {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    // align-items: center;
     margin-bottom: 23px;
     background-color: #fff;
     min-height: 188px;
@@ -10,20 +10,41 @@
 
     .activity-info {
         display: flex;
-        flex-direction: column;
+        // flex-direction: column;
     }
     
     .user-feedback {
         width: 100%;
         margin-top: 8px;
-        padding: 0 24px 16px;
+        padding: 0 0 16px;
         
         .comment-section {
             display: flex;
+            justify-content: space-between;
+            align-items: center;
             width: 100%;
             padding: 12px 0 0;
             border-top: 1px solid #e6e6eb;
-            align-items: center;
+
+            .kudos-section {
+                font-size: 11px;
+            }
+
+            .like-button {
+                background-color: #e6e6eb;
+                border: 1px solid #e6e6eb;
+                display: block;
+                padding: 6px 12px;;
+                border-radius: 4px;
+
+                &:hover {
+                    background-color: #fff;
+                }
+            }
+
+            .fas.fa-thumbs-up {
+                color: #fc4c02;
+            }
         }
     }
 
@@ -79,7 +100,8 @@
     }
 
     header {
-        margin-bottom: 10px;
+        margin: 16px 0 10px;
+        // margin-bottom: 10px;
     }
 }
 
@@ -106,5 +128,21 @@
 
     section {
         margin-right: 33px;
+    }
+}
+
+@media (max-width: 550px) {
+    .activity-feed-item {
+        // padding: 0 46px;
+        // align-items: flex-start;
+
+        .feed-item-stats {
+            // flex-direction: column;
+            flex-wrap: wrap;
+        }
+
+        .user-feedback {
+            // padding: 0 0 16px;
+        }
     }
 }
