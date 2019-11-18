@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import ShowWorkout from './show_workout';
 import { fetchWorkouts, deleteWorkout } from '../../actions/workout_actions';
+import { createLike, deleteLike } from '../../actions/like_actions';
 import { fetchUser } from '../../actions/session_actions';
 
 const mapStatetoProps = (state, ownProps) => {
@@ -31,6 +32,8 @@ const mapDispatchToProps = dispatch => ({
   fetchWorkouts: () => dispatch(fetchWorkouts()),
   fetchUser: id => dispatch(fetchUser(id)),
   deleteWorkout: id => dispatch(deleteWorkout(id)),
+  createLike: like => dispatch(createLike(like)),
+  deleteLike: id => dispatch(deleteLike(id))
 })
 
 export default connect(mapStatetoProps, mapDispatchToProps)(ShowWorkout)

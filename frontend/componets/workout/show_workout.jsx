@@ -8,19 +8,27 @@ class ShowWorkout extends React.Component {
     this.handleDelete = this.handleDelete.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
     this.likeCounter = this.likeCounter.bind(this);
+    this.handleButtonCreate = this.handleButtonCreate.bind(this);
+    this.handleButtonDelete = this.handleButtonDelete.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchWorkouts();
   }
 
+  handleButtonCreate() {
+    let { createLike, currentUser, workout } = this.props;
+    createLike({ user_id: currentUser.id, workout_id: workout.id });
+  }
+  handleButtonDelete(likeId) {
+    return () => this.props.deleteLike(likeId);
+  }
+
   likeCounter() {
-    let { likes, currentUser, match } = this.props;
+    let { likes, currentUser, workout } = this.props;
     let likeObj = {likes: 0, liked: false};
-    // if (likes) {
       likes.forEach(like => {
-        if (like.workoutId === Number(match.params.workoutId)) {
-          // likeObj[like.workoutId] = likeObj[like.workoutId] || {};
+        if (like.workoutId === workout.id) {
           let liked = like.userId === currentUser.id ? true : false;
           likeObj.likes++;
           if (liked) {
@@ -29,8 +37,6 @@ class ShowWorkout extends React.Component {
           }
         }
       });
-      console.log(likeObj);
-    // }
     return likeObj;
   }
 
@@ -87,7 +93,11 @@ class ShowWorkout extends React.Component {
   render() {
     const {workout, user, recentWorkouts, id, likes} = this.props;
     const likeObj = this.likeCounter();
-    const button = likeObj.liked ? <div className="like-button" onClick={this.handleButtonDelete}>
+    // const button = 
+    //   <div className="like-button" onClick={this.handleButtonCreate}>
+    //     <i className="far fa-thumbs-up"></i>{likeObj.likes}
+    //   </div>;
+    const button = likeObj.liked ? <div className="like-button" onClick={this.handleButtonDelete(likeObj.likeId)}>
       <i className="fas fa-thumbs-up"></i>{likeObj.likes}
     </div> :
       <div className="like-button" onClick={this.handleButtonCreate}>
