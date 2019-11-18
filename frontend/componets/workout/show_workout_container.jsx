@@ -5,6 +5,8 @@ import { fetchUser } from '../../actions/session_actions';
 
 const mapStatetoProps = (state, ownProps) => {
   let workout = state.entities.workouts[ownProps.match.params.workoutId];
+  const currentUser = state.session.currentUser;
+  const likes = Object.values(state.entities.likes);
   const { id } = state.session.currentUser;
   let user;
   if (workout === undefined) {
@@ -15,8 +17,10 @@ const mapStatetoProps = (state, ownProps) => {
   }
   return ({
     id,
+    currentUser,
     user,
     workout,
+    likes,
     recentWorkouts: Object.values(state.entities.workouts).reverse()
       .filter(el => id === el.userId && el.id !== workout.id)
       .sort((a, b) => b.createDate > a.createDate ? 1 : -1),

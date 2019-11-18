@@ -17,18 +17,44 @@
 
   header {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    height: 22px;
+    height: 45px;
     background: #f5f5fa;
     border-top: 1px solid #FFF;
     border: 1px solid #ccccd1;
-    padding: 9px 20px;
+    padding: 0px 20px;
     margin: 0;
 
     h1 {
       font-size: 20px;
       line-height: 25px;
     }
+
+    .like-button {
+      align-items: center;
+      display: flex;
+      background: #f5f5fa;
+      height: 100%;
+      // background-color: #e6e6eb;
+      // border: 1px solid #e6e6eb;
+      padding: 0px 10px;
+      // border-radius: 4px;
+      transition: border-color 0.1s linear, background 0.1s linear, color 0.1s linear;
+
+      &:hover {
+        background-color: #fff;
+      }
+
+      .fa-thumbs-up {
+        color: #47474B;
+        padding-right: 8px;
+      }
+      .fas.fa-thumbs-up {
+          color: #fc4c02;
+      }
+    }
+
   }
 }
 

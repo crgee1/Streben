@@ -59,7 +59,7 @@ class ActivityFeedItem extends React.Component {
   render() {
     const { distance, elevation, duration, description, name, id, createDate } = this.props.workout;
     const { user, likes, liked } = this.props;
-  const kudosSection = likes > 0 ? <div className="kudos-section">{likes} kudos</div> : <div className="kudos-section">Be the first to give kudos!</div>
+    const kudosSection = likes > 0 ? <div className="kudos-section">{likes} kudos</div> : <div className="kudos-section">Be the first to give kudos!</div>
     const button = liked ? <button className="like-button" onClick={this.handleButtonDelete}>
       <i className="fas fa-thumbs-up"></i>
     </button> : 

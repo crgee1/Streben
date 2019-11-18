@@ -7,10 +7,31 @@ class ShowWorkout extends React.Component {
     this.displayTime = this.displayTime.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
+    this.likeCounter = this.likeCounter.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchWorkouts();
+  }
+
+  likeCounter() {
+    let { likes, currentUser, match } = this.props;
+    let likeObj = {likes: 0, liked: false};
+    // if (likes) {
+      likes.forEach(like => {
+        if (like.workoutId === Number(match.params.workoutId)) {
+          // likeObj[like.workoutId] = likeObj[like.workoutId] || {};
+          let liked = like.userId === currentUser.id ? true : false;
+          likeObj.likes++;
+          if (liked) {
+            likeObj.liked = true;
+            likeObj.likeId = like.id;
+          }
+        }
+      });
+      console.log(likeObj);
+    // }
+    return likeObj;
   }
 
   displayTime(seconds) {
@@ -64,7 +85,14 @@ class ShowWorkout extends React.Component {
   }
 
   render() {
-    const {workout, user, recentWorkouts, id} = this.props;
+    const {workout, user, recentWorkouts, id, likes} = this.props;
+    const likeObj = this.likeCounter();
+    const button = likeObj.liked ? <div className="like-button" onClick={this.handleButtonDelete}>
+      <i className="fas fa-thumbs-up"></i>{likeObj.likes}
+    </div> :
+      <div className="like-button" onClick={this.handleButtonCreate}>
+        <i className="far fa-thumbs-up"></i>{likeObj.likes}
+      </div>;
     const icons = id === workout.userId ? 
     <div className='icons'>
       <span onClick={this.handleEdit} className='show-workout-btn-edit'>
@@ -78,7 +106,9 @@ class ShowWorkout extends React.Component {
     const display = this.props.workout.id === 0 ? null : (<div className='show-workout-main'>
       {icons}
       <div className='show-workout-display'>
-        <header><h1>{user.username} - {workout.workoutType}</h1></header>
+        <header>
+          <h1>{user.username} - {workout.workoutType}</h1> {button}
+        </header>
         <div className='show-workout-info'>
           <section className='show-workout-left'>
             <section className='avatar-image'>
