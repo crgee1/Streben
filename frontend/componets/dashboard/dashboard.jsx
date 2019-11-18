@@ -3,10 +3,6 @@ import ActivityFeedItem from './activity_feed_item';
 import { Link } from 'react-router-dom';
 
 class Dashboard extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     this.props.fetchWorkouts();
     this.props.fetchFollows();
@@ -21,8 +17,20 @@ class Dashboard extends React.Component {
     return hour >= 1 ? `${hour}:${min}:${sec}` : `${min}:${sec}`;
   }
 
+  likeCounterFunc() {
+    let counter = {};
+    this.props.likes.forEach(like => {
+      if (counter[like.workoutId] === undefined) {
+        counter[like.workoutId] = 1;
+      } else {
+        counter[like.workoutId]++;
+      }
+    });
+    return counter;
+  }
+
   render() {
-    let { currentUser, users, follows, workouts } = this.props;
+    let { currentUser, users, follows, workouts, createLike, likes } = this.props;
     let followersCount = 0, followingCount = 0, followsArr = [];
     follows.forEach(follow => {
       followsArr.push(follow.userId);
@@ -34,15 +42,21 @@ class Dashboard extends React.Component {
       if (workout.userId === currentUser.id) workoutArr.push(workout);
       if (workout.userId === currentUser.id || followsArr
         .includes(workout.userId)) activityFeed.push(workout);
-    })
-    activityFeed.sort((a, b) => b.createDate > a.createDate ? 1 : -1);
-    const workoutsDisplay = activityFeed.map((workout, i) => (
-      <ActivityFeedItem
-        user={users[workout.userId]}
-        workout={workout}
-        key={i}
-      />
-    ));
+      });
+      activityFeed.sort((a, b) => b.createDate > a.createDate ? 1 : -1);
+    let likeCounter = this.likeCounterFunc();
+    const workoutsDisplay = activityFeed.map((workout, i) => {
+      let likesCount = likeCounter[workout.id] ? likeCounter[workout.id] : 0;
+      return (
+        <ActivityFeedItem
+          user={users[workout.userId]}
+          currentUser={currentUser}
+          workout={workout}
+          createLike={createLike}
+          likes={likesCount}
+          key={i}
+        />
+      )});
 
     const totDistance = workoutArr.reduce(
       (acc, cur) => acc + cur.distance, 0

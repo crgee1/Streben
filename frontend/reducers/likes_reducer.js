@@ -1,8 +1,8 @@
 import merge from 'lodash/merge';
 import { RECEIVE_WORKOUTS } from '../actions/workout_actions';
-import { RECEIVE_LIKE, REMOVE_LIKE, RECEIVE_LIKES } from '../actions/follow_actions';
+import { RECEIVE_LIKE, REMOVE_LIKE, RECEIVE_LIKES } from '../actions/like_actions';
 
-const followsReducer = (state = {}, action) => {
+const likesReducer = (state = {}, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_LIKE: 

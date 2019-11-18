@@ -1,11 +1,32 @@
 .activity-feed-item {
     display: flex;
+    flex-direction: column;
     align-items: center;
     margin-bottom: 23px;
     background-color: #fff;
-    height: 188px;
+    min-height: 188px;
     padding: 0 20px;
     box-shadow: 0px 8px 24px rgba(13,13,18,0.04);
+
+    .activity-info {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .user-feedback {
+        width: 100%;
+        margin-top: 8px;
+        padding: 0 24px 16px;
+        
+        .comment-section {
+            display: flex;
+            width: 100%;
+            padding: 12px 0 0;
+            border-top: 1px solid #e6e6eb;
+            align-items: center;
+        }
+    }
+
 
     .avatar-image-mini {
         align-self: flex-start;

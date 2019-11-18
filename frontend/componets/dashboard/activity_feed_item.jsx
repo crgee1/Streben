@@ -2,6 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 class ActivityFeedItem extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleButton = this.handleButton.bind(this);
+  }
 
   displayTime(seconds) {
     let hour = Math.floor(seconds / 3600);
@@ -10,6 +14,11 @@ class ActivityFeedItem extends React.Component {
     if (sec < 10) sec = `0${sec}`;
     if (hour >= 1 && min < 10) min = `0${min}`;
     return hour >= 1 ? `${hour}:${min}:${sec}` : `${min}:${sec}`;
+  }
+
+  handleButton() {
+    let {createLike, currentUser, workout} = this.props;
+    createLike({user_id: currentUser.id, workout_id: workout.id});
   }
 
   displayDate(inputDate) {
@@ -40,43 +49,52 @@ class ActivityFeedItem extends React.Component {
     };
     result.push(`${months[date.getMonth()]} ${date.getDate()}`);
     result.push(date.getFullYear());
-    return result.join(', ');
+    return result.join(", ");
   }
 
   render() {
     const { distance, elevation, duration, description, name, id, createDate } = this.props.workout;
-    const { user } = this.props;
+    const { user, likes } = this.props;
     return (
-      <div className='activity-feed-item'>
-        <section className="avatar-image-mini">
-          <h1>{user.username[0]}</h1>
-        </section>
-        <section>
-          <header className='feed-item-header'>
-            <h2>{user.username}</h2>
-            <label>{this.displayDate(createDate)}</label>
-          </header>
-          <div className='feed-item-name'>
-            <Link to={`training/${id}`}>{name}</Link>
+      <div className="activity-feed-item">
+        <div className="activity-info">
+          <section className="avatar-image-mini">
+            <h1>{user.username[0]}</h1>
+          </section>
+          <section>
+            <header className="feed-item-header">
+              <h2>{user.username}</h2>
+              <label>{this.displayDate(createDate)}</label>
+            </header>
+            <div className="feed-item-name">
+              <Link to={`training/${id}`}>{name}</Link>
+            </div>
+            <div className="feed-item-desc">
+              <p>{description}</p>
+            </div>
+            <div className="feed-item-stats">
+              <section>
+                <label>Distance</label>
+                <h3>{distance} mi</h3>
+              </section>
+              <section>
+                <label>Elevation</label>
+                <h3>{elevation} ft</h3>
+              </section>
+              <section>
+                <label>Time</label>
+                <h3>{this.displayTime(duration)}</h3>
+              </section>
+            </div>
+          </section>
+        </div>
+        <div className="user-feedback">
+          <div className="comment-section">
+            {likes}<button onClick={this.handleButton}>
+              <i className="far fa-thumbs-up"></i>
+            </button>
           </div>
-          <div className='feed-item-desc'>
-            <p>{description}</p>
-          </div>
-          <div className='feed-item-stats'>
-            <section>
-              <label>Distance</label>
-              <h3>{distance} mi</h3>
-            </section>
-            <section>
-              <label>Elevation</label>
-              <h3>{elevation} ft</h3>
-            </section>
-            <section>
-              <label>Time</label>
-              <h3>{this.displayTime(duration)}</h3>
-            </section>
-          </div>
-        </section>
+        </div>
       </div>
     )
   }
