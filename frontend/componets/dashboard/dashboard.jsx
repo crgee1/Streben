@@ -18,15 +18,15 @@ class Dashboard extends React.Component {
   }
 
   likeCounter() {
-    let = { likes, currentUser } = this.props;
+    let { likes, currentUser } = this.props;
     let counter = {};
     likes.forEach(like => {
+      counter[like.workoutId] = counter[like.workoutId] || {};
       let liked = like.userId === currentUser.id ? true : false;
-      if (counter[like.workoutId] === undefined) {
-        counter[like.workoutId] = liked ? [1, liked, like.id] : [1, liked]
-      } else {
-        counter[like.workoutId][0]++;
-        if (liked) counter[like.workoutId][3] = like.id;
+      counter[like.workoutId].likes = counter[like.workoutId].likes ? counter[like.workoutId].likes+1 : 1;
+      if (liked) {
+        counter[like.workoutId].liked = true;
+        counter[like.workoutId].likeId = like.id;
       }
     });
     return counter;
@@ -49,9 +49,9 @@ class Dashboard extends React.Component {
       activityFeed.sort((a, b) => b.createDate > a.createDate ? 1 : -1);
     let likeCounterObj = this.likeCounter();
     const workoutsDisplay = activityFeed.map((workout, i) => {
-      let likesCount = likeCounterObj[workout.id][0] ? likeCounterObj[workout.id][0] : 0;
-      let liked = likeCounterObj[workout.id][1];
-      let likeId = likeCounterObj[workout.id][3];
+      let likesCount = likeCounterObj[workout.id] ? likeCounterObj[workout.id].likes : 0;
+      let liked = likeCounterObj[workout.id] ? likeCounterObj[workout.id].liked : false;
+      let likeId = likeCounterObj[workout.id] ? likeCounterObj[workout.id].likeId ? likeCounterObj[workout.id].likeId : null : null;
       return (
         <ActivityFeedItem
           user={users[workout.userId]}

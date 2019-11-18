@@ -57,14 +57,15 @@ class ActivityFeedItem extends React.Component {
   }
 
   render() {
-    const { distance, elevation, duration, description, name, id, createDate, liked } = this.props.workout;
-    const { user, likes } = this.props;
+    const { distance, elevation, duration, description, name, id, createDate } = this.props.workout;
+    const { user, likes, liked } = this.props;
+    console.log(this.props);
     const button = liked ? <button onClick={this.handleButtonDelete}>
       <i className="fas fa-thumbs-up"></i>
     </button> : 
       <button onClick={this.handleButtonCreate}>
         <i className="far fa-thumbs-up"></i>
-      </button>
+      </button>;
     return (
       <div className="activity-feed-item">
         <div className="activity-info">
