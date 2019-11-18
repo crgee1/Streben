@@ -5,6 +5,7 @@ import routes from './routes_errors_reducer';
 import locations from './locations_errors_reducer';
 import workouts from './workouts_errors_reducer';
 import follows from './follows_errors_reducer';
+import likes from './likes_errors_reducer';
 
 export default combineReducers({
   session,
@@ -12,4 +13,5 @@ export default combineReducers({
   locations,
   follows,
   workouts,
+  likes,
 });
