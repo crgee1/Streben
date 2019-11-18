@@ -3,6 +3,7 @@ import Dashboard from './dashboard';
 import { fetchWorkouts } from '../../actions/workout_actions';
 import { fetchFollows } from '../../actions/follow_actions';
 import { createLike } from '../../actions/like_actions';
+import { deleteLike } from '../../actions/like_actions';
 
 const mapStateToProps = (state) => ({
     users: state.entities.users,
@@ -15,7 +16,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = dispatch => ({
     fetchWorkouts: () => dispatch(fetchWorkouts()),
     fetchFollows: () => dispatch(fetchFollows()),
-    createLike: (like) => dispatch(createLike(like))
+    createLike: (like) => dispatch(createLike(like)),
+    deleteLike: (id) => dispatch(deleteLike(id))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

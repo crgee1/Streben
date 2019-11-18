@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 class ActivityFeedItem extends React.Component {
   constructor(props) {
     super(props);
-    this.handleButton = this.handleButton.bind(this);
+    this.handleButtonCreate = this.handleButtonCreate.bind(this);
+    this.handleButtonDelete = this.handleButtonDelete.bind(this);
   }
 
   displayTime(seconds) {
@@ -16,9 +17,12 @@ class ActivityFeedItem extends React.Component {
     return hour >= 1 ? `${hour}:${min}:${sec}` : `${min}:${sec}`;
   }
 
-  handleButton() {
+  handleButtonCreate() {
     let {createLike, currentUser, workout} = this.props;
     createLike({user_id: currentUser.id, workout_id: workout.id});
+  }
+  handleButtonDelete() {
+    this.props.deleteLike(this.props.likeId);
   }
 
   displayDate(inputDate) {
@@ -53,8 +57,14 @@ class ActivityFeedItem extends React.Component {
   }
 
   render() {
-    const { distance, elevation, duration, description, name, id, createDate } = this.props.workout;
+    const { distance, elevation, duration, description, name, id, createDate, liked } = this.props.workout;
     const { user, likes } = this.props;
+    const button = liked ? <button onClick={this.handleButtonDelete}>
+      <i className="fas fa-thumbs-up"></i>
+    </button> : 
+      <button onClick={this.handleButtonCreate}>
+        <i className="far fa-thumbs-up"></i>
+      </button>
     return (
       <div className="activity-feed-item">
         <div className="activity-info">
@@ -90,9 +100,7 @@ class ActivityFeedItem extends React.Component {
         </div>
         <div className="user-feedback">
           <div className="comment-section">
-            {likes}<button onClick={this.handleButton}>
-              <i className="far fa-thumbs-up"></i>
-            </button>
+            {likes}{button}
           </div>
         </div>
       </div>

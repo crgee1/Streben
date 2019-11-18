@@ -17,20 +17,23 @@ class Dashboard extends React.Component {
     return hour >= 1 ? `${hour}:${min}:${sec}` : `${min}:${sec}`;
   }
 
-  likeCounterFunc() {
+  likeCounter() {
+    let = { likes, currentUser } = this.props;
     let counter = {};
-    this.props.likes.forEach(like => {
+    likes.forEach(like => {
+      let liked = like.userId === currentUser.id ? true : false;
       if (counter[like.workoutId] === undefined) {
-        counter[like.workoutId] = 1;
+        counter[like.workoutId] = liked ? [1, liked, like.id] : [1, liked]
       } else {
-        counter[like.workoutId]++;
+        counter[like.workoutId][0]++;
+        if (liked) counter[like.workoutId][3] = like.id;
       }
     });
     return counter;
   }
 
   render() {
-    let { currentUser, users, follows, workouts, createLike, likes } = this.props;
+    let { currentUser, users, follows, workouts, createLike, deleteLike } = this.props;
     let followersCount = 0, followingCount = 0, followsArr = [];
     follows.forEach(follow => {
       followsArr.push(follow.userId);
@@ -44,16 +47,21 @@ class Dashboard extends React.Component {
         .includes(workout.userId)) activityFeed.push(workout);
       });
       activityFeed.sort((a, b) => b.createDate > a.createDate ? 1 : -1);
-    let likeCounter = this.likeCounterFunc();
+    let likeCounterObj = this.likeCounter();
     const workoutsDisplay = activityFeed.map((workout, i) => {
-      let likesCount = likeCounter[workout.id] ? likeCounter[workout.id] : 0;
+      let likesCount = likeCounterObj[workout.id][0] ? likeCounterObj[workout.id][0] : 0;
+      let liked = likeCounterObj[workout.id][1];
+      let likeId = likeCounterObj[workout.id][3];
       return (
         <ActivityFeedItem
           user={users[workout.userId]}
           currentUser={currentUser}
           workout={workout}
           createLike={createLike}
+          deleteLike={deleteLike}
           likes={likesCount}
+          liked={liked}
+          likeId={likeId}
           key={i}
         />
       )});
