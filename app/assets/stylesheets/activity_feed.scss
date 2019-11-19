@@ -55,7 +55,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        margin: 35px 25px 0 0;
+        margin: 15px 25px 0 0;
         width: 45px;
         height: 45px;
         background-color: rgb(0, 87, 155);
@@ -101,8 +101,7 @@
     }
 
     header {
-        margin: 16px 0 10px;
-        // margin-bottom: 10px;
+        margin: 20px 0 10px;
     }
 }
 
@@ -134,16 +133,9 @@
 
 @media (max-width: 550px) {
     .activity-feed-item {
-        // padding: 0 46px;
-        // align-items: flex-start;
 
         .feed-item-stats {
-            // flex-direction: column;
             flex-wrap: wrap;
-        }
-
-        .user-feedback {
-            // padding: 0 0 16px;
         }
     }
 }

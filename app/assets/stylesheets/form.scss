@@ -1,15 +1,3 @@
-.form-container {
-    display: flex;
-    align-items: center;
-    text-align: center; 
-    flex-direction: column;
-    width: 100%;
-    height: 100vh;
-    padding-top: 116px;
-    background-size: cover;
-    background-image: image-url('running_sf.jpg');  
-}
-
 .form-errors {
     top: 10px;
     background-color: red;
@@ -24,35 +12,50 @@
     display: none;
 }
 
-form {
+.form-container {
     display: flex;
-    text-align: center;
-    flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
-    height: 461px;
-    width: 400px;
-    background-color: rgba(0,0,0,0.75);
-    border-bottom-right-radius: 3px;
-    border-bottom-left-radius: 3px;
+    text-align: center; 
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    padding-top: 116px;
+    background-size: cover;
+    background-image: image-url('running_sf.jpg'); 
 
-    input {
-        height: 40px;
-        width: 300px;
-        font-weight: 400;
-        font-size: 13px;
-        color: lightgray;
+    form {
+        display: flex;
+        text-align: center;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        height: 461px;
+        width: 400px;
         background-color: rgba(0,0,0,0.75);
-        margin: 0;
-        -webkit-appearance: none;
-        border-style: none;
-        border-radius: 3px;
-        padding-left: 10px;
-        border: solid .5px lightgray;
+        border-bottom-right-radius: 3px;
+        border-bottom-left-radius: 3px;
+    
+        input {
+            height: 40px;
+            width: 300px;
+            font-weight: 400;
+            font-size: 13px;
+            color: lightgray;
+            background-color: rgba(0,0,0,0.75);
+            margin: 0;
+            -webkit-appearance: none;
+            border-style: none;
+            border-radius: 3px;
+            padding-left: 10px;
+            border: solid .5px lightgray;
+        }
     }
- }
+}
 
- .form-head {
+
+
+
+.form-head {
     color: white;
     display: flex;
     text-align: center;
@@ -65,17 +68,17 @@ form {
     font-weight: 700;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
- }
+}
 
 
- form input:focus {
+form input:focus {
      background-color: rgba(255,255,255,0.9);
      box-shadow: 0 0 8px 0 rgba(255,255,255,0.8);
      border: .5px solid rgba(0,0,0,0.5);
      color: #333;
- }
+}
 
- form button {
+form button {
      background-color: orangered;
      color: white;
      -webkit-appearance: none;
@@ -85,20 +88,20 @@ form {
     font-size: 14px;
     font-weight: 700;
     border-radius: 3px;
- }
+}
 
- form button:hover {
+form button:hover {
     cursor: pointer;
     transition: background-color 300ms;
     background-color: rgb(218, 65, 9);
- }
+}
 
- form h3 {
+form h3 {
      color: white;
      font-weight: 700;
- }
+}
 
- .facebook {
+.facebook {
     display: flex;
     justify-content: center;
     text-align: center;
@@ -115,9 +118,9 @@ form {
     background-position: 0px;
     background-size: 30px;
     background-repeat: no-repeat;
- }
+}
 
- .facebook:hover {
+.facebook:hover {
     cursor: pointer;
     background-image: image-url('Facebook_icon.svg');
     -webkit-filter: brightness(70%);
@@ -126,4 +129,4 @@ form {
     -o-transition: all .25s ease;
     -ms-transition: all .25s ease;
     transition: all .25s ease;
- }
+}
