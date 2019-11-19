@@ -6,7 +6,7 @@
   margin-bottom: 140px;
 
   .userIndex-header {
-    border-bottom: 1px solid #e6e6eb;
+    // border-bottom: 1px solid #e6e6eb;
     padding-bottom: 20px;
     h1 {
       color: #2d2d32;
@@ -17,7 +17,7 @@
   }
 
   .searchbar {
-    margin: 20px 0;
+    margin-bottom: 20px;
     padding: 0 20px;
     border-top: 1px solid #e6e6eb;
     border-bottom: 1px solid #D7D7D7;
@@ -30,11 +30,47 @@
     form {
       margin: 20px 0;
       padding: 0 20px;
-      border-top: 1px solid #e6e6eb;
-      border-bottom: 1px solid #D7D7D7;
       background-color: #F2F2F2;
+
+      input.athlete-search {
+        padding: 0 10px;
+        width: 260px;
+        box-sizing: border-box;
+        font-size: 14px;
+        height: 34px;
+        background-color: #fff;
+        border: 1px solid #ccccd1;
+        color: #666;
+        line-height: 1.4em;
+        margin-right: 6px;
+
+        &:focus {
+          border-color: #007FB6;
+        }
+      }
+
+      input.search-button {
+        transition: border-color 0.1s ease;
+        padding: 6px 10px;
+        min-height: 34px;
+        box-sizing: border-box;
+        font-size: 14px;
+        background-color: #fff;
+        border: 1px solid #ccccd1;
+        color: #666;
+        line-height: 1.4em;
+        border-radius: 4px;
+        font-weight: 700;
+
+        &:hover {
+          transition: border-color 0.1s ease;
+          background-color: #f5f5fa;
+          cursor: pointer;
+        }
+      }
     }
   }
+
   strong {
     font-weight: 700;
   }

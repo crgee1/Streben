@@ -25,7 +25,7 @@ class UsersIndex extends React.Component {
         this.setState({athletes: []});
       } else {
         let athletes = this.props.users.filter(user => 
-          user.username.toLowerCase().includes(searchKey.toLowerCase()))
+          user.username.toLowerCase().includes(searchKey.toLowerCase())).sort().reverse()
         this.setState({
           athletes
         });
@@ -64,8 +64,8 @@ class UsersIndex extends React.Component {
           </header>
           <div className="searchbar" onSubmit={this.handleSearch}>
             <form>
-              <input id="athlete-search" type="text" placeholder="Athlete Name"/> 
-              <input type="submit" value="Search"/>
+              <input id="athlete-search" className="athlete-search" type="text" placeholder="Athlete Name"/> 
+              <input className="search-button" type="submit" value="Search"/>
             </form>
           </div>
           {usersList}
