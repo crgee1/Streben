@@ -1,13 +1,14 @@
 .userIndex-main {
   padding: 85px 13% 0 13%;
+  min-height: 310px;
+  margin-bottom: 40px;
   background-color: #fff;
   display: flex;
   flex-direction: column;
-  margin-bottom: 140px;
 
   .userIndex-header {
-    // border-bottom: 1px solid #e6e6eb;
     padding-bottom: 20px;
+
     h1 {
       color: #2d2d32;
       margin-bottom: 30px;
@@ -17,8 +18,7 @@
   }
 
   .searchbar {
-    margin-bottom: 20px;
-    padding: 0 20px;
+    // margin-bottom: 20px;
     border-top: 1px solid #e6e6eb;
     border-bottom: 1px solid #D7D7D7;
     background-color: #F2F2F2;
@@ -69,6 +69,10 @@
         }
       }
     }
+  }
+
+  .no-athletes-found {
+    margin-top: 20px;
   }
 
   strong {

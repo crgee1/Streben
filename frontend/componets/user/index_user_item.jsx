@@ -30,7 +30,7 @@ class IndexUserItem extends React.Component {
       <button className='follow-btn' onClick={this.handleUnfollow}>Unfollow</button> :
       <button className='follow-btn' onClick={this.handleFollow}>Follow</button>;
     return (
-      <div className={i % 2 === 0 ? 'userIndex-item dark' : 'userIndex-item'}>
+      <div className={i % 2 === 0 ? 'userIndex-item' : 'userIndex-item dark'}>
         <section className='avatar-image-mid'>
           <h1>{user.username[0]}</h1>
         </section>

@@ -24,8 +24,9 @@ class UsersIndex extends React.Component {
       if (searchKey === '') {
         this.setState({athletes: []});
       } else {
-        let athletes = this.props.users.filter(user => 
-          user.username.toLowerCase().includes(searchKey.toLowerCase())).sort().reverse()
+        let athletes = this.props.users
+          .filter(user => user.username.toLowerCase().includes(searchKey.toLowerCase()))
+          .sort((a, b) => a.username > b.username ? 1 : -1);
         this.setState({
           athletes
         });
@@ -38,13 +39,14 @@ class UsersIndex extends React.Component {
   }
 
   render() {
-    const { follows, currentUser, createFollow, deleteFollow } = this.props;
+    const { users, follows, currentUser, createFollow, deleteFollow } = this.props;
     const { searchKey, athletes } = this.state;
     const followsObject = {};
     follows.forEach(el => followsObject[el.userId] = el)
     const followees = follows.map(el => el.userId);
-    let usersList = (athletes.length === 0 && searchKey !== '') ? <div className="no-athletes-found">No athletes with name <strong>{searchKey}</strong> found</div> : 
-      this.state.athletes.map((user, i) => 
+    const people = searchKey === '' ? users : athletes;
+    let usersList = (people.length === 0 && searchKey !== '') ? <div className="no-athletes-found">No athletes with name <strong>{searchKey}</strong> found</div> : 
+      people.map((user, i) => 
         <IndexUserItem
           currentUser={currentUser}
           user={user}
