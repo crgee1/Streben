@@ -1,7 +1,6 @@
 .activity-feed-item {
     display: flex;
     flex-direction: column;
-    // align-items: center;
     margin-bottom: 23px;
     background-color: #fff;
     min-height: 188px;
@@ -11,7 +10,6 @@
     .activity-info {
         display: flex;
         margin-bottom: 16px;
-        // flex-direction: column;
     }
     
     .user-feedback {
@@ -19,7 +17,7 @@
         margin-top: 8px;
         padding: 0 0 16px;
         
-        .comment-section {
+        .kudos-section {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -27,20 +25,29 @@
             padding: 12px 0 0;
             border-top: 1px solid #e6e6eb;
 
-            .kudos-section {
+            .kudos-count {
                 font-size: 11px;
             }
 
-            .like-button {
+            .user-feedback-buttons {
+                display: flex;
+                align-items: center;
+            }
+
+            .feedback-button {
                 background-color: #e6e6eb;
                 border: 1px solid #e6e6eb;
                 display: block;
                 padding: 6px 12px;;
                 border-radius: 4px;
-
+                
                 &:hover {
                     background-color: #fff;
                 }
+            }
+            
+            .like-button {
+                margin-right: 5px;
             }
 
             .fas.fa-thumbs-up {

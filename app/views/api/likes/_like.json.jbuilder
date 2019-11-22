@@ -1,1 +1,1 @@
-json.extract! comment, :id, :user_id, :workout_id, :body
+json.extract! like, :id, :user_id, :workout_id

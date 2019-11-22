@@ -56,14 +56,18 @@ class ActivityFeedItem extends React.Component {
     return result.join(", ");
   }
 
+  displayComments() {
+    
+  }
+
   render() {
     const { distance, elevation, duration, description, name, id, createDate } = this.props.workout;
     const { user, likes, liked } = this.props;
-    const kudosSection = likes > 0 ? <div className="kudos-section">{likes} kudos</div> : <div className="kudos-section">Be the first to give kudos!</div>
-    const button = liked ? <button className="like-button" onClick={this.handleButtonDelete}>
+    const kudosSection = likes > 0 ? <div className="kudos-count">{likes} kudos</div> : <div className="kudos-count">Be the first to give kudos!</div>
+    const likeButton = liked ? <button className="feedback-button like-button" onClick={this.handleButtonDelete}>
       <i className="fas fa-thumbs-up"></i>
     </button> : 
-      <button className="like-button" onClick={this.handleButtonCreate}>
+      <button className="feedback-button like-button" onClick={this.handleButtonCreate}>
         <i className="far fa-thumbs-up"></i>
       </button>;
     return (
@@ -100,8 +104,17 @@ class ActivityFeedItem extends React.Component {
           </section>
         </div>
         <div className="user-feedback">
+          <div className="kudos-section">
+            {kudosSection}
+            <div className="user-feedback-buttons">
+              {likeButton}
+              <button className="feedback-button comment-button">
+                <i class="far fa-comment"></i>
+              </button>
+            </div>
+          </div>
           <div className="comment-section">
-            {kudosSection}{button}
+            {}
           </div>
         </div>
       </div>
