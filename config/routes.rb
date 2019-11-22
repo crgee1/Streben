@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :workouts, except: [:new, :edit]
     resources :follows, except: [:new, :edit]
     resources :likes, except: [:new, :edit]
+    resources :comments, except: [:new, :edit]
   end
   root 'static_pages#root'
 end
