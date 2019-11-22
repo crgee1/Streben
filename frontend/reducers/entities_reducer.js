@@ -5,6 +5,7 @@ import locations from './locations_reducer';
 import workouts from './workouts_reducer';
 import follows from './follows_reducer';
 import likes from './likes_reducer';
+import comments from './comments_reducer';
 
 export default combineReducers({
   users,
@@ -12,5 +13,6 @@ export default combineReducers({
   routes,
   locations,
   workouts,
-  likes
+  likes,
+  comments,
 });
