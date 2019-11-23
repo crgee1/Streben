@@ -32,6 +32,20 @@ class Dashboard extends React.Component {
     return counter;
   }
 
+  createCommentsObj() {
+    const { comments } = this.props;
+    let obj = {};
+    comments.forEach(comment => {
+      let workout = comment.workoutId;
+      if (obj[workout]) {
+        obj[workout].push(comment);
+      } else {
+        obj[workout] = [comment];
+      }
+    })
+    return obj;
+  }
+
   render() {
     let { currentUser, users, follows, workouts, createLike, deleteLike } = this.props;
     let followersCount = 0, followingCount = 0, followsArr = [];
@@ -40,13 +54,14 @@ class Dashboard extends React.Component {
       if (follow.userId === currentUser.id) followersCount += 1;
       if (follow.followerId === currentUser.id) followingCount += 1;
     });
+
     let activityFeed = [], workoutArr = [];
     workouts.forEach(workout => {
       if (workout.userId === currentUser.id) workoutArr.push(workout);
       if (workout.userId === currentUser.id || followsArr
         .includes(workout.userId)) activityFeed.push(workout);
       });
-      activityFeed.sort((a, b) => b.createDate > a.createDate ? 1 : -1);
+    activityFeed.sort((a, b) => b.createDate > a.createDate ? 1 : -1);
     let likeCounterObj = this.likeCounter();
     const workoutsDisplay = activityFeed.map((workout, i) => {
       let likesCount = likeCounterObj[workout.id] ? likeCounterObj[workout.id].likes : 0;
@@ -62,6 +77,7 @@ class Dashboard extends React.Component {
           likes={likesCount}
           liked={liked}
           likeId={likeId}
+          comments={}
           key={i}
         />
       )});

@@ -31,6 +31,7 @@
   json.comments do 
     workout.comments.each do |comment|
       json.set! comment.id do
+        # json.extract! comment, :id, username: User.find(user_id).username, :workout_id, :body
         json.partial! 'api/comments/comment', comment: comment
       end
     end
