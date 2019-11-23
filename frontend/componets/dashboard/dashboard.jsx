@@ -63,10 +63,12 @@ class Dashboard extends React.Component {
       });
     activityFeed.sort((a, b) => b.createDate > a.createDate ? 1 : -1);
     let likeCounterObj = this.likeCounter();
+    let commentObj = this.createCommentsObj();
     const workoutsDisplay = activityFeed.map((workout, i) => {
       let likesCount = likeCounterObj[workout.id] ? likeCounterObj[workout.id].likes : 0;
       let liked = likeCounterObj[workout.id] ? likeCounterObj[workout.id].liked : false;
       let likeId = likeCounterObj[workout.id] ? likeCounterObj[workout.id].likeId ? likeCounterObj[workout.id].likeId : null : null;
+      let comments = commentObj[workout.id] ? commentObj[workout.id] : [];
       return (
         <ActivityFeedItem
           user={users[workout.userId]}
@@ -77,7 +79,7 @@ class Dashboard extends React.Component {
           likes={likesCount}
           liked={liked}
           likeId={likeId}
-          comments={}
+          comments={comments}
           key={i}
         />
       )});
