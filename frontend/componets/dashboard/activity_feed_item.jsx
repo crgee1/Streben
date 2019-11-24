@@ -84,6 +84,7 @@ class ActivityFeedItem extends React.Component {
       <div className="comment-create">
         <form className="comment-form">
           <input className="comment-input" placeholder="Add a Comment..." type="text" />
+          <button className="post-button" >Post</button>
         </form>
       </div>
     )

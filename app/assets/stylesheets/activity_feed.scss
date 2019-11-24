@@ -82,9 +82,10 @@
                     .comment-input {
                         background-color:rgb(255, 255, 255);
                         padding: 6px 4px 5px 4px;
-                        margin-top: 16px;
+                        margin: 16px 3% 0 0;
                         border-radius: 4px;
-                        width: 100%;
+                        border-width: 0;
+                        width: 85%;
                         transition: height 0.1s ease;
                         line-height: 1.5em;
                         color: #242428;
@@ -92,6 +93,22 @@
                         
                         &:focus {
                             background-color:rgb(245, 245, 250);
+                        }
+                    }
+
+                    .post-button {
+                        padding: 6px 12px;
+                        border-radius: 4px;
+                        font-size: 12px;
+                        font-weight: 700;
+                        color: #fc4c02;
+                        height: 30px;
+                        border: none;
+                        box-shadow: none;
+                        min-height: 30px;
+
+                        &:hover {
+                            background-color: #f5f5fa;
                         }
                     }
                 }
