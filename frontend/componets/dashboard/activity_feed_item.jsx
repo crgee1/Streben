@@ -57,14 +57,22 @@ class ActivityFeedItem extends React.Component {
   }
 
   displayComments() {
-    
+    const {comments} = this.props;
+    if (comments.length === 0) {
+      return;
+    } else {
+      return comments.map(comment => (
+      <div className="comments-item" key={comment.id}>
+        <div className="comments-commenter">{comment.username}</div>
+        <div className="comments-body">{comment.body}</div>
+      </div> ));
+    }
   }
 
   render() {
     const { distance, elevation, duration, description, name, id, createDate } = this.props.workout;
     const { user, likes, liked, comments } = this.props;
-    console.log(comments);
-    const kudosSection = likes > 0 ? <div className="kudos-count">{likes} kudos</div> : <div className="kudos-count">Be the first to give kudos!</div>
+    const kudosSection = likes > 0 ? <div className="kudos-count">{likes} kudos · {comments.length} comments</div> : <div className="kudos-count">Be the first to give kudos! · {comments.length} comments</div>
     const likeButton = liked ? <button className="feedback-button like-button" onClick={this.handleButtonDelete}>
       <i className="fas fa-thumbs-up"></i>
     </button> : 
@@ -115,7 +123,7 @@ class ActivityFeedItem extends React.Component {
             </div>
           </div>
           <div className="comment-section">
-            {}
+            {this.displayComments()}
           </div>
         </div>
       </div>

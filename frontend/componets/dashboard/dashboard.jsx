@@ -33,9 +33,10 @@ class Dashboard extends React.Component {
   }
 
   createCommentsObj() {
-    const { comments } = this.props;
+    const { comments, users } = this.props;
     let obj = {};
     comments.forEach(comment => {
+      comment.username = users[comment.userId].username;
       let workout = comment.workoutId;
       if (obj[workout]) {
         obj[workout].push(comment);
