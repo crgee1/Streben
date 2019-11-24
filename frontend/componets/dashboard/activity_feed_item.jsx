@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 class ActivityFeedItem extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      post: false
+    }
     this.handleButtonCreate = this.handleButtonCreate.bind(this);
     this.handleButtonDelete = this.handleButtonDelete.bind(this);
   }
@@ -15,6 +18,12 @@ class ActivityFeedItem extends React.Component {
     if (sec < 10) sec = `0${sec}`;
     if (hour >= 1 && min < 10) min = `0${min}`;
     return hour >= 1 ? `${hour}:${min}:${sec}` : `${min}:${sec}`;
+  }
+
+  handleCreatePost() {
+    this.setState({
+      post: true
+    });
   }
 
   handleButtonCreate() {
@@ -69,16 +78,30 @@ class ActivityFeedItem extends React.Component {
     }
   }
 
+  postComment() {
+    if (this.state.post === false) return;
+    return (
+      <div className="comment-create">
+        <form className="comment-form">
+          <input className="comment-input" placeholder="Add a Comment..." type="text" />
+        </form>
+      </div>
+    )
+  }
+
   render() {
     const { distance, elevation, duration, description, name, id, createDate } = this.props.workout;
-    const { user, likes, liked, comments } = this.props;
+    const { user, likes, liked, comments, createComment, deleteComment } = this.props;
+
     const kudosSection = likes > 0 ? <div className="kudos-count">{likes} kudos · {comments.length} comments</div> : <div className="kudos-count">Be the first to give kudos! · {comments.length} comments</div>
+    
     const likeButton = liked ? <button className="feedback-button like-button" onClick={this.handleButtonDelete}>
       <i className="fas fa-thumbs-up"></i>
     </button> : 
       <button className="feedback-button like-button" onClick={this.handleButtonCreate}>
         <i className="far fa-thumbs-up"></i>
       </button>;
+    
     return (
       <div className="activity-feed-item">
         <div className="activity-info">
@@ -117,13 +140,14 @@ class ActivityFeedItem extends React.Component {
             {kudosSection}
             <div className="user-feedback-buttons">
               {likeButton}
-              <button className="feedback-button comment-button">
+              <button className="feedback-button comment-button" onClick={() => this.handleCreatePost()}>
                 <i className="far fa-comment"></i>
               </button>
             </div>
           </div>
           <div className="comment-section">
             {this.displayComments()}
+            {this.postComment()}
           </div>
         </div>
       </div>

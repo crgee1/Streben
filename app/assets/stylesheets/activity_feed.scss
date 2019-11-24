@@ -72,6 +72,30 @@
             .comments-item:last-child {
                 padding-bottom: 0px;
             }
+
+            .comment-create {
+                
+                .comment-form {
+                    margin-top: 16px;
+                    border-top: 1px solid #e6e6eb;
+                    
+                    .comment-input {
+                        background-color:rgb(255, 255, 255);
+                        padding: 6px 4px 5px 4px;
+                        margin-top: 16px;
+                        border-radius: 4px;
+                        width: 100%;
+                        transition: height 0.1s ease;
+                        line-height: 1.5em;
+                        color: #242428;
+                        font-size: 12px;
+                        
+                        &:focus {
+                            background-color:rgb(245, 245, 250);
+                        }
+                    }
+                }
+            }
         }
     }
 

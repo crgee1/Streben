@@ -48,7 +48,7 @@ class Dashboard extends React.Component {
   }
 
   render() {
-    let { currentUser, users, follows, workouts, createLike, deleteLike } = this.props;
+    let { currentUser, users, follows, workouts, createLike, deleteLike, createComment, deleteComment } = this.props;
     let followersCount = 0, followingCount = 0, followsArr = [];
     follows.forEach(follow => {
       followsArr.push(follow.userId);
@@ -77,6 +77,8 @@ class Dashboard extends React.Component {
           workout={workout}
           createLike={createLike}
           deleteLike={deleteLike}
+          createComment={createComment}
+          deleteComment={deleteComment}
           likes={likesCount}
           liked={liked}
           likeId={likeId}
