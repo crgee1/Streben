@@ -48,8 +48,9 @@ class Dashboard extends React.Component {
   }
 
   render() {
-    let { currentUser, users, follows, workouts, createLike, deleteLike, createComment, deleteComment } = this.props;
+    let { currentUser, users, follows, workouts, createLike, deleteLike, createComment, deleteComment, openModal } = this.props;
     let followersCount = 0, followingCount = 0, followsArr = [];
+    
     follows.forEach(follow => {
       followsArr.push(follow.userId);
       if (follow.userId === currentUser.id) followersCount += 1;
@@ -62,9 +63,11 @@ class Dashboard extends React.Component {
       if (workout.userId === currentUser.id || followsArr
         .includes(workout.userId)) activityFeed.push(workout);
       });
+      
     activityFeed.sort((a, b) => b.createDate > a.createDate ? 1 : -1);
     let likeCounterObj = this.likeCounter();
     let commentObj = this.createCommentsObj();
+    
     const workoutsDisplay = activityFeed.map((workout, i) => {
       let likesCount = likeCounterObj[workout.id] ? likeCounterObj[workout.id].likes : 0;
       let liked = likeCounterObj[workout.id] ? likeCounterObj[workout.id].liked : false;
@@ -83,6 +86,7 @@ class Dashboard extends React.Component {
           liked={liked}
           likeId={likeId}
           comments={comments}
+          openModal={openModal}
           key={i}
         />
       )});

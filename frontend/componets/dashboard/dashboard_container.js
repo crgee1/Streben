@@ -4,6 +4,7 @@ import { fetchWorkouts } from '../../actions/workout_actions';
 import { fetchFollows } from '../../actions/follow_actions';
 import { createLike, deleteLike } from '../../actions/like_actions';
 import { createComment, deleteComment } from '../../actions/comment_actions';
+import { openModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state) => ({
     users: state.entities.users,
@@ -21,6 +22,7 @@ const mapDispatchToProps = dispatch => ({
     deleteLike: (id) => dispatch(deleteLike(id)),
     createComment: (comment) => dispatch(createComment(comment)),
     deleteComment: (id) => dispatch(deleteComment(id)),
+    openModal: modal => dispatch(openModal(modal)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

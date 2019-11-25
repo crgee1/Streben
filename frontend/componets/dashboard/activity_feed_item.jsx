@@ -1,4 +1,5 @@
 import React from 'react';
+import Modal from '../modal/modal';
 import { Link } from 'react-router-dom';
 
 class ActivityFeedItem extends React.Component {
@@ -7,11 +8,14 @@ class ActivityFeedItem extends React.Component {
     this.state = {
       post: false,
       body: '',
+      modal: false,
     }
     this.handleButtonCreate = this.handleButtonCreate.bind(this);
     this.handleButtonDelete = this.handleButtonDelete.bind(this);
     this.postComment = this.postComment.bind(this);
     this.updateComment = this.updateComment.bind(this);
+    this.handleOpenModal = this.handleOpenModal.bind(this);
+    this.handleDeleteComment = this.handleDeleteComment.bind(this);
   }
 
   displayTime(seconds) {
@@ -101,7 +105,7 @@ class ActivityFeedItem extends React.Component {
           {deleteable}
         </div>
         <div className="comments-body">{comment.body}</div>
-    </div> });
+    </div> }).slice(0,2);
     }
   }
 
@@ -127,8 +131,21 @@ class ActivityFeedItem extends React.Component {
 
     return numComments <= 2 ? null :
       <div className="comment-modal-container">
-        <a className="comment-modal-btn">See all {numComments} comments</a>
+        <a className="comment-modal-btn" 
+          onClick={this.handleOpenModal}
+        >See all {numComments} comments</a>
       </div> 
+  }
+
+  handleOpenModal() {
+    this.setState({ modal: true });
+    this.props.openModal('commentModal');
+  }
+
+  openedCommentModal() {
+    const { comments, liked, likes } = this.props;
+
+    return this.state.modal === false ? null : <Modal comments={comments} likes={likes} liked={liked} handleDeleteComment={this.handleDeleteComment}/>
   }
 
   render() {
@@ -146,6 +163,7 @@ class ActivityFeedItem extends React.Component {
     
     return (
       <div className="activity-feed-item">
+        {this.openedCommentModal()}
         <div className="activity-info">
           <section className="avatar-image-mini">
             <h1>{user.username[0]}</h1>

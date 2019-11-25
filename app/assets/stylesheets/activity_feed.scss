@@ -1,3 +1,36 @@
+.comments-item {
+    padding: 10px 0;
+    color: #2d2d32;
+    font-size: 12px;
+    line-height: 1.45em;
+    font-family: "MaisonNeue", "Segoe UI", "Helvetica Neue", -apple-system, system-ui, BlinkMacSystemFont, Roboto, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+    .comment-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+        .comments-commenter {
+            font-weight: 700;
+        }
+        
+        .comment-delete {
+            color: #242428;
+            height: 10px;
+            opacity: 0;
+            cursor: pointer;
+            transition: opacity 0.1s ease;
+        }
+    }
+
+    &:hover {
+
+        .comment-delete {
+            opacity: 0.5;
+        }
+    }
+}
+
 .activity-feed-item {
     display: flex;
     flex-direction: column;
@@ -56,42 +89,8 @@
             }
         }
 
+
         .comment-section {
-
-            .comments-item {
-                padding: 10px 0;
-                color: #2d2d32;
-                font-size: 12px;
-                line-height: 1.45em;
-                font-family: "MaisonNeue", "Segoe UI", "Helvetica Neue", -apple-system, system-ui, BlinkMacSystemFont, Roboto, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-
-                .comment-header {
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    
-                    .comments-commenter {
-                        font-weight: 700;
-                    }
-                    
-                    .comment-delete {
-                        color: #242428;
-                        height: 10px;
-                        opacity: 0;
-                        cursor: pointer;
-                        transition: opacity 0.1s ease;
-                    }
-                    
-                }
-
-                &:hover {
-
-                    .comment-delete {
-                        opacity: 0.5;
-                    }
-                }
-
-            }
 
             .comments-item:last-child {
                 padding-bottom: 0px;
@@ -164,6 +163,14 @@
         }
     }
 
+    .comment-modal {
+        background: #f0f0f0;
+        top: 60px;
+        width: 800px;
+        max-width: 800px;
+        margin: 0 auto 24px;
+        border-radius: 6px;
+    }
 
     .avatar-image-mini {
         align-self: flex-start;
