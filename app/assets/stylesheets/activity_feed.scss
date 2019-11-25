@@ -56,19 +56,35 @@
         }
 
         .comment-section {
+
             .comments-item {
                 padding: 10px 0;
                 color: #2d2d32;
                 font-size: 12px;
                 line-height: 1.45em;
                 font-family: "MaisonNeue", "Segoe UI", "Helvetica Neue", -apple-system, system-ui, BlinkMacSystemFont, Roboto, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-                
+
                 .comment-header {
                     display: flex;
                     justify-content: space-between;
-
+                    
                     .comments-commenter {
                         font-weight: 700;
+                    }
+                    
+                    .comment-delete {
+                        color: #242428;
+                        opacity: 0;
+                        cursor: pointer;
+                        transition: opacity 0.1s ease;
+                    }
+                    
+                }
+
+                &:hover {
+
+                    .comment-delete {
+                        opacity: 0.5;
                     }
                 }
 
@@ -83,6 +99,8 @@
                 .comment-form {
                     margin-top: 16px;
                     border-top: 1px solid #e6e6eb;
+                    display: flex;
+                    align-items: center;
                     
                     .comment-input {
                         background-color:rgb(255, 255, 255);
@@ -102,6 +120,8 @@
                     }
 
                     .post-button {
+                        cursor: pointer;
+                        margin-top: 16px;
                         padding: 6px 12px;
                         border-radius: 4px;
                         font-size: 12px;
@@ -113,6 +133,15 @@
 
                         &:hover {
                             background-color: #f5f5fa;
+                        }
+                    }
+
+                    .need-body {
+                        cursor: default;
+                        opacity: 0.65;
+
+                        &:hover {
+                            background-color:rgb(255, 255, 255);
                         }
                     }
                 }

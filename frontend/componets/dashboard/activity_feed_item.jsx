@@ -71,6 +71,8 @@ class ActivityFeedItem extends React.Component {
   postComment() {
     return (e) => {
       e.preventDefault();
+      if (this.state.body === '') return;
+
       let { createComment, currentUser, workout } = this.props;
       createComment({user_id: currentUser.id, workout_id: workout.id, body: this.state.body})
         .then((res) => this.setState({post: false}));
@@ -91,6 +93,7 @@ class ActivityFeedItem extends React.Component {
     } else {
       return comments.map(comment => {
         const deleteable = comment.userId === currentUser.id ? <i className="fas fa-times comment-delete" onClick={this.handleDeleteComment(comment.id)}></i> : null;
+        
         return <div className="comments-item" key={comment.id}>
         <div className="comment-header">
           <div className="comments-commenter">{comment.username}</div>
@@ -105,11 +108,12 @@ class ActivityFeedItem extends React.Component {
 
   displayCommentInput() {
     if (this.state.post === false) return;
+    // const post = this.state.body === '' ? :
     return (
       <div className="comment-create">
         <form className="comment-form">
           <input className="comment-input" placeholder="Add a Comment..." type="text" onChange={this.updateComment}/>
-          <button className="post-button" onClick={this.postComment}>Post</button>
+          <button className={"post-button" + (this.state.body === "" ? " need-body" : "")} onClick={this.postComment()}>Post</button>
         </form>
       </div>
     )
