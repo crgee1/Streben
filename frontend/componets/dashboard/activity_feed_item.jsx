@@ -5,10 +5,13 @@ class ActivityFeedItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      post: false
+      post: false,
+      body: '',
     }
     this.handleButtonCreate = this.handleButtonCreate.bind(this);
     this.handleButtonDelete = this.handleButtonDelete.bind(this);
+    this.postComment = this.postComment.bind(this);
+    this.updateComment = this.updateComment.bind(this);
   }
 
   displayTime(seconds) {
@@ -19,13 +22,7 @@ class ActivityFeedItem extends React.Component {
     if (hour >= 1 && min < 10) min = `0${min}`;
     return hour >= 1 ? `${hour}:${min}:${sec}` : `${min}:${sec}`;
   }
-
-  handleCreatePost() {
-    this.setState({
-      post: true
-    });
-  }
-
+  
   handleButtonCreate() {
     let {createLike, currentUser, workout} = this.props;
     createLike({user_id: currentUser.id, workout_id: workout.id});
@@ -33,7 +30,7 @@ class ActivityFeedItem extends React.Component {
   handleButtonDelete() {
     this.props.deleteLike(this.props.likeId);
   }
-
+  
   displayDate(inputDate) {
     let result = [];
     let date = new Date(...inputDate.split('-'));
@@ -64,35 +61,67 @@ class ActivityFeedItem extends React.Component {
     result.push(date.getFullYear());
     return result.join(", ");
   }
-
-  displayComments() {
-    const {comments} = this.props;
-    if (comments.length === 0) {
-      return;
-    } else {
-      return comments.map(comment => (
-      <div className="comments-item" key={comment.id}>
-        <div className="comments-commenter">{comment.username}</div>
-        <div className="comments-body">{comment.body}</div>
-      </div> ));
-    }
+  
+  handleCreatePost() {
+    this.setState({
+      post: true
+    });
   }
 
   postComment() {
+    return (e) => {
+      e.preventDefault();
+      let { createComment, currentUser, workout } = this.props;
+      createComment({user_id: currentUser.id, workout_id: workout.id, body: this.state.body})
+        .then((res) => this.setState({post: false}));
+    }
+  }
+
+  handleDeleteComment(commentId) {
+    let { deleteComment } = this.props;
+    return () => {
+      deleteComment(commentId);
+    }
+  }
+  
+  displayComments() {
+    const {comments, currentUser} = this.props;
+    if (comments.length === 0) {
+      return;
+    } else {
+      return comments.map(comment => {
+        const deleteable = comment.userId === currentUser.id ? <i className="fas fa-times comment-delete" onClick={this.handleDeleteComment(comment.id)}></i> : null;
+        return <div className="comments-item" key={comment.id}>
+        <div className="comment-header">
+          <div className="comments-commenter">{comment.username}</div>
+          {deleteable}
+        </div>
+        <div className="comments-body">{comment.body}</div>
+    </div> });
+    }
+  }
+
+
+
+  displayCommentInput() {
     if (this.state.post === false) return;
     return (
       <div className="comment-create">
         <form className="comment-form">
-          <input className="comment-input" placeholder="Add a Comment..." type="text" />
-          <button className="post-button" >Post</button>
+          <input className="comment-input" placeholder="Add a Comment..." type="text" onChange={this.updateComment}/>
+          <button className="post-button" onClick={this.postComment}>Post</button>
         </form>
       </div>
     )
   }
 
+  updateComment(e) {
+    this.setState({body: e.target.value});
+  }
+
   render() {
     const { distance, elevation, duration, description, name, id, createDate } = this.props.workout;
-    const { user, likes, liked, comments, createComment, deleteComment } = this.props;
+    const { user, likes, liked, comments } = this.props;
 
     const kudosSection = likes > 0 ? <div className="kudos-count">{likes} kudos · {comments.length} comments</div> : <div className="kudos-count">Be the first to give kudos! · {comments.length} comments</div>
     
@@ -148,7 +177,7 @@ class ActivityFeedItem extends React.Component {
           </div>
           <div className="comment-section">
             {this.displayComments()}
-            {this.postComment()}
+            {this.displayCommentInput()}
           </div>
         </div>
       </div>
