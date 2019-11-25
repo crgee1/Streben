@@ -73,7 +73,7 @@ class ActivityFeedItem extends React.Component {
       e.preventDefault();
       if (this.state.body === '') return;
 
-      let { createComment, currentUser, workout } = this.props;
+      const { createComment, currentUser, workout } = this.props;
       createComment({user_id: currentUser.id, workout_id: workout.id, body: this.state.body})
         .then((res) => this.setState({post: false}));
     }
@@ -88,6 +88,7 @@ class ActivityFeedItem extends React.Component {
   
   displayComments() {
     const {comments, currentUser} = this.props;
+
     if (comments.length === 0) {
       return;
     } else {
@@ -104,11 +105,9 @@ class ActivityFeedItem extends React.Component {
     }
   }
 
-
-
   displayCommentInput() {
     if (this.state.post === false) return;
-    // const post = this.state.body === '' ? :
+
     return (
       <div className="comment-create">
         <form className="comment-form">
@@ -121,6 +120,15 @@ class ActivityFeedItem extends React.Component {
 
   updateComment(e) {
     this.setState({body: e.target.value});
+  }
+
+  commentModal() {
+    const numComments = this.props.comments.length;
+
+    return numComments <= 2 ? null :
+      <div className="comment-modal-container">
+        <a className="comment-modal-btn">See all {numComments} comments</a>
+      </div> 
   }
 
   render() {
@@ -181,6 +189,7 @@ class ActivityFeedItem extends React.Component {
           </div>
           <div className="comment-section">
             {this.displayComments()}
+            {this.commentModal()}
             {this.displayCommentInput()}
           </div>
         </div>

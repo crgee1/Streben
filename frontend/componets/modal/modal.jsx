@@ -3,6 +3,7 @@ import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import SaveRouteContainer from '../route/save_route_container';
 import UpdateRouteContainer from '../route/update_route_container';
+import CommentModalContainer from '../dashboard/comment_modal_container';
 
 class Modal extends React.Component {
   constructor(props) {
