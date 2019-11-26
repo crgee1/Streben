@@ -6,9 +6,20 @@ import { createFollow, deleteFollow } from '../../actions/follow_actions';
 
 const mapStatetoProps = (state, ownProps) => {
     let user = state.entities.users[ownProps.match.params.userId] || {}
+    let workouts = Object.values(state.entities.workouts);
+    let routes = Object.values(state.entities.routes);
+    let follows = Object.values(state.entities.follows);
+    let { id } = state.session.currentUser;
+
     return {
         user,
         currentUser: state.session.currentUser,
+        workouts,
+        routes,
+        follows,
+        recentWorkouts: Object.values(state.entities.workouts).reverse()
+            .filter(el => id === el.userId)
+            .sort((a, b) => b.createDate > a.createDate ? 1 : -1),
 }}
 
 const mapDispatchToProps = dispatch => ({

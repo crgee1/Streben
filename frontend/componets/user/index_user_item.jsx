@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class IndexUserItem extends React.Component {
   constructor(props) {
@@ -42,7 +43,11 @@ class IndexUserItem extends React.Component {
       <div className={i % 2 === 0 ? 'userIndex-item' : 'userIndex-item dark'}>
         {this.profilePic()}
         <section className='userIndex-item-info'>
-          <div className='userIndex-item-name'>{user.username}</div>
+          <div className='userIndex-item-name'>                
+          <Link className="profile-link" to={`/athletes/${user.id}`}>
+            {user.username}
+          </Link>
+          </div>
           {follow}
         </section>
         <section className='userIndex-item-count'>

@@ -1,6 +1,7 @@
 import merge from 'lodash/merge';
 import { RECEIVE_USERS } from '../actions/user_actions';
 import { RECEIVE_FOLLOW, REMOVE_FOLLOW, RECEIVE_FOLLOWS } from '../actions/follow_actions';
+import { RECEIVE_USER } from '../actions/user_actions';
 
 const followsReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -15,6 +16,8 @@ const followsReducer = (state = {}, action) => {
       let newState = merge({}, state);
       delete newState[action.followId];
       return newState;
+    case RECEIVE_USER:
+      return merge({}, state, action.payload.workouts);
     default:
       return state;
   };

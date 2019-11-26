@@ -1,5 +1,6 @@
 import React from 'react';
 import RecentActivities from '../footer/recent_activities_footer';
+import { Link } from 'react-router-dom';
 
 class ShowWorkout extends React.Component {
   constructor(props) {
@@ -90,13 +91,19 @@ class ShowWorkout extends React.Component {
     this.props.history.push(`/training/edit/${this.props.match.params.workoutId}`);
   }
 
+  profilePic() {
+    const { user } = this.props;
+
+    return user.photoUrl ? <img className="avatar-image-workout" src={user.photoUrl} /> :
+      <section className="avatar-image-workout">
+        <h1>{user.username[0]}</h1>
+      </section>
+  }
+
   render() {
     const {workout, user, recentWorkouts, id, likes} = this.props;
     const likeObj = this.likeCounter();
-    // const button = 
-    //   <div className="like-button" onClick={this.handleButtonCreate}>
-    //     <i className="far fa-thumbs-up"></i>{likeObj.likes}
-    //   </div>;
+
     const button = likeObj.liked ? <div className="like-button" onClick={this.handleButtonDelete(likeObj.likeId)}>
       <i className="fas fa-thumbs-up"></i>{likeObj.likes}
     </div> :
@@ -117,19 +124,15 @@ class ShowWorkout extends React.Component {
       {icons}
       <div className='show-workout-display'>
         <header>
-          <h1>{user.username} - {workout.workoutType}</h1> {button}
+          <h1><Link className="profile-link" to={`/athletes/${user.id}`}>{user.username}</Link> - {workout.workoutType}</h1> {button}
         </header>
         <div className='show-workout-info'>
           <section className='show-workout-left'>
-            <section className='avatar-image'>
-              <h1>
-                {user.username[0]}
-              </h1>
-            </section>
+            {this.profilePic()}
             <section className='show-text'>
               <label className='show-workout-date'>{this.displayDate(workout.createDate)}</label>
               <h2>{workout.name}</h2>
-              <p>{workout.description}</p>
+              <p className="workout-desc">{workout.description}</p>
             </section>
           </section>
           <section className='show-workout-right'>

@@ -4,6 +4,8 @@ import {
   RECEIVE_ROUTES, 
   REMOVE_ROUTE, 
 } from '../actions/route_actions';
+import { RECEIVE_USER } from '../actions/user_actions';
+
 
 const routesReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -16,6 +18,8 @@ const routesReducer = (state = {}, action) => {
       let newState = merge({}, state);
       delete newState[action.routeId];
       return newState;
+    case RECEIVE_USER:
+      return merge({}, state, action.payload.routes);
     default:
       return state;
   }

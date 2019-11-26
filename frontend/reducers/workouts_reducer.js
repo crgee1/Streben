@@ -4,6 +4,7 @@ import {
   RECEIVE_WORKOUTS,
   REMOVE_WORKOUT,
 } from '../actions/workout_actions';
+import { RECEIVE_USER } from '../actions/user_actions';
 
 const workoutsReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -16,6 +17,8 @@ const workoutsReducer = (state = {}, action) => {
       let newState = merge({}, state);
       delete newState[action.workoutId];
       return newState;
+    case RECEIVE_USER:
+      return merge({}, state, action.payload.workouts);
     default:
       return state;
   }

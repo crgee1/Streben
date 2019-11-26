@@ -103,7 +103,11 @@ class ActivityFeedItem extends React.Component {
           <img className="comment-profile-pic" src={comment.photoUrl} alt=""/>
           <section>
             <div className="comment-header">
-              <div className="comments-commenter">{comment.username}</div>
+              <div className="comments-commenter">
+                <Link className="profile-link" to={`/athletes/${comment.userId}`}>
+                  {comment.username}
+                </Link>
+              </div>
               {deleteable}
             </div>
             <div className="comments-body">{comment.body}</div>
