@@ -206,11 +206,15 @@ class ActivityFeedItem extends React.Component {
           {this.profilePic()}
           <section>
             <header className="feed-item-header">
-              <h2>{user.username}</h2>
+                <h2>
+                  <Link className="profile-link" to={`/athletes/${user.id}`}>
+                    {user.username}
+                  </Link>
+                </h2>
               <label>{this.displayDate(createDate)}</label>
             </header>
             <div className="feed-item-name">
-              <Link to={`training/${id}`}>{name}</Link>
+              <Link className="training-link" to={`training/${id}`}>{name}</Link>
             </div>
             <div className="feed-item-desc">
               <p>{description}</p>

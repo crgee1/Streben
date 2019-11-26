@@ -115,7 +115,9 @@ class Dashboard extends React.Component {
                 <img className="avatar-image" src={currentUser.id in users ? users[currentUser.id].photoUrl : this.props.currentUser.username[0]} alt=""/>
               </section>
               <section className="profile-main-text">
-                <h1>{currentUser.username}</h1>
+                <Link className="profile-link" to={`/athletes/${currentUser.id}`}>
+                  <h1>{currentUser.username}</h1>
+                </Link>
               </section>
               <div className="total-stats">
                 <div>

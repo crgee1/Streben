@@ -15,8 +15,11 @@ class Navbar extends React.Component {
   render() {
     const { currentUser } = this.props;
 
-    const submenuRight = (
+    const submenuRight = currentUser ? (
       <ul className="drop-submenu-profile">
+        <li className="drop-submenu-item ">
+          <Link className="drop-submenu-item" to={`/athletes/${currentUser.id}`}>My Profile</Link>
+        </li>
         <li className="drop-submenu-item ">
           <Link className="drop-submenu-item" to="/training/new">Manual Entry</Link>
         </li>
@@ -27,7 +30,7 @@ class Navbar extends React.Component {
           <a onClick={this.handleLogout}>Logout</a>
         </li>
       </ul>
-    );
+    ) : null;
 
     const displayRight = currentUser ? (
       <div className="navbar-right-side">

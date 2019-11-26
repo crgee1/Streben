@@ -1,3 +1,17 @@
+.profile-link {
+    cursor: pointer;
+    font-size: inherit;
+    color: #2d2d32;
+
+    &:hover {
+        color: #005b83;
+
+        h1, h2, h3, h4 {
+            color: #005b83;
+        }
+    }
+}
+
 .dashboard-home {
     display: flex;
     justify-content: space-evenly;
