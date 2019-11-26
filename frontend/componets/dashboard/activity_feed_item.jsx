@@ -100,11 +100,14 @@ class ActivityFeedItem extends React.Component {
         const deleteable = comment.userId === currentUser.id ? <i className="fas fa-times comment-delete" onClick={this.handleDeleteComment(comment.id)}></i> : null;
         
         return <div className="comments-item" key={comment.id}>
-        <div className="comment-header">
-          <div className="comments-commenter">{comment.username}</div>
-          {deleteable}
-        </div>
-        <div className="comments-body">{comment.body}</div>
+          <img className="comment-profile-pic" src={comment.photoUrl} alt=""/>
+          <section>
+            <div className="comment-header">
+              <div className="comments-commenter">{comment.username}</div>
+              {deleteable}
+            </div>
+            <div className="comments-body">{comment.body}</div>
+          </section>
     </div> }).slice(0,2);
     }
   }

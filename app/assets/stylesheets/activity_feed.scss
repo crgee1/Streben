@@ -1,9 +1,31 @@
+.modal-comment {
+    border-bottom: 1px solid #e6e6eb;
+}
+
 .comments-item {
+    display: flex;
+    align-items: flex-start;
     padding: 10px 0;
     color: #2d2d32;
     font-size: 12px;
     line-height: 1.45em;
     font-family: "MaisonNeue", "Segoe UI", "Helvetica Neue", -apple-system, system-ui, BlinkMacSystemFont, Roboto, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+    section {
+        width: 100%
+    }
+
+    .comment-profile-pic {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        margin-right: 5px;
+    }
+
+    .big {
+        width: 32px;
+        height: 32px;
+    }
 
     .comment-header {
         display: flex;
@@ -129,10 +151,12 @@
                 .kudos-profile-pic:nth-child(1) {
                     z-index: 3;
                 }
+
                 .kudos-profile-pic:nth-child(2) {
                     z-index: 2;
                     margin-left: -10px;
                 }
+
                 .kudos-profile-pic:nth-child(3) {
                     z-index: 1;
                     margin-left: -10px;
@@ -190,12 +214,19 @@
     }
 
     .comment-modal {
-        background: #f0f0f0;
+        background-color: #fff;
         top: 60px;
         width: 800px;
         max-width: 800px;
         margin: 0 auto 24px;
+        padding: 15px 20px 0 20px;
+        overflow: auto;
         border-radius: 6px;
+
+        .comment-form {
+            margin: 16px 0;
+            border-top: 0;
+        }
     }
 
     .avatar-image-mini {

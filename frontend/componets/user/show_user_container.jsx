@@ -1,15 +1,16 @@
 import { connect } from 'react-redux';
 import ShowUser from './show_user';
-import { fetchUsers, } from '../../actions/user_actions';
+import { fetchUser, } from '../../actions/user_actions';
 import { fetchWorkouts, } from '../../actions/workout_actions';
 import { createFollow, deleteFollow } from '../../actions/follow_actions';
 
-const mapStatetoProps = state => ({
-    
+const mapStatetoProps = (state, ownProps) => ({
+    user: state.entities.users[ownProps.match.params.userId],
+    currentUser: state.session.currentUser,
 })
 
 const mapDispatchToProps = dispatch => ({
-    
+    fetchUser: (id) => dispatch(fetchUser(id))
 })
 
 export default connect(mapStatetoProps, mapDispatchToProps)(ShowUser);

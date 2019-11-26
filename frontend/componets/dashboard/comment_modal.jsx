@@ -31,12 +31,15 @@ class CommentModal extends React.Component {
         const displayComments = comments.map(comment => {
             const deleteable = comment.userId === currentUser.id ? <i className="fas fa-times comment-delete" onClick={handleDeleteComment(comment.id)}></i> : null;
 
-            return <div className="comments-item" key={comment.id}>
-                <div className="comment-header">
-                    <div className="comments-commenter">{comment.username}</div>
-                    {deleteable}
-                </div>
-                <div className="comments-body">{comment.body}</div>
+            return <div className="comments-item modal-comment" key={comment.id}>
+                <img className="comment-profile-pic big" src={comment.photoUrl} alt=""/>
+                <section>
+                    <div className="comment-header">
+                        <div className="comments-commenter">{comment.username}</div>
+                        {deleteable}
+                    </div>
+                    <div className="comments-body">{comment.body}</div>
+                </section>
             </div>
         });
 
