@@ -143,9 +143,17 @@ class ActivityFeedItem extends React.Component {
   }
 
   openedCommentModal() {
-    const { comments, liked, likes } = this.props;
+    const { comments, liked, likes, currentUser, workout, createComment } = this.props;
 
-    return this.state.modal === false ? null : <Modal comments={comments} likes={likes} liked={liked} handleDeleteComment={this.handleDeleteComment}/>
+    return this.state.modal === false ? null : <Modal 
+    comments={comments} 
+    likes={likes} 
+    liked={liked} 
+    handleDeleteComment={this.handleDeleteComment}
+    currentUser={currentUser}
+    workout={workout}
+    createComment={createComment}
+    />
   }
 
   render() {

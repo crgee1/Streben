@@ -11,7 +11,7 @@ class Modal extends React.Component {
   }
   
   render() {
-    const { routeInfo, prevRoute, prevLocations, comments, likes, liked, handleDeleteComment } = this.props;
+    const { routeInfo, prevRoute, prevLocations, comments, likes, liked, handleDeleteComment, currentUser, workout, createComment } = this.props;
     if (!this.props.modal) {
       return null;
     }
@@ -24,7 +24,7 @@ class Modal extends React.Component {
         this.component= <UpdateRouteContainer routeInfo={routeInfo} prevRoute={prevRoute} prevLocations={prevLocations}/>;
         break;
       case 'commentModal':
-        this.component = <CommentModalContainer comments={comments} likes={likes} liked={liked} handleDeleteComment={handleDeleteComment}/>;
+        this.component = <CommentModalContainer comments={comments} likes={likes} liked={liked} handleDeleteComment={handleDeleteComment} currentUser={currentUser} workout={workout} createComment={createComment}/>;
         break;
       default:
         return null;
