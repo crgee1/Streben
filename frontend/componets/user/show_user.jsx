@@ -24,11 +24,22 @@ class ShowUser extends React.Component {
                         </div>
                     </div>
                     <div className="profile-body">
-                        <h1>Totals</h1>
+                        <h1 className="profile-stat-header">Totals</h1>
                         <div>
-                            Activities: {workouts.filter(el => el.userId === user.id).length}
-                            Routes: {routes.filter(el => el.userId === user.id).length}
-                            Followers: {follows.filter(el => el.userId === user.id).length}
+                            <ul className="profile-stat-list">
+                                <li>
+                                    Activities: {workouts.filter(el => el.userId === user.id).length}
+                                </li>
+                                <li>
+                                    Routes: {routes.filter(el => el.userId === user.id).length}
+                                </li>
+                                <li>
+                                    Followers: {follows.filter(el => el.userId === user.id).length}
+                                </li>
+                                <li>
+                                    Following: {follows.filter(el => el.followerId === user.id).length}
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>

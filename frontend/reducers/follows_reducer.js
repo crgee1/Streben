@@ -17,7 +17,7 @@ const followsReducer = (state = {}, action) => {
       delete newState[action.followId];
       return newState;
     case RECEIVE_USER:
-      return merge({}, state, action.payload.workouts);
+      return merge({}, state, action.payload.follows);
     default:
       return state;
   };
