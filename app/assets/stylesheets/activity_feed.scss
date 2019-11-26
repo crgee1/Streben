@@ -115,6 +115,32 @@
 
             .kudos-count {
                 font-size: 11px;
+                display: flex;
+                align-items: center;
+                
+                .kudos-profile-pic {
+                    border: 2px solid #fff;
+                    border-radius: 50%;
+                    width: 25px;
+                    height: 25px;
+                    position: relative;
+                }
+
+                .kudos-profile-pic:nth-child(1) {
+                    z-index: 3;
+                }
+                .kudos-profile-pic:nth-child(2) {
+                    z-index: 2;
+                    margin-left: -10px;
+                }
+                .kudos-profile-pic:nth-child(3) {
+                    z-index: 1;
+                    margin-left: -10px;
+                }
+                
+                .kudos-profile-pic:last-child {
+                    margin-right: 5px;
+                }
             }
 
             .user-feedback-buttons {

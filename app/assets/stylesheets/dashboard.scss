@@ -87,21 +87,21 @@
 }
 
 .avatar-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
     position: relative;
     top: -36px;
     width: 70px;
     height: 70px;
-    background-color: rgb(0, 87, 155);
+    // background-color: rgb(0, 87, 155);
     border-radius: 50%;
-    color: white;
+    // color: white;
     z-index: 1;
-    h1 {
-        font-size: 38px;
-        font-weight: 400;
-    }
+    // h1 {
+    //     font-size: 38px;
+    //     font-weight: 400;
+    // }
 }
 
 .personal-adver {

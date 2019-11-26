@@ -156,11 +156,38 @@ class ActivityFeedItem extends React.Component {
     />
   }
 
+  profilePic() {
+    const { user } = this.props;
+
+    return user.photoUrl ? <img className="avatar-image-mini" src={user.photoUrl}/> :
+      <section className="avatar-image-mini">
+        <h1>{user.username[0]}</h1>
+      </section>
+  }
+
+  displayKudosPics() {
+    const { likes } = this.props;
+
+    const pic1 = !likes[0] ? null : 
+      <img className="kudos-profile-pic" src={likes[0].photoUrl} alt=""/>
+    const pic2 = !likes[1] ? null : 
+      <img className="kudos-profile-pic" src={likes[1].photoUrl} alt=""/>
+    const pic3 = !likes[2] ? null : 
+      <img className="kudos-profile-pic" src={likes[2].photoUrl} alt=""/>
+    return (
+      <div>
+        {pic1}
+        {pic2}
+        {pic3}
+      </div>
+    )
+  }
+
   render() {
     const { distance, elevation, duration, description, name, id, createDate } = this.props.workout;
     const { user, likes, liked, comments } = this.props;
-
-    const kudosSection = likes > 0 ? <div className="kudos-count">{likes} kudos · {comments.length} comments</div> : <div className="kudos-count">Be the first to give kudos! · {comments.length} comments</div>
+    
+    const kudosSection = likes.length > 0 ? <div className="kudos-count">{this.displayKudosPics()}{likes.length} kudos · {comments.length} comments</div> : <div className="kudos-count">Be the first to give kudos! · {comments.length} comments</div>
     
     const likeButton = liked ? <button className="feedback-button like-button" onClick={this.handleButtonDelete}>
       <i className="fas fa-thumbs-up"></i>
@@ -173,9 +200,7 @@ class ActivityFeedItem extends React.Component {
       <div className="activity-feed-item">
         {this.openedCommentModal()}
         <div className="activity-info">
-          <section className="avatar-image-mini">
-            <h1>{user.username[0]}</h1>
-          </section>
+          {this.profilePic()}
           <section>
             <header className="feed-item-header">
               <h2>{user.username}</h2>

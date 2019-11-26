@@ -17,13 +17,18 @@ class Dashboard extends React.Component {
     return hour >= 1 ? `${hour}:${min}:${sec}` : `${min}:${sec}`;
   }
 
-  likeCounter() {
-    let { likes, currentUser } = this.props;
+  createLikesObj() {
+    let { likes, currentUser, users } = this.props;
     let counter = {};
     likes.forEach(like => {
       counter[like.workoutId] = counter[like.workoutId] || {};
       let liked = like.userId === currentUser.id ? true : false;
-      counter[like.workoutId].likes = counter[like.workoutId].likes ? counter[like.workoutId].likes+1 : 1;
+      if (counter[like.workoutId].likes) {
+        counter[like.workoutId].likes.push(users[like.userId])
+      } else {
+        counter[like.workoutId].likes = [users[like.userId]];
+      }
+      
       if (liked) {
         counter[like.workoutId].liked = true;
         counter[like.workoutId].likeId = like.id;
@@ -37,6 +42,7 @@ class Dashboard extends React.Component {
     let obj = {};
     comments.forEach(comment => {
       comment.username = users[comment.userId].username;
+      comment.photoUrl = users[comment.userId].photoUrl;
       let workout = comment.workoutId;
       if (obj[workout]) {
         obj[workout].push(comment);
@@ -63,15 +69,15 @@ class Dashboard extends React.Component {
       if (workout.userId === currentUser.id || followsArr
         .includes(workout.userId)) activityFeed.push(workout);
       });
-      
+
     activityFeed.sort((a, b) => b.createDate > a.createDate ? 1 : -1);
-    let likeCounterObj = this.likeCounter();
+    let likesObj = this.createLikesObj();
     let commentObj = this.createCommentsObj();
     
     const workoutsDisplay = activityFeed.map((workout, i) => {
-      let likesCount = likeCounterObj[workout.id] ? likeCounterObj[workout.id].likes : 0;
-      let liked = likeCounterObj[workout.id] ? likeCounterObj[workout.id].liked : false;
-      let likeId = likeCounterObj[workout.id] ? likeCounterObj[workout.id].likeId ? likeCounterObj[workout.id].likeId : null : null;
+      let likes = likesObj[workout.id] ? likesObj[workout.id].likes : [];
+      let liked = likesObj[workout.id] ? likesObj[workout.id].liked : false;
+      let likeId = likesObj[workout.id] ? likesObj[workout.id].likeId ? likesObj[workout.id].likeId : null : null;
       let comments = commentObj[workout.id] ? commentObj[workout.id] : [];
       return (
         <ActivityFeedItem
@@ -82,7 +88,7 @@ class Dashboard extends React.Component {
           deleteLike={deleteLike}
           createComment={createComment}
           deleteComment={deleteComment}
-          likes={likesCount}
+          likes={likes}
           liked={liked}
           likeId={likeId}
           comments={comments}
@@ -105,8 +111,8 @@ class Dashboard extends React.Component {
       <div className="dashboard-home">
           <div className="personal-stats">
             <section className="profile-card">
-              <section className="avatar-image">
-                <h1>{this.props.currentUser.username[0]}</h1>
+              <section>
+                <img className="avatar-image" src={currentUser.id in users ? users[currentUser.id].photoUrl : this.props.currentUser.username[0]} alt=""/>
               </section>
               <section className="profile-main-text">
                 <h1>{currentUser.username}</h1>

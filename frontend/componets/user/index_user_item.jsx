@@ -24,6 +24,15 @@ class IndexUserItem extends React.Component {
     this.props.deleteFollow(id);
   }
 
+  profilePic() {
+    const { user } = this.props;
+
+    return user.photoUrl ? <img className="avatar-image-mid" src={user.photoUrl} /> :
+      <section className="avatar-image-mid">
+        <h1>{user.username[0]}</h1>
+      </section>
+  }
+
   render() {
     const { user, followees, i } = this.props;
     const follow = followees.includes(user.id) ? 
@@ -31,9 +40,7 @@ class IndexUserItem extends React.Component {
       <button className='follow-btn' onClick={this.handleFollow}>Follow</button>;
     return (
       <div className={i % 2 === 0 ? 'userIndex-item' : 'userIndex-item dark'}>
-        <section className='avatar-image-mid'>
-          <h1>{user.username[0]}</h1>
-        </section>
+        {this.profilePic()}
         <section className='userIndex-item-info'>
           <div className='userIndex-item-name'>{user.username}</div>
           {follow}
