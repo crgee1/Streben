@@ -1,6 +1,7 @@
 import React from 'react';
 import RecentActivities from '../footer/recent_activities_footer';
 import { Link } from 'react-router-dom';
+import LoadingIcon from '../loading/loading_icon';
 
 class ShowWorkout extends React.Component {
   constructor(props) {
@@ -95,14 +96,21 @@ class ShowWorkout extends React.Component {
     const { user } = this.props;
 
     return user.photoUrl ? <img className="avatar-image-workout" src={user.photoUrl} /> :
-      <section className="avatar-image-workout">
-        <h1>{user.username[0]}</h1>
+      <section className="avatar-image-workout blank">
+        <h1 className="blank-pic">{user.username[0].toUpperCase()}</h1>
       </section>
   }
 
   render() {
-    const {workout, user, recentWorkouts, id, likes} = this.props;
+    const {workout, user, recentWorkouts, id, likes, loading} = this.props;
     const likeObj = this.likeCounter();
+
+    if (loading) return <div className='show-workout-container'>
+      <div className='show-workout-main'>
+        <LoadingIcon />
+      </div>
+      <RecentActivities workouts={recentWorkouts} />
+    </div>
 
     const button = likeObj.liked ? <div className="like-button" onClick={this.handleButtonDelete(likeObj.likeId)}>
       <i className="fas fa-thumbs-up"></i>{likeObj.likes}

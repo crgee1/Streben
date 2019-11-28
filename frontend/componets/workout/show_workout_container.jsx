@@ -18,6 +18,7 @@ const mapStatetoProps = (state, ownProps) => {
   }
   return ({
     id,
+    loading: state.ui.loading.indexLoading,
     currentUser,
     user,
     workout,

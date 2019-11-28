@@ -4,6 +4,20 @@
   background-color: rgb(255, 255, 255);
   display: flex;
   justify-content: center;
+
+  .workout-btn-save {
+    color: #fff;
+    padding: 6px 10px;
+    min-height: 34px;
+    background-color: #fc4c02;
+    border-color: #fc4c02;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.4em;
+    border-radius: 4px;
+    cursor: pointer;
+  }
   
   div {
     display: flex;

@@ -130,7 +130,7 @@ class NewWorkout extends React.Component {
             <hr/>
             <section className='form-sec'>
               <div>
-                <button>Create</button>
+                <button className="workout-btn-save">Create</button>
               </div>
             </section>
           </form>

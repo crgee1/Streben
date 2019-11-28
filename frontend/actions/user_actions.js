@@ -1,5 +1,7 @@
 import * as APIUtil from '../util/user_api_util';
 
+export const START_LOADING_MANY = 'START_LOADING_MANY';
+export const START_LOADING_ONE = 'START_LOADING_ONE';
 export const RECEIVE_USER = 'RECEIVE_USER';
 export const RECEIVE_USERS = 'RECEIVE_USERS';
 export const RECEIVE_USER_ERRORS = 'RECEIVE_USER_ERRORS';
@@ -19,14 +21,24 @@ const receiveErrors = errors => ({
   errors,
 });
 
-export const fetchUser = id => dispatch => (
-  APIUtil.fetchUser(id)
+const startLoadingMany = () => ({
+  type: START_LOADING_MANY
+});
+
+const startLoadingOne = () => ({
+  type: START_LOADING_ONE
+});
+
+export const fetchUser = id => dispatch => {
+  dispatch(startLoadingOne());
+  return APIUtil.fetchUser(id)
     .then(user => (dispatch(receiveUser(user))),
   err => dispatch(receiveErrors(err.responseJSON)))
-)
+}
 
-export const fetchUsers = () => dispatch => (
-  APIUtil.fetchUsers()
+export const fetchUsers = () => dispatch => {
+  dispatch(startLoadingMany());
+  return APIUtil.fetchUsers()
     .then(users => (dispatch(receiveUsers(users))),
   err => dispatch(receiveErrors(err.responseJSON)))
-)
+}

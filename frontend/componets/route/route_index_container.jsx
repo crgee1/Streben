@@ -7,8 +7,9 @@ const mapStatetoProps = state => {
   const { workouts } = state.entities;
   const { id } = state.session.currentUser;
   return ({
+  loading: state.ui.loading.indexLoading,
   currentUser: state.session.currentUser,
-  allRoutes: Object.values(state.entities.routes),
+  routes: Object.values(state.entities.routes),
   recentWorkouts: Object.values(workouts).reverse()
     .filter(workout => id === workout.userId)
     .sort((a, b) => b.createDate > a.createDate ? 1 : -1),

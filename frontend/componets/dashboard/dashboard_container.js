@@ -5,9 +5,11 @@ import { fetchFollows } from '../../actions/follow_actions';
 import { createLike, deleteLike } from '../../actions/like_actions';
 import { createComment, deleteComment } from '../../actions/comment_actions';
 import { openModal } from '../../actions/modal_actions';
+import { fetchUser } from '../../actions/user_actions';
 
 const mapStateToProps = (state) => ({
     users: state.entities.users,
+    loading: state.ui.loading.detailLoading,
     currentUser: state.session.currentUser,
     workouts: Object.values(state.entities.workouts),
     follows: Object.values(state.entities.follows),
@@ -16,6 +18,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
+    fetchUser: (id) => dispatch(fetchUser(id)), 
     fetchWorkouts: () => dispatch(fetchWorkouts()),
     fetchFollows: () => dispatch(fetchFollows()),
     createLike: (like) => dispatch(createLike(like)),

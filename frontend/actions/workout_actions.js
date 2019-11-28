@@ -1,5 +1,7 @@
 import * as APIUtil from '../util/workout_api_util';
 
+export const START_LOADING_MANY = 'START_LOADING_MANY';
+export const START_LOADING_ONE = 'START_LOADING_ONE';
 export const RECEIVE_WORKOUT = 'RECEIVE_WORKOUT';
 export const RECEIVE_WORKOUTS = 'RECEIVE_WORKOUTS';
 export const REMOVE_WORKOUT = 'REMOVE_WORKOUT';
@@ -26,23 +28,33 @@ const receiveErrors = errors => ({
   errors,
 });
 
+const startLoadingMany = () => ({
+  type: START_LOADING_MANY
+});
+
+const startLoadingOne = () => ({
+  type: START_LOADING_ONE
+});
+
 export const createWorkout = workout => dispatch => (
   APIUtil.createWorkout(workout)
     .then(workout => dispatch(receiveWorkout(workout)),
   err => dispatch(receiveErrors(err.responseJSON)))
 )
 
-export const fetchWorkout = id => dispatch => (
-  APIUtil.fetchWorkout(id)
+export const fetchWorkout = id => dispatch => {
+  dispatch(startLoadingOne());
+  return APIUtil.fetchWorkout(id)
     .then(workout => dispatch(receiveWorkout(workout)),
   err => dispatch(receiveErrors(err.responseJSON)))
-)
+}
 
-export const fetchWorkouts = () => dispatch => (
-  APIUtil.fetchWorkouts()
+export const fetchWorkouts = () => dispatch => {
+  dispatch(startLoadingMany());
+  return APIUtil.fetchWorkouts()
     .then(workouts => dispatch(receiveWorkouts(workouts)),
   err => dispatch(receiveErrors(err.responseJSON)))
-)
+}
 
 export const updateWorkout = workout => dispatch => (
   APIUtil.updateWorkout(workout)

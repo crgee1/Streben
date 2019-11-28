@@ -1,9 +1,11 @@
 import React from 'react';
 import ActivityFeedItem from './activity_feed_item';
 import { Link } from 'react-router-dom';
+import LoadingIcon from '../loading/loading_icon';
 
 class Dashboard extends React.Component {
   componentDidMount() {
+    this.props.fetchUser(this.props.currentUser.id);
     this.props.fetchWorkouts();
     this.props.fetchFollows();
   }
@@ -40,7 +42,7 @@ class Dashboard extends React.Component {
   createCommentsObj() {
     const { comments, users } = this.props;
     let obj = {};
-    comments.forEach(comment => {
+    comments.forEach(comment => { 
       comment.username = users[comment.userId].username;
       comment.photoUrl = users[comment.userId].photoUrl;
       let workout = comment.workoutId;
@@ -53,10 +55,21 @@ class Dashboard extends React.Component {
     return obj;
   }
 
+  profilePic() {
+    const { currentUser, users } = this.props;
+
+    return currentUser.photoUrl ? <img className="avatar-image" src={currentUser.photoUrl} /> :
+      <section className="avatar-image blank">
+        <h1 className="blank-pic">{currentUser.username[0].toUpperCase()}</h1>
+      </section> 
+  }
+
   render() {
-    let { currentUser, users, follows, workouts, createLike, deleteLike, createComment, deleteComment, openModal } = this.props;
+    let { currentUser, users, follows, workouts, createLike, deleteLike, createComment, deleteComment, openModal, loading } = this.props;
     let followersCount = 0, followingCount = 0, followsArr = [];
     
+    if (loading) return <div className="dashboard-home"><LoadingIcon /></div> 
+
     follows.forEach(follow => {
       followsArr.push(follow.userId);
       if (follow.userId === currentUser.id) followersCount += 1;
@@ -111,9 +124,10 @@ class Dashboard extends React.Component {
       <div className="dashboard-home">
           <div className="personal-stats">
             <section className="profile-card">
-              <section>
+              {this.profilePic()}
+              {/* <section>
                 <img className="avatar-image" src={currentUser.id in users ? users[currentUser.id].photoUrl : this.props.currentUser.username[0]} alt=""/>
-              </section>
+              </section> */}
               <section className="profile-main-text">
                 <Link className="profile-link" to={`/athletes/${currentUser.id}`}>
                   <h1>{currentUser.username}</h1>

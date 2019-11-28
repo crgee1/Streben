@@ -24,8 +24,8 @@ class SessionForm extends React.Component {
 
   handleDemo() {
     let i = 0;
-    const user = ' DemoUser';
-    const pword = ' password';
+    const user = 'DemoUser';
+    const pword = 'password';
     const typeWriter = () => {
       if (i < user.length) {
         document.getElementById('username').value += user.charAt(i);
@@ -35,12 +35,13 @@ class SessionForm extends React.Component {
       }
     };
     typeWriter();
-    setTimeout(e => this.handleSubmit(e), 1000);
+    setTimeout(() => this.handleSubmit(), 1000);
   }
 
   handleSubmit() {
+    // e.preventDefault();
     this.props.submitAction({ username: 'DemoUser', password: 'password' })
-      .then(() => this.props.history.push('/dashboard'));
+      // .then(() => this.props.history.push('/dashboard'));
   }
 
   renderErrors() {
@@ -79,7 +80,7 @@ class SessionForm extends React.Component {
               onChange={this.handleInput('password')}
               placeholder="Password"
             />
-            <button onClick={this.handleDemo}>{this.props.formType}</button>
+            <button>{this.props.formType}</button>
           </form>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import Modal from '../modal/modal';
 import { Link } from 'react-router-dom';
+import LoadingIcon from '../loading/loading_icon';
 
 class ActivityFeedItem extends React.Component {
   constructor(props) {
@@ -100,7 +101,7 @@ class ActivityFeedItem extends React.Component {
         const deleteable = comment.userId === currentUser.id ? <i className="fas fa-times comment-delete" onClick={this.handleDeleteComment(comment.id)}></i> : null;
         
         return <div className="comments-item" key={comment.id}>
-          <img className="comment-profile-pic" src={comment.photoUrl} alt=""/>
+          {this.commentPic(comment)}
           <section>
             <div className="comment-header">
               <div className="comments-commenter">
@@ -172,15 +173,29 @@ class ActivityFeedItem extends React.Component {
       </section>
   }
 
+  kudoPic(user) {
+    return (user.photoUrl) ? 
+      <img className="kudos-profile-pic" src={user.photoUrl} alt="" /> :
+      <section className="kudos-profile-pic blank">
+        <h1 className="blank-pic">{user.username[0]}</h1>
+      </section>
+  }
+
+  commentPic(user) {
+    return (user.photoUrl) ? 
+      <img className="comment-profile-pic" src={user.photoUrl} alt="" /> :
+      <section className="comment-profile-pic blank">
+        <h1 className="blank-pic">{user.username[0]}</h1>
+      </section>
+  }
+
   displayKudosPics() {
     const { likes } = this.props;
 
-    const pic1 = !likes[0] ? null : 
-      <img className="kudos-profile-pic" src={likes[0].photoUrl} alt=""/>
-    const pic2 = !likes[1] ? null : 
-      <img className="kudos-profile-pic" src={likes[1].photoUrl} alt=""/>
-    const pic3 = !likes[2] ? null : 
-      <img className="kudos-profile-pic" src={likes[2].photoUrl} alt=""/>
+    const pic1 = !likes[0] ? null : this.kudoPic(likes[0])
+    const pic2 = !likes[1] ? null : this.kudoPic(likes[1])
+    const pic3 = !likes[2] ? null : this.kudoPic(likes[2])
+
     return (
       <div>
         {pic1}

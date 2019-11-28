@@ -9,6 +9,7 @@ const mapStatetoProps = state => {
   const { workouts } = state.entities;
   return ({
     currentUser,
+    loading: state.ui.loading.indexLoading,
     follows: Object.values(state.entities.follows),
     users: Object.values(state.entities.users)
       .filter(user => user.id !== currentUser.id),

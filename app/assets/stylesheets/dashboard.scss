@@ -107,6 +107,22 @@
     z-index: 1;
 }
 
+.blank {
+    background-color: rgb(0, 87, 155);
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+
+    .blank-pic {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        position: relative;
+        font-size: 300%;
+        color: white;
+    }
+}
+
 .personal-adver {
     text-decoration: none;
     color: #fc4c02;

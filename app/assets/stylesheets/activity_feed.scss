@@ -20,6 +20,10 @@
         height: 25px;
         border-radius: 50%;
         margin-right: 5px;
+
+        h1 {
+            font-size: 15px;
+        }
     }
 
     .big {
@@ -146,6 +150,10 @@
                     width: 25px;
                     height: 25px;
                     position: relative;
+                    float: left;
+                    h1 {
+                        font-size: 15px
+                    }
                 }
 
                 .kudos-profile-pic:nth-child(1) {
@@ -195,6 +203,10 @@
 
 
         .comment-section {
+
+            .comments-item:first-child {
+                margin-top: 12px;
+            }
 
             .comments-item:last-child {
                 padding-bottom: 0px;

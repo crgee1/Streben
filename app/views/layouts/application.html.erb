@@ -17,12 +17,23 @@
       B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
       crossorigin="anonymous">
     <% if current_user %>
+      <% if current_user.photo.attached?%>
+      <script>
+         window.currentUser = {
+          'id': <%= current_user.id %>,
+          'username': '<%= current_user.username %>',
+          'photoUrl': '<%= url_for(current_user.photo) %>'
+        }
+      </script>
+      <% else %>
       <script>
         window.currentUser = {
           'id': <%= current_user.id %>,
-          'username': '<%= current_user.username %>'
+          'username': '<%= current_user.username %>',
+          'photoUrl': <%= false %>
         }
       </script>
+      <% end %>
     <% end %>
     <script type="text/javascript">
       window.googleAPIKey = "<%= Rails.application.credentials.google[:api_key] %>"

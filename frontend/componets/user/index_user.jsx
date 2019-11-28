@@ -1,6 +1,7 @@
 import React from 'react';
 import IndexUserItem from './index_user_item';
 import ActivitiesFooter from '../footer/recent_activities_footer';
+import LoadingIcon from '../loading/loading_icon';
 
 class UsersIndex extends React.Component {
   constructor(props) {
@@ -38,15 +39,17 @@ class UsersIndex extends React.Component {
     this.setState({searchKey: e.target.value});
   }
 
-  render() {
-    const { users, follows, currentUser, createFollow, deleteFollow } = this.props;
+  displayUsersList() {
+    const { users, follows, currentUser, createFollow, deleteFollow, loading } = this.props;
     const { searchKey, athletes } = this.state;
+    if (loading) return <LoadingIcon/>;
+
     const followsObject = {};
     follows.forEach(el => followsObject[el.userId] = el)
     const followees = follows.map(el => el.userId);
     const people = searchKey === '' ? users : athletes;
-    let usersList = (people.length === 0 && searchKey !== '') ? <div className="no-athletes-found">No athletes with name <strong>{searchKey}</strong> found</div> : 
-      people.map((user, i) => 
+    let usersList = (people.length === 0 && searchKey !== '') ? <div className="no-athletes-found">No athletes with name <strong>{searchKey}</strong> found</div> :
+      people.map((user, i) =>
         <IndexUserItem
           currentUser={currentUser}
           user={user}
@@ -57,7 +60,13 @@ class UsersIndex extends React.Component {
           key={i}
           i={i}
         />
-    );
+      );
+
+      return usersList;
+  }
+
+  render() {
+    
     return (
       <div>
         <div className='userIndex-main'>
@@ -70,7 +79,7 @@ class UsersIndex extends React.Component {
               <input className="search-button" type="submit" value="Search"/>
             </form>
           </div>
-          {usersList}
+          {this.displayUsersList()}
         </div>
         <ActivitiesFooter workouts={this.props.recentWorkouts} />
       </div>
