@@ -18,6 +18,11 @@
       end
     end
 
+    workout.commenters.each do |commenter|
+      json.set! commenter.id do
+        json.partial! 'api/users/user', user: commenter
+      end
+    end
   end
 
   json.likes do 

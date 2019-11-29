@@ -177,16 +177,16 @@ class ActivityFeedItem extends React.Component {
     return (user.photoUrl) ? 
       <img className="kudos-profile-pic" src={user.photoUrl} alt="" /> :
       <section className="kudos-profile-pic blank">
-        <h1 className="blank-pic">{user.username[0]}</h1>
+        <h1 className="blank-pic">{user.username[0].toUpperCase()}</h1>
       </section>
   }
 
   commentPic(user) {
     return (user.photoUrl) ? 
       <img className="comment-profile-pic" src={user.photoUrl} alt="" /> :
-      <section className="comment-profile-pic blank">
-        <h1 className="blank-pic">{user.username[0]}</h1>
-      </section>
+      <div className="comment-profile-pic blank">
+        <h1 className="blank-pic">{user.username[0].toUpperCase()}</h1>
+      </div>
   }
 
   displayKudosPics() {
