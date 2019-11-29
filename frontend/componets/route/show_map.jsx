@@ -20,6 +20,13 @@ class SmallMap extends React.Component {
       map: this.map,
     });
     
+    // this.props.locations.filter(location => location.routeId === parseInt(this.props.match.params.routeId))
+    //   .sort((a, b) => (a.order > b.order) ? 1 : -1)
+    //     .forEach(point => {
+    //       this.placeMarker({
+    //         lat: point.latitude, lng: point.longitude
+    //       })
+    //     });
     setTimeout(()=> {this.props.locations.filter(location => location.routeId === parseInt(this.props.match.params.routeId))
       .sort((a, b) => (a.order > b.order) ? 1 : -1)
         .forEach(point => {

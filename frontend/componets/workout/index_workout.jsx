@@ -1,6 +1,7 @@
 import React from 'react';
 import IndexWorkoutItem from './index_workout_item';
 import ActivitiesFooter from '../footer/recent_activities_footer';
+import LoadingIcon from '../loading/loading_icon';
 
 class Training extends React.Component {
   constructor(props) {
@@ -46,15 +47,40 @@ class Training extends React.Component {
   }
 
   render() {
-    const { workouts, deleteWorkout } = this.props;
+    const { workouts, deleteWorkout, loading } = this.props;
+
     const workoutList = workouts.map((workout, i) => (
       <IndexWorkoutItem
-      workout={workout}
-      deleteWorkout={deleteWorkout}
-      key={i}
-      i={i}
+        workout={workout}
+        deleteWorkout={deleteWorkout}
+        key={i}
+        i={i}
       />
     ));
+
+    const tableDisplay = loading ? <LoadingIcon/> :
+      <div>
+        <section className='activity-count'>
+          {workouts.length} Activities
+              </section>
+        <table>
+          <thead>
+            <tr>
+              <th className='sport-header' onClick={e => this.sortAlpha('workoutType')}>Sport</th>
+              <th className='sport-date' onClick={e => this.sortAlpha('createDate')}>Date</th>
+              <th className='title-header' onClick={e => this.sortAlpha('name')}>Title</th>
+              <th onClick={e => this.sortNum('duration')}>Time</th>
+              <th onClick={e => this.sortNum('distance')}>Distance</th>
+              <th onClick={e => this.sortNum('elevation')}>Elevation</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {workoutList}
+          </tbody>
+        </table>
+      </div>
+
     return (
       <div className='training-container'>
         <div className='training-main'>
@@ -62,25 +88,8 @@ class Training extends React.Component {
             <header className='training-head'>
               <h1>My Activities</h1>
             </header>
-            <section className='activity-count'>
-              {workouts.length} Activities
-            </section>
-            <table>
-              <thead>
-                <tr>
-                  <th className='sport-header' onClick={e => this.sortAlpha('workoutType')}>Sport</th>
-                  <th className='sport-date' onClick={e => this.sortAlpha('createDate')}>Date</th>
-                  <th className='title-header' onClick={e => this.sortAlpha('name')}>Title</th>
-                  <th onClick={e => this.sortNum('duration')}>Time</th>
-                  <th onClick={e => this.sortNum('distance')}>Distance</th>
-                  <th onClick={e => this.sortNum('elevation')}>Elevation</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {workoutList}
-              </tbody>
-            </table>
+              {tableDisplay}
+            
           </div>
         </div>
         <ActivitiesFooter workouts={this.props.recentWorkouts} />

@@ -9,9 +9,9 @@ class ShowUser extends React.Component {
     }
 
     componentDidMount() {
+        // this.props.fetchWorkouts();
         this.props.fetchUsers();
-        this.props.fetchWorkouts();
-        // this.props.fetchUser(this.props.match.params.userId)
+        this.props.fetchUser(this.props.currentUser.id)
     }
 
     profilePic() {

@@ -6,6 +6,7 @@ const mapStateToProps = state => {
   const { workouts } = state.entities;
   const { id } = state.session.currentUser;
   return {
+    loading: state.ui.loading.indexLoading,
     workouts: Object.values(workouts).reverse()
       .filter(workout => id === workout.userId)
       .sort((a, b) => b.createDate > a.createDate ? 1 : -1),

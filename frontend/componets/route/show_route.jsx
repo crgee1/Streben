@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SmallMap from './show_map';
+import LoadingIcon from '../loading/loading_icon';
 
 class ShowRoute extends React.Component {
   constructor(props) {
@@ -48,10 +49,19 @@ class ShowRoute extends React.Component {
     };
     return `${mth[date.slice(5,7)]} ${date.slice(8,10)}, ${date.slice(0,4)}`;
   }
+  
+  profilePic() {
+    const { user } = this.props;
+
+    return user.photoUrl ? <img className="avatar-image" src={user.photoUrl} /> :
+      <section className="avatar-image blank">
+        <h1 className="blank-pic">{user.username[0].toUpperCase()}</h1>
+      </section>
+  }
 
   render() {
-    const { route, currentUser, locations } = this.props;
-    const display = this.props.route === undefined ? null : (<div className='show-route-content'>
+    const { route, currentUser, locations, loading } = this.props;
+    let display = this.props.route === undefined ? null : (<div className='show-route-content'>
       <div className='show-route-header'>
         <header>{route.name}</header>
         <Link to={`/routes/edit/${route.id}`} className='edit-btn'>Edit</Link>
@@ -59,13 +69,8 @@ class ShowRoute extends React.Component {
       <div className='show-route-main'>
         <section className='minimap'><SmallMap route={route} locations={Object.values(locations)}/></section>
         <section className='show-route-stats'>
-          
           <div className='name-section'>
-            <section className='avatar-image'>
-              <h1>
-                {currentUser.username[0]}
-              </h1>
-            </section>
+            {this.profilePic()}
             <section className='show-username'>
               By {currentUser.username}
               <h3>Created on {this.displayDate(route.createdAt)}</h3>
@@ -98,6 +103,8 @@ class ShowRoute extends React.Component {
         </section>
       </div>
     </div>);
+
+    if (loading) display = <div className='show-route-content'><LoadingIcon /></div>
 
     return (
       <div className='show-route'>

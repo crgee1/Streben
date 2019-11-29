@@ -1,6 +1,6 @@
 .profile-container {
   height: 50vh;
-  padding: 90px 16px 0 16px;
+  padding: 90px 13% 0;
 
   .profile-header {
     display: flex;
@@ -45,5 +45,12 @@
         margin-right: 10px;
       }
     }
+  }
+}
+
+@media only screen and (max-width: 1600px) {
+  .profile-container {
+    height: 50vh;
+    padding: 90px 40px 0 40px;
   }
 }

@@ -12,5 +12,5 @@ json.locations do
 end
 
 json.users do
-  json.extract! @route.user, :id, :username
+  json.partial! 'api/users/user', user: @route.user
 end

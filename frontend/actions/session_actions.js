@@ -42,7 +42,7 @@ export const login = user => dispatch => {
 };
 
 export const signUp = user => dispatch => {
-  dispatch(startLoadingOne());
+  // dispatch(startLoadingOne());
   return APIUtil.signUp(user)
     .then(user => dispatch(receiveCurrentUser(user)),
       err => dispatch(receiveErrors(err.responseJSON)))

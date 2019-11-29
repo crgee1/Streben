@@ -19,6 +19,8 @@ class SaveRoute extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+
+    const { createRoute, routeInfo, createLocation, closeModal } = this.props;
     this.props.createRoute(this.state)
     .then(res => {this.props.routeInfo.locationArr.forEach(location =>{
         this.props.createLocation({
