@@ -56,7 +56,6 @@ ActiveRecord::Base.transaction do
   Like.destroy_all
   Like.create(user_id: user1.id, workout_id: workout4.id)
   Like.create(user_id: user1.id, workout_id: workout5.id)
-  Like.create(user_id: user1.id, workout_id: workout5.id)
   Like.create(user_id: user1.id, workout_id: workout7.id)
   Like.create(user_id: user1.id, workout_id: workout8.id)
   Like.create(user_id: user1.id, workout_id: workout9.id)
