@@ -30,7 +30,7 @@ class IndexUserItem extends React.Component {
 
     return user.photoUrl ? <img className="avatar-image-mid" src={user.photoUrl} /> :
       <section className="avatar-image-mid">
-        <h1>{user.username[0]}</h1>
+        <h1>{user.username[0].toUpperCase()}</h1>
       </section>
   }
 

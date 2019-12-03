@@ -11,7 +11,7 @@ class RouteMap extends React.Component {
 
   componentDidMount() {
     this.props.fetchRoutes();
-    this.props.fetchWorkouts();
+    // this.props.fetchWorkouts();
   }
 
   render() {

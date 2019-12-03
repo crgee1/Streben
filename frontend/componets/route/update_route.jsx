@@ -20,6 +20,7 @@ class UpdateRoute extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    this.props.prevLocations.forEach(location => this.props.deleteLocation(location.id));
     this.props.updateRoute(this.state)
       .then(res => {this.props.routeInfo.locationArr.forEach(location =>
         this.props.createLocation({
@@ -28,9 +29,8 @@ class UpdateRoute extends React.Component {
           latitude: location.latitude,
           longitude: location.longitude,
         }));
-        this.props.history.push(`/routes/${res.payload.routes.id}`);
-      });
-    this.props.prevLocations.forEach(location => this.props.deleteLocation(location.id));
+        return res;
+      }).then(res => this.props.history.push(`/routes/${res.payload.routes.id}`));
     this.props.closeModal();
   }
 
