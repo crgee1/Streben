@@ -146,8 +146,8 @@ class ActivityFeedItem extends React.Component {
   }
 
   handleOpenModal() {
-    this.setState({ modal: true });
-    this.props.openModal('commentModal');
+    this.setState({ modal: true }, () => this.props.openModal('commentModal'));
+    
   }
 
   openedCommentModal() {

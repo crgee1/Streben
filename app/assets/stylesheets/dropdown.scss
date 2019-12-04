@@ -86,7 +86,8 @@
 }
 
 .drop-submenu-profile {
-  left: -105%;
+  // left: -105%;
+  right: 0;
   // left: -104px;
   margin-top: 1px;
   color: #2d2d32;
@@ -115,8 +116,8 @@
   }
 }
 
-@media only screen and (max-width: 1600px) {
-  .drop-submenu-profile {
-    left: -105%;
-  }
-}
+// @media only screen and (max-width: 1600px) {
+//   .drop-submenu-profile {
+//     left: -105%;
+//   }
+// }
