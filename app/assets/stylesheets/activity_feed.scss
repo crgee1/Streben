@@ -102,10 +102,12 @@
 
         .need-body {
             cursor: default;
+            background-color: #fff;
             opacity: 0.65;
 
             &:hover {
-                background-color:rgb(255, 255, 255);
+                background-color: #fff;
+                // background-color:rgb(255, 255, 255);
             }
         }
     }
