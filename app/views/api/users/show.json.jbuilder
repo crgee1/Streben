@@ -15,7 +15,9 @@ end
 json.routes do 
     @user.routes.each do |route|
         json.set! route.id do
-            json.partial! 'api/routes/route', route: route
+            # json.partial! 'api/routes/route', route: route
+            json.extract! route, :id, :user_id, :name, :distance, :duration, :elevation, 
+              :description, :url, :created_at, :locations
         end
     end
 end

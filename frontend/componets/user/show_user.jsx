@@ -6,10 +6,13 @@ import LoadingIcon from '../loading/loading_icon';
 class ShowUser extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            photoFile: null,
+            submitted: false,
+        }
     }
 
     componentDidMount() {
-        // this.props.fetchWorkouts();
         this.props.fetchUsers();
         this.props.fetchUser(this.props.currentUser.id)
     }
@@ -21,6 +24,37 @@ class ShowUser extends React.Component {
             <section className="profile-pic blank">
                 <h3 className="blank-pic">{user.username[0].toUpperCase()}</h3>
             </section> 
+    }
+
+    displayFileForm() {
+        const { match, currentUser } = this.props;
+        if (Number(match.params.userId) !== currentUser.id) return;
+
+        return (
+        <div>
+            <form onSubmit={this.handleSubmit.bind(this)}>
+                <input type="file" onChange={this.handleFile.bind(this)}/>
+                <input type="submit" value="Update Profile"/>
+            </form>
+        </div>)
+
+    }
+
+    handleFile(e) {
+        this.setState({photoFile: e.currentTarget.files[0]});
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append('user[photo]', this.state.photoFile);
+        $.ajax({
+            url: `/api/users/${this.props.currentUser.id}`,
+            method: 'PATCH',
+            data: formData,
+            contentType: false,
+            processData: false
+        }).then(res => this.setState({submitted: true}))
     }
 
     render() {
@@ -41,6 +75,7 @@ class ShowUser extends React.Component {
                         {this.profilePic()}
                         <h1>{user.username}</h1>
                     </div>
+                    {/* {this.displayFileForm()} */}
                 </div>
                 <div className="profile-body">
                     <h1 className="profile-stat-header">Totals</h1>
