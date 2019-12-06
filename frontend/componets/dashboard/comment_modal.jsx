@@ -27,7 +27,7 @@ class CommentModal extends React.Component {
     }
 
     render() {
-        const { comments, liked, likes, handleDeleteComment } = this.props;
+        const { comments, liked, likes, handleDeleteComment, currentUser } = this.props;
         const displayComments = comments.map(comment => {
             const deleteable = comment.userId === currentUser.id ? <i className="fas fa-times comment-delete" onClick={handleDeleteComment(comment.id)}></i> : null;
 

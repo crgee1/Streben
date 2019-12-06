@@ -180,7 +180,9 @@
 }
 
 .dashboard-link {
-    width: 135px;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
     color: #242428;
     font-size: 13px;
 
@@ -198,7 +200,7 @@
 }
 
 .chevron-container {
-    padding-left: 8%;
+    width: 20px;
 }
 
 @media only screen and (max-width: 1600px) {

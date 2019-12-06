@@ -163,7 +163,12 @@ class Dashboard extends React.Component {
                   </section>
                 </div>
               </div>
-            <Link className='dashboard-link' to='/training'>Your Activity Log <span className='chevron-container'><i className="fas fa-chevron-right"></i></span></Link>
+            <Link className='dashboard-link' to='/training'>
+              <h3>Your Activity Log</h3> 
+              <span className='chevron-container'>
+                <i className="fas fa-chevron-right"></i>
+              </span>
+            </Link>
             </section>
           </div>
           <div className="activity-feed">
