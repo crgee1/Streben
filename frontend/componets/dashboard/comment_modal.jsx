@@ -5,6 +5,7 @@ class CommentModal extends React.Component {
         super(props);
         this.state = {
             body: '',
+            kudos: false,
         }
 
         this.updateComment = this.updateComment.bind(this);
