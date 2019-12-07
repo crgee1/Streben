@@ -22,7 +22,7 @@
     top: -32vh;
     margin-left: -420px;
 
-    .modal-header {
+    .modal-header-title {
         display: flex;
         justify-content: space-between;
         background-color: #fff;
@@ -67,27 +67,8 @@
                 }
             }
 
-            // .kudos {
-            //     border-left: 1px solid #ccccd1;
-
-            // }
-            // .kudosa.active {
-            //     border-left: 1px solid #ccccd1;
-            //     border-right: 1px solid #ccccd1;
-
-            // }
-
-            // .comments {
-            //     border-right: 1px solid #ccccd1;
-                
-            // }
-            // .comments.active{
-            //     border-right: 1px solid #ccccd1;
-            //     border-right: 1px solid #ccccd1;
-                
-            // }
-    
             .active {
+                padding-top: 8px;
                 border-top: 2px solid #fc4c02;
                 border-bottom: none;
                 background-color: #fff;

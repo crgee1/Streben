@@ -12,7 +12,7 @@ class Modal extends React.Component {
   }
   
   render() {
-    const { routeInfo, prevRoute, prevLocations, comments, likes, liked, handleDeleteComment, currentUser, workout, createComment, turnOffModal, commentTab, handleButtonCreateLike, handleButtonDeleteLike } = this.props;
+    const { closeModal, routeInfo, prevRoute, prevLocations, comments, likes, liked, handleDeleteComment, currentUser, workout, createComment, turnOffModal, commentTab, handleButtonCreateLike, handleButtonDeleteLike } = this.props;
     if (!this.props.modal) {
       return null;
     }
@@ -32,7 +32,7 @@ class Modal extends React.Component {
     }
 
     if (this.props.modal === 'commentModal') return (
-      <div className="modal-background" >
+      <div className="modal-background" onClick={turnOffModal}>
         <div className="modal-child" onClick={e => e.stopPropagation()}>
           {this.component}
         </div>
@@ -40,7 +40,7 @@ class Modal extends React.Component {
     );
     
     return (
-      <div className="modal-background" onClick={this.props.closeModal}>
+      <div className="modal-background" onClick={closeModal}>
         <div className="modal-child" onClick={e => e.stopPropagation()}>
           { this.component }
         </div>

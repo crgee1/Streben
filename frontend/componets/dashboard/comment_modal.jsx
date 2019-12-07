@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 class CommentModal extends React.Component {
     constructor(props) {
@@ -64,4 +65,10 @@ class CommentModal extends React.Component {
     }
 }
 
-export default CommentModal
+const mapStateToProps = (state) => ({
+})
+
+const mapDispatchToProps = dispatch => ({
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(CommentModal);
