@@ -2,6 +2,21 @@
     border-bottom: 1px solid #e6e6eb;
 }
 
+.give-kudos-btn {
+    background-color: orangered;
+    color: white;
+    width: 90px;
+    border-radius: 3px;
+    font-size: 11px;
+    margin: 16px;
+    padding: 9.5px 10px;
+    font-weight: 700;
+    text-decoration: none;
+    -webkit-appearance: none;
+    border-style: none;
+    cursor: pointer;
+}
+
 .dashboard-modal {
     position: absolute;
     top: -32vh;
@@ -12,6 +27,7 @@
         justify-content: space-between;
         align-items: center;
         background-color: #f5f5fa;
+        border-bottom: 1px solid #ccccd1;
         border-radius: 6px 6px 0 0;
         
         .fa-times {
@@ -23,7 +39,6 @@
             display: flex;
             background-color: #f5f5fa;
             border-radius: 6px 6px 0 0;
-            border-bottom: 1px solid #ccccd1;
             padding-left: 21px;
 
     
@@ -130,8 +145,48 @@
     line-height: 1.45;
 }
 
+.like-create {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .feedback-button {
+        background-color: #e6e6eb;
+        border: 1px solid #e6e6eb;
+        display: block;
+        padding: 6px 12px;;
+        border-radius: 4px;
+        
+        &:hover {
+            background-color: #fff;
+        }
+    }
+
+    .like-button {
+        align-items: center;
+        display: flex;
+        background: #f5f5fa;
+        height: 100%;
+        padding: 10px 16px;
+        margin: 16px;
+        transition: border-color 0.1s linear, background 0.1s linear, color 0.1s linear;
+
+        &:hover {
+            background-color: #fff;
+        }
+
+        .fa-thumbs-up {
+        color: #47474B;
+        // padding-right: 8px;
+        }
+        .fas.fa-thumbs-up {
+            color: #fc4c02;
+        }
+    }
+}
+
 .comment-create {
-                
+
     .comment-form {
         margin-top: 16px;
         border-top: 1px solid #e6e6eb;
@@ -287,16 +342,18 @@
                 padding-bottom: 0px;
             }
 
-            .comment-modal-btn {
-                font-size: 11px;
-                cursor: pointer;
-                color: #242428;
-                font-weight: 400;
+        }
+    }
+    
+    .comment-modal-btn {
+        padding: 0 7px;
+        font-size: 11px;
+        cursor: pointer;
+        color: #242428;
+        font-weight: 400;
 
-                &:hover {
-                    color: #007FB6;
-                }
-            }
+        &:hover {
+            color: #007FB6;
         }
     }
 

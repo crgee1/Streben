@@ -15,9 +15,9 @@ class LikeModal extends React.Component {
     }
 
     render() {
-        const { comments, liked, likes, handleDeleteComment, currentUser } = this.props;
+        const { comments, liked, likes, currentUser, handleButtonCreateLike, handleButtonDeleteLike } = this.props;
+        
         const displayLikes = likes.map(like => {
-
             return <div className="comments-item modal-comment like-item" key={like.id}>
                 {this.profilePic(like)}
                 <section>
@@ -28,11 +28,20 @@ class LikeModal extends React.Component {
             </div>
         });
 
-        return <div className="comment-modal">
+        const likeButton = liked ? <button className="feedback-button like-button" onClick={handleButtonDeleteLike}>
+            <i className="fas fa-thumbs-up"></i>
+        </button> :
+            <button className="feedback-button like-button" onClick={handleButtonCreateLike}>
+                <i className="far fa-thumbs-up"></i>
+            </button>;
+
+        return (
+        <div className="comment-modal">
             {displayLikes}
-            <div className="comment-create">
+            <div className="like-create">
+                {likeButton}
             </div>
-        </div>
+        </div>)
     }
 }
 

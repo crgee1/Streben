@@ -35,16 +35,6 @@ class CommentModal extends React.Component {
             </section>
     }
 
-    displayHeaders() {
-
-        return (
-            <ul className="comments-modal-headers">
-                <li>Kudos </li>
-                <li>Comments</li>
-            </ul>
-        )
-    }
-
     render() {
         const { comments, liked, likes, handleDeleteComment, currentUser } = this.props;
         const displayComments = comments.map(comment => {
@@ -63,7 +53,6 @@ class CommentModal extends React.Component {
         });
 
         return <div className="comment-modal">
-            {/* {this.displayHeaders()} */}
             {displayComments}
             <div className="comment-create">
                 <form className="comment-form">

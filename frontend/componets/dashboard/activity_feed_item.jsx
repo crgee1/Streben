@@ -1,5 +1,5 @@
 import React from 'react';
-import Modal from '../modal/modal_dash';
+import Modal from '../modal/modal';
 import { Link } from 'react-router-dom';
 import LoadingIcon from '../loading/loading_icon';
 
@@ -10,9 +10,10 @@ class ActivityFeedItem extends React.Component {
       post: false,
       body: '',
       modal: false,
+      commentTab: true,
     }
-    this.handleButtonCreate = this.handleButtonCreate.bind(this);
-    this.handleButtonDelete = this.handleButtonDelete.bind(this);
+    this.handleButtonCreateLike = this.handleButtonCreateLike.bind(this);
+    this.handleButtonDeleteLike = this.handleButtonDeleteLike.bind(this);
     this.postComment = this.postComment.bind(this);
     this.updateComment = this.updateComment.bind(this);
     this.handleOpenModal = this.handleOpenModal.bind(this);
@@ -28,11 +29,11 @@ class ActivityFeedItem extends React.Component {
     return hour >= 1 ? `${hour}:${min}:${sec}` : `${min}:${sec}`;
   }
   
-  handleButtonCreate() {
+  handleButtonCreateLike() {
     let {createLike, currentUser, workout} = this.props;
     createLike({user_id: currentUser.id, workout_id: workout.id});
   }
-  handleButtonDelete() {
+  handleButtonDeleteLike() {
     this.props.deleteLike(this.props.likeId);
   }
   
@@ -140,13 +141,13 @@ class ActivityFeedItem extends React.Component {
     return numComments <= 2 ? null :
       <div className="comment-modal-container">
         <a className="comment-modal-btn" 
-          onClick={this.handleOpenModal}
+          onClick={this.handleOpenModal(true)}
         >See all {numComments} comments</a>
       </div> 
   }
 
-  handleOpenModal() {
-    this.setState({ modal: true }, () => this.props.openModal('commentModal'));
+  handleOpenModal(bool) {
+    return () => this.setState({ modal: true, commentTab: bool }, () => this.props.openModal('commentModal'));
     
   }
 
@@ -167,6 +168,9 @@ class ActivityFeedItem extends React.Component {
       workout={workout}
       createComment={createComment}
       turnOffModal={this.turnOffModal.bind(this)}
+      commentTab={this.state.commentTab}
+      handleButtonCreateLike={this.handleButtonCreateLike}
+      handleButtonDeleteLike={this.handleButtonDeleteLike}
     />
   }
 
@@ -215,12 +219,28 @@ class ActivityFeedItem extends React.Component {
     const { distance, elevation, duration, description, name, id, createDate } = this.props.workout;
     const { user, likes, liked, comments } = this.props;
     
-    const kudosSection = likes.length > 0 ? <div className="kudos-count">{this.displayKudosPics()}{likes.length} kudos · {comments.length} comments</div> : <div className="kudos-count">Be the first to give kudos! · {comments.length} comments</div>
+    const kudosSection = likes.length > 0 ? 
+    <div className="kudos-count">
+      {this.displayKudosPics()}
+      <a className="comment-modal-btn" onClick={this.handleOpenModal(false)}>
+        {likes.length} kudos 
+      </a>
+        · 
+      <a className="comment-modal-btn" onClick={this.handleOpenModal(true)}>
+          {` ${comments.length}`} comments
+      </a>
+    </div> : 
+    <div className="kudos-count">
+      Be the first to give kudos! · 
+      <a className="comment-modal-btn" onClick={this.handleOpenModal(true)}>
+        {` ${comments.length}`} comments
+      </a>
+    </div>
     
-    const likeButton = liked ? <button className="feedback-button like-button" onClick={this.handleButtonDelete}>
+    const likeButton = liked ? <button className="feedback-button like-button" onClick={this.handleButtonDeleteLike}>
       <i className="fas fa-thumbs-up"></i>
     </button> : 
-      <button className="feedback-button like-button" onClick={this.handleButtonCreate}>
+      <button className="feedback-button like-button" onClick={this.handleButtonCreateLike}>
         <i className="far fa-thumbs-up"></i>
       </button>;
     

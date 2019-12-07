@@ -8,7 +8,7 @@ class DashboardModal extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            comment: true,
+            comment: this.props.commentTab,
         }
     }
 
@@ -29,11 +29,11 @@ class DashboardModal extends React.Component {
     }
 
     render() {
-        const { comments, likes, liked, handleDeleteComment, currentUser, workout, createComment, closeModal} = this.props;
+        const { comments, likes, liked, handleDeleteComment, currentUser, workout, createComment, handleButtonDeleteLike, handleButtonCreateLike} = this.props;
 
         const component = this.state.comment ? 
         <CommentModalContainer comments={comments} likes={likes} liked={liked} handleDeleteComment={handleDeleteComment} currentUser={currentUser} workout={workout} createComment={createComment} /> 
-            : <LikeModal comments={comments} likes={likes} liked={liked} currentUser={currentUser} workout={workout} />;
+            : <LikeModal comments={comments} likes={likes} liked={liked} currentUser={currentUser} workout={workout} handleButtonDeleteLike={handleButtonDeleteLike} handleButtonCreateLike={handleButtonCreateLike}/>;
 
         return (
             <div className="dashboard-modal">

@@ -3,7 +3,6 @@ import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import SaveRouteContainer from '../route/save_route_container';
 import UpdateRouteContainer from '../route/update_route_container';
-import CommentModalContainer from '../dashboard/comment_modal_container';
 import DashboardModal from '../dashboard/dashboard_modal';
 
 
@@ -13,7 +12,7 @@ class Modal extends React.Component {
   }
   
   render() {
-    const { routeInfo, prevRoute, prevLocations, comments, likes, liked, handleDeleteComment, currentUser, workout, createComment } = this.props;
+    const { routeInfo, prevRoute, prevLocations, comments, likes, liked, handleDeleteComment, currentUser, workout, createComment, turnOffModal, commentTab, handleButtonCreateLike, handleButtonDeleteLike } = this.props;
     if (!this.props.modal) {
       return null;
     }
@@ -26,11 +25,19 @@ class Modal extends React.Component {
         this.component= <UpdateRouteContainer routeInfo={routeInfo} prevRoute={prevRoute} prevLocations={prevLocations}/>;
         break;
       case 'commentModal':
-        this.component = <DashboardModal comments={comments} likes={likes} liked={liked} handleDeleteComment={handleDeleteComment} currentUser={currentUser} workout={workout} createComment={createComment}/>;
+        this.component = <DashboardModal comments={comments} likes={likes} liked={liked} handleDeleteComment={handleDeleteComment} currentUser={currentUser} workout={workout} createComment={createComment} turnOffModal={turnOffModal} commentTab={commentTab} handleButtonCreateLike={handleButtonCreateLike} handleButtonDeleteLike={handleButtonDeleteLike}/>;
         break;
       default:
         return null;
     }
+
+    if (this.props.modal === 'commentModal') return (
+      <div className="modal-background" >
+        <div className="modal-child" onClick={e => e.stopPropagation()}>
+          {this.component}
+        </div>
+      </div>
+    );
     
     return (
       <div className="modal-background" onClick={this.props.closeModal}>
