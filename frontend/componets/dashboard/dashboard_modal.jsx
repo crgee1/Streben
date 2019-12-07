@@ -22,6 +22,12 @@ class DashboardModal extends React.Component {
         )
     }
 
+    exitModal() {
+        const { turnOffModal, closeModal } = this.props;
+        turnOffModal();
+        closeModal();
+    }
+
     render() {
         const { comments, likes, liked, handleDeleteComment, currentUser, workout, createComment, closeModal} = this.props;
 
@@ -33,7 +39,7 @@ class DashboardModal extends React.Component {
             <div className="dashboard-modal">
                 <div className="dashboard-modal-headers-container">
                     {this.displayHeaders()}
-                    <i className="fas fa-times" onClick={() => closeModal()}/>
+                    <i className="fas fa-times" onClick={this.exitModal.bind(this)}/>
                 </div>
                 {component}
             </div>
@@ -41,9 +47,9 @@ class DashboardModal extends React.Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {};
-};
+const mapStateToProps = state => ({
+
+});
 
 const mapDispatchToProps = dispatch => {
     return {

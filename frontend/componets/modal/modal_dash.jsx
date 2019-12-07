@@ -13,14 +13,14 @@ class Modal extends React.Component {
   }
   
   render() {
-    const { routeInfo, prevRoute, prevLocations, comments, likes, liked, handleDeleteComment, currentUser, workout, createComment } = this.props;
+    const { routeInfo, prevRoute, prevLocations, comments, likes, liked, handleDeleteComment, currentUser, workout, createComment, turnOffModal } = this.props;
     if (!this.props.modal) {
       return null;
     }
 
     switch (this.props.modal) {
       case 'commentModal':
-        this.component = <DashboardModal comments={comments} likes={likes} liked={liked} handleDeleteComment={handleDeleteComment} currentUser={currentUser} workout={workout} createComment={createComment}/>;
+        this.component = <DashboardModal comments={comments} likes={likes} liked={liked} handleDeleteComment={handleDeleteComment} currentUser={currentUser} workout={workout} createComment={createComment} turnOffModal={turnOffModal}/>;
         break;
       default:
         return null;
