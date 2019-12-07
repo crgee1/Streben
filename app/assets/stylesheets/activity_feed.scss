@@ -7,27 +7,64 @@
     top: -32vh;
     margin-left: -420px;
 
-    .dashboard-modal-headers {
+    .dashboard-modal-headers-container {
         display: flex;
+        justify-content: space-between;
+        align-items: center;
         background-color: #f5f5fa;
-        border-bottom: 1px solid #ccccd1;
         border-radius: 6px 6px 0 0;
-        padding-left: 30px;
-
-        li {
-            padding: 10px 20px 9px;
-    
-            &:hover {
-                background-color: #fff;
-            }
+        
+        .fa-times {
+            margin-right: 12px;
+            cursor: pointer;
         }
 
-        .active {
-            border-bottom: none;
-            background-color: #fff;
-            margin-bottom: -1px;
-            border-left: 1px solid #ccccd1;
-            border-right: 1px solid #ccccd1;
+        .dashboard-modal-headers {
+            display: flex;
+            background-color: #f5f5fa;
+            border-radius: 6px 6px 0 0;
+            border-bottom: 1px solid #ccccd1;
+            padding-left: 21px;
+
+    
+            li {
+                padding: 10px 20px 9px;
+                box-sizing: border-box;
+                cursor: pointer;
+        
+                &:hover {
+                    background-color: #fff;
+                }
+            }
+
+            // .kudos {
+            //     border-left: 1px solid #ccccd1;
+
+            // }
+            // .kudosa.active {
+            //     border-left: 1px solid #ccccd1;
+            //     border-right: 1px solid #ccccd1;
+
+            // }
+
+            // .comments {
+            //     border-right: 1px solid #ccccd1;
+                
+            // }
+            // .comments.active{
+            //     border-right: 1px solid #ccccd1;
+            //     border-right: 1px solid #ccccd1;
+                
+            // }
+    
+            .active {
+                border-bottom: none;
+                background-color: #fff;
+                margin-bottom: -1px;
+                border-left: 1px solid #ccccd1;
+                border-right: 1px solid #ccccd1;
+                // margin-left: -1px;
+            }
         }
     }
 }

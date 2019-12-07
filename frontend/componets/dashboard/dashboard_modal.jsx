@@ -1,4 +1,6 @@
 import React from 'react';
+import { closeModal } from '../../actions/modal_actions';
+import { connect } from 'react-redux';
 import CommentModalContainer from './comment_modal_container';
 import LikeModal from './like_modal';
 
@@ -21,7 +23,7 @@ class DashboardModal extends React.Component {
     }
 
     render() {
-        const { comments, likes, liked, handleDeleteComment, currentUser, workout, createComment } = this.props;
+        const { comments, likes, liked, handleDeleteComment, currentUser, workout, createComment, closeModal} = this.props;
 
         const component = this.state.comment ? 
         <CommentModalContainer comments={comments} likes={likes} liked={liked} handleDeleteComment={handleDeleteComment} currentUser={currentUser} workout={workout} createComment={createComment} /> 
@@ -29,11 +31,24 @@ class DashboardModal extends React.Component {
 
         return (
             <div className="dashboard-modal">
-                {this.displayHeaders()}
+                <div className="dashboard-modal-headers-container">
+                    {this.displayHeaders()}
+                    <i className="fas fa-times" onClick={() => closeModal()}/>
+                </div>
                 {component}
             </div>
         )
     }
 }
 
-export default DashboardModal;
+const mapStateToProps = state => {
+    return {};
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        closeModal: () => dispatch(closeModal())
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardModal);

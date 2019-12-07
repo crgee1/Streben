@@ -1,5 +1,5 @@
 import React from 'react';
-import Modal from '../modal/modal';
+import Modal from '../modal/modal_dash';
 import { Link } from 'react-router-dom';
 import LoadingIcon from '../loading/loading_icon';
 
@@ -148,6 +148,10 @@ class ActivityFeedItem extends React.Component {
   handleOpenModal() {
     this.setState({ modal: true }, () => this.props.openModal('commentModal'));
     
+  }
+
+  turnOffModal() {
+    this.setState({modal: false});
   }
 
   openedCommentModal() {

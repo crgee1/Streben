@@ -19,12 +19,6 @@ class Modal extends React.Component {
     }
 
     switch (this.props.modal) {
-      case 'saveRoute':
-        this.component = <SaveRouteContainer routeInfo={routeInfo}/>;
-        break;
-      case 'updateRoute':
-        this.component= <UpdateRouteContainer routeInfo={routeInfo} prevRoute={prevRoute} prevLocations={prevLocations}/>;
-        break;
       case 'commentModal':
         this.component = <DashboardModal comments={comments} likes={likes} liked={liked} handleDeleteComment={handleDeleteComment} currentUser={currentUser} workout={workout} createComment={createComment}/>;
         break;
@@ -33,7 +27,7 @@ class Modal extends React.Component {
     }
     
     return (
-      <div className="modal-background" onClick={this.props.closeModal}>
+      <div className="modal-background" >
         <div className="modal-child" onClick={e => e.stopPropagation()}>
           { this.component }
         </div>
