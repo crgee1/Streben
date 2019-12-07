@@ -22,13 +22,28 @@
     top: -32vh;
     margin-left: -420px;
 
+    .modal-header {
+        display: flex;
+        justify-content: space-between;
+        background-color: #fff;
+        padding: 15px 20px;
+        border-radius: 6px 6px 0 0;
+        border-bottom: 1px solid #e5e5e5;
+        font-size: 22px;
+        font-weight: 400;
+        line-height: 28px;
+
+        .fa-times {
+            cursor: pointer;
+        }
+    }
+
     .dashboard-modal-headers-container {
         display: flex;
         justify-content: space-between;
         align-items: center;
         background-color: #f5f5fa;
         border-bottom: 1px solid #ccccd1;
-        border-radius: 6px 6px 0 0;
         
         .fa-times {
             margin-right: 12px;
@@ -73,6 +88,7 @@
             // }
     
             .active {
+                border-top: 2px solid #fc4c02;
                 border-bottom: none;
                 background-color: #fff;
                 margin-bottom: -1px;
@@ -156,6 +172,7 @@
         display: block;
         padding: 6px 12px;;
         border-radius: 4px;
+        cursor: pointer;
         
         &:hover {
             background-color: #fff;

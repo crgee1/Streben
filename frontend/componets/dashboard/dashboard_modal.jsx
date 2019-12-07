@@ -37,9 +37,13 @@ class DashboardModal extends React.Component {
 
         return (
             <div className="dashboard-modal">
+                <div className="modal-header">
+                    {workout.name}
+                    <i className="fas fa-times" onClick={this.exitModal.bind(this)} />
+                </div>
                 <div className="dashboard-modal-headers-container">
                     {this.displayHeaders()}
-                    <i className="fas fa-times" onClick={this.exitModal.bind(this)}/>
+                    
                 </div>
                 {component}
             </div>
