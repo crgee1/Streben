@@ -27,13 +27,31 @@ class CommentModal extends React.Component {
         }
     }
 
+    profilePic(comment) {
+
+        return comment.photoUrl ? <img className="comment-profile-pic big" src={comment.photoUrl} alt="" /> :
+            <section className="comment-profile-pic blank">
+                <h1 className="blank-pic">{comment.username[0].toUpperCase()}</h1>
+            </section>
+    }
+
+    displayHeaders() {
+
+        return (
+            <ul className="comments-modal-headers">
+                <li>Kudos </li>
+                <li>Comments</li>
+            </ul>
+        )
+    }
+
     render() {
         const { comments, liked, likes, handleDeleteComment, currentUser } = this.props;
         const displayComments = comments.map(comment => {
             const deleteable = comment.userId === currentUser.id ? <i className="fas fa-times comment-delete" onClick={handleDeleteComment(comment.id)}></i> : null;
 
             return <div className="comments-item modal-comment" key={comment.id}>
-                <img className="comment-profile-pic big" src={comment.photoUrl} alt=""/>
+                {this.profilePic(comment)}
                 <section>
                     <div className="comment-header">
                         <div className="comments-commenter">{comment.username}</div>
@@ -45,6 +63,7 @@ class CommentModal extends React.Component {
         });
 
         return <div className="comment-modal">
+            {/* {this.displayHeaders()} */}
             {displayComments}
             <div className="comment-create">
                 <form className="comment-form">

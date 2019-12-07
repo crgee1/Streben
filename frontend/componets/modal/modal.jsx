@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import SaveRouteContainer from '../route/save_route_container';
 import UpdateRouteContainer from '../route/update_route_container';
 import CommentModalContainer from '../dashboard/comment_modal_container';
+import DashboardModal from '../dashboard/dashboard_modal';
+
 
 class Modal extends React.Component {
   constructor(props) {
@@ -23,8 +25,11 @@ class Modal extends React.Component {
       case 'updateRoute':
         this.component= <UpdateRouteContainer routeInfo={routeInfo} prevRoute={prevRoute} prevLocations={prevLocations}/>;
         break;
+      // case 'commentModal':
+      //   this.component = <CommentModalContainer comments={comments} likes={likes} liked={liked} handleDeleteComment={handleDeleteComment} currentUser={currentUser} workout={workout} createComment={createComment}/>;
+      //   break;
       case 'commentModal':
-        this.component = <CommentModalContainer comments={comments} likes={likes} liked={liked} handleDeleteComment={handleDeleteComment} currentUser={currentUser} workout={workout} createComment={createComment}/>;
+        this.component = <DashboardModal comments={comments} likes={likes} liked={liked} handleDeleteComment={handleDeleteComment} currentUser={currentUser} workout={workout} createComment={createComment}/>;
         break;
       default:
         return null;

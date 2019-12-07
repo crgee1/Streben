@@ -2,6 +2,36 @@
     border-bottom: 1px solid #e6e6eb;
 }
 
+.dashboard-modal {
+    position: absolute;
+    top: -32vh;
+    margin-left: -420px;
+
+    .dashboard-modal-headers {
+        display: flex;
+        background-color: #f5f5fa;
+        border-bottom: 1px solid #ccccd1;
+        border-radius: 6px 6px 0 0;
+        padding-left: 30px;
+
+        li {
+            padding: 10px 20px 9px;
+    
+            &:hover {
+                background-color: #fff;
+            }
+        }
+
+        .active {
+            border-bottom: none;
+            background-color: #fff;
+            margin-bottom: -1px;
+            border-left: 1px solid #ccccd1;
+            border-right: 1px solid #ccccd1;
+        }
+    }
+}
+
 .comments-item {
     display: flex;
     align-items: flex-start;
@@ -55,6 +85,12 @@
             opacity: 0.5;
         }
     }
+}
+
+.like-item {
+    align-items: center;
+    font-size: 14px;
+    line-height: 1.45;
 }
 
 .comment-create {
@@ -235,7 +271,7 @@
         margin: 0 auto 24px;
         padding: 15px 20px 0 20px;
         overflow: auto;
-        border-radius: 6px;
+        border-radius: 0  0 6px 6px;
 
         .comment-form {
             margin: 16px 0;
