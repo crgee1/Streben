@@ -12,6 +12,15 @@ class DashboardModal extends React.Component {
         }
     }
 
+    profilePic() {
+        const { workout } = this.props;
+
+        return workout.photoUrl ? <img className="comment-profile-pic big" src={workout.photoUrl} alt="" /> :
+            <section className="comment-profile-pic blank">
+                <h1 className="blank-pic">{workout.username[0].toUpperCase()}</h1>
+            </section>
+    }
+
     displayHeaders() {
 
         return (
@@ -38,7 +47,10 @@ class DashboardModal extends React.Component {
         return (
             <div className="dashboard-modal">
                 <div className="modal-header-title">
-                    {workout.name}
+                    <section>
+                        {this.profilePic()}
+                        {workout.name}
+                    </section>
                     <i className="fas fa-times" onClick={this.exitModal.bind(this)} />
                 </div>
                 <div className="dashboard-modal-headers-container">

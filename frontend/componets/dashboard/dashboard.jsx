@@ -92,6 +92,9 @@ class Dashboard extends React.Component {
       let liked = likesObj[workout.id] ? likesObj[workout.id].liked : false;
       let likeId = likesObj[workout.id] ? likesObj[workout.id].likeId ? likesObj[workout.id].likeId : null : null;
       let comments = commentObj[workout.id] ? commentObj[workout.id] : [];
+      workout.username = users[workout.userId].username;
+      if (users[workout.userId].photoUrl) workout['photoUrl'] = users[workout.userId].photoUrl;
+
       return (
         <ActivityFeedItem
           user={users[workout.userId]}
@@ -125,9 +128,6 @@ class Dashboard extends React.Component {
           <div className="personal-stats">
             <section className="profile-card">
               {this.profilePic()}
-              {/* <section>
-                <img className="avatar-image" src={currentUser.id in users ? users[currentUser.id].photoUrl : this.props.currentUser.username[0]} alt=""/>
-              </section> */}
               <section className="profile-main-text">
                 <Link className="profile-link" to={`/athletes/${currentUser.id}`}>
                   <h1>{currentUser.username}</h1>
