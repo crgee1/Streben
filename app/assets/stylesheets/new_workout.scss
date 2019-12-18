@@ -225,3 +225,9 @@ input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none; 
   margin: 0; 
 }
+
+@media (min-width: 600px) {
+  .new-workout {
+    min-height: 74vh;
+  }
+}

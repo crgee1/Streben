@@ -54,3 +54,9 @@
     padding: 90px 40px 0 40px;
   }
 }
+
+@media (min-width: 600px) {
+  .profile-container {
+    min-height: 82vh;
+  }
+}

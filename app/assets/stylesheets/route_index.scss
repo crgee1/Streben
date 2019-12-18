@@ -126,3 +126,9 @@
     }
   }
 }
+
+@media (min-width: 600px) {
+  .route-home {
+    min-height: 80vh;
+  }
+}

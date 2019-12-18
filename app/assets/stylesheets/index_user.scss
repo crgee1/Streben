@@ -158,3 +158,9 @@
     min-height: 64vh;
   }
 }
+
+@media (min-width: 600px) {
+  .userIndex-main {
+    min-height: 80vh;
+  }
+}
