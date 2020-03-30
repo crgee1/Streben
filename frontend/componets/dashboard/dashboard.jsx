@@ -151,11 +151,11 @@ class Dashboard extends React.Component {
                 <div>
                   <section className="total-stats-stat">
                     <label>Distance</label>
-                    <h2>{totDistance} mi</h2>
+                    <h2>{totDistance.toFixed(2)} mi</h2>
                   </section>
                   <section className="total-stats-stat">
                     <label>Elevation</label>
-                    <h2>{totElevation} ft</h2>
+                  <h2>{totElevation.toFixed(2)} ft</h2>
                   </section>
                   <section className="total-stats-stat">
                     <label>Time</label>
